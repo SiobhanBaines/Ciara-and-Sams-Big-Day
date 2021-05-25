@@ -158,12 +158,14 @@ In designing this site I want to incorporate the bride and grooms colour scheme 
 #### Colors
 
 The colours of the site are taken from the colour scheme the bride and groom have decided on which is mint green and peach. I have chosen to make the main colour off-white to keep the site bright and airy without being stark that would come with bright white as the main colour.
-I initially used this ![image]() and [icolorpalette](https://icolorpalette.com/) to create a colour palette but the colours were muted in the palette.
+I initially used this ![image](documentation/images/colour_scheme.jpg) and [icolorpalette](https://icolorpalette.com/) to create a colour palette but the colours were muted in the palette so went back to the image and selected each of the block colours to find the closest match.
+
+The main background colour will be #FCFCF4 which is almost white and will create a bright and airy feel to the site
 
 * Peach #FFE5B4 RGB(255,229,180)
 * * **** FBC8B7     251, 200, 183
 * Mint #D1FEC5 RGB(209,254,197)
-* ****B7E0D2 183, 224, 210
+* * ****B7E0D2 183, 224, 210
 * Light Grey #C7C8CA  RGB(199, 200, 202)
 
 <a></a>
@@ -182,7 +184,37 @@ font-family: 'Nunito', sans-serif;`
 <a></a>
 
 #### Structure
-
+##### Landing / Home Page
+    The landing page is designed to welcome the visitors and encouraging them to engage with the site. There will be an image of the bride and groom and some images and highlevel details of the ceremony and reception venues. There will be a `Guests` button which will take the guests to the RSVP page.
+    **Our Story**
+    A small introduction to the bride and groom with a full width carousel of images of the happy couple.
+    **Venue Page**
+    This page will have an image of the ceremony and reception venues, the contact details and a googlemaps link to their locations.
+##### RSVP Page
+    The RSVP page will ask the guests to login using a unique identifier, which will be on the wedding invitation and to confirm the postcode where the invitation was sent. The first time the guest logs in, they will be asked to accept or decline the invitation and there will be the opportunity to leave a message. Subsequently the guest will have a navigation menu where they will have access to the menu, the gifts, the full venue details, the schedule of the day and useful local information. If a guest has declined the invitation they will still have access to buy a gift if they desire.
+##### Guests Menu Page
+    The guests version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.    
+##### Gifts Page
+    This page will have details of any specific gifts the bride and groom would like where the guest wants to buy a present instead of giving the bride and groom money. There will be a donation box for the guest to gift the bride and groom money using **Stripe payments**
+##### Wedding Schedule Page
+    Full details of the expected schedule of the day will be details here. * time the ceremony starts
+    * time of arrival at the reception venue
+    * time of the wedding breakfast
+    * time of the room turn around
+    * time of the evening celebration commences 
+##### Guest List Pages
+    The guest list page will consist of 3 pages.
+    * the main page will allow the bride and groom to view
+        * the guests names
+        * the number of confirmed guests in that party
+        * whether they have accepted or declined the invitation
+        * if they selected their menu choices
+    * Page 2 will give the bride and groom the ability to add, change and delete guests
+    * Page 3 will allow the bride and groom to see the menu choices and what gifts have been selected
+##### Menu Maintenance Page
+    The bride and groom will be able to add details about the starters, main course and deserts they have chosen for the wedding breakfast.
+##### Gift Maintenance Page
+    The bridge and groom will 
 
 [Back to Top](#table-of-contents)
 
@@ -194,8 +226,15 @@ font-family: 'Nunito', sans-serif;`
 ### **Wireframes**
 I used [Balsamic](https://balsamiq.com/wireframes/) to create wireframes for my website.   
 For each page I created 3 wireframes: desktop, tablet and mobile.
-
-
+**[Landing Page](documentation/wireframes/Landing Page.pdf)**
+**[RSVP Page]()**
+**[Guests Menu Page]()**
+**[Gifts Page]()**
+**[Wedding Schedule Page]()**
+**[Guest List Enquiry Page]()**
+**[Guest List Maintenance Page]()**
+**[Menu Maintenance Page]()**
+**[Gift Maintenance Page]()**
 
 ### **Flowcharts**
 
