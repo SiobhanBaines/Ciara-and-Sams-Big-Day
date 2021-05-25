@@ -69,36 +69,36 @@ You can find the original website here []().
 ### **User Stories**
 
 #### Bride or Groom:  
-* #BR-US1	 - As a user I want to register an account with administration access.
-* #BR-US2	 - As a user I want to be able to log into the website.
-* #BR-US3	 - As a user I want to be able to create a list of all the wedding guests.
-* #BR-US4	 - As a user I want to maintain the menu options for the day.
-* #BR-US5	 - As a user I want to mainttain a wedding gift list.
-* #BR-US6	 - As a user I want to use the list of guests who have accept to create the seating plan for the wedding breakfast.
-* #BR-US7	 - As a user I want to keep track of which guests have and have not RSVP'ed.
-* #BR-US8    - As a user I want to keep track of which guests have or have not supplied their menu choices.
-* #BR-US9	 - As a user I want to create a schedule for the day.
-* #BR-US10	 - As a user I want to provide the guests with details of the church.
-* #BR-US11   - As a user I want to provide the guests with details of the reception.
-* #BR-US12   - As a user I want to provide the guests with details of accommodation close to the reception.
-* #BR-US13   - As a user I want to provide the guests with details of local public transport.
-* #BR-US14   - As a user I want to know who as given a donation so I can thank them after the event.
-* #BR-US15   - As a user I want to have the ability to stop any Covid19 restrictions being displayed if the restrictions are lifted.
+* US-01	 - As a user I want to register an account with administration access.
+* US-02	 - As a user I want to be able to log into the website.
+* US-03	 - As a user I want to be able to create a list of all the wedding guests.
+* US-04	 - As a user I want to maintain the menu options for the day.
+* US-05	 - As a user I want to mainttain a wedding gift list.
+* US-06	 - As a user I want to use the list of guests who have accept to create the seating plan for the wedding breakfast.
+* US-07	 - As a user I want to keep track of which guests have and have not RSVP'ed.
+* US-08   - As a user I want to keep track of which guests have or have not supplied their menu choices.
+* US-09	 - As a user I want to create a schedule for the day.
+* US-10	 - As a user I want to provide the guests with details of the church.
+* US-11   - As a user I want to provide the guests with details of the reception.
+* US-12   - As a user I want to provide the guests with details of accommodation close to the reception.
+* US-13   - As a user I want to provide the guests with details of local public transport.
+* US-14   - As a user I want to know who as given a donation so I can thank them after the event.
+* US-15   - As a user I want to have the ability to stop any Covid19 restrictions being displayed if the restrictions are lifted.
 
 #### Wedding Guest
-* #WG-US1	 - As a user I want to register an account.
-* #WG-US2	 - As a user I want to be able to log into the website.
-* #WG-US3	 - As a user I want to provide my name and contact details.
-* #WG-US4	 - As a user I want to accept the wedding invitation.
-* #WG-US5	 - As a user I want to decline the wedding invitation.
-* #WG-US6	 - As a user I want to provide details of all members of my party.
-* #WG-US7	 - As a user I want to menu selections for all members of my party.
-* #WG-US8	 - As a user I want to provide details of any specific dietry requirements.
-* #WG-US9	 - As a user I want to choose a present from a list of gift ideas.
-* #WG-US10   - As a user I want to give a donation as a wedding present.
-* #WG-US11   - As a user I want confirmation of my invitation acceptance or decline.
-* #WG-US12   - As a user I want confirmation of my menu choices.
-* #WG-US13   - As a user I want confirmaiton of my donation. 
+* US-16	 - As a user I want to register an account.
+* US-17	 - As a user I want to be able to log into the website.
+* US-18	 - As a user I want to provide my name and contact details.
+* US-19	 - As a user I want to accept the wedding invitation.
+* US-20	 - As a user I want to decline the wedding invitation.
+* US-21	 - As a user I want to provide details of all members of my party.
+* US-22	 - As a user I want to menu selections for all members of my party.
+* US-23	 - As a user I want to provide details of any specific dietry requirements.
+* US-24	 - As a user I want to choose a present from a list of gift ideas.
+* US-25   - As a user I want to give a donation as a wedding present.
+* US-26   - As a user I want confirmation of my invitation acceptance or decline.
+* US-27   - As a user I want confirmation of my menu choices.
+* US-28   - As a user I want confirmaiton of my donation. 
 
 <a></a>
 
@@ -161,17 +161,24 @@ The colours of the site are taken from the colour scheme the bride and groom hav
 I initially used this ![image]() and [icolorpalette](https://icolorpalette.com/) to create a colour palette but the colours were muted in the palette.
 
 * Peach #FFE5B4 RGB(255,229,180)
+* * **** FBC8B7     251, 200, 183
 * Mint #D1FEC5 RGB(209,254,197)
+* ****B7E0D2 183, 224, 210
+* Light Grey #C7C8CA  RGB(199, 200, 202)
 
 <a></a>
 
 
 #### Fonts
 In order to find appropriate fonts for my website, I have visited [Google Fonts](https://fonts.google.com/ "Google Fonts") to explore the various options.
-For the initials of the bride and groom I will use a cursive font -tbd
-For the titles and subtitles, I will use the font []() tbd
-and for the main text I have used [](). tbd
 
+For the initials of the bride and groom I will use the cursive font [Lovers Quarrel](https://fonts.google.com/specimen/Lovers+Quarrel?category=Handwriting&preview.text=C%20%26%20S&preview.text_type=custom#standard-styles), for the titles and subtitles I will use the font [Italianno](https://fonts.google.com/specimen/Italianno?preview.text=GUEST%20Login&preview.text_type=custom&slant=8#standard-styles) tbd
+and for the main text I will use [Nunito](https://fonts.google.com/specimen/Nunito?preview.text=GUEST%20Login&preview.text_type=custom&stylecount=11)
+`<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Lovers+Quarrel&family=Nunito:wght@200&display=swap" rel="stylesheet">`
+`font-family: 'Italianno', cursive;
+font-family: 'Lovers Quarrel', cursive;
+font-family: 'Nunito', sans-serif;`
 <a></a>
 
 #### Structure
