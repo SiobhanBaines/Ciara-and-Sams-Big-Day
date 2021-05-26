@@ -232,22 +232,25 @@ font-family: 'Nunito', sans-serif;`
 ### **Wireframes**
 I used [Balsamic](https://balsamiq.com/wireframes/) to create wireframes for my website.   
 For each page I created 3 wireframes: desktop, tablet and mobile.
-**[Landing Page](documentation/wireframes/landing.pdf)**
-**[Guest Login](documentation/wireframes/guest_login.pdf)**
-**[RSVP Page](documentation/wireframes/rsvp.pdf)**
-**[Accepted Page](documentation/wireframes/accepted.pdf)**
-**[Declined Page](documentation/wireframes/declined.pdf)**
-**[Venue Page](documentation/wireframes/venue.pdf)**
-**[Guests Menu Page](documentation/wireframes/guest_menu.pdf)**
-**[Guests Gifts Page](documentation/wireframes/guest_gift.pdf)**
-**[Bride and Groom Login]()**
-**[Guests Wedding Schedule Page](documentation/wireframes/guest_schedule.pdf)**
-**[Guest List Enquiry Page]()**
-**[Guest List Maintenance Page]()**
-**[Menu Maintenance Page](documentation/wireframes/menu_maintenance.pdf)**
-**[Gift Maintenance Page](documentation/wireframes/gift_maintenance.pdf)**
-**[Wedding Schedule Entry Page](documentation/wireframes/schedule_maintenance.pdf)** 
+* **[Landing Page](documentation/wireframes/landing.pdf)**
+* **[Guest Login](documentation/wireframes/guest_login.pdf)**
+* **[RSVP Page](documentation/wireframes/rsvp.pdf)**
+* **[Accepted Page](documentation/wireframes/accepted.pdf)**
+* **[Declined Page](documentation/wireframes/declined.pdf)**
+* **[Venue Page](documentation/wireframes/venue.pdf)**
+* **[Guests Menu Page](documentation/wireframes/guest_menu.pdf)**
+* **[Guests Gifts Page](documentation/wireframes/guest_gift.pdf)**
+* **[Guests Wedding Schedule Page](documentation/wireframes/guest_schedule.pdf)**
+* **[Bride and Groom Registration](documentation/wireframes/registration.pdf)**
+* **[Bride and Groom Login](documentation/wireframes/login.pdf)**
+* **[Bride and Groom Home Page](documentation/wireframes/bride_groom_home.pdf)**
 
+* **[Guest List Enquiry Page](documentation/wireframes/guest_list_enquiry.pdf)**
+* **[Guest List Maintenance Page](documentation/wireframes/guest_list_maintenance.pdf)**
+* **[Menu Maintenance Page](documentation/wireframes/menu_maintenance.pdf)**
+* **[Gift Maintenance Page](documentation/wireframes/gift_maintenance.pdf)**
+* **[Wedding Schedule Entry Page](documentation/wireframes/schedule_maintenance.pdf)** 
+* **[Table Plan Page]()**
 ### **Flowcharts**
 
 
