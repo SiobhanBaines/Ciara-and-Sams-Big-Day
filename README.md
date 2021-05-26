@@ -186,14 +186,20 @@ font-family: 'Nunito', sans-serif;`
 #### Structure
 ##### Landing / Home Page
     The landing page is designed to welcome the visitors and encouraging them to engage with the site. There will be an image of the bride and groom and some images and highlevel details of the ceremony and reception venues. There will be a `Guests` button which will take the guests to the RSVP page.
-    **Our Story**
+    **Our Story Section**
     A small introduction to the bride and groom with a full width carousel of images of the happy couple.
-    **Venue Page**
-    This page will have an image of the ceremony and reception venues, the contact details and a googlemaps link to their locations.
+    **Location Section**
+    Will show some of the history of York and a map of the area.
+    **Covid19 Section**
+    The current Covid19 restrictions will be shown here assuming they will still be needed by the date of the wedding.
+##### Guest Login
+    The guests will be asked to login using a unique identifier, which will be on the wedding invitation and to confirm the postcode where the invitation was sent. From here they will automatically be taken to the RSVP page
 ##### RSVP Page
-    The RSVP page will ask the guests to login using a unique identifier, which will be on the wedding invitation and to confirm the postcode where the invitation was sent. The first time the guest logs in, they will be asked to accept or decline the invitation and there will be the opportunity to leave a message. Subsequently the guest will have a navigation menu where they will have access to the menu, the gifts, the full venue details, the schedule of the day and useful local information. If a guest has declined the invitation they will still have access to buy a gift if they desire.
+    The first time the guest logs in, they will be asked to accept or decline the invitation and there will be the opportunity to leave a message. Subsequently the guest will have a navigation menu where they will have access to the menu, the gifts, the full venue details, the schedule of the day and useful local information. If a guest has declined the invitation they will still have access to buy a gift if they desire.
 ##### Guests Menu Page
-    The guests version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.    
+    The guests version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.  
+##### Venue
+    Contains some information about the church where the ceremony will be held and about the receiption venue. There will be an image of each venue and the GoogleMaps location.
 ##### Gifts Page
     This page will have details of any specific gifts the bride and groom would like where the guest wants to buy a present instead of giving the bride and groom money. There will be a donation box for the guest to gift the bride and groom money using **Stripe payments**
 ##### Wedding Schedule Page
@@ -226,15 +232,21 @@ font-family: 'Nunito', sans-serif;`
 ### **Wireframes**
 I used [Balsamic](https://balsamiq.com/wireframes/) to create wireframes for my website.   
 For each page I created 3 wireframes: desktop, tablet and mobile.
-**[Landing Page](documentation/wireframes/Landing Page.pdf)**
-**[RSVP Page]()**
-**[Guests Menu Page]()**
-**[Gifts Page]()**
-**[Wedding Schedule Page]()**
+**[Landing Page](documentation/wireframes/landing.pdf)**
+**[Guest Login](documentation/wireframes/guest_login.pdf)**
+**[RSVP Page](documentation/wireframes/rsvp.pdf)**
+**[Accepted Page](documentation/wireframes/accepted.pdf)**
+**[Declined Page](documentation/wireframes/declined.pdf)**
+**[Venue Page](documentation/wireframes/venue.pdf)**
+**[Guests Menu Page](documentation/wireframes/guest_menu.pdf)**
+**[Guests Gifts Page](documentation/wireframes/guest_gift.pdf)**
+**[Bride and Groom Login]()**
+**[Guests Wedding Schedule Page](documentation/wireframes/guest_schedule.pdf)**
 **[Guest List Enquiry Page]()**
 **[Guest List Maintenance Page]()**
-**[Menu Maintenance Page]()**
-**[Gift Maintenance Page]()**
+**[Menu Maintenance Page](documentation/wireframes/menu_maintenance.pdf)**
+**[Gift Maintenance Page](documentation/wireframes/gift_maintenance.pdf)**
+**[Wedding Schedule Entry Page](documentation/wireframes/schedule_maintenance.pdf)** 
 
 ### **Flowcharts**
 
