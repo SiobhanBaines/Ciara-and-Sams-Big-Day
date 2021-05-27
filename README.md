@@ -1,11 +1,8 @@
 # **Ciara and Sam's Big Day**
 
 ## **Project Outline** 
-This is my final project as part of the Full Stack Development Diploma with Code Institute, acreditted by Edinburgh Napier University. 
 
-The remit for this project was to build "Full Stack Frameworks with Django".
-
-This site will provide the bride and groom with the ability to provide their wedding guests with all the information they need for the day and a mechanism to accept or decline the invitation, decide which menu choices each memeber in the guests party want and chose a wedding gift, whether that is a physical item or a monetary donation. The bride and groom will have all the information they need to chase any guests who have not replied to the invitation and arrange the table seating based on the guests who have accepted.
+This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guests party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally the bride and groom should be able to arrange the table seating based on the guests who have accepted.
 
 ``` Mock up Image ```
 ![image](static/documentation_files/images/ami_responsivedesign.png)
@@ -185,13 +182,14 @@ font-family: 'Nunito', sans-serif;`
 
 #### Structure
 ##### Landing / Home Page
-    The landing page is designed to welcome the visitors and encouraging them to engage with the site. There will be an image of the bride and groom and some images and highlevel details of the ceremony and reception venues. There will be a `Guests` button which will take the guests to the RSVP page.
-    **Our Story Section**
-    A small introduction to the bride and groom with a full width carousel of images of the happy couple.
-    **Location Section**
-    Will show some of the history of York and a map of the area.
-    **Covid19 Section**
-    The current Covid19 restrictions will be shown here assuming they will still be needed by the date of the wedding.
+
+The landing page is designed to welcome the visitors and encouraging them to engage with the site. There will be an image of the bride and groom and some images and highlevel details of the ceremony and reception venues. There will be a `Guests` button which will take the guests to the RSVP page.
+**Our Story Section**
+A small introduction to the bride and groom with a full width carousel of images of the happy couple.
+**Location Section**
+Will show some of the history of York and a map of the area.
+**Covid19 Section**
+The current Covid19 restrictions will be shown here assuming they will still be needed by the date of the wedding.
 ##### Guest Login
     The guests will be asked to login using a unique identifier, which will be on the wedding invitation and to confirm the postcode where the invitation was sent. From here they will automatically be taken to the RSVP page
 ##### RSVP Page
