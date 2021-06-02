@@ -67,36 +67,36 @@ You can find the original website here []().
 
 #### Bride or Groom:  
 <<<<<<< HEAD
-* [#1](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/1) - As a user I want to register an account with administration access.
-* [#2](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/2) - As a user I want to be able to log into the website.
-* As a user I want to be able to create a list of all the wedding guests.
-* As a user I want to maintain the menu options for the day.
-* 5  - As a user I want to mainttain a wedding gift list.
-* 6  - As a user I want to use the list of guests who have accept to create the seating plan for the wedding breakfast.
-* 7  - As a user I want to keep track of which guests have and have not RSVP'ed.
-* 8  - As a user I want to keep track of which guests have or have not supplied their menu choices.
-* 9  - As a user I want to create a schedule for the day.
-* 10 - As a user I want to provide the guests with details of the church.
-* 11 - As a user I want to provide the guests with details of the reception.
-* 12 - As a user I want to provide the guests with details of accommodation close to the reception.
-* 13 - As a user I want to provide the guests with details of local public transport.
-* 14 - As a user I want to know who as given a donation so I can thank them after the event.
-* 15 - As a user I want to have the ability to stop any Covid19 restrictions being displayed if the restrictions are lifted.
+* [#1](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/1)  - As a user I want to register an account with administration access.
+* [#2](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/2)  - As a user I want to be able to log into the website.
+* [#3](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/3)  - As a user I want to be able to create a list of all the wedding guests.
+* [#4](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/4)  - As a user I want to maintain the menu options for the day.
+* [#5](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/5)  - As a user I want to mainttain a wedding gift list.
+* [#6](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/6)  - As a user I want to use the list of guests who have accept to create the seating plan for the wedding breakfast.
+* [#7](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/7)  - As a user I want to keep track of which guests have and have not RSVP'ed.
+* [#8](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/8)  - As a user I want to keep track of which guests have or have not supplied their menu choices.
+* [#9](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/9)  - As a user I want to create a schedule for the day.
+* [#10](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/10) - As a user I want to provide the guests with details of the church.
+* [#11](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/11) - As a user I want to provide the guests with details of the reception.
+* [#12](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/12) - As a user I want to provide the guests with details of accommodation close to the reception.
+* [#13](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/13) - As a user I want to provide the guests with details of local public transport.
+* [#14](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/14) - As a user I want to know who as given a donation so I can thank them after the event.
+* [#15](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/15) - As a user I want to have the ability to stop any Covid19 restrictions being displayed if the restrictions are lifted.
 
 #### Wedding Guest
-* 16 - As a user I want to register an account.
-* 17 - As a user I want to be able to log into the website.
-* 18 - As a user I want to provide my name and contact details.
-* 19 - As a user I want to accept the wedding invitation.
-* 20 - As a user I want to decline the wedding invitation.
-* 21 - As a user I want to provide details of all members of my party.
-* 22 - As a user I want to menu selections for all members of my party.
-* 23 - As a user I want to provide details of any specific dietry requirements.
-* 24 - As a user I want to choose a present from a list of gift ideas.
-* 25 - As a user I want to give a donation as a wedding present.
-* 26 - As a user I want confirmation of my invitation acceptance or decline.
-* 27 - As a user I want confirmation of my menu choices.
-* 28 - As a user I want confirmation of my donation. 
+* [#16](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/16) - As a user I want to register an account.
+* [#17](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/17) - As a user I want to be able to log into the website.
+* [#18](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/18) - As a user I want to provide my name and contact details.
+* [#19](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/19) - As a user I want to accept the wedding invitation.
+* [#20](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/20) - As a user I want to decline the wedding invitation.
+* [#21](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/21) - As a user I want to provide details of all members of my party.
+* [#22](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/22) - As a user I want to menu selections for all members of my party.
+* [#23](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/23) - As a user I want to provide details of any specific dietry requirements.
+* [#24](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/24) - As a user I want to choose a present from a list of gift ideas.
+* [#25](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/25) - As a user I want to give a donation as a wedding present.
+* [#26](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/26) - As a user I want confirmation of my invitation acceptance or decline.
+* [#27](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/27) - As a user I want confirmation of my menu choices.
+* [#28](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/28) - As a user I want confirmation of my donation. 
 
 <a></a>
 
