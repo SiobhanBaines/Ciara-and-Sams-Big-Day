@@ -66,8 +66,8 @@ You can find the original website here []().
 ### **User Stories**
 
 #### Bride or Groom:  
-* US-01	 - As a user I want to register an account with administration access.
-* US-02	 - As a user I want to be able to log into the website.
+* [#1](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/1)	 - As a user I want to register an account with administration access.
+* [#2](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/2)	 - As a user I want to be able to log into the website.
 * US-03	 - As a user I want to be able to create a list of all the wedding guests.
 * US-04	 - As a user I want to maintain the menu options for the day.
 * US-05	 - As a user I want to mainttain a wedding gift list.
@@ -159,11 +159,12 @@ I initially used this ![image](documentation/images/colour_scheme.jpg) and [icol
 
 The main background colour will be #FCFCF4 which is almost white and will create a bright and airy feel to the site
 
-* Peach #FFE5B4 RGB(255,229,180)
-* * **** FBC8B7     251, 200, 183
-* Mint #D1FEC5 RGB(209,254,197)
-* * ****B7E0D2 183, 224, 210
-* Light Grey #C7C8CA  RGB(199, 200, 202)
+* Primary Peach #FBC8B7 RGB(251,200,183)
+* Secondary Peach #FFF9F7 RGB(255,249,247)
+* Primary Mint #B7E0D2 RGB(183,224,210)
+* Secondary Mint #E9F7F2 RGB(233,247,242)
+* Primary Grey #C7C8CA  RGB(199, 200, 202)
+
 
 <a></a>
 
@@ -191,34 +192,34 @@ Will show some of the history of York and a map of the area.
 **Covid19 Section**
 The current Covid19 restrictions will be shown here assuming they will still be needed by the date of the wedding.
 ##### Guest Login
-    The guests will be asked to login using a unique identifier, which will be on the wedding invitation and to confirm the postcode where the invitation was sent. From here they will automatically be taken to the RSVP page
+The guests will be asked to login using a unique identifier, which will be on the wedding invitation and to confirm the postcode where the invitation was sent. From here they will automatically be taken to the RSVP page
 ##### RSVP Page
-    The first time the guest logs in, they will be asked to accept or decline the invitation and there will be the opportunity to leave a message. Subsequently the guest will have a navigation menu where they will have access to the menu, the gifts, the full venue details, the schedule of the day and useful local information. If a guest has declined the invitation they will still have access to buy a gift if they desire.
+The first time the guest logs in, they will be asked to accept or decline the invitation and there will be the opportunity to leave a message. Subsequently the guest will have a navigation menu where they will have access to the menu, the gifts, the full venue details, the schedule of the day and useful local information. If a guest has declined the invitation they will still have access to buy a gift if they desire.
 ##### Guests Menu Page
-    The guests version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.  
+The guests version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.  
 ##### Venue
-    Contains some information about the church where the ceremony will be held and about the receiption venue. There will be an image of each venue and the GoogleMaps location.
+Contains some information about the church where the ceremony will be held and about the receiption venue. There will be an image of each venue and the GoogleMaps location.
 ##### Gifts Page
-    This page will have details of any specific gifts the bride and groom would like where the guest wants to buy a present instead of giving the bride and groom money. There will be a donation box for the guest to gift the bride and groom money using **Stripe payments**
+This page will have details of any specific gifts the bride and groom would like where the guest wants to buy a present instead of giving the bride and groom money. There will be a donation box for the guest to gift the bride and groom money using **Stripe payments**
 ##### Wedding Schedule Page
-    Full details of the expected schedule of the day will be details here. * time the ceremony starts
-    * time of arrival at the reception venue
-    * time of the wedding breakfast
-    * time of the room turn around
-    * time of the evening celebration commences 
+Full details of the expected schedule of the day will be details here. * time the ceremony starts
+* time of arrival at the reception venue
+* time of the wedding breakfast
+* time of the room turn around
+* time of the evening celebration commences 
 ##### Guest List Pages
-    The guest list page will consist of 3 pages.
-    * the main page will allow the bride and groom to view
-        * the guests names
-        * the number of confirmed guests in that party
-        * whether they have accepted or declined the invitation
-        * if they selected their menu choices
-    * Page 2 will give the bride and groom the ability to add, change and delete guests
-    * Page 3 will allow the bride and groom to see the menu choices and what gifts have been selected
+The guest list page will consist of 3 pages.
+* the main page will allow the bride and groom to view
+    * the guests names
+    * the number of confirmed guests in that party
+    * whether they have accepted or declined the invitation
+    * if they selected their menu choices
+* Page 2 will give the bride and groom the ability to add, change and delete guests
+* Page 3 will allow the bride and groom to see the menu choices and what gifts have been selected
 ##### Menu Maintenance Page
-    The bride and groom will be able to add details about the starters, main course and deserts they have chosen for the wedding breakfast.
+The bride and groom will be able to add details about the starters, main course and deserts they have chosen for the wedding breakfast.
 ##### Gift Maintenance Page
-    The bridge and groom will 
+The bridge and groom will have the ability to add gifts and remove them.
 
 [Back to Top](#table-of-contents)
 
