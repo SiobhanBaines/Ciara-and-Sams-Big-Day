@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block page-header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
-<h1 class="display-4 text-success">It works</h1>
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-12 my-4">
+            <h1 class="display-2 banner-font text-black text-center">Ciara and Sam</h1>
+            <div class="my-4">
+                <h2 class="display-6 heading-font text-black text-center">Are Getting Married</h2>
+            </div>
+        </div>
+        <div class="col-7 my-10"></div>
+        <div class="col-5">
+            <h4>
+                <a href="" class="rsvp-button btn btn-lg banner-font text-uppercase  text-right">RSVP</a>
+            </h4>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
