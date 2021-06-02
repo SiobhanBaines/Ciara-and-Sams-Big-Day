@@ -1,0 +1,68 @@
+html {
+    height: 100%;
+}
+body {
+    background: url('/media/homepage_background_image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    color: #3A3B3C;
+    font-family: 'Nunito', sans-serif;
+}
+
+/*  Colours */
+:root {
+    --primary-peach: #FBC8B7;
+    --secondary-peach: #FFF9F7;
+    --primary-mint: #B7E0D2;
+    --secondary-mint: #E9F7F2;
+    --primary-grey: #C7C8CA;
+    --primary-font: #6e6f70;
+    --secondary-font: #947a27;
+    --font-shadow: #e6d090;
+}
+.banner {
+    color: var(--secondary-font);
+    font-family: 'Lovers Quarrel', cursive;
+    font-size: 8rem;
+    text-shadow: -0.5px 0  var(--font-shadow), 0 1px var(--font-shadow);
+    margin-top: 8rem;
+}
+
+.heading-font {
+    color: var(--secondary-font);
+    font-family: 'Italianno', cursive;
+    text-shadow: -0.5px 0  var(--font-shadow), 0 1px var(--font-shadow);
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+      max-width: 80%;
+    }
+  }
+  
+  /* fixed top navbar only on medium and up */
+  @media (min-width: 992px) {
+      .fixed-top-desktop-only {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
+  
+      .header-container {
+          padding-top: 164px;
+      }
+  }

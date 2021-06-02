@@ -165,7 +165,8 @@ The main background colour will be #FCFCF4 which is almost white and will create
 * Primary Mint #B7E0D2 RGB(183,224,210)
 * Secondary Mint #E9F7F2 RGB(233,247,242)
 * Primary Grey #C7C8CA  RGB(199, 200, 202)
-
+* Primary Font #6e6f70 RGB(	110, 111, 112)
+* Secondary Font Colour #947a27 RGB(148, 122, 39)
 
 <a></a>
 
