@@ -66,7 +66,7 @@ You can find the original website here []().
 ### **User Stories**
 
 #### Bride or Groom:  
-* US-01	 - As a user I want to register an account with administration access.
+* #01	 - As a user I want to register an account with administration access.
 * US-02	 - As a user I want to be able to log into the website.
 * US-03	 - As a user I want to be able to create a list of all the wedding guests.
 * US-04	 - As a user I want to maintain the menu options for the day.
