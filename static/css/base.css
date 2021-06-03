@@ -18,26 +18,28 @@ body {
     --primary-grey: #C7C8CA;
     /* --primary-font: #6e6f70; */
     --primary-font: #48494a;
-    --secondary-font: #947a27;
-    --font-shadow: #e6d090;
+    --secondary-font-shadow: #947a27;
+    --primary-font-shadow: #e6d090;
 }
 .banner,
 .rsvp {
     color: var(--primary-font);
     font-family: 'Lovers Quarrel', cursive;
-    text-shadow: -0.5px 0  var(--font-shadow), 0 1px var(--font-shadow);
+    text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow);
 }
 .banner{
     font-size: calc(2rem + 15.3vw);
 }
 .rsvp {
     font-size: calc(2rem + 8.3vw);
+    transform: rotate(6.5deg);
 }
 
 .heading-font {
+    font-size: calc(2rem + 5.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    text-shadow: -0.5px 0  var(--font-shadow), 0 1px var(--font-shadow);
+    text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow);
 }
 
 /* from Bulma */
@@ -59,26 +61,20 @@ body {
     body {
         background-size: 100%;
     }
-    /* .banner {
-        font-size: 16rem;
+}
+  
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
     }
-    .rsvp {
-        font-size: 9rem;
-    } */
-  }
-  
-  /* fixed top navbar only on medium and up */
-  @media (min-width: 992px) {
-      .fixed-top-desktop-only {
-          position: fixed;
-          top: 0;
-          right: 0;
-          left: 0;
-          z-index: 1030;
-      }
-  
-      .header-container {
-          padding-top: 164px;
-      }
 
-  }
+    .header-container {
+        padding-top: 164px;
+    }
+
+}
