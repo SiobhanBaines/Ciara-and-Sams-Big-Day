@@ -16,20 +16,26 @@ body {
     --primary-mint: #B7E0D2;
     --secondary-mint: #E9F7F2;
     --primary-grey: #C7C8CA;
-    --primary-font: #6e6f70;
+    /* --primary-font: #6e6f70; */
+    --primary-font: #48494a;
     --secondary-font: #947a27;
     --font-shadow: #e6d090;
 }
-.banner {
-    color: var(--secondary-font);
+.banner,
+.rsvp {
+    color: var(--primary-font);
     font-family: 'Lovers Quarrel', cursive;
-    font-size: 8rem;
     text-shadow: -0.5px 0  var(--font-shadow), 0 1px var(--font-shadow);
-    margin-top: 8rem;
+}
+.banner{
+    font-size: calc(2rem + 15.3vw);
+}
+.rsvp {
+    font-size: calc(2rem + 8.3vw);
 }
 
 .heading-font {
-    color: var(--secondary-font);
+    color: var(--primary-font);
     font-family: 'Italianno', cursive;
     text-shadow: -0.5px 0  var(--font-shadow), 0 1px var(--font-shadow);
 }
@@ -50,6 +56,15 @@ body {
     .container {
       max-width: 80%;
     }
+    body {
+        background-size: 100%;
+    }
+    /* .banner {
+        font-size: 16rem;
+    }
+    .rsvp {
+        font-size: 9rem;
+    } */
   }
   
   /* fixed top navbar only on medium and up */
@@ -65,4 +80,5 @@ body {
       .header-container {
           padding-top: 164px;
       }
+
   }
