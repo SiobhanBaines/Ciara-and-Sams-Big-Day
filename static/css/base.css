@@ -2,11 +2,13 @@ html {
     height: 100%;
 }
 body {
-    background: url('/media/homepage_background_image.jpg') no-repeat center center fixed;
+    background: url('/media/homepage_background_image.png') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     color: #3A3B3C;
     font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /*  Colours */
@@ -21,11 +23,28 @@ body {
     --secondary-font-shadow: #947a27;
     --primary-font-shadow: #e6d090;
 }
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* landing page */
+/* .parallax {
+    background: url('/media/homepage_background_image.png') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;  
+} */
 .banner,
 .rsvp {
     color: var(--primary-font);
     font-family: 'Lovers Quarrel', cursive;
-    text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow);
+    /* text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow); */
+    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
 }
 .banner{
     font-size: calc(2rem + 15.3vw);
@@ -39,16 +58,33 @@ body {
     font-size: calc(2rem + 5.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow);
+    /* text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow); */
+    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+}
+.home {
+    height: 100vh;
+    width: 100vw;
+}
+.row.home-row {
+    height: 50vh;
+}
+.our-story {
+    background-color: var(--secondary-peach);
+    width: 100vw;
+    padding: 5%;
+    /* height: 100vh; */
+}
+.carousel {
+    width: 24%;
+    height: auto;
+    margin-left: 38%;
 }
 
-/* from Bulma */
-.icon {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
+/* buttons */
+
+.rsvp-button {
+    height: 300px;
+    width: 300px;
 }
 
 /* -------------------------------- Media Queries */
@@ -77,4 +113,16 @@ body {
         padding-top: 164px;
     }
 
+}
+
+/* Small screens  */
+@media (max-width: 750px) {
+    .row.home-row {
+        height: 75vh;
+    }
+    .carousel {
+        width: 80%;
+        height: auto;
+        margin-left: 10%;
+    }
 }
