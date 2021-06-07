@@ -12,7 +12,15 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
-
+h2.heading-font {
+    font-size: calc(2rem + 2.3vw);
+}
+h3.heading-font {
+    font-size: calc(1.5rem + 1.3vw) !important;
+}
+/* h4 {
+    font-size: calc(2rem + 0.3vw);
+} */
 /*  Colours */
 :root {
     --primary-peach: #FFF9F7;
@@ -75,10 +83,8 @@ footer {
 }
 
 .heading-font {
-    font-size: calc(2rem + 2.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    /* text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow); */
     text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
 }
 

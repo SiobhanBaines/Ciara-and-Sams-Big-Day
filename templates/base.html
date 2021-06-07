@@ -60,9 +60,47 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                        <!-- <a class="nav-link active" aria-current="page" href="#home">Home</a> -->
+                        <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
                     </li>
-                    {% if not session %}
+                    {% if request.user.is_authenticated %} 
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Preview Links</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Guest List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gift List</a>
+                    </li>
+                    {% else %}
+                    {% if active %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Venue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Menu</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gift List</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                    </li>
+                    
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="#our-story">Our Story</a>
                     </li>
@@ -70,15 +108,11 @@
                         <a class="nav-link" href="#location">Location</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#covid-restrictions">Covid19</a>
                     </li>
-                    {% else %}
-                    {% if guest %}
-                    {% else %}
-                    {% endif %}
                     {% endif %}
                 </ul>
             </div>
@@ -92,16 +126,19 @@
 
     <!-- footer-->
     <footer>
-        <div class="row">
-            <div class="col">
+        <div class="row ">
+            <div class="col-md-6 my-2">
                 <div class="footer-copyright">
                     <div id="copy" class="container-footerr">
-                        © 2021 Copyright Siobhán Baines
+                        © 2021 Copyright Siobhán M Baines
                     </div>
-                </div>
-                <a href="#">Contact Us</a>
+                </div> 
+            </div>
+            <div class="col-md-6 my-2">           
+                <a class="float-end" href="#">Contact Us</a>
             </div>
         </div>
+
     </footer>
 
     {% block postloadjs %}
