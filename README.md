@@ -315,6 +315,10 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 
 <a></a>
 
+## Development Issues
+
+
+
 ## Testing
 Testing of this site can be found [here](testing.md) in a seperate file
 
@@ -337,6 +341,12 @@ Bugs of this site can be found [here](bugs.md) in a seperate file
 <a></a>
 
 ## **Credits**
+
+### Images
 The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". 
 
+### Assistance
+Scott @ CI Tutor support for helping me to load the users into django. I had made the whole process much more complex than necessary.
+
+Simen - my mentor at CI for his ideas, inspiration and patience. 
 
