@@ -1,1 +1,17 @@
-[{"pk": 1, "model": "auth.user", "fields": {"password": "ciara", "is_superuser": true, "username": "ciara", "email": "baines.ciara@gmail.com", "is_staff": true, "is_active": true}, "username": "27711E"}, {"pk": 2, "model": "auth.user", "fields": {"password": "LS20 8JZ", "username": "1", "is_active": true}, "username": "267527"}, {"pk": 3, "model": "auth.user", "fields": {"password": "LS19 7YT", "username": "2", "is_active": true}, "username": "CBBF4B"}, {"pk": 4, "model": "auth.user", "fields": {"password": "DH4 4XR", "username": "3", "is_active": true}, "username": "D183ED"}, {"pk": 5, "model": "auth.user", "fields": {"password": "ST6 2VW", "username": "4", "is_active": true}, "username": "832831"}, {"pk": 6, "model": "auth.user", "fields": {"password": "PE12 6AY", "username": "5", "is_active": true}, "username": "C6A95E"}, {"pk": 7, "model": "auth.user", "fields": {"password": "NW3C 1HA", "username": "6", "is_active": true}, "username": "A9008D"}, {"pk": 8, "model": "auth.user", "fields": {"password": "OX3 4EB", "username": "7", "is_active": true}, "username": "DC1B48"}]
+[
+    {"pk": 1, "model": "auth.user", "fields": 
+        {"password": "ciara", "is_superuser": true, "username": "ciara", "email": "baines.ciara@gmail.com", "is_staff": true, "is_active": true}},
+    {"pk": 2, "model": "auth.user", "fields": 
+        {"password": "LS20 8JZ", "username": "1", "is_staff": false, "is_active": true}}, 
+    {"pk": 3, "model": "auth.user", "fields": 
+        {"password": "LS19 7YT", "username": "2", "is_staff": false, "is_active": true}}, 
+    {"pk": 4, "model": "auth.user", "fields": 
+        {"password": "DH4 4XR", "username": "3", "is_staff": false, "is_active": true}}, 
+    {"pk": 5, "model": "auth.user", "fields": 
+        {"password": "ST6 2VW", "username": "4", "is_staff": false, "is_active": true}}, 
+    {"pk": 6, "model": "auth.user", "fields": {"password": "PE12 6AY", "username": "5", "is_staff": false, "is_active": true}}, 
+    {"pk": 7, "model": "auth.user", "fields": 
+        {"password": "NW3C 1HA", "username": "6", "is_staff": false, "is_active": true}}, 
+    {"pk": 8, "model": "auth.user", "fields": 
+        {"password": "OX3 4EB", "username": "7", "is_staff": false, "is_active": true}}
+    ]
