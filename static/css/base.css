@@ -6,7 +6,7 @@ body {
     /* background: url('/media/homepage_background_image.png') no-repeat center center fixed;
     background-size: cover; */
     background-color: var(--primary-mint);
-    height: 100%;
+    /* height: 100%; */
     color: var(--primary-font);
     font-family: 'Nunito', sans-serif;
     margin: 0;
@@ -59,9 +59,6 @@ h3 {
 }
 
 /* Nav Bar  */
-.bg-light {
-    background-color: transparent !important;
-}
 
 .nav-item {
     font-size: calc(1rem + 1.3vw);
@@ -87,18 +84,8 @@ footer li {
 }
 
 #home {
-    background: url('/media/homepage_background_image.png') no-repeat center center fixed;
-    background-size: cover;
     height: 100vh;
     width: 100vw;
-/*     
-    height: 100%;
-    color: var(--primary-font);
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    } */
 }
 
 .row.home-row {
@@ -157,7 +144,9 @@ footer li {
     }
 
     .header-container {
-        padding-top: 164px;
+        /* padding-top: 164px; */
+        padding-top: 70px;
+        padding-left: 70px;
     }
 
 }
