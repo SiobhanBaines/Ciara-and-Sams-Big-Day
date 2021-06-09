@@ -3,3 +3,5 @@ As part of this project I needed to create some Users automatically into django.
 When I ran the `python3 manage.py loaddata users` command I still got an error but this was related to the encoder my git environment was using. It was using `UFT-8 with BOM` and needed to user `UFT-8`. 
 Once the users were loaded, the next step was to change the passwords to be hashed and the username to be a 6 character UUID using `uuid.uuid4().hex[:6].upper()`.
 
+Complete change of plan. I'm going to create the users from the upload of the guest list. That way it is all inside the app instead of trying to create them outside of it. This also puts the ownership of the data bak onto the person uploading it.
+
