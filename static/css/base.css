@@ -5,7 +5,7 @@ html {
 body {
     /* background: url('/media/homepage_background_image.png') no-repeat center center fixed;
     background-size: cover; */
-    background-color: var(--primary-mint);
+    background-color: var(--primary-background);
     /* height: 100%; */
     color: var(--primary-font);
     font-family: 'Nunito', sans-serif;
@@ -45,6 +45,7 @@ h3 {
     --secondary-mint: #B7E0D2;
     --primary-grey: #C7C8CA;
     --primary-font: #48494a;
+    --primary-background: #FFFEF2;
     --secondary-font-shadow: #947a27;
     --primary-font-shadow: #e6d090;
 }
@@ -82,6 +83,9 @@ footer li {
     list-style-type: none;
     display: flex;
 }
+ 
+/* forms */
+
 
 #home {
     height: 100vh;
