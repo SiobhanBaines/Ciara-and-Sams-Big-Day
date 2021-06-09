@@ -80,6 +80,10 @@ h3.heading-font {
 footer {
     background-color: var(--secondary-mint);
 }
+footer li {
+    list-style-type: none;
+    display: flex;
+}
 
 #home {
     height: 100vh;
