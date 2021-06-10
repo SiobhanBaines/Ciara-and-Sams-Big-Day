@@ -1,1 +1,1 @@
-web: gunicon ciara_and_sams_big_day.wsgi:application
+web: gunicorn boutique_ado.wsgi:application
