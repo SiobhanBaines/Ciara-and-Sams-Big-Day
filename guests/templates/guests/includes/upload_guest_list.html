@@ -1,0 +1,24 @@
+<!-- Upload Guest List Modal Structure -->
+<!-- Modal -->
+<div class="modal fade" id="uploadGuestListModal" tabindex="-1" aria-labelledby="guestListModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="guestListModalLabel">Upload Guest List</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="# upload_guest_list" method="POST" enctype="multipart/form-data">
+                <div class="modal-body mb-3">
+                    <input type="file" name="user_image" class="form-control" />
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn accept-btn">Upload</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

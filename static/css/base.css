@@ -27,16 +27,20 @@ body {
     transform: rotate(6.5deg);
 }
 
-h2, h3 {
+h2, h3, th {
     font-family: 'Italianno', cursive;
 }
-h2{
+h2 {
     font-size: calc(2rem + 2.3vw);
 }
-h3 {
+h3 {  
     font-size: calc(1.5rem + 1.3vw) !important;
 }
-
+th {
+    color: var(--primary-font);
+    font-size: calc(1rem + 0.9vw) !important;
+    text-shadow:  0 1px var(--primary-font-shadow);
+}
 /*  Colours */
 :root {
     --primary-peach: #FFF9F7;
@@ -45,20 +49,35 @@ h3 {
     --secondary-mint: #B7E0D2;
     --primary-grey: #C7C8CA;
     --primary-font: #48494a;
-    --primary-background: #FFFEF2;
+    --primary-background: #FFFEF2;  
+    /* --primary-background: #FFFEFf; */
     --secondary-font-shadow: #947a27;
     --primary-font-shadow: #e6d090;
 }
 
 /* from Bulma */
-.icon {
+/* .icon {
     align-items: center;
     display: inline-flex;
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
-}
+} */
 
+/* buttons */
+button {
+    color: -internal-light-dark(var(--primary-font, white));
+}
+.modal-button, 
+.accept-btn {
+    background-color: var(--primary-mint);
+}
+.cancel-btn {
+    background-color: var(--secondary-peach);
+}
+/* i {
+    color:var(--primary-font);
+} */
 /* Nav Bar  */
 
 .nav-item {
@@ -122,6 +141,11 @@ footer li {
 .rsvp-button {
     height: 300px;
     width: 300px;
+}
+
+.modal-content {
+    background: url('/media/juliet_rose.jpg') center center fixed;
+    background-size: contain;
 }
 
 /* -------------------------------- Media Queries */
