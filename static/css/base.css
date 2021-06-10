@@ -5,7 +5,15 @@ html {
 body {
     /* background: url('/media/homepage_background_image.png') no-repeat center center fixed;
     background-size: cover; */
-    background-color: var(--primary-background);
+    /* background-color: var(--primary-background); */
+    background-repeat: no-repeat;
+    /* background-image: linear-gradient(red, yellow); */
+    background-color: linear-gradient(135deg, var(--primary-mint), rgb(0 0 0 / 0%) 70%), 
+    linear-gradient(45deg, var(--secondary-peach), var(--primary-background), var(--primary-peach) 85%),
+    linear-gradient(135deg, var(--primary-mint), var(--primary-background), var(--primary-peach) 85%),
+    linear-gradient(270deg, var(--primary-peach), rgb(0 0 0 / 0%) 30%), 
+    ;
+    background-image: linear-gradient(to right, var(--primary-mint), var(--primary-peach));
     /* height: 100%; */
     color: var(--primary-font);
     font-family: 'Nunito', sans-serif;
@@ -44,7 +52,7 @@ th {
 /*  Colours */
 :root {
     --primary-peach: #FFF9F7;
-    --secondary-peach: #FBC8B7;
+    --secondary-peach: #fdd7cb;
     --primary-mint: #E9F7F2;
     --secondary-mint: #B7E0D2;
     --primary-grey: #C7C8CA;
@@ -68,11 +76,19 @@ th {
 button {
     color: -internal-light-dark(var(--primary-font, white));
 }
+.btn,
+button {
+    border: 1px solid var(--primary-font);
+    border-radius: 0.25rem;
+    border-width: 1px;
+}
 .modal-button, 
 .accept-btn {
     background-color: var(--primary-mint);
+    
 }
-.cancel-btn {
+
+.change-btn {
     background-color: var(--secondary-peach);
 }
 /* i {

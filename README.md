@@ -345,6 +345,8 @@ Bugs of this site can be found [here](bugs.md) in a seperate file
 ### Images
 The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". 
 
+
+https://pythoncircle.com/post/30/how-to-upload-and-process-the-csv-file-in-django/
 ### Assistance
 Scott @ CI Tutor support for helping me to load the users into django. I had made the whole process much more complex than necessary.
 

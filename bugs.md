@@ -6,4 +6,4 @@ Once the users were loaded, the next step was to change the passwords to be hash
 Complete change of plan. I'm going to create the users from the upload of the guest list. That way it is all inside the app instead of trying to createheroku logs --tail them outside of it. This also puts the ownership of the data bak onto the person uploading it.
 
 
-
+https://pythoncircle.com/post/30/how-to-upload-and-process-the-csv-file-in-django/

@@ -1,9 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-# import os
-# import uuid
-# import json
 
 
 class Guest(models.Model):
@@ -32,19 +28,3 @@ class Guest(models.Model):
 
 def __str__(self):
     return self.guest_id
-
-
-# def creatGuserUser(self)
-#     jsonFile = open(
-#         "/workspace/Ciara-and-Sams-Big-Day/users/fixtures/guest-users.json", "r")
-#     users = json.load(jsonFile)
-
-#     for user in users:
-#         if user["password"]:
-#             print(user["password"])
-#             unique_code = uuid.uuid4().hex[:6].upper()
-#             print(unique_code)
-#             User.objects.create_user(
-#                 username=unique_code, password=user["password"])
-
-#     jsonFile.close()

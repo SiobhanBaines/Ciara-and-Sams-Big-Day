@@ -29,10 +29,11 @@
                     <label for="query" class="query" aria-placeholder="Search Last Name"></label>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="btn accept-btn "><i class="fas fa-search left"></i>&nbsp;Search</button>
+                    <button type="button" class="btn accept-btn btn-sm"><i class="fas fa-search left"></i>&nbsp;Search</button>
                 </div>
                 <div class="col-3">
-                    <a href="#" class="btn btn-secondary"><i class="fas fa-times-circle left"></i>&nbsp;Reset</a>
+                    <button type="button" class="btn btn-secondary btn-sm" type="reset"><i class="fas fa-times-circle left"></i>&nbsp;Reset
+                    </button>
                 </div>
             </div>
         </div>
@@ -59,9 +60,9 @@
                     <td>{{ guest.last_name }}</td>
                     <td>{{ guest.accepted}}</td>
                     <td>{{ guest.meal_chosen }}</td>
-                    <td><a href="#">View</a></td>
-                    <td><a href="#">Change</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="#"class="btn accept-btn btn-sm"><i class="fas fa-eye left"></i>&nbsp;View</a></td>
+                    <td><a href="#"class="btn change-btn btn-sm"><i class="fas fa-edit left"></i>&nbsp;Change</a></td>
+                    <td><a href="#"class="btn btn-danger btn-sm"><i class="fas fa-times-circle left"></i>&nbsp;Delete</a></td>
                     {% endfor %}
                 </tr>
             </tbody>
