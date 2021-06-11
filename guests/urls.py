@@ -8,6 +8,6 @@ urlpatterns = [
     # path('upload_guest_list/',
     #      views.upload_guest_list,
     #      name='upload_guest_list'),
-    path('upload_guest_list/', UploadGuestListView.as_view(),
+    path('', UploadGuestListView.as_view(),
          name='upload_guest_list'),
 ]

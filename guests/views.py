@@ -28,14 +28,13 @@ class UploadGuestListView(View):
 
     # @login_required
     def get(self, request):
-        template_name = 'upload_guest_list.html'
+        print('line 31 - get process')
+        template_name = 'guests/all_guests.html'
         return render(request, template_name)
 
     # @login_required
     def post(self, request):
-        """
-        Upload CSV file containing list of guests into Django Guests model
-        """
+        print('line 37 - post process')
         # Handle request CSV file
         paramFile = io.TextIOWrapper(request.FILES['guest_list_csv'].file)
         # Read te POST request file and convert into DICT

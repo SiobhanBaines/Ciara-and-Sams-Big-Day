@@ -8,10 +8,10 @@ body {
     /* background-color: var(--primary-background); */
     background-repeat: no-repeat;
     /* background-image: linear-gradient(red, yellow); */
-    background-color: linear-gradient(135deg, var(--primary-mint), rgb(0 0 0 / 0%) 70%), 
-    linear-gradient(45deg, var(--secondary-peach), var(--primary-background), var(--primary-peach) 85%),
-    linear-gradient(135deg, var(--primary-mint), var(--primary-background), var(--primary-peach) 85%),
-    linear-gradient(270deg, var(--primary-peach), rgb(0 0 0 / 0%) 30%), 
+    background-color: linear-gradient(135deg, var(--primary-mint), var(--secondary-mint) 100%), 
+    linear-gradient(45deg, var(--secondary-peach), var(--primary-background), var(--primary-peach) 70%),
+    linear-gradient(315deg, var(--primary-mint), var(--primary-background), var(--primary-peach) 70%),
+    linear-gradient(225deg, var(--primary-peach), var(--secondary-peach) 100%), 
     ;
     background-image: linear-gradient(to right, var(--primary-mint), var(--primary-peach));
     /* height: 100%; */
@@ -82,10 +82,11 @@ button {
     border-radius: 0.25rem;
     border-width: 1px;
 }
-.modal-button, 
 .accept-btn {
-    background-color: var(--primary-mint);
-    
+    background-color: var(--primary-mint); 
+}
+.upload-button {
+    justify-content: flex-end;
 }
 
 .change-btn {
@@ -153,16 +154,35 @@ footer li {
 }
 
 /* buttons */
-
+/* .form-border {
+    border-style: 2px solid var(--primary-font);
+} */
 .rsvp-button {
     height: 300px;
     width: 300px;
 }
+.upload-form {
+    display: inline-flex;
+    padding: 0 0 2% 0;
+    justify-content: space-around;
+}
+.form-control {
+    width: 75%;
+}
+.card {
+    width: 70%;
+    /* margin: 0 auto; */
+    /* display: flex;
+    justify-content: center;
+    flex-direction: row; */
+    background: url('/media/juliet_rose.jpg') center center fixed;
+    background-size: cover;
+}
 
-.modal-content {
+/* .modal-content {
     background: url('/media/juliet_rose.jpg') center center fixed;
     background-size: contain;
-}
+} */
 
 /* -------------------------------- Media Queries */
 
