@@ -27,4 +27,4 @@ class Guest(models.Model):
 
 
 def __str__(self):
-    return self.guest_id
+    return self.first_name+" "+self.last_name

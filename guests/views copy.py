@@ -1,5 +1,5 @@
-﻿from django.shortcuts import render, reverse, redirect
-# from django.http import JsonResponse
+from django.shortcuts import render, reverse, redirect
+from django.http import JsonResponse
 # from django.http import HttpResponse, JsonResponse
 from django.views import View
 
@@ -16,7 +16,9 @@ import csv
 
 def all_guests(request):
     """ View a list of all guests """
+    print('guests views line 13 ')
     guests = Guest.objects.all()
+    print(guests)
     context = {
         'guests': guests,
     }
@@ -26,20 +28,26 @@ def all_guests(request):
 
 class UploadGuestListView(View):
 
-    # @login_required
+    @login_required
     def get(self, request):
-        template_name = 'upload_guest_list.html'
-        return render(request, template_name)
+            template_name = 'upload_guest_list.html'
+            return render(request, template_name)
 
-    # @login_required
+
+    @login_required
     def post(self, request):
         """
         Upload CSV file containing list of guests into Django Guests model
         """
+        print('line 34 self, equest', request)
+        user = request.user   # get the current login user details
+        print('user', user)
         # Handle request CSV file
         paramFile = io.TextIOWrapper(request.FILES['guest_list_csv'].file)
+        print('line 38 paramFile', paramFile)
         # Read te POST request file and convert into DICT
         portfolio1 = csv.DictReader(paramFile)
+        print('line 40 portfolio1 ', portfolio1)
         list_of_dict = list(portfolio1)
         print('line 42 list_of_dict ', list_of_dict)
         # create user id on change of postcode
@@ -81,13 +89,11 @@ class UploadGuestListView(View):
         try:
             msg = Guest.objects.bulk_create(objs)
             print('line 83 msg ', msg)
-            # returnmsg = {"status_code": 200}
+            returnmsg = {"status_code": 200}
             messages.error(request, 'imported successfully')
-            return redirect(reverse('all_guests'))
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)
-            return redirect(reverse('upload_guest_list'))
-            # returnmsg = {"status_code": 500}
+            returnmsg = {"status_code": 500}
 
         # return JsonResponse(returnmsg)
         # if request.method == 'POST':
