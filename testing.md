@@ -1,12 +1,13 @@
 ## Unit and Functional Testing
-
+### Navigation
+Due to the image on the landing page the navigation bar was not easily visible on many screen. ![image](images/user-story-images/pre-login-menu.PNG). I modified the `background-color` on `nav-items`, `dropdown-menu` and `show` classes making the navbar stand out much more clearly.![image](images/user-story-images/new-nav.png)
 
 
 ## User Story Testing
 #### Bride or Groom:  
 **As a user I want to register an account with administration access.**
 **As a user I want to be able to log into the website.**
-
+When a user clicks the login navigation option they are presented with the login screen. ![image](images/user-story-images/log-in.png) which takes them to the main menu for the bride and groom ![image](images/user-story-images/bride-groom-nav-dropdown.png)
 **As a user I want to be able to create a list of all the wedding guests.**
 **As a user I want to mainttain a wedding gift list.**
 **As a user I want to use the list of guests who have accept to create the seating plan for the wedding breakfast.**
