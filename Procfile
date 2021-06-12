@@ -1,1 +1,1 @@
-web: gunicorn ciara-and-sams-wedding.wsgi:application
+web: gunicorn ciara_and_sams_big_day.wsgi:application

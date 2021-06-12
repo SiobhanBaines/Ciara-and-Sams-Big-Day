@@ -98,14 +98,20 @@ button {
 /* Nav Bar  */
 
 .nav-item {
-    font-size: calc(1rem + 1.3vw);
+    font-size: calc(2rem + 1.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    /* text-shadow: -0.5px 0  var(--primary-font-shadow), 0 1px var(--secondary-font-shadow); */
-    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+    /* text-shadow: -0.1px 0  var(--primary-font-shadow), 0 2px var(--secondary-font-shadow); */
+    text-shadow: -0.5px 0 #000, 0 2px var(--primary-font-shadow);
 }
 
-.dropdown_menu {
+
+.navbar-toggler-icon {
+    background-color: var(--primary-mint);
+}
+.dropdown-menu.show,
+.nav-item {
+    padding: 0;
     background-color: rgba(233, 247, 242, 0.8) ;
 }
 

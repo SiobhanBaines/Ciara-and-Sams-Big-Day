@@ -348,7 +348,7 @@ The below image was found on [shutterstock](https://www.shutterstock.com/image-p
 
 https://pythoncircle.com/post/30/how-to-upload-and-process-the-csv-file-in-django/
 ### Assistance
-Scott @ CI Tutor support for helping me to load the users into django. I had made the whole process much more complex than necessary.
+Scott and Jo @ CI Tutor support for helping me to load the users into django. I had made the whole process much more complex than necessary. 
 
-Simen - my mentor at CI for his ideas, inspiration and patience. 
+Simen - my mentor @ CI for his ideas, inspiration and patience. 
 

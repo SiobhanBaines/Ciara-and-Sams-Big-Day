@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-j74i7)qf30lxuu*pej&voig$n(wr3&lt**(gt=+v82$h6%nqgh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ciara-and-sams-wedding.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -109,21 +109,21 @@ ACCOUT_USERNAME_MIN_LENGTH = 6
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
-WSGI_APPLICATION = 'ciara_and_sams_big_day.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# if 'DATABASE_URL' in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     }
+# else:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# DATABASES = {
-#     'default': dj_database_url.pasre(postgres://umzvthcfnsuglw:a039a2512726d8679e3b54517bbef59155564de8e63e6fe0c8069573f4ec7e6e@ec2-54-155-254-112.eu-west-1.compute.amazonaws.com:5432/d868j5kgjaea7b)
-# }
 
 
 # Password validation
