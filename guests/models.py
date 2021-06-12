@@ -1,5 +1,6 @@
 from django.db import models
 from django_countries.fields import CountryField
+from django.shortcuts import reverse
 
 
 class Guest(models.Model):
@@ -28,3 +29,6 @@ class Guest(models.Model):
 
 def __str__(self):
     return self.first_name+" "+self.last_name
+
+def get_absolute_url(self):
+    return reverse('guests')

@@ -1,10 +1,9 @@
 ﻿from django.shortcuts import render, reverse, redirect
-# from django.http import JsonResponse
-# from django.http import HttpResponse, JsonResponse
 from django.views import View
+from django.http import HttpResponse
 
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 
 from .models import Guest
 # from django.contrib.auth.models import User
@@ -16,24 +15,8 @@ import csv
 
 def all_guests(request):
     """ View a list of all guests """
-    guests = Guest.objects.all()
-    context = {
-        'guests': guests,
-    }
-    print(context)
-    return render(request, 'guests/all_guests.html', context)
 
-
-class UploadGuestListView(View):
-
-    # @login_required
-    def get(self, request):
-        print('line 31 - get process')
-        template_name = 'guests/all_guests.html'
-        return render(request, template_name)
-
-    # @login_required
-    def post(self, request):
+    if request.method == "POST":
         print('line 37 - post process')
         # Handle request CSV file
         paramFile = io.TextIOWrapper(request.FILES['guest_list_csv'].file)
@@ -41,18 +24,8 @@ class UploadGuestListView(View):
         portfolio1 = csv.DictReader(paramFile)
         list_of_dict = list(portfolio1)
         print('line 42 list_of_dict ', list_of_dict)
-        # create user id on change of postcode
-        # post_code = ''
-        # print('line 45 row(postcode) ', row['postcode'])
-        # if post_code != row['postcode']:
 
-        #     post_code == row['postcode']
-        #     unique_code = uuid.uuid4().hex[:6].upper()
-        #     User.objects.create_user(
-        #         username=unique_code, password=row['postcode'].strip())
-        # print('line 50 unique_code, password ', unique_code, password=row['postcode'].strip())
         objs = [
-
             Guest(
                         guest_id='',
                         first_name=row['first_name'],
@@ -85,30 +58,14 @@ class UploadGuestListView(View):
             return redirect(reverse('all_guests'))
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)
-            return redirect(reverse('upload_guest_list'))
-            # returnmsg = {"status_code": 500}
+            return HttpResponse(content=e, status=400)
 
-        # return JsonResponse(returnmsg)
-        # if request.method == 'POST':
-        #     try:
-        #         csv_file = request.FILES['guest_list_csv']
-        #         print('guest views line33 ', csv_file)
-        #         # check file is csv
+        return redirect('all_guests')
 
-        #         # print('line 35 csv_file.name.endswith', csv_file.name.endswith('.csv'))
-        #         if csv_file.name.endswith('.csv'):
-        #         # if not csv_file.name.endswith('.csv'):
-        #             print('inside if statement line 37')
-        #         #     messages.error(request, 'File is not CSV type')
-        #         #     return redirect(reverse('all_guests'))
+    guests = Guest.objects.all()
+    context = {
+        'guests': guests,
+    }
+    print(context)
 
-        #             print('line 40 csv_file.name.endswith', csv_file.name.endswith())
-        #             # load csv into file
-        #             file_data = csv_file.read().decode('utf-8')
-        #             print('line 43 file_data', file_data)
-        #             # split file into records
-        #             lines = file_data.split('\n')
-        #             print('line 46 lines', lines)
-        #  print('line 87')
-
-        return redirect(reverse('all_guests'))
+    return render(request, 'guests/all_guests.html', context)
