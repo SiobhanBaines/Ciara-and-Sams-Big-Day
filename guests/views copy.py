@@ -61,7 +61,7 @@ class UploadGuestListView(View):
         #         username=unique_code, password=row['postcode'].strip())
         # print('line 50 unique_code, password ', unique_code, password=row['postcode'].strip())
         objs = [
-
+ 
             Guest(
                         guest_id='',
                         first_name=row['first_name'],
