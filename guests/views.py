@@ -28,16 +28,18 @@ def all_guests(request):
         post_code = ''
         for row in list_of_dict:
             # create user id on change of postcode
-        
-            # print('line 45 row(postcode) ', row['postcode'])
-            
+
             if post_code != row['postcode']:
                 post_code = row['postcode'].strip()
                 print(row['postcode'])
                 print(post_code)
+                # last_name = row['last_name']
+                # new_password = post_code + last_name.upper()
+                # print(new_password)
                 unique_code = uuid.uuid4().hex[:6].upper()
                 User.objects.create_user(
                     username=unique_code, password=row['postcode'])
+                print(row['plus_one'])
             objs.append(
                 Guest(
                     guest_id=unique_code,
@@ -60,27 +62,9 @@ def all_guests(request):
                     gift_chosen=False,
                     gift_name='',
                     gift_value=0,
-                ))
-            # for row in list_of_dict
-            # ]
-                
-            # # print('line 45 row(postcode) ', row['postcode'])
-            # if post_code != row['postcode']
-            #     post_code == row['postcode']
-            #     unique_code = uuid.uuid4().hex[:6].upper()
-            #     User.objects.create_user(
-            #         username=unique_code, password=row['postcode'].strip())
-        # ]
+                )
+            )
         print('line 53 obj ', objs)
-        #             for row in list_of_dict
-        #         # create user id on change of postcode
-        #         post_code == ''
-        #         # print('line 45 row(postcode) ', row['postcode'])
-        #         if post_code != row['postcode']:
-        #             post_code == row['postcode']
-        #             unique_code = uuid.uuid4().hex[:6].upper()
-        #             User.objects.create_user(
-        #                 username=unique_code, password=row['postcode'].strip())
         try:
             msg = Guest.objects.bulk_create(objs)
             print('line 83 msg ', msg)

@@ -154,10 +154,9 @@ footer li {
 }
 
 /* buttons */
-/* .form-border {
-    border-style: 2px solid var(--primary-font);
-} */
+
 .rsvp-button {
+    border: none;
     height: 300px;
     width: 300px;
 }
