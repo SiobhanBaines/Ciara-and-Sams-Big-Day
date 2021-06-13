@@ -25,7 +25,7 @@ body {
     transform: rotate(6.5deg);
 }
 
-h2, h3, th {
+h2, h3, h4, h5 {
     font-family: 'Italianno', cursive;
 }
 h2 {
@@ -34,7 +34,8 @@ h2 {
 h3 {  
     font-size: calc(1.5rem + 1.3vw) !important;
 }
-th {
+th.guest-table {
+    font-family: 'Italianno', cursive;
     color: var(--primary-font);
     font-size: calc(1rem + 0.9vw) !important;
     text-shadow:  0 1px var(--primary-font-shadow);
