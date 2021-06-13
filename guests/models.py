@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 
 class Guest(models.Model):
     guest_id = models.CharField(max_length=6, null=True, blank=True)
+    group_id = models.CharField(max_length=6, null=True, blank=True)
     first_name = models.CharField(max_length=50, null=False, blank=False)
     last_name = models.CharField(max_length=50, null=False, blank=False)
     plus_one = models.BooleanField(default=False)
