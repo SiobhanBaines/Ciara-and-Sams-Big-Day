@@ -39,6 +39,9 @@ th {
     font-size: calc(1rem + 0.9vw) !important;
     text-shadow:  0 1px var(--primary-font-shadow);
 }
+label {
+    color: var(--primary-font);
+}
 /*  Colours */
 :root {
     --primary-peach: #FFF9F7;
@@ -61,7 +64,10 @@ th {
     height: 1.5rem;
     width: 1.5rem;
 } */
-
+.label-text {
+    text-align: center;
+    padding-left: 1%;
+}
 /* buttons */
 button {
     color: -internal-light-dark(var(--primary-font, white));
@@ -91,7 +97,6 @@ button {
     font-size: calc(2rem + 1.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    /* text-shadow: -0.1px 0  var(--primary-font-shadow), 0 2px var(--secondary-font-shadow); */
     text-shadow: -0.5px 0 #000, 0 2px var(--primary-font-shadow);
 }
 
@@ -165,7 +170,10 @@ footer li {
     background: url('/media/juliet_rose.jpg') center center fixed;
     background-size: cover;
 }
-
+/* -- Guest --*/
+.guest-contact-container {
+    
+}
 
 /* -------------------------------- Media Queries */
 
@@ -177,6 +185,9 @@ footer li {
 
     body {
         background-size: 100%;
+    }
+    .label-text {
+        text-align: left;
     }
 }
 

@@ -3,7 +3,7 @@
 
 {% block page-header %}
 <div class="container header-container">
-    <div class="row">
+    <div class="row align-middle">
         <div class="col"></div>
     </div>
 </div>
@@ -11,14 +11,126 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="guest-contact-container mb-5 mt-md-5 px-5">
 
-        <button type="button" class="btn accept-btn btn-sm"><i class="fas fa-search left"></i>&nbsp;Add</button>
-        <button type="button" class="btn btn-secondary btn-sm" type="reset"><i
-                class="fas fa-times-circle left"></i>&nbsp;Reset
-        </button>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Guest Name</h3>
+                    </div>
+                    <div class="col-12 col-md-3 align-items-end">
+                        <p class="mb-0 mt-3">{{ guest.first_name }}</p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p class="mb-0 mt-3">{{ guest.last_name }}</p>
+                    </div>
+                </div>
+
+                <div class="row align-middle">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Contact Details</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 mt-3">{{ guest.address_line_1 }}</p>
+                        <p class="mb-0 mt-3">{{ guest.address_line_2 }}</p>
+                        <p class="mb-0 mt-3">{{ guest.city }}</p>
+                        <p class="mb-0 mt-3">{{ guest.county }}</p>
+                        <p class="mb-0 mt-3">{{ guest.country }}</p>
+                        <p class="mb-0 mt-3">{{ guest.postcode }}</p>
+                    </div>
+                </div>
+
+                <div class="row align-middle">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Email</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 mt-3">{{ guest.email }}</p>
+                    </div>
+                </div>
+
+                <div class="row align-middle">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Telephone</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 mt-3">{{ guest.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="guest-contact-container mb-5 mt-md-5 px-5">
+                <div class="row align-middle">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Invitation</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        {% if guest.accepted %}
+                        <p class="mb-0 mt-3">{{ guest.accepted }}</p>
+                        {% else %}
+                        <p class="mb-0 mt-3">No Reply</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row align-middle">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Meal choice</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        {% if guest.meal_chosen %}
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th scope="row align-middle">Starter</th>
+                                    <td>{{ guest.starter }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row align-middle">Main</th>
+                                    <td>{{ guest.main }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row align-middle">Dessert</th>
+                                    <td>{{ guest.dessert }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <p class="mb-0 mt-3">No Meal Details Available</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row align-middle">
+                    <div class="col-12 col-md-6">
+                        <h3 class="cursive-text-color">Gift Details</h3>
+                    </div>
+                    {% if guest.gift_chosen %}
+                    <div class="col-6 col-md-3">
+                        <p class="mb-0 mt-3">{{ guest.gift_name }}</p>
+                    </div>
+                    {% if guest.gift_value %}
+                    <div class="col-6 col-md-3">
+                        <p class="mb-0 mt-3">{{ guest.gift_value }}</p>
+                    </div>
+                    {% endif%}
+                    {% else %}
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 mt-3">No Gift Details Available</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="d-inline-flex justify-content-center  ">
+            <button type="button" class="btn change-btn btn-lg mt-auto p-2"><i
+                    class="fas fa-edit left"></i>&nbsp;Change</button>
+        </div>
 
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}

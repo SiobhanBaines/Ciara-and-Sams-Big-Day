@@ -14,7 +14,7 @@ import uuid
 
 
 @login_required
-def guests(request):
+def all_guests(request):
     """ View a list of all guests """
 
     guests = Guest.objects.all()
@@ -103,12 +103,12 @@ def guests(request):
 
 
 @login_required
-def view_guest(request, ):
-    """ View a list of all guests """
+def view_guest(request, guest_id):
+    """ View individual guest details """
 
-    guests = Guest.objects.all()
+    guest = get_object_or_404(Guest, pk=guest_id)
     context = {
-        'guests': guests,
+        'guest': guest,
     }
 
-    return render(request, 'guests/view_guests.html', context)
+    return render(request, 'guests/view_guest.html', context)
