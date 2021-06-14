@@ -26,10 +26,12 @@ def all_guests(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria.")
+                messages.error(
+                    request, "You didn't enter any search criteria.")
                 return redirect(reverse('guests'))
 
-            queries = Q(first_name__icontains=query) | Q(last_name__icontains=query)
+            queries = Q(
+                first_name__icontains=query) | Q(last_name__icontains=query)
             print(queries)
             guests = guests.filter(queries)
 
@@ -45,21 +47,17 @@ def all_guests(request):
         post_code = ''
         for row in list_of_dict:
             # create user id on change of postcode
-            unique_guest_id = uuid.uuid4().hex[:6].upper()
+            # unique_guest_id = uuid.uuid4().hex[:6].upper()
             if post_code != row['postcode']:
                 post_code = row['postcode'].strip()
                 print(row['postcode'])
                 print(post_code)
-                # last_name = row['last_name']
-                # new_password = post_code + last_name.upper()
-                # print(new_password)
                 unique_group_id = uuid.uuid4().hex[:6].upper()
                 User.objects.create_user(
                     username=unique_group_id, password=row['postcode'])
                 print(row['plus_one'])
             objs.append(
                 Guest(
-                    guest_id=unique_guest_id,
                     group_id=unique_group_id,
                     first_name=row['first_name'],
                     last_name=row['last_name'],
@@ -117,10 +115,47 @@ def view_guest(request, guest_id):
 
 def add_guest(request):
     """ Add guest to guest list """
+    if request.method == 'POST':
+        form = GuestForm(request.POST, request.FILES)
+        if form.is_valid():
+            guest = form.save()
+
+            messages.success(request, 'Successfully added a new guest')
+            return redirect(reverse('view_guest', args=[guest.id]))
+        else:
+            messages.error(request, 'Failed to add guest. Please check the information is valid')
+    else:
+        form = GuestForm()
+
     form = GuestForm()
     template = 'guests/add_guest.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_guest(request, guest_id):
+    """ Edit a guest """
+    guest = get_object_or_404(Guest, pk=guest_id)
+    if request.method == 'POST':
+        form = GuestForm(request.POST, request.FILES, instance=guest)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated the guest')
+            return redirect(reverse('view_guest', args=[guest.id]))
+        else:
+            messages.error(request, 'Failed to add guest. Please check the information is valid')
+    else:
+        form = GuestForm(instance=guest)
+        messages.info(
+            request, f'You are editing {guest.first_name} {guest.last_name}')
+
+    template = 'guests/edit_guest.html'
+    context = {
+        'form': form,
+        'guest': guest,
     }
 
     return render(request, template, context)

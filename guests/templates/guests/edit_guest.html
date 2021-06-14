@@ -15,7 +15,7 @@
         <div class="col">
             <hr>
             <small>
-                <h3 class="text-center cursive-text-color">Add New Guest</h3>
+                <h3 class="text-center cursive-text-color">Edit A Guest</h3>
             </small>
             <hr>
         </div>
@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
             <!-- need   enctype="multipart.form-data"  for gifts add -->
-            <form method="POST" action="{% url 'add_guest' %}" class="form md-2">
+            <form method="POST" action="{% url 'edit_guest', guest.id %}" class="form md-2">
                 {% csrf_token %}
                 {% for field in form %}
                     {% if  field.name != 'group_id' and field.name != 'accepted' and field.name != 'meal_chosen' and field.name != 'starter' and field.name != 'main' and field.name != 'dessert' and field.name != 'gift_chosen' and field.name != 'gift_name' and field.name != 'gift_value' %}
@@ -33,7 +33,7 @@
                 {% endfor %}
                 <div class="text-right">
                     <a class="btn btn-secondary" href="{% url 'guests' %}">Cancel</a>
-                    <button class="btn  accept-btn" type="submit">Add Guest</button>
+                    <button class="btn  accept-btn" type="submit">Update Guest</button>
                 </div>
             </form>
         </div>

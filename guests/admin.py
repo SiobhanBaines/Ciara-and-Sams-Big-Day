@@ -4,7 +4,7 @@ from .models import Guest
 
 class GuestAdmin(admin.ModelAdmin):
     list_display = (
-        'guest_id',
+        'group_id',
         'first_name',
         'last_name',
         'plus_one',
@@ -26,7 +26,7 @@ class GuestAdmin(admin.ModelAdmin):
         'gift_value',
     )
 
-    ordering = ('guest_id', 'postcode')
+    ordering = ('group_id', 'first_name')
 
 
 admin.site.register(Guest, GuestAdmin)

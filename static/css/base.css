@@ -82,16 +82,10 @@ button {
 .accept-btn {
     background-color: var(--primary-mint); 
 }
-.upload-button {
-    justify-content: flex-end;
-}
-
 .change-btn {
     background-color: var(--secondary-peach);
 }
-/* i {
-    color:var(--primary-font);
-} */
+
 /* Nav Bar  */
 
 .nav-item {
