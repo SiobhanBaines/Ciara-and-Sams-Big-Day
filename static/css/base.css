@@ -58,13 +58,13 @@ label {
 }
 
 /* from Bulma */
-/* .icon {
+.icon {
     align-items: center;
     display: inline-flex;
     justify-content: center;
     height: 1.5rem;
     width: 1.5rem;
-} */
+}
 .label-text {
     text-align: center;
     padding-left: 1%;
@@ -95,7 +95,7 @@ button {
 /* Nav Bar  */
 
 .nav-item {
-    font-size: calc(2rem + 1.3vw);
+    font-size: calc(0.5rem + 1.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
     text-shadow: -0.5px 0 #000, 0 2px var(--primary-font-shadow);

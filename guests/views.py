@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Guest
 from django.contrib.auth.models import User
+from .forms import GuestForm
 
 import io
 import csv
@@ -112,3 +113,14 @@ def view_guest(request, guest_id):
     }
 
     return render(request, 'guests/view_guest.html', context)
+
+
+def add_guest(request):
+    """ Add guest to guest list """
+    form = GuestForm()
+    template = 'guests/add_guest.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

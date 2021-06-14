@@ -3,22 +3,40 @@
 
 {% block page-header %}
 <div class="container header-container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col"></div>
     </div>
 </div>
 {% endblock %}
 
-
 {% block content %}
-<div class="container">
+<div class="container-fluid mb-5 mt-md-5 px-5">
     <div class="row">
-
-        <button type="button" class="btn accept-btn btn-sm"><i class="fas fa-search left"></i>&nbsp;Add</button>
-        <button type="button" class="btn btn-secondary btn-sm" type="reset"><i
-                class="fas fa-times-circle left"></i>&nbsp;Reset
-        </button>
-
+        <div class="col">
+            <hr>
+            <small>
+                <h3 class="text-center cursive-text-color">Add New Guest</h3>
+            </small>
+            <hr>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <!-- need   enctype="multipart.form-data"  for gifts add -->
+            <form method="POST" action="{% url 'add_guest' %}" class="form md-2">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.name != 'guest_id' and field.name != 'group_id' and field.name != 'accepted' and field.name != 'meal_chosen' and field.name != 'starter' and field.name != 'main' and field.name != 'dessert' and field.name != 'gift_chosen' and field.name != 'gift_name' and field.name != 'gift_value' %}
+                        {{ field | as_crispy_field }}
+                    {% endif %}
+                {% endfor %}
+                <div class="text-right">
+                    <a class="btn btn-secondary" href="{% url 'guests' %}">Cancel</a>
+                    <button class="btn  accept-btn" type="submit">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
