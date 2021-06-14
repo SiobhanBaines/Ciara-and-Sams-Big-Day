@@ -28,11 +28,11 @@ def all_guests(request):
             if not query:
                 messages.error(
                     request, "You didn't enter any search criteria.")
+                print(messages.error)
                 return redirect(reverse('guests'))
 
             queries = Q(
                 first_name__icontains=query) | Q(last_name__icontains=query)
-            print(queries)
             guests = guests.filter(queries)
 
     if request.method == "POST":
@@ -86,9 +86,10 @@ def all_guests(request):
             print('line 83 msg ', msg)
             # returnmsg = {"status_code": 200}
             messages.error(request, 'imported successfully')
-            return redirect(reverse('guests'))
+            print(messages.error)
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)
+            print(messages.error)
             return HttpResponse(content=e, status=400)
 
         return redirect('guests')
@@ -115,15 +116,19 @@ def view_guest(request, guest_id):
 
 def add_guest(request):
     """ Add guest to guest list """
+    print('line 119 ', request.method)
     if request.method == 'POST':
         form = GuestForm(request.POST, request.FILES)
+        print('line 122 form ', form, form.is_valid)
         if form.is_valid():
             guest = form.save()
 
             messages.success(request, 'Successfully added a new guest')
+            print('line 127 ', messages.success)
             return redirect(reverse('view_guest', args=[guest.id]))
         else:
             messages.error(request, 'Failed to add guest. Please check the information is valid')
+            print('line 127 ', messages.error)
     else:
         form = GuestForm()
 
@@ -138,20 +143,26 @@ def add_guest(request):
 
 def edit_guest(request, guest_id):
     """ Edit a guest """
+    print(request.method)
     guest = get_object_or_404(Guest, pk=guest_id)
+    print('line 145 guest', guest)
+    
     if request.method == 'POST':
         form = GuestForm(request.POST, request.FILES, instance=guest)
+        print('line 149 form ', form.is_valid)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated the guest')
+            print('line 154 ', messages.success)
             return redirect(reverse('view_guest', args=[guest.id]))
         else:
             messages.error(request, 'Failed to add guest. Please check the information is valid')
+            print('line 158 ', messages.error)
     else:
         form = GuestForm(instance=guest)
         messages.info(
             request, f'You are editing {guest.first_name} {guest.last_name}')
-
+        print('line 163 ',messages.info)
     template = 'guests/edit_guest.html'
     context = {
         'form': form,

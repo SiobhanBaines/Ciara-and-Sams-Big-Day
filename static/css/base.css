@@ -139,7 +139,6 @@ footer li {
 #location {
     background-color: var(--primary-mint);
     width: 100vw;
-    /* padding: 5%; */
     opacity: 0.9;
 }
 
@@ -165,9 +164,18 @@ footer li {
     background: url('/media/juliet_rose.jpg') center center fixed;
     background-size: cover;
 }
-/* -- Guest --*/
-.guest-contact-container {
-    
+
+.message-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 999999999999999;
+}
+.custom-toast {
+    overflow: visible;
+}
+.toast-capper {
+    height: 2px;
 }
 
 /* -------------------------------- Media Queries */

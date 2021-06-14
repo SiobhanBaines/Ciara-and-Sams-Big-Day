@@ -7,8 +7,19 @@ class GuestForm(forms.ModelForm):
 
     class Meta:
         model = Guest
-        fields = '__all__'
-
+        fields = (
+            'first_name',
+            'last_name',
+            'plus_one',
+            'address_line_1',
+            'address_line_2',
+            'city',
+            'county',
+            'country',
+            'postcode',
+            'email',
+            'phone_number',
+        )
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwags)
     #     self.fields['guest']

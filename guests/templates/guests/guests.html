@@ -50,7 +50,7 @@
         </div>
         <!-- Add an individual guest record -->
         <div class="col-auto mx-2">
-            <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_guest'%}"></i>Add
+            <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_guest' %}"></i>Add
                     A New Guest</a></small>
         </div>
     </div>
@@ -87,7 +87,7 @@
                                 {% endif %}
                                 <td><small class="ml-3"><a class="text-success"
                                             href="{% url 'view_guest' guest.id %}"></i>View</a> |
-                                        <a href="#">Edit</a> |
+                                        <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
                                         <a class="text-danger" href="#">Delete</a>
                                     </small>
                                 </td>
