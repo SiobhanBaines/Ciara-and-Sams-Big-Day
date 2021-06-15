@@ -341,6 +341,8 @@ Bugs of this site can be found [here](bugs.md) in a seperate file
 <a></a>
 
 ## **Credits**
+### Toast
+I took the Toast set-up from the Boutique Ado project. Partly becuase 
 
 ### Images
 The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". 

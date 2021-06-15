@@ -36,9 +36,10 @@ h3 {
 }
 th.guest-table {
     font-family: 'Italianno', cursive;
-    color: var(--primary-font);
+    /* color: var(--primary-font); */
     font-size: calc(1rem + 0.9vw) !important;
-    text-shadow:  0 1px var(--primary-font-shadow);
+    /* text-shadow:  0 1px var(--primary-font-shadow); */
+    font-weight: 400;
 }
 label {
     color: var(--primary-font);
@@ -92,7 +93,7 @@ button {
     font-size: calc(0.5rem + 1.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    text-shadow: -0.5px 0 #000, 0 2px var(--primary-font-shadow);
+    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
 }
 
 
@@ -169,7 +170,7 @@ footer li {
     position: fixed;
     top: 25px;
     right: 25px;
-    z-index: 999999999999999;
+    z-index: 999999999;
 }
 .custom-toast {
     overflow: visible;

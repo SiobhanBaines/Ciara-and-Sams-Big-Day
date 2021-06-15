@@ -26,10 +26,7 @@
             <form method="POST" action="{% url 'add_guest' %}" class="form md-2">
                 {% csrf_token %}
                 {% for field in form %}
-                    {% if  field.name != 'group_id' and field.name != 'accepted' and field.name != 'meal_chosen' and field.name != 'starter' and field.name != 'main' and field.name != 'dessert' and field.name != 'gift_chosen' and field.name != 'gift_name' and field.name != 'gift_value' %}
-                        {{ field | as_crispy_field }}
-
-                    {% endif %}
+                    {{ field | as_crispy_field }}
                 {% endfor %}
                 <div class="text-right">
                     <a class="btn btn-secondary" href="{% url 'guests' %}">Cancel</a>
