@@ -15,10 +15,9 @@ import uuid
 
 
 @login_required
-def all_guests(request):
+def guests(request):
     """ View a list of all guests """
-
-    if not request.user.is_superuser or request.user.is_superuser:
+    if not request.user.is_superuser or not request.user.is_staff:
         messages.error(request, 'Sorry, the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -48,7 +47,6 @@ def all_guests(request):
         post_code = ''
         for row in list_of_dict:
             # create user id on change of postcode
-            # unique_guest_id = uuid.uuid4().hex[:6].upper()
             if post_code != row['postcode']:
                 post_code = row['postcode'].strip()
                 unique_group_id = uuid.uuid4().hex[:6].upper()
@@ -99,8 +97,7 @@ def all_guests(request):
 @login_required
 def view_guest(request, guest_id):
     """ View individual guest details """
-    
-    if not request.user.is_superuser or request.user.is_superuser:
+    if not request.user.is_superuser or not request.user.is_staff:
         messages.error(request, 'Sorry, the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -111,9 +108,14 @@ def view_guest(request, guest_id):
 
     return render(request, 'guests/view_guest.html', context)
 
+
 @login_required
 def add_guest(request):
     """ Add guest to guest list """
+    if not request.user.is_superuser or not request.user.is_staff:
+        messages.error(request, 'Sorry, the bride and groom can do that.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = GuestForm(request.POST, request.FILES)
         if form.is_valid():
@@ -149,11 +151,11 @@ def add_guest(request):
 
     return render(request, template, context)
 
+
 @login_required
 def edit_guest(request, guest_id):
     """ Edit a guest """
-    
-    if not request.user.is_superuser or request.user.is_superuser:
+    if not request.user.is_superuser or not request.user.is_staff:
         messages.error(request, 'Sorry, the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -179,11 +181,11 @@ def edit_guest(request, guest_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_guest(request, guest_id):
     """ Delete a guest """
-    
-    if not request.user.is_superuser or request.user.is_superuser:
+    if not request.user.is_superuser or not request.user.is_staff:
         messages.error(request, 'Sorry, the bride and groom can do that.')
         return redirect(reverse('home'))
 

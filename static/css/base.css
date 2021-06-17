@@ -157,6 +157,11 @@ footer li {
     width: 300px;
 }
 
+#hint_id_username, 
+#hint_id_password1, 
+#hint_id_password2 {
+    display: none;
+}
 .form-control {
     width: 75%;
 }

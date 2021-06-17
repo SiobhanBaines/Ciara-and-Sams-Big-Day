@@ -1,4 +1,6 @@
-{% if accepted %}
+{% load user_extras %}
+
+{% if request.user|has_group:'accepted' %}
     <li class="nav-item">
         <a class="nav-link" href="#">Venue</a>
     </li>
@@ -8,7 +10,15 @@
     <li class="nav-item">
         <a class="nav-link" href="#">Menu</a>
     </li>
+{% else %}
+    {% if request.user|has_group:'declined' %}
+        <li class="nav-item">
+            <a class="nav-link" href="#">Gift List</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="#">RSVP</a>
+        </li>
+    {% endif %}
 {% endif %}
-    <li class="nav-item">
-        <a class="nav-link" href="#">Gift List</a>
-    </li>
+    

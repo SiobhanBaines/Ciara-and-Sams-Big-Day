@@ -347,10 +347,17 @@ I took the Toast set-up from the Boutique Ado project. Partly becuase
 ### Images
 The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". 
 
+### Setting up bride/groom as 'staff'
+The only individuals that need to register an account on this site are the bride and groom but reading the Django documentation I was still struggling to understand how I could make the registration set the user up as 'staff' in Django admin. In my hunt for a solution I came across [ordinarycoders](https://www.ordinarycoders.com/blog/article/django-user-register-login-logout) WRITTEN BY
+[JAYSHA](https://www.ordinarycoders.com/blog/Jaysha). The majority of the code is taken directly from here.
+
+### Checking if user 'has_group
+As part of the RSVP process a guest will either accept or decline the invitation. I decided the easiest way to manage this was to set up 2 groups in Django admin; accepted and declined. [stackoverflow](https://stackoverflow.com/questions/34571880/how-to-check-in-template-if-user-belongs-to-a-group) by [fuser60596](https://stackoverflow.com/users/5016956/fuser60596) gave me solution I needed to check the group and therefore display the correct menu.
 
 https://pythoncircle.com/post/30/how-to-upload-and-process-the-csv-file-in-django/
 ### Assistance
 Scott and Jo @ CI Tutor support for helping me to load the users into django. I had made the whole process much more complex than necessary. 
 
 Simen - my mentor @ CI for his ideas, inspiration and patience. 
+
 
