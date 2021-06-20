@@ -2,39 +2,37 @@
 {% load static %}
 
 {% block page-header %}
-<div class="container header-container">
-    <div class="row justify-content-center">
-        <div class="col"></div>
+    <div class="container header-container">
+        <div class="row justify-content-center">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid mb-5 mt-md-5 px-5">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <small>
-                <h3 class="text-center cursive-text-color">Edit A Guest</h3>
-            </small>
-            <hr>
+    <div class="container-fluid mb-5 mt-md-5 px-5">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <small>
+                    <h3 class="text-center cursive-text-color">Edit A Guest</h3>
+                </small>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <form method="POST" action="{% url 'edit_guest' guest.id %}" class="form md-2">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field | as_crispy_field }}
+                    {% endfor %}
+                    <div class="text-right">
+                        <a class="btn btn-secondary" href="{% url 'guests' %}">Cancel</a>
+                        <button class="btn  accept-btn" type="submit">Update Guest</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-md-6 offset-md-3">
-            <!-- need   enctype="multipart.form-data"  for gifts add -->
-            <form method="POST" action="{% url 'edit_guest' guest.id %}" class="form md-2">
-                {% csrf_token %}
-                {% for field in form %}
-                    {{ field | as_crispy_field }}
-                {% endfor %}
-                <div class="text-right">
-                    <a class="btn btn-secondary" href="{% url 'guests' %}">Cancel</a>
-                    <button class="btn  accept-btn" type="submit">Update Guest</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 {% endblock %}

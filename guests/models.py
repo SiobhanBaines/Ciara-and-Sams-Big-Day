@@ -26,6 +26,5 @@ class Guest(models.Model):
     gift_value = models.DecimalField(
         max_digits=10, decimal_places=2, null=True, default=0)
 
-
-def __str__(self):
-    return self.first_name+" "+self.last_name
+    def __str__(self):
+        return self.first_name+" "+self.last_name

@@ -1,61 +1,63 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
-{% endblock %}
-
 {% block page-header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
-{% endblock %}
-
-{% block content %}
-<!-- Invitation RSVP Page - -->
-<div id="rsvp" class="container-fluid no-gutters">
-    <div class="row rsvp-row">
-        <div class="col-12">
-            <h1 class="banner cursive-text-color text-center mt-5 pt-5">Ciara and Sam</h1>
-            <h2 class="cursive-text-color text-center my-2">Are Getting Married</h2>
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
         </div>
     </div>
-    <!-- Table containing all guests invited -->
-    <div class="row">
-        <div class="col mx-2">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th class="guest-table cursive-text-color" scope="col">First Name</th>
-                            <th class="guest-table cursive-text-color" scope="col">Last Name</th>
-                            <th class="guest-table cursive-text-color" scope="col">Accepted/Decline</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for guest in guests %}
-                            <tr>
-                                <td>{{ guest.first_name }}</td>
-                                <td>{{ guest.last_name }}</td>
-                                <td><select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">Accept</option>
-                                    <option value="2">Decline</option>
-                                  </select></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <small class="ml-3"><a class="text-success"
-                    href="{% url 'view_guest' guest.id %}"></i>View</a> |
-                <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
-                <a class="text-danger" href="{% url 'delete_guest' guest.id %}">Delete</a>
-            </small>
+{% endblock %}
+{% block content %}
+    <!-- Invitation RSVP Page - -->
+    <div class="container-fluid mb-5 mt-md-5 px-5">
+        <h3 class="text-center cursive-text-color">RSVP</h3>
+        <div class="row">
+            <div class="col mx-5">
+                <!-- Table containing details of all guests in the invitation group/username -->
+                <div class="card r mx-auto">
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'rsvp' %}" class="form md-2">
+                            {% csrf_token %}
+                            <table class="table table-striped table-hover table-sm">
+                                {{ form.as_table }}
+                                <thead>
+                                    <tr>
+                                        <th class="guest-table cursive-text-color" scope="col">First Name</th>
+                                        <th class="guest-table cursive-text-color" scope="col">Last Name</th>
+                                        <th class="guest-table cursive-text-color" scope="col">Accepted / Decline
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for guest in guests %}
+                                    <tr>
+                                        <input type="hidden" id="id" name="id" value="{{ guest.id }}">
+                                        <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
+                                        <td class="hide">{{ guest.id }}</td>
+                                        <td class="hide">{{ guest.group_id }}</td>
+                                        <td >{{ guest.first_name }}</td>
+                                        <td >{{ guest.last_name }}</td>
+                                        <td><select class="form-select" name="rsvp_response"
+                                                aria-label="Default select example">
+                                                <option value='{{ guest.accepted }}' active selected>{{ guest.accepted }}
+                                                </option>
+                                                <option value="Accept">Accept</option>
+                                                <option value="Decline">Decline</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <div class="col-12 col-md-2 offset-md-10">
+                                <button class="form-control btn btn-sm accept-btn border rounded-0"
+                                    type="submit">Confirm</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 {% endblock %}

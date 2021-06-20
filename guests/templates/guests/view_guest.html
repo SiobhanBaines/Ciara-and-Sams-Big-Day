@@ -2,138 +2,137 @@
 {% load static %}
 
 {% block page-header %}
-<div class="container header-container">
-    <div class="row justify-content-center">
-        <div class="col"></div>
+    <div class="container header-container">
+        <div class="row justify-content-center">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid px-5">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <small>
-            <h3 class="text-center cursive-text-color">Guest Details</h3>
-        </small>
-            <hr>
+    <div class="container-fluid px-5">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <small>
+                    <h3 class="text-center cursive-text-color">Guest Details</h3>
+                </small>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Guest contact detail -->
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-3">
+                        <h3 class="cursive-text-color text-align-left fs-2">Guest Name</h3>
+                    </div>
+                    <div class="col-12 col-md-2 align-items-end">
+                        <p class="mb-0 mt-3">{{ guest.first_name }}</p>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <p class="mb-0 mt-3">{{ guest.last_name }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-3">
+                        <h3 class="cursive-text-color fs-2">Contact Details</h3>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p class="mb-0 mt-3">{{ guest.address_line_1 }}</p>
+                        <p class="mb-0 mt-3">{{ guest.address_line_2 }}</p>
+                        <p class="mb-0 mt-3">{{ guest.city }}</p>
+                        <p class="mb-0 mt-3">{{ guest.county }}</p>
+                        <p class="mb-0 mt-3">{{ guest.country }}</p>
+                        <p class="mb-0 mt-3">{{ guest.postcode }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-3">
+                        <h3 class="cursive-text-color fs-2">Email</h3>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p class="mb-0 mt-3">{{ guest.email }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-3">
+                        <h3 class="cursive-text-color fs-2">Telephone</h3>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p class="mb-0 mt-3">{{ guest.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Guest Wedding Details -->
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <h3 class="cursive-text-color fs-2">Invitation</h3>
+                    </div>
+                    <div class="col-12 col-md-4 ">
+                        {% if guest.accepted %}
+                            <p class="mb-0 mt-3">{{ guest.accepted }}</p>
+                        {% else %}
+                            <p class="mb-0 mt-3">No Reply</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <h3 class="cursive-text-color fs-2">Meal choice</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        {% if guest.meal_chosen %}
+                            <small class="ml-3">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row align-middle">Starter</th>
+                                            <td>{{ guest.starter }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row align-middle">Main</th>
+                                            <td>{{ guest.main }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row align-middle">Dessert</th>
+                                            <td>{{ guest.dessert }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </small>
+                        {% else %}
+                            <p class="mb-0 mt-4">No Meal Details Available</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <h3 class="cursive-text-color fs-2">Gift Details</h3>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        {% if guest.gift_chosen %}
+                            <p class="mb-0 mt-3">{{ guest.gift_name }}</p>
+                            {% if guest.gift_value %}
+                                <p class="mb-0 mt-3">{{ guest.gift_value }}</p>
+                            {% endif%}
+                        {% else %}
+                            <p class="mb-0 mt-3">No Gift Details Available</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-flex justify-content-center  ">
+                <small class="ml-3">
+                    <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
+                    <a class="text-danger" href="{% url 'delete_guest' guest.id %}">Delete</a>
+                </small>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <!-- Guest contact detail -->
-        <div class="col-12 col-md-6">
-            <div class="row">
-                <div class="col-12 col-md-4 offset-md-3">
-                    <h3 class="cursive-text-color text-align-left fs-2">Guest Name</h3>
-                </div>
-                <div class="col-12 col-md-2 align-items-end">
-                    <p class="mb-0 mt-3">{{ guest.first_name }}</p>
-                </div>
-                <div class="col-12 col-md-2">
-                    <p class="mb-0 mt-3">{{ guest.last_name }}</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-md-4 offset-md-3">
-                    <h3 class="cursive-text-color fs-2">Contact Details</h3>
-                </div>
-                <div class="col-12 col-md-4">
-                    <p class="mb-0 mt-3">{{ guest.address_line_1 }}</p>
-                    <p class="mb-0 mt-3">{{ guest.address_line_2 }}</p>
-                    <p class="mb-0 mt-3">{{ guest.city }}</p>
-                    <p class="mb-0 mt-3">{{ guest.county }}</p>
-                    <p class="mb-0 mt-3">{{ guest.country }}</p>
-                    <p class="mb-0 mt-3">{{ guest.postcode }}</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-md-4 offset-md-3">
-                    <h3 class="cursive-text-color fs-2">Email</h3>
-                </div>
-                <div class="col-12 col-md-4">
-                    <p class="mb-0 mt-3">{{ guest.email }}</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-md-4 offset-md-3">
-                    <h3 class="cursive-text-color fs-2">Telephone</h3>
-                </div>
-                <div class="col-12 col-md-4">
-                    <p class="mb-0 mt-3">{{ guest.phone_number }}</p>
-                </div>
-            </div>
-        </div>
-        <!-- Guest Wedding Details -->
-        <div class="col-12 col-md-6">
-            <div class="row">
-                <div class="col-12 col-md-3">
-                    <h3 class="cursive-text-color fs-2">Invitation</h3>
-                </div>
-                <div class="col-12 col-md-4 ">
-                    {% if guest.accepted %}
-                    <p class="mb-0 mt-3">{{ guest.accepted }}</p>
-                    {% else %}
-                    <p class="mb-0 mt-3">No Reply</p>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 col-md-3">
-                    <h3 class="cursive-text-color fs-2">Meal choice</h3>
-                </div>
-                <div class="col-12 col-md-6">
-                    {% if guest.meal_chosen %}
-                    <small class="ml-3">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th scope="row align-middle">Starter</th>
-                                    <td>{{ guest.starter }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row align-middle">Main</th>
-                                    <td>{{ guest.main }}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row align-middle">Dessert</th>
-                                    <td>{{ guest.dessert }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </small>
-                    {% else %}
-                    <p class="mb-0 mt-4">No Meal Details Available</p>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-3">
-                    <h3 class="cursive-text-color fs-2">Gift Details</h3>
-                </div>
-                <div class="col-6 col-md-4">
-                    {% if guest.gift_chosen %}
-                    <p class="mb-0 mt-3">{{ guest.gift_name }}</p>
-                    {% if guest.gift_value %}
-                    <p class="mb-0 mt-3">{{ guest.gift_value }}</p>
-                    {% endif%}
-                    {% else %}
-                    <p class="mb-0 mt-3">No Gift Details Available</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <div class="d-inline-flex justify-content-center  ">
-            <small class="ml-3">
-                <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
-                <a class="text-danger" href="{% url 'delete_guest' guest.id %}">Delete</a>
-            </small>
-        </div>
-    </div>
-</div>
-
 {% endblock %}

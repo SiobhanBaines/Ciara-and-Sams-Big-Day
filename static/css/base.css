@@ -36,9 +36,7 @@ h3 {
 }
 th.guest-table {
     font-family: 'Italianno', cursive;
-    /* color: var(--primary-font); */
     font-size: calc(1rem + 0.9vw) !important;
-    /* text-shadow:  0 1px var(--primary-font-shadow); */
     font-weight: 400;
 }
 label {
@@ -167,10 +165,14 @@ footer li {
 }
 .card {
     width: 70%;
+}
+.upload {
     background: url('/media/juliet_rose.jpg') center center fixed;
     background-size: cover;
 }
-
+.hide {
+    display: none;
+}
 .message-container {
     position: fixed;
     top: 25px;
