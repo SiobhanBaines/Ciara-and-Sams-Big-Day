@@ -23,8 +23,8 @@ class Guest(models.Model):
     dessert = models.CharField(max_length=80, null=True, blank=True)
     gift_chosen = models.BooleanField(default=False)
     gift_name = models.CharField(max_length=254, null=True, blank=True)
-    gift_value = models.DecimalField(
-        max_digits=10, decimal_places=2, null=True, default=0)
+    gift_value = models.DecimalField(max_digits=10, decimal_places=2,
+                                     null=True, default=0)
 
     def __str__(self):
         return self.first_name+" "+self.last_name
