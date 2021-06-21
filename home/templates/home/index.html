@@ -26,8 +26,8 @@
             <div class="col-6"></div>
             <div class="col-6">
                 <h2 class="">
-                    <a href="{% url 'account_login' %}"
-                        class="rsvp-button btn btn-lg rsvp end-0 d-flex  align-text-bottom"></a>
+                    <!-- <a href="{% url 'account_login' %}" class="rsvp-button btn btn-lg rsvp end-0 d-flex  align-text-bottom"></a> -->
+                    <a href="{% url 'account_login' %}" class="rsvp-button btn btn-lg rsvp end-0 d-flex"></a>
                 </h2>
             </div>
         </div>
@@ -47,19 +47,19 @@
         <div id="carouselCS" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item carousel-size active">
-                    <img src="{% media 'ciara-sam-1.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
+                    <img src="{% static 'images/ciara-sam-1.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% media 'ciara-sam-2.jpg %}" class="d-block w-100" alt="ciara-sam-image">
+                    <img src="{% static 'images/ciara-sam-2.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% media 'ciara-sam-3.jpg %}" class="d-block w-100" alt="ciara-sam-image">
+                    <img src="{% static 'images/ciara-sam-3.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% media 'ciara-sam-4.jpg %}" class="d-block w-100" alt="ciara-sam-image">
+                    <img src="{% static 'images/ciara-sam-4.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% media 'ciara-sam-5.jpg %}" class="d-block w-100" alt="ciara-sam-image">
+                    <img src="{% static 'images/ciara-sam-5.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselCS" data-bs-slide="prev">
@@ -99,11 +99,11 @@
                     Jorvik Viking Centre, The Shambles, National Railway Museum or walk the Medieval City Walls</p>
                 <div class="text-center">
                     <figure class="figure">
-                        <img src="{% media 'shambles-york.jpg %}" class="figure-img img-fluid rounded" alt="...">
+                        <img src="{% static 'images/shambles-york.jpg' %}" class="figure-img img-fluid rounded" alt="...">
                         <figcaption class="figure-caption text-end">The Shambles</figcaption>
                     </figure>
                     <figure class="figure">
-                        <img src="{% media 'york-minster.PNG %}" class="figure-img img-fluid rounded" alt="...">
+                        <img src="{% static 'images/york-minster.PNG' %}"" class="figure-img img-fluid rounded" alt="...">
                         <figcaption class="figure-caption text-end">York Minster</figcaption>
                     </figure>
                 </div>
@@ -134,7 +134,7 @@
                     limit of up
                     to 30 people. If the event is taking place outdoors, it can be partially sheltered with, for example, a
                     marquee,
-                    provided that at least 50% of the walled area remains open.</p>
+                    provided that at least 50 of the walled area remains open.</p>
                 <p class="fs-5 mx-2">A broader range of venues will be able to be open at this step, as set out in the
                     roadmap.
                     Any venue which is not required in law to remain closed will be able to host events and allow viewings
@@ -146,6 +146,7 @@
             </div>
         </div>
     </section>
+
     <!-- footer-->
     <footer>
         <div class="row ">
