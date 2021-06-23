@@ -1,16 +1,16 @@
-body {
-    background: url('/static/images/homepage_background_image.png') no-repeat center center fixed;
-    background-size: cover;   
-    height: 100%;
-    /* display: flex; */
-    position: relative;
-    /* opacity: rgba(250, 250, 250, 0.9); */
-  }
-  /* .opaque-overlay { /* Copied from Whiskey Drop - Coding Institute - changed colour */
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    height: 112%;
-    width: 100%;
-    background-color: rgba(250, 250, 250, 0.5);
-} */
+html, body {
+  background: url('/static/images/homepage_background_image.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: rgba(250, 250, 250, 0.5);
+  height: 100vh;
+  position: relative;
+}
+
+.opaque-overlay { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(250, 250, 250, 0.5);
+}
