@@ -18,7 +18,7 @@ import uuid
 def guests(request):
     """ View a list of all guests """
     if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, the bride and groom can do that.')
+        messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     guests = Guest.objects.all()
@@ -98,7 +98,7 @@ def guests(request):
 def view_guest(request, guest_id):
     """ View individual guest details """
     if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, the bride and groom can do that.')
+        messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     guest = get_object_or_404(Guest, pk=guest_id)
@@ -113,7 +113,7 @@ def view_guest(request, guest_id):
 def add_guest(request):
     """ Add guest to guest list """
     if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, the bride and groom can do that.')
+        messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -156,7 +156,7 @@ def add_guest(request):
 def edit_guest(request, guest_id):
     """ Edit a guest """
     if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, the bride and groom can do that.')
+        messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     guest = get_object_or_404(Guest, pk=guest_id)
@@ -186,7 +186,7 @@ def edit_guest(request, guest_id):
 def delete_guest(request, guest_id):
     """ Delete a guest """
     if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, the bride and groom can do that.')
+        messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     guest = get_object_or_404(Guest, pk=guest_id)

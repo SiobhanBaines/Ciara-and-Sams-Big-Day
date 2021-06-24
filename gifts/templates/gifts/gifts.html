@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page-header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if request.user.is_staff or request.user.is_superuser %}
+            <div class="row">
+                <!-- Facility to upload a csv file containing the wedding gifts -->
+                <div class="card upload mx-auto mb-2">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data" class="form-border">
+                            {% csrf_token %}
+                            <label for="gift_list_csv" class="label-text">Upload Gift List</label>
+                            <div class="input-group w-80">
+                                <input type="file" name="gift_list_csv" id="gift_list_csv" class="form-control " required />
+                                <div class="input-group-append">
+                                    <button class="form-control btn accept-btn border rounded-0" type="submit">
+                                        <span class="icon">
+                                            <i class="fas fa-upload left"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Add an individual gift record -->
+            <div class="row justify-content-center">
+                <div class="col-auto mx-2 pb-2">
+                    <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_gift' %}"></i>Add A New Gift</a></small>
+                </div>
+            </div>
+        {% endif %}
+        <!-- List of gifts -->
+        <div class="row">
+            {% for gift in gifts %}
+                {% if request.user.is_staff or request.user.is_superuser or not gift.selected %}
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card h-100 border-0">
+                            {% if gift.image %}
+                            <a href="{% url 'view_gift' gift.id %}">
+                                <img class="card-img-top img-fluid" src="/media/{{ gift.image }}" alt="{{ gift.name }}">
+                            </a>
+                            {% else %}
+                            <a href="{% url 'view_gift' gift.id %}">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
+                            </a>
+                            {% endif %}
+                            <div class="card-body pb-0">
+                                <p class="mb-0">{{ gift.name }}</p>
+                                <a class="text-success" href="{{ gift.supplier_url }}">Buy Here</a>
+                                <p class="lead mb-0 text-left font-weight-bold">{{ gift.available }}</p>
+                                <p class="lead mb-0 text-left font-weight-bold">£{{ gift.price }}</p>
+                            </div>
+                            <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">                                       
+                                        {% if request.user.is_staff or request.user.is_superuser %}
+                                            <small class="ml-3">
+                                                <a href="{% url 'edit_gift' gift.id %}">Edit</a> | 
+                                                <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                                            </small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:1 %}
+                        <div class="col-12 d-sm-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}                        
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:3 %}
+                        <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:4 %}
+                        <div class="col-12 d-none d-xl-block mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
