@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Gift
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from .forms import GiftForm
 
 import io

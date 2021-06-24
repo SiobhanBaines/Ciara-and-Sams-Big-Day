@@ -11,17 +11,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Menu</a>
             </li>
-        {% else %}
-            {% if request.user|has_group:'declined' %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Gift List</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'rsvp' %}">RSVP</a>
-                </li>
-            {% endif %}
         {% endif %}
-
+        {% if request.user|has_group:'accepted' or request.user|has_group:'declined' %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">Gift List</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'rsvp' %}">RSVP</a>
+            </li>
+        {% endif %}
     </ul>
 </div>
