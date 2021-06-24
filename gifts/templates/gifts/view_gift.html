@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page-header %}
+    <div class="container header-container">
+        <div class="row justify-content-center">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container px-5">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <small>
+                    <h3 class="text-center cursive-text-color">Gift Details</h3>
+                </small>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Gift contact detail -->
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col-12 col-md-4 offset-md-3">
+                        <h3 class="cursive-text-color text-align-left fs-2">{{ gift.name }}</h3>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                        <div class="image-container my-5">
+                            {% if gift.image %}
+                                <a href="/media/{{ gift.image }}" target="_blank">
+                                    <img class="card-img-top img-fluid" src="/media/{{ gift.image }}" alt="{{ gift.name }}">
+                                </a>
+                                {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-2 align-items-end">
+                        <p class="mb-0 mt-1">{{ gift.description }}</p>
+                    </div>
+                </div>
+
+                <a href="{{ gift.supplier_url }}">Supplier</a>
+            </div>
+            <div class="d-inline-flex justify-content-center  ">
+                <small class="ml-3">
+                    <a href="{% url 'edit_gift' gift.id %}">Edit</a> |
+                    <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

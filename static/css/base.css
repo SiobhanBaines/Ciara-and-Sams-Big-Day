@@ -179,7 +179,7 @@ footer li {
     width: 70%;
 }
 .upload {
-    background: url('/media/juliet_rose.jpg') center center fixed;
+    background: url('/static/images/juliet_rose.jpg') center center fixed;
     background-size: cover;
 }
 .hide {
