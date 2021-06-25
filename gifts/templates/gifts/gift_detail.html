@@ -59,15 +59,15 @@
                             </div>
                             <div class="col-3 mb-2">
                                 <input type="checkbox" class="btn-check" id="gift_select" name="gift_select" autocomplete="off" >
-                                <label class="btn btn-success" for="gift_select">select</label>
+                                <label class="btn select-btn" for="gift_select">select</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-9 mb-2">
-                                <p class="pr-5">To buy the gift please go the the website by clicking this button.</p>
+                                <p class="pr-5">To buy this gift please go to the website by clicking this button.</p>
                             </div>
                             <div class="col-3 mb-2">
-                                <a class="btn btn-success lead text-left font-weight-bold" href="{{ gift.supplier_url }}">Buy Here</a>
+                                <a class="btn buy-btn" href="{{ gift.supplier_url }}">Buy Here</a>
                             </div>
                         </div>
                     {% endif %}
@@ -81,18 +81,23 @@
                         {% endif %}
                     {% endif %}
                 </div>
-            </div>
-
-            
+            </div>  
         </div>
-        {% if request.user.is_staff or request.user.is_superuser %}
-            <div class="d-inline-flex justify-content-center  ">
-                <small class="ml-3">
-                    <a href="{% url 'edit_gift' gift.id %}">Edit</a> |
-                    <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
-                </small>
-            </div>
-        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if request.user.is_staff or request.user.is_superuser %}
+                <div class="d-flex justify-content-center">
+                    <small class="ml-3">
+                        <a class="translate-middle" href="{% url 'edit_gift' gift.id %}">Edit</a> |
+                        <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                    </small>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
 {% endblock %}

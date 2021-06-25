@@ -63,19 +63,16 @@
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="card h-100 border-0">
                             {% if gift.image %}
-                            <a href="{% url 'view_gift' gift.id %}">
+                            <a href="{% url 'gift_detail' gift.id %}">
                                 <img class="card-img-top img-fluid" src="/media/{{ gift.image }}" alt="{{ gift.name }}">
                             </a>
                             {% else %}
-                            <a href="{% url 'view_gift' gift.id %}">
+                            <a href="{% url 'gift_detail' gift.id %}">
                                 <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
                             </a>
                             {% endif %}
                             <div class="card-body pb-0">
                                 <p class="mb-0">{{ gift.name }}</p>
-                                    <input type="checkbox" class="btn-check" id="gift_select" name="gift_select" autocomplete="off" >
-                                    <label class="btn btn-success" for="gift_select">select</label>
-                                    <a class="btn btn-success" href="{{ gift.supplier_url }}">Buy Here</a>
                                 <p class="lead mb-0 text-left font-weight-bold">{{ gift.available }}</p>
                                 <p class="lead mb-0 text-left font-weight-bold">£{{ gift.price }}</p>
                             </div>
@@ -117,4 +114,7 @@
             {% endfor %}
         </div>
     </div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
 {% endblock %}

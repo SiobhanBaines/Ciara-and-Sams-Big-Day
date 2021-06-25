@@ -1,5 +1,5 @@
 ﻿from django.shortcuts import render, reverse, redirect, get_object_or_404
-from django.views import View
+# from django.views import View
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib import messages
@@ -95,18 +95,18 @@ def guests(request):
 
 
 @login_required
-def view_guest(request, guest_id):
+def guest_detail(request, guest_id):
     """ View individual guest details """
-    if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, only the bride and groom can do that.')
-        return redirect(reverse('home'))
+    print(request)
+    print(guest_id)
 
     guest = get_object_or_404(Guest, pk=guest_id)
+    print(guest)
     context = {
         'guest': guest,
     }
 
-    return render(request, 'guests/view_guest.html', context)
+    return render(request, 'guests/guest_detail.html', context)
 
 
 @login_required
@@ -136,7 +136,7 @@ def add_guest(request):
                 username=guest.group_id, password=guest.postcode)
 
             messages.success(request, 'Successfully added a new guest')
-            return redirect(reverse('view_guest', args=[guest.id]))
+            return redirect(reverse('guest_detail', args=[guest.id]))
         else:
             messages.error(request, 'Failed to add guest. Please check the information is valid')
     else:
@@ -166,13 +166,15 @@ def edit_guest(request, guest_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated the guest')
-            return redirect(reverse('view_guest', args=[guest.id]))
+            print('Successfully updated the guest')
+            return redirect(reverse('guest_detail', args=[guest.id]))
         else:
-            messages.error(request, 'Failed to add guest. Please check the information is valid')
+            messages.error(request, 'Failed to update guest. Please check the information is valid')
     else:
         form = GuestForm(instance=guest)
         messages.info(
             request, f'You are editing {guest.first_name} {guest.last_name}')
+
     template = 'guests/edit_guest.html'
     context = {
         'form': form,

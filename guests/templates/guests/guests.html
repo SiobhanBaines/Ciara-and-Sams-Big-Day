@@ -86,7 +86,7 @@
                                         <td class="text-center">No</td>
                                     {% endif %}
                                     <td><small class="ml-3"><a class="text-success"
-                                                href="{% url 'view_guest' guest.id %}"></i>View</a> |
+                                                href="{% url 'guest_detail' guest.id %}"></i>View</a> |
                                             <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
                                             <a class="text-danger" href="{% url 'delete_guest' guest.id %}">Delete</a>
                                         </small>
@@ -99,4 +99,7 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
 {% endblock %}

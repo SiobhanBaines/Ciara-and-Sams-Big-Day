@@ -104,7 +104,7 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-WSGI_APPLICATION ='ciara_and_sams_big_day.wsgi.application'
+WSGI_APPLICATION = 'ciara_and_sams_big_day.wsgi.application'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

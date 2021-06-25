@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Gift
-from django.contrib.auth.models import User, Group
+# from django.contrib.auth.models import User, Group
 from .forms import GiftForm
 
 import io
@@ -24,15 +24,6 @@ def gifts(request):
     #     return redirect(reverse('home'))
 
     gifts = Gift.objects.all()
-    # query = None
-
-    # if request.GET:
-        # if 'q' in request.GET:
-        #     query = request.GET['q']
-        #     if not query:
-        #         messages.error(
-        #             request, "You didn't enter any search criteria.")
-        #         return redirect(reverse('Gifts'))
 
     if request.method == "POST":
         if request.user.is_staff or request.user.is_superuser:
@@ -73,18 +64,19 @@ def gifts(request):
 
 
 @login_required
-def view_gift(request, gift_id):
+def gift_detail(request, gift_id):
     """ View individual Gift details """
     # if not request.user.is_superuser or not request.user.is_staff:
     #     messages.error(request, 'Sorry, only the bride and groom can do that.')
     #     return redirect(reverse('home'))
-
+    print('gift_id', gift_id)
     gift = get_object_or_404(Gift, pk=gift_id)
+    print(gift)
     context = {
         'gift': gift,
     }
-
-    return render(request, 'gifts/view_gift.html', context)
+    print('line 77')
+    return render(request, 'gifts/gift_detail.html', context)
 
 
 @login_required
@@ -106,7 +98,8 @@ def add_gift(request):
             gift = form.save()
 
             messages.success(request, 'Successfully added a new Gift')
-            return redirect(reverse('view_gift', args=[gift.id]))
+            print('line 100')
+            return redirect(reverse('gift_detail', args=[gift.id]))
         else:
             messages.error(request, 'Failed to add gift. Please check the information is valid')
     else:
@@ -136,13 +129,15 @@ def edit_gift(request, gift_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated the Gift')
-            return redirect(reverse('view_gift', args=[gift.id]))
+            print('line 131')
+            return redirect(reverse('gift_detail', args=[gift.id]))
         else:
             messages.error(request, 'Failed to add Gift. Please check the information is valid')
     else:
         form = GiftForm(instance=gift)
         messages.info(
             request, f'You are editing {gift.name}')
+
     template = 'gifts/edit_gift.html'
     context = {
         'form': form,
@@ -160,6 +155,7 @@ def delete_gift(request, gift_id):
         return redirect(reverse('home'))
 
     gift = get_object_or_404(Gift, pk=gift_id)
+
     Gift.delete()
     messages.success(request, 'Gift deleted')
     return redirect(reverse('gifts'))

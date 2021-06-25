@@ -73,10 +73,12 @@ button {
     border-radius: 0.25rem;
     border-width: 1px;
 }
-.accept-btn {
+.accept-btn,
+.select-btn {
     background-color: var(--primary-mint); 
 }
-.change-btn {
+.change-btn,
+.buy-btn {
     background-color: var(--secondary-peach);
 }
 
