@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load user_extras %}
 
 {% block page-header %}
     <div class="container header-container">
@@ -39,6 +40,21 @@
                     <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_gift' %}"></i>Add A New Gift</a></small>
                 </div>
             </div>
+        {% else %}
+        <div class="row">
+            <div class="col">
+                <hr>
+                <small>
+                    <h3 class="text-center cursive-text-color">Gift List</h3>
+                </small>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="lead text-left font-weight-bold">Please feel free to select a gift from the list below or <span><a href="#" class="text-success" >gift some money</a></span></p>
+            </div>
+        </div>
         {% endif %}
         <!-- List of gifts -->
         <div class="row">
@@ -57,7 +73,9 @@
                             {% endif %}
                             <div class="card-body pb-0">
                                 <p class="mb-0">{{ gift.name }}</p>
-                                <a class="text-success" href="{{ gift.supplier_url }}">Buy Here</a>
+                                    <input type="checkbox" class="btn-check" id="gift_select" name="gift_select" autocomplete="off" >
+                                    <label class="btn btn-success" for="gift_select">select</label>
+                                    <a class="btn btn-success" href="{{ gift.supplier_url }}">Buy Here</a>
                                 <p class="lead mb-0 text-left font-weight-bold">{{ gift.available }}</p>
                                 <p class="lead mb-0 text-left font-weight-bold">£{{ gift.price }}</p>
                             </div>

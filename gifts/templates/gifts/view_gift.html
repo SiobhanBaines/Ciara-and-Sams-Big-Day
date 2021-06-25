@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load user_extras %}
 
 {% block page-header %}
 <div class="container header-container">
@@ -53,8 +54,20 @@
                         </div>
                     {% else %}
                         <div class="row">
-                            <div class="col mb-2">
-                                <a class="lead text-left font-weight-bold text-success" href="{{ gift.supplier_url }}">Buy Here</a>
+                            <div class="col-9 mb-2">
+                                <p class="pr-5">If you wish to buy this gift, please let us know by clicking the button. This will stop anyone else buying the same gift. </p>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <input type="checkbox" class="btn-check" id="gift_select" name="gift_select" autocomplete="off" >
+                                <label class="btn btn-success" for="gift_select">select</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9 mb-2">
+                                <p class="pr-5">To buy the gift please go the the website by clicking this button.</p>
+                            </div>
+                            <div class="col-3 mb-2">
+                                <a class="btn btn-success lead text-left font-weight-bold" href="{{ gift.supplier_url }}">Buy Here</a>
                             </div>
                         </div>
                     {% endif %}

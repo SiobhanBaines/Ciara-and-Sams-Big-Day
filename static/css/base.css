@@ -9,7 +9,7 @@ html, body {
 }
 .cursive-text-color {
     color: var(--primary-font);
-    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+    text-shadow: 1px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
 }
 .banner {
     font-family: 'Lovers Quarrel', cursive;

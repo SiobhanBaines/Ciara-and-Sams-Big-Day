@@ -7,7 +7,7 @@ register = template.Library()
 
 @register.filter(name='has_group')
 def has_group(user, group_name):
-    ''' Check user group at login. 
+    ''' Check user group at login.
     The guests will either have no group, accepted or declined. '''
     group = Group.objects.get(name=group_name)
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-from django.views import View
+# from django.views import View
 from django.http import HttpResponse
 # from django.db.models import Q
 from django.contrib import messages
@@ -12,12 +12,16 @@ from .forms import GiftForm
 import io
 import csv
 
+
 @login_required
 def gifts(request):
     """ View a list of all Gifts """
-    if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, only the bride and groom can do that.')
-        return redirect(reverse('home'))
+    # print('request.user.is_staff', request.user.is_staff)
+    # print('request.user.is_superuser', request.user.is_superuser)
+    # print('request.user.group.has_group', request.user | has_group)
+    # if not request.user.is_superuser or not request.user.is_staff or not request.user | has_group:
+    #     messages.error(request, 'Sorry, only the bride and groom can do that.')
+    #     return redirect(reverse('home'))
 
     gifts = Gift.objects.all()
     # query = None
@@ -31,34 +35,35 @@ def gifts(request):
         #         return redirect(reverse('Gifts'))
 
     if request.method == "POST":
-        # Handle request CSV file
-        paramFile = io.TextIOWrapper(request.FILES['gift_list_csv'].file)
-        # Read te POST request file and convert into DICT
-        portfolio1 = csv.DictReader(paramFile)
-        list_of_dict = list(portfolio1)
+        if request.user.is_staff or request.user.is_superuser:
+            # Handle request CSV file
+            paramFile = io.TextIOWrapper(request.FILES['gift_list_csv'].file)
+            # Read te POST request file and convert into DICT
+            portfolio1 = csv.DictReader(paramFile)
+            list_of_dict = list(portfolio1)
 
-        objs = []
-        for row in list_of_dict:
-            objs.append(
-                Gift(
-                    name=row['name'],
-                    description=row['description'],
-                    selected=False,
-                    supplier_url=row['supplier_url'],
-                    price=row['price'],
-                    image_url=row['image_url'],
-                    image=row['image'],
+            objs = []
+            for row in list_of_dict:
+                objs.append(
+                    Gift(
+                        name=row['name'],
+                        description=row['description'],
+                        selected=False,
+                        supplier_url=row['supplier_url'],
+                        price=row['price'],
+                        image_url=row['image_url'],
+                        image=row['image'],
+                    )
                 )
-            )
-        try:
-            msg = Gift.objects.bulk_create(objs)
-            # returnmsg = {"status_code": 200}
-            messages.error(request, 'Imported successfully')
-        except Exception as e:
-            messages.error(request, 'Error While Importing Data: ', e)
-            return HttpResponse(content=e, status=400)
+            try:
+                msg = Gift.objects.bulk_create(objs)
+                # returnmsg = {"status_code": 200}
+                messages.error(request, 'Imported successfully')
+            except Exception as e:
+                messages.error(request, 'Error While Importing Data: ', e)
+                return HttpResponse(content=e, status=400)
 
-        return redirect('gifts')
+            return redirect('gifts')
 
     context = {
         'gifts': gifts,
@@ -70,9 +75,9 @@ def gifts(request):
 @login_required
 def view_gift(request, gift_id):
     """ View individual Gift details """
-    if not request.user.is_superuser or not request.user.is_staff:
-        messages.error(request, 'Sorry, only the bride and groom can do that.')
-        return redirect(reverse('home'))
+    # if not request.user.is_superuser or not request.user.is_staff:
+    #     messages.error(request, 'Sorry, only the bride and groom can do that.')
+    #     return redirect(reverse('home'))
 
     gift = get_object_or_404(Gift, pk=gift_id)
     context = {
