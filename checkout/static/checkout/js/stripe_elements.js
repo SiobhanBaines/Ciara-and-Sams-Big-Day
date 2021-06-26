@@ -10,8 +10,6 @@ var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
-var card = elements.create('card');
-card.mount('#card-element');
 var style = {
     base: {
         color: '#48494A',
@@ -73,13 +71,12 @@ form.addEventListener('submit', function(ev) {
                 billing_details: {
                     name: $.trim(form.first_name.value) + ' ' + $.trim(form.last_name.value),
                     address:{
-                        line1: $.trim(form.street_address1.value),
-                        line2: $.trim(form.street_address2.value),
-                        city: $.trim(form.town_or_city.value),
+                        line1: $.trim(form.address_line_1.value),
+                        line2: $.trim(form.address_line_2.value),
+                        city: $.trim(form.city.value),
                         state: $.trim(form.county.value),
                         postal_code: $.trim(form.postcode.value),
                         country: $.trim(form.country.value),
-                        
                     }
                 }
             },
