@@ -6,7 +6,7 @@ from django.db import models
 from guests.models import Guest
 
 
-class Donation(models.Model):
+class Checkout(models.Model):
     donation_number = models.CharField(
         max_length=8, null=False, editable=False)
     group_id = models.ForeignKey(

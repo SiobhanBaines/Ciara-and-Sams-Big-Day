@@ -160,6 +160,7 @@ def edit_guest(request, guest_id):
         return redirect(reverse('home'))
 
     guest = get_object_or_404(Guest, pk=guest_id)
+    print('guest ', guest)
 
     if request.method == 'POST':
         form = GuestForm(request.POST, request.FILES, instance=guest)

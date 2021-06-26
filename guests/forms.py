@@ -19,4 +19,3 @@ class GuestForm(forms.ModelForm):
             'email',
             'phone_number',
         )
-

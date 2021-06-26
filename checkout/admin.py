@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Donation
+from .models import Checkout
 
 
-class DonationAdmin(admin.ModelAdmin):
+class CheckoutAdmin(admin.ModelAdmin):
 
     readonly_fields = ('donation_number', 'date',)
 
@@ -12,4 +12,5 @@ class DonationAdmin(admin.ModelAdmin):
 
     ordering = ('date',)
 
-admin.site.register(Donation, DonationAdmin)
+
+admin.site.register(Checkout, CheckoutAdmin)
