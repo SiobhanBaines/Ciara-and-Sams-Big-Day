@@ -1,11 +1,10 @@
 from django.urls import path
 from . import views
+from .webhooks import webhook
 
 urlpatterns = [
     path('', views.checkout, name='checkout'),
     path('checkout_success/<donation_number>/<email>',
          views.checkout_success, name='checkout_success'),
-    #     path('add/', views.add_gift, name='add_gift'),
-    #     path('edit/<int:gift_id>/', views.edit_gift, name='edit_gift'),
-    #     path('delete/<int:gift_id>/', views.delete_gift, name='delete_gift'),
+    path('wh/', webhook, name='webhook'),
 ]
