@@ -43,7 +43,7 @@ label {
     --primary-peach: #FFF9F7;
     --secondary-peach: #fdd7cb;
     --primary-mint: #E9F7F2;
-    --secondary-mint: #B7E0D2;
+    --secondary-mint: #b8e0d3;
     --primary-grey: #C7C8CA;
     --primary-font: #48494a;
     --primary-background: #FFFEF2;  
@@ -119,10 +119,7 @@ footer li {
 .container {
     padding-top: calc(3rem + 2.3vw);
 }
-.home-container { 
-    /* background: url('/static/images/homepage_background_image.png') no-repeat center center fixed;
-    background-size: cover;   
-    background-color: rgba(250, 250, 250, 0.5); */
+.home-container {
     height: 100%;
     width: 100%;
     display: flex;

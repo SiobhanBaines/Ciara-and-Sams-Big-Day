@@ -1,3 +1,4 @@
+/* Taken from Code Institutes Boutique Ado and modified to fit sites styling */
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -6,7 +7,7 @@
   border: 1px solid transparent;
   border-radius: 0px;
   background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
+  box-shadow: 0 1px 3px 0 #C7C8CA;
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
 }
@@ -14,7 +15,7 @@
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  box-shadow: 0 1px 3px 0 #C7C8CA;
 }
 
 .StripeElement--webkit-autofill {
@@ -22,7 +23,7 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+    color: #b8e0d3;
 }
 
 .fieldset-label {
@@ -43,7 +44,7 @@ select option {
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important;
+    color: #b8e0d3 !important;
 }
 
 #loading-overlay {
@@ -53,7 +54,7 @@ select option[value=""] {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(23, 162, 184, .85);
+    background: rgba(183, 224, 210, 0.6);
     z-index: 9999;
 }
 
