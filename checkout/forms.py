@@ -41,6 +41,7 @@ class GuestForm(forms.ModelForm):
             'county',
             'postcode',
             'country',
+            'email'
         )
 
     def __init__(self, *args, **kwargs):
@@ -58,6 +59,7 @@ class GuestForm(forms.ModelForm):
             'county': 'County',
             'postcode': 'Post Code',
             'country': 'Country',
+            'email': 'Email'
         }
 
         for field in self.fields:
