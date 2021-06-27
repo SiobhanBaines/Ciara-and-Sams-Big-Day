@@ -33,7 +33,6 @@ def checkout(request):
 
         checkout_form = CheckoutForm(checkout_data)
         guest_form = GuestForm(guest_data)
-        print(guest_form)
 
         if checkout_form.is_valid() and guest_form.is_valid():
 
@@ -45,11 +44,8 @@ def checkout(request):
 
             # Update Guest record
             guest_query = Guest.objects.filter(group_id=request.user)
-            print('line 50 guest_query ', guest_query)
             form = dict(request.POST)
             for num in range(len(form['group_id'])):
-                print(range(len(form['group_id'])))
-                print(form['first_name'][num])
                 if (form['first_name'][num] == guest.first_name) and (
                         form['last_name'][num] == guest.last_name):
                     guest.email = form['email'][num]
@@ -109,9 +105,14 @@ def checkout_success(request, donation_number, email):
         Your gift donation number is {donation_number}. A confirmation \
         email will be sent to {email}.')
 
+    form = CheckoutForm
+    checkout = get_object_or_404(Checkout, donation_number=donation_number)
     template = 'checkout/checkout_success.html'
     context = {
         'email': email,
+        'checkout': checkout,
+        'form': form,
+        
     }
 
     return render(request, template, context)
