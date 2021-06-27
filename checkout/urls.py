@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.checkout, name='checkout'),
-    path('checkout_success/<donation_number>/<group_id>',
+    path('checkout_success/<donation_number>/<email>',
          views.checkout_success, name='checkout_success'),
     #     path('add/', views.add_gift, name='add_gift'),
     #     path('edit/<int:gift_id>/', views.edit_gift, name='edit_gift'),

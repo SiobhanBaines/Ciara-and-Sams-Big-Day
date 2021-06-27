@@ -16,13 +16,6 @@ import csv
 @login_required
 def gifts(request):
     """ View a list of all Gifts """
-    # print('request.user.is_staff', request.user.is_staff)
-    # print('request.user.is_superuser', request.user.is_superuser)
-    # print('request.user.group.has_group', request.user | has_group)
-    # if not request.user.is_superuser or not request.user.is_staff or not request.user | has_group:
-    #     messages.error(request, 'Sorry, only the bride and groom can do that.')
-    #     return redirect(reverse('home'))
-
     gifts = Gift.objects.all()
 
     if request.method == "POST":
@@ -66,16 +59,10 @@ def gifts(request):
 @login_required
 def gift_detail(request, gift_id):
     """ View individual Gift details """
-    # if not request.user.is_superuser or not request.user.is_staff:
-    #     messages.error(request, 'Sorry, only the bride and groom can do that.')
-    #     return redirect(reverse('home'))
-    print('gift_id', gift_id)
     gift = get_object_or_404(Gift, pk=gift_id)
-    print(gift)
     context = {
         'gift': gift,
     }
-    print('line 77')
     return render(request, 'gifts/gift_detail.html', context)
 
 
@@ -98,7 +85,6 @@ def add_gift(request):
             gift = form.save()
 
             messages.success(request, 'Successfully added a new Gift')
-            print('line 100')
             return redirect(reverse('gift_detail', args=[gift.id]))
         else:
             messages.error(request, 'Failed to add gift. Please check the information is valid')
@@ -129,7 +115,6 @@ def edit_gift(request, gift_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated the Gift')
-            print('line 131')
             return redirect(reverse('gift_detail', args=[gift.id]))
         else:
             messages.error(request, 'Failed to add Gift. Please check the information is valid')

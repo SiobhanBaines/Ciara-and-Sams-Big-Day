@@ -33,6 +33,7 @@ class GuestForm(forms.ModelForm):
     class Meta:
         model = Guest
         fields = (
+            # 'group_id',
             'first_name',
             'last_name',
             'address_line_1',
@@ -51,6 +52,7 @@ class GuestForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
+            # 'group_id': 'Wedding Group',
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'address_line_1': 'Address Line',

@@ -97,11 +97,8 @@ def guests(request):
 @login_required
 def guest_detail(request, guest_id):
     """ View individual guest details """
-    print(request)
-    print(guest_id)
 
     guest = get_object_or_404(Guest, pk=guest_id)
-    print(guest)
     context = {
         'guest': guest,
     }
@@ -160,14 +157,12 @@ def edit_guest(request, guest_id):
         return redirect(reverse('home'))
 
     guest = get_object_or_404(Guest, pk=guest_id)
-    print('guest ', guest)
 
     if request.method == 'POST':
         form = GuestForm(request.POST, request.FILES, instance=guest)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated the guest')
-            print('Successfully updated the guest')
             return redirect(reverse('guest_detail', args=[guest.id]))
         else:
             messages.error(request, 'Failed to update guest. Please check the information is valid')
