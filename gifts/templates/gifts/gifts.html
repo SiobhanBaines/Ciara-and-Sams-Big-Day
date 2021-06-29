@@ -50,11 +50,20 @@
                 <hr>
             </div>
         </div>
-        <div class="row">
+        <form class="col s12" method="POST" action="{% url 'checkout' %}">
+            <div class="row">
+                <div class="col mb-5 text-center">
+                <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
+                    <input id="gift_amount" name="gift_amount" min="0" value="0.00" type="number" placeholder="Gift Amount">
+                    <label for="gift_amount" class="gift_amount" ></label><span><a href="{% url 'checkout' %}" class="text-success" >Click here to proceed to payment</a></span>
+                </div>
+            </form>
+        <!-- <div class="row">
             <div class="col">
-                <p class="lead text-left font-weight-bold">Please feel free to select a gift from the list below or <span><a href="{% url 'checkout' %}" class="text-success" >gift some money</a></span></p>
+                <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.<input>
+                     <span><a href="{% url 'checkout' %}" class="text-success" >gift some money</a></span></p>
             </div>
-        </div>
+        </div> -->
         {% endif %}
         <!-- List of gifts -->
         <div class="row">

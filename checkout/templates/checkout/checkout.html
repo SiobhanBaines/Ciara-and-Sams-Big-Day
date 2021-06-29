@@ -31,15 +31,22 @@
             <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="form md-2">
                 {% csrf_token %}
                 <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Gift Amount</legend>
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label small text-black px-2">Gift Amount</legend>
                     {{ checkout_form.gift_amount | as_crispy_field }}
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Billing Details</legend>
-                    {% for field in guest_form %}
-                    {{ field | as_crispy_field }}
-                    {% endfor %}
+                    <legend class="fieldset-label small text-black px-2">Billing Details</legend>
+                    {{ guest_form.first_name | as_crispy_field }}
+                    {{ guest_form.last_name | as_crispy_field }}
+                    {{ guest_form.email | as_crispy_field }}
+                    {{ guest_form.address_line_1 | as_crispy_field }}
+                    {{ guest_form.address_line_2 | as_crispy_field }}
+                    {{ guest_form.city | as_crispy_field }}
+                    {{ guest_form.county | as_crispy_field }}
+                    {{ guest_form.postcode | as_crispy_field }}
+                    {{ guest_form.country | as_crispy_field }}
+
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
                             <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>

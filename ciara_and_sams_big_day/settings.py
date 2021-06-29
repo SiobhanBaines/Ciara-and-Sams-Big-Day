@@ -82,8 +82,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                "django.template.context_processors.media",
-                "django.template.context_processors.static",
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'checkout.contexts.gift_amount',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
