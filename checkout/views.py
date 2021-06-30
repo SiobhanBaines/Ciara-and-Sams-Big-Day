@@ -76,12 +76,12 @@ def checkout(request):
                     guest.gift_value = guest.gift_value + checkout.gift_amount
                     guest.save()
 
-            # stripe_total = round(checkout.gift_amount * 100)
+            stripe_total = round(checkout.gift_amount * 100)
             stripe.api_key = stripe_secret_key
-            # intent = stripe.PaymentIntent.create(
-            #     amount=stripe_total,
-            #     currency=settings.STRIPE_CURRENCY,
-            # )
+            intent = stripe.PaymentIntent.create(
+                amount=stripe_total,
+                currency=settings.STRIPE_CURRENCY,
+            )
 
             request.session['save_info'] = 'save-info' in request.POST
 
@@ -97,13 +97,14 @@ def checkout(request):
             messages.error(request, ('There was an error with your form. '
                                      'Please double check your information.'))
     else:
-        # stripe_total = round(1 * 100)   # initial default amount
+        gift_amount = int(request.session['gift_amount'])
+        stripe_total = round(gift_amount * 100)
 
         stripe.api_key = stripe_secret_key
-        # intent = stripe.PaymentIntent.create(
-        #     amount=stripe_total,
-        #     currency=settings.STRIPE_CURRENCY,
-        # )
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
         checkout_form = CheckoutForm()
         guest_form = GuestForm()
 
@@ -118,7 +119,7 @@ def checkout(request):
         'guest_form': guest_form,
         'checkout_form': checkout_form,
         'stripe_public_key': stripe_public_key,
-        # 'client_secret': intent.client_secret,
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)

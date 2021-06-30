@@ -7,4 +7,6 @@ urlpatterns = [
     path('add/', views.add_gift, name='add_gift'),
     path('edit/<int:gift_id>/', views.edit_gift, name='edit_gift'),
     path('delete/<int:gift_id>/', views.delete_gift, name='delete_gift'),
+    path('gift_donation/<int:gift_amount>/',
+         views.gift_donation, name='gift_donation'),
 ]

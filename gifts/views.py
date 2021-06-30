@@ -49,8 +49,11 @@ def gifts(request):
 
             return redirect('gifts')
 
+    gift_amount = 0
+
     context = {
         'gifts': gifts,
+        'gift_amount': gift_amount
     }
 
     return render(request, 'gifts/gifts.html', context)
@@ -59,6 +62,7 @@ def gifts(request):
 @login_required
 def gift_detail(request, gift_id):
     """ View individual Gift details """
+    print(gift_id)
     gift = get_object_or_404(Gift, pk=gift_id)
     context = {
         'gift': gift,
@@ -144,3 +148,14 @@ def delete_gift(request, gift_id):
     Gift.delete()
     messages.success(request, 'Gift deleted')
     return redirect(reverse('gifts'))
+
+
+@login_required
+def gift_donation(request, gift_amount):
+    """ Add gift amount to context """
+
+    gift_amount = request.POST.get('gift_amount')
+
+    request.session['gift_amount'] = gift_amount
+    print('request.session["gift_amount"]', request.session['gift_amount'])
+    return redirect(reverse('checkout'))

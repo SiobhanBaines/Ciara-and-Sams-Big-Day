@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'custom_user',
     'gifts',
     'checkout',
+    # 'gift_amount',
 
     # other
     'crispy_forms',
@@ -84,7 +85,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
-                'checkout.contexts.gift_amount',
+                'gifts.contexts.gift_amount',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
