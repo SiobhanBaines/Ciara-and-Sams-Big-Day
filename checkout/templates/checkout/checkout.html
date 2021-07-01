@@ -30,22 +30,17 @@
             <p class="text-muted">Please fill out the form below</p>
             <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="form md-2">
                 {% csrf_token %}
-                <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
+                <input type="hidden" id="group_id" name="group_id" value="{{ group }}">
                 <fieldset class="rounded px-3 mb-3">
                     <legend class="fieldset-label small text-black px-2">Gift Amount</legend>
-                    <input id="gift_amount" name="gift_amount" value="{{ gift_amount }}">
+                    <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}"  type="text">
+                    <!-- <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}" pattern="^\d*(\.\d{0,2})?" type="text"> -->
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2">Billing Details</legend>
-                    {{ guest_form.first_name | as_crispy_field }}
-                    {{ guest_form.last_name | as_crispy_field }}
-                    {{ guest_form.email | as_crispy_field }}
-                    {{ guest_form.address_line_1 | as_crispy_field }}
-                    {{ guest_form.address_line_2 | as_crispy_field }}
-                    {{ guest_form.city | as_crispy_field }}
-                    {{ guest_form.county | as_crispy_field }}
-                    {{ guest_form.postcode | as_crispy_field }}
-                    {{ guest_form.country | as_crispy_field }}
+                    {% for field in form %}
+                        {{ field | as_crispy_field }}
+                    {% endfor %}
 
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}

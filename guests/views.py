@@ -77,7 +77,7 @@ def guests(request):
                 )
             )
         try:
-            msg = Guest.objects.bulk_create(objs)
+            # msg = Guest.objects.bulk_create(objs)
             # returnmsg = {"status_code": 200}
             messages.error(request, 'Imported successfully')
         except Exception as e:
@@ -135,7 +135,8 @@ def add_guest(request):
             messages.success(request, 'Successfully added a new guest')
             return redirect(reverse('guest_detail', args=[guest.id]))
         else:
-            messages.error(request, 'Failed to add guest. Please check the information is valid')
+            messages.error(request, 'Failed to add guest. \
+                           Please check the information is valid')
     else:
         form = GuestForm()
 
@@ -165,7 +166,8 @@ def edit_guest(request, guest_id):
             messages.success(request, 'Successfully updated the guest')
             return redirect(reverse('guest_detail', args=[guest.id]))
         else:
-            messages.error(request, 'Failed to update guest. Please check the information is valid')
+            messages.error(request, 'Failed to update guest. \
+                           Please check the information is valid')
     else:
         form = GuestForm(instance=guest)
         messages.info(

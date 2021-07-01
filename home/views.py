@@ -61,7 +61,7 @@ def rsvp(request):
             else:
                 response = None
         # Pick up the appropriate user group (accepted / declined)
-        if response != None:
+        if response is not None:
             group = Group.objects.get(name=response)
             # Pick up the user details
             user = get_object_or_404(User, username=guest.group_id)

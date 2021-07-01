@@ -1,34 +1,34 @@
 from django import forms
-from .models import Checkout, Guest
+from .models import Guest
+# from .models import Checkout, Guest
 
 
 class CheckoutForm(forms.ModelForm):
-    class Meta:
-        model = Checkout
-        fields = {'gift_amount', }
+    #     class Meta:
+    #         model = Checkout
+    #         fields = {'gift_amount', 'group_id'}
 
-    def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
-        super().__init__(*args, **kwargs)
-        placeholders = {
-            'donation_number': 'Gift Number',
-            'group_id': 'Family Invitation',
-            'date': 'Date',
-            'gift_amount': 'Amount',
-        }
+    #     def __init__(self, *args, **kwargs):
+    #         """
+    #         Add placeholders and classes, remove auto-generated
+    #         labels and set autofocus on first field
+    #         """
+    #         super().__init__(*args, **kwargs)
+    #         placeholders = {
+    #             'donation_number': 'Gift Number',
+    #             'group_id': 'Guest Group',
+    #             'date': 'Date',
+    #             'gift_amount': 'Amount',
+    #         }
 
-        self.fields['gift_amount'].widget.attrs['autofocus'] = True
-        for field in self.fields:
-            placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = False
+    #         self.fields['gift_amount'].widget.attrs['autofocus'] = True
+    #         for field in self.fields:
+    #             placeholder = placeholders[field]
+    #             self.fields[field].widget.attrs['placeholder'] = placeholder
+    #             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+    #             self.fields[field].label = False
 
-
-class GuestForm(forms.ModelForm):
+    # class GuestForm(forms.ModelForm):
 
     class Meta:
         model = Guest
@@ -36,13 +36,14 @@ class GuestForm(forms.ModelForm):
             # 'group_id',
             'first_name',
             'last_name',
+            'email',
             'address_line_1',
             'address_line_2',
             'city',
             'county',
             'postcode',
             'country',
-            'email'
+            'email',
         )
 
     def __init__(self, *args, **kwargs):
@@ -52,7 +53,7 @@ class GuestForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            # 'group_id': 'Wedding Group',
+            'group_id': 'Guest Group',
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'address_line_1': 'Address Line',
