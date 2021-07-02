@@ -77,9 +77,9 @@ def guests(request):
                 )
             )
         try:
-            # msg = Guest.objects.bulk_create(objs)
+            msg = Guest.objects.bulk_create(objs)
             # returnmsg = {"status_code": 200}
-            messages.error(request, 'Imported successfully')
+            messages.success(request, 'Imported successfully')
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)
             return HttpResponse(content=e, status=400)

@@ -42,7 +42,7 @@ def gifts(request):
             try:
                 msg = Gift.objects.bulk_create(objs)
                 # returnmsg = {"status_code": 200}
-                messages.error(request, 'Imported successfully')
+                messages.success(request, 'Imported successfully')
             except Exception as e:
                 messages.error(request, 'Error While Importing Data: ', e)
                 return HttpResponse(content=e, status=400)
