@@ -157,5 +157,4 @@ def gift_donation(request, gift_amount):
     gift_amount = request.POST.get('gift_amount')
 
     request.session['gift_amount'] = gift_amount
-    print('request.session["gift_amount"]', request.session['gift_amount'])
     return redirect(reverse('checkout'))

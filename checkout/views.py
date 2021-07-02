@@ -58,7 +58,7 @@ def checkout(request):
             'email': request.POST['email'],
         }
 
-        # instantiate form data 
+        # instantiate form data
         form = CheckoutForm(guest_data)
 
         if form.is_valid():
@@ -93,8 +93,9 @@ def checkout(request):
             )
             request.session['save_info'] = 'save-info' in request.POST
 
-            # get most recent donation number 
+            # get most recent donation number
             donation_number = Checkout.objects.latest('group_id')
+
             return redirect(reverse(
                 'checkout_success',
                 args=[donation_number, email]))
