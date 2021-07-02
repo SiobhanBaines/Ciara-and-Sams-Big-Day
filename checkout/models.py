@@ -9,8 +9,7 @@ from guests.models import Guest
 class Checkout(models.Model):
     donation_number = models.CharField(
         max_length=8, null=False, editable=False)
-    group_id = models.ForeignKey(
-        Guest, null=False, blank=False, on_delete=models.CASCADE)
+    group_id = models.CharField(max_length=6, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     gift_amount = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)

@@ -30,7 +30,7 @@
             <p class="text-muted">Please fill out the form below</p>
             <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="form md-2">
                 {% csrf_token %}
-                <input type="hidden" id="group_id" name="group_id" value="{{ group }}">
+                <input type="text" id="group_id" name="group_id" value="{{ group_id }}">
                 <fieldset class="rounded px-3 mb-3">
                     <legend class="fieldset-label small text-black px-2">Gift Amount</legend>
                     <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}"  type="text">

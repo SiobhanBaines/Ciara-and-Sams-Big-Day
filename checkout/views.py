@@ -6,7 +6,6 @@ from django.views.decorators.http import require_POST
 
 from .models import Checkout
 from guests.models import Guest
-# from .forms import CheckoutForm, GuestForm
 from .forms import CheckoutForm
 
 import stripe
@@ -14,8 +13,8 @@ import stripe
 
 @require_POST
 def cache_checkout_data(request):
-    # request.session['']
-    # Taken from CI Stripe Part 14 and modified for site data
+    """ cache data for Stripe intent """
+    # Taken from CI Stripe Part 14 and modified to use site data
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -24,7 +23,6 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
-        # print('line 28', gift_amount, amount, save_info, username)
         return HttpResponse(status=200)
     except Exception as e:
         print(e)
@@ -34,14 +32,21 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """ Process a gift donation payment """
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
 
+        # save fields to be used outside checkout.html template
+        gift_amount = request.session['gift_amount']
+        group_id = request.POST['group_id']
+        email = request.POST['email']
+
         # Get the billing details from the template
         guest_data = {
-            # 'group_id': request.POST['group_id'],
+            'group_id': request.POST['group_id'],
             'first_name': request.POST['first_name'],
             'last_name': request.POST['last_name'],
             'address_line_1': request.POST['address_line_1'],
@@ -53,44 +58,33 @@ def checkout(request):
             'email': request.POST['email'],
         }
 
+        # instantiate form data 
         form = CheckoutForm(guest_data)
-        gift_amount = request.session['gift_amount']
 
         if form.is_valid():
-            objs = []
-            # Create Checkout model
-            objs.append(
-                Checkout(
-                    gift_amount=gift_amount
-                    # group_id=form['group_id']
-                )
-            )
-            # checkout.save()
+            # Create new checkout object
+            checkout = Checkout(group_id=group_id, gift_amount=gift_amount)
+            checkout.save()
 
             # pick up records from Guest model
             guests = Guest.objects.filter(group_id=request.user)
-            # check if form first & last name match any guest record
-            for g_num in guests:
-                print("line 68, form['first_name']", form['first_name'])
-                print("line 69, gnum.first_name", g_num.first_name)
-                print("line 70, form['last_name']", form['last_name'])
-                print("line 71, gnum.last_name", g_num.last_name)
-                print("line 72, form['email']", form['email'])
-                print("line 73, g_num.email", g_num.email)
 
-                # Check email address matches
-                if (form['first_name'] == g_num.first_name) and (
-                        form['last_name'] == g_num.last_name):
-                    # Update Guest model
-                    g_num.email = form['email']
-                    email = g_num.email
-                g_num.gift_chosen = True
-                g_num.gift_name = 'Money'
-                print(type(g_num.gift_value), type(gift_amount))
-                g_num.gift_value += int(gift_amount)
-                g_num.save()
+            # check if payment is by a guest, update guest's email, add gift details
+            for guest in guests:
+
+                # is payment by a guest
+                if (form['first_name'] == guest.first_name) and (
+                        form['last_name'] == guest.last_name):
+                    # Update Guest email
+                    guest.email = form['email']
+                # update all guests in group
+                guest.gift_chosen = True
+                guest.gift_name = 'Money'
+                guest.gift_value += int(gift_amount)
+                guest.save()
+
             # Stripe setup
-            amount = float(gift_amount)
+            amount = float(gift_amount)         # convert string to decimal
             stripe_total = round(amount * 100)
             stripe.api_key = stripe_secret_key
             intent = stripe.PaymentIntent.create(
@@ -98,14 +92,9 @@ def checkout(request):
                 currency=settings.STRIPE_CURRENCY,
             )
             request.session['save_info'] = 'save-info' in request.POST
-            email = form['email']
-            # if not email:
-            #     messages.error(
-            #         request, ('There was an error with your form. '
-            #                   'Please double check your information.'))
-            # else:
-            donation_number = Checkout.objects.latest('date')
-            print('line 105 donation_number', donation_number)
+
+            # get most recent donation number 
+            donation_number = Checkout.objects.latest('group_id')
             return redirect(reverse(
                 'checkout_success',
                 args=[donation_number, email]))
@@ -113,6 +102,7 @@ def checkout(request):
             messages.error(request, ('There was an error with your form. '
                                      'Please double check your information.'))
     else:
+        # Load template with lead guest details
         guests = Guest.objects.filter(group_id=request.user)
         guest = ''
         for g in guests:
@@ -121,20 +111,21 @@ def checkout(request):
 
         form = CheckoutForm(instance=guest)           # contains guest details
         gift_amount = request.session['gift_amount']  # from session (contexts)
-        amount = float(gift_amount)
+        amount = float(gift_amount)                   # convert string to decimal
         stripe_total = round(amount * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        print('amount ', amount, 'gift_amount ', gift_amount)
+
     if not stripe_public_key:
         messages.warning(
             request, 'Stripe public key is missing from your environment.')
-
+    group_id = guest
     template = 'checkout/checkout.html'
     context = {
+        'group_id': group_id,
         'guest': guest,
         'form': form,
         'stripe_public_key': stripe_public_key,
@@ -158,7 +149,6 @@ def checkout_success(request, donation_number, email):
     context = {
         'email': email,
         'checkout': checkout,
-        # 'form': form,
 
     }
 
