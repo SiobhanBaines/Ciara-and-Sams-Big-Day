@@ -7,6 +7,7 @@ from django.views.decorators.http import require_POST
 from .models import Checkout
 from guests.models import Guest
 from .forms import CheckoutForm
+from gifts.contexts import gift_amount
 
 import stripe
 
@@ -37,10 +38,17 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    amount = request.session.get('gift_amount', {})
+    if not amount:
+        gift_amount = 0
+    else:
+        gift_amount = amount
+
+
     if request.method == 'POST':
 
         # save fields to be used outside checkout.html template
-        gift_amount = request.session['gift_amount']
+        # gift_amount = request.session['gift_amount']
         group_id = request.POST['group_id']
         email = request.POST['email']
 
@@ -111,7 +119,7 @@ def checkout(request):
                 guest = g
 
         form = CheckoutForm(instance=guest)           # contains guest details
-        gift_amount = request.session['gift_amount']  # from session (contexts)
+        # gift_amount = request.session['gift_amount']  # from session (contexts)
         amount = float(gift_amount)                   # convert string to decimal
         stripe_total = round(amount * 100)
         stripe.api_key = stripe_secret_key
@@ -120,9 +128,12 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        print('line 131 intent', intent)
+
     if not stripe_public_key:
         messages.warning(
             request, 'Stripe public key is missing from your environment.')
+            
     group_id = guest
     template = 'checkout/checkout.html'
     context = {
