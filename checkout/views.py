@@ -7,10 +7,11 @@ from django.views.decorators.http import require_POST
 from .models import Checkout
 from guests.models import Guest
 from .forms import CheckoutForm
-# from gifts.contexts import gift_amount
+from decimal import Decimal
+from gifts.contexts import gift_amount
 
 import stripe
-
+import json
 
 @require_POST
 def cache_checkout_data(request):
@@ -19,9 +20,10 @@ def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
+        print('gift_amount', json.dumps(request.session.get('gift_amount', {})))
         stripe.PaymentIntent.modify(pid, metadata={
-            'amount': request.POST.get('gift_amount'),
-            'save_info': request.POST.get('save_info'),
+            'gift_amount': json.dumps(request.session.get('gift_amount', {})),
+            # 'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
         return HttpResponse(status=200)
@@ -81,7 +83,7 @@ def checkout(request):
                 # update all guests in group
                 guest.gift_chosen = True
                 guest.gift_name = 'Money'
-                guest.gift_value += int(gift_amount)
+                guest.gift_value += Decimal(gift_amount)
                 guest.save()
 
             # Stripe setup
@@ -92,7 +94,7 @@ def checkout(request):
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
             )
-            request.session['save_info'] = 'save-info' in request.POST
+            # request.session['save_info'] = 'save-info' in request.POST
 
             # get most recent donation number
             # donation_number = Checkout.objects.latest('group_id')
