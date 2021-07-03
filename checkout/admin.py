@@ -6,7 +6,7 @@ class CheckoutAdmin(admin.ModelAdmin):
 
     readonly_fields = ('donation_number', 'date',)
 
-    fields = ('donation_number', 'group_id', 'date', 'gift_amount',)
+    fields = ('donation_number', 'group_id', 'date', 'gift_amount', 'stripe_pid')
 
     list_display = ('donation_number', 'group_id', 'date', 'gift_amount',)
 

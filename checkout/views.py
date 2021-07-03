@@ -13,6 +13,7 @@ from gifts.contexts import gift_amount
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     """ cache data for Stripe intent """
@@ -65,6 +66,8 @@ def checkout(request):
         form = CheckoutForm(guest_data)
 
         if form.is_valid():
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            stripe_pid = pid
             # Create new checkout object
             checkout = Checkout(group_id=group_id, gift_amount=gift_amount)
             checkout.save()
