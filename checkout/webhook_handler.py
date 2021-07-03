@@ -1,4 +1,3 @@
-# Taken from CI Stripe Part 10 & 11 & 14
 from django.http import HttpResponse
 
 
@@ -10,7 +9,7 @@ class StripeWH_Handler:
 
     def handle_event(self, event):
         """
-        Handle a generic/unknown/unexpected webhook event
+        Handle a generic, unknown or unexpected webhook event
         """
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
@@ -18,20 +17,16 @@ class StripeWH_Handler:
 
     def handle_payment_intent_succeeded(self, event):
         """
-        Handle the payment_intent.succeeded webhook from Stripe
+        Handle the payment_intent.succeeded webhook
         """
-        print('line 24', 'succeeded', event)
-        intent = event.data.object
-        print('webhooks line 26',  intent)
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
 
-    def handle_payment_intent_payment_failed(self, event):
+    def handle_payment_intent_failed(self, event):
         """
-        Handle the payment_intent.payment_failed webhook from Stripe
+        Handle the payment_intent.failed webhook
         """
-        print('line 35', 'failed', event)
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)

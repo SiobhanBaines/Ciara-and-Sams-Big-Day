@@ -7,7 +7,7 @@ from django.views.decorators.http import require_POST
 from .models import Checkout
 from guests.models import Guest
 from .forms import CheckoutForm
-from gifts.contexts import gift_amount
+# from gifts.contexts import gift_amount
 
 import stripe
 
@@ -38,15 +38,8 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    amount = request.session.get('gift_amount', {})
-    if not amount:
-        gift_amount = 0
-    else:
-        gift_amount = amount
-
-
     if request.method == 'POST':
-
+        gift_amount = request.session.get('gift_amount', {})
         # save fields to be used outside checkout.html template
         # gift_amount = request.session['gift_amount']
         group_id = request.POST['group_id']
@@ -102,8 +95,9 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
 
             # get most recent donation number
-            donation_number = Checkout.objects.latest('group_id')
-
+            # donation_number = Checkout.objects.latest('group_id')
+            donation_number = Checkout.objects.filter(group_id=group_id).last()
+            print('line 100 donation ', donation_number)
             return redirect(reverse(
                 'checkout_success',
                 args=[donation_number, email]))
@@ -111,6 +105,10 @@ def checkout(request):
             messages.error(request, ('There was an error with your form. '
                                      'Please double check your information.'))
     else:
+        gift_amount = request.session.get('gift_amount', {})
+        if not gift_amount:
+            gift_amount = 0
+
         # Load template with lead guest details
         guests = Guest.objects.filter(group_id=request.user)
         guest = ''
@@ -133,7 +131,7 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(
             request, 'Stripe public key is missing from your environment.')
-            
+
     group_id = guest
     template = 'checkout/checkout.html'
     context = {
