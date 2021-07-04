@@ -9,6 +9,8 @@ from .models import Gift
 # from django.contrib.auth.models import User, Group
 from .forms import GiftForm
 
+from guests.models import Guest
+
 import io
 import csv
 
@@ -62,13 +64,53 @@ def gifts(request):
 @login_required
 def gift_detail(request, gift_id):
     """ View individual Gift details """
-    print(gift_id)
-    gift = get_object_or_404(Gift, pk=gift_id)
-    context = {
-        'gift': gift,
-    }
-    return render(request, 'gifts/gift_detail.html', context)
 
+    if request.method == 'POST':
+        # Get status of selected checkbox
+        selected = request.POST.get('selected')
+
+        if selected == 'on':
+            # If selected update gift and guest models to be selected
+            user = request.user
+            gift = get_object_or_404(Gift, pk=gift_id)
+            gift.selected = True
+            gift.group_id = str(user)
+            gift.save()
+
+            guests = Guest.objects.filter(group_id=user)
+            for guest in guests:
+                # update all guests in group
+                guest.gift_chosen = True
+                guest.gift_name = gift.name
+                guest.gift_value = gift.price
+                guest.save()
+
+        else:
+            # If not selected clear the gift selection if gift and guest models
+            gift = get_object_or_404(Gift, pk=gift_id)
+            gift.selected = False
+            gift.group_id = ''
+            gift.save()
+
+            guests = Guest.objects.filter(group_id=user)
+
+            for guest in guests:
+                guest.gift_chosen = False
+                guest.gift_name = ''
+                guest.gift_value = 0
+                guest.save()
+
+    else:
+        gift = get_object_or_404(Gift, pk=gift_id)
+        form = GiftForm(instance=gift)
+
+        context = {
+            'gift': gift,
+            'form': form,
+        }
+        return render(request, 'gifts/gift_detail.html', context)
+
+    return redirect(reverse('gifts'))
 
 @login_required
 def add_gift(request):

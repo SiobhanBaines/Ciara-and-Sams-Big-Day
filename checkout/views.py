@@ -8,7 +8,6 @@ from .models import Checkout
 from guests.models import Guest
 from .forms import CheckoutForm
 from decimal import Decimal
-from gifts.contexts import gift_amount
 
 import stripe
 import json
@@ -65,7 +64,11 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             stripe_pid = pid
             # Create new checkout object
-            checkout = Checkout(group_id=group_id, gift_amount=gift_amount)
+            checkout = Checkout(
+                group_id=group_id,
+                gift_amount=gift_amount,
+                stripe_pid=stripe_pid,
+                )
             checkout.save()
 
             # pick up records from Guest model
@@ -114,8 +117,8 @@ def checkout(request):
             if guest == '':
                 guest = g
 
-        form = CheckoutForm(instance=guest)           # contains guest details
-        amount = float(gift_amount)                   # convert string to decimal
+        form = CheckoutForm(instance=guest)       # contains guest details
+        amount = float(gift_amount)               # convert string to decimal
         stripe_total = round(amount * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(

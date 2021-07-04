@@ -1,3 +1,4 @@
+# Followed the CI stripe videos to create this file and modified to work with this site
 from django.http import HttpResponse
 from .models import Checkout
 from guests.models import Guest
@@ -29,7 +30,6 @@ class StripeWH_Handler:
         gift_amount = round(intent.amount / 100, 2)
 
         group_id = intent.metadata.username
-        billing_details = intent.charges.data[0].billing_details
 
         checkout_exists = False
         attempt = 1

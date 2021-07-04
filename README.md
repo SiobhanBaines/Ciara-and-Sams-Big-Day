@@ -342,7 +342,12 @@ Bugs of this site can be found [here](bugs.md) in a seperate file
 
 ## **Credits**
 ### Toast
-I took the Toast set-up from the Boutique Ado project. Partly becuase 
+I took the Toast set-up from the Boutique Ado project mainly because there isn't much that could be done differently. I got some help from Sharonb (a CI student) to get them to work because Bootstrap 5 works differently to Bootsdtrap 4.
+Bootstrap 5 JavaScript `var toastElList = [].slice.call(document.querySelectorAll('.toast')); var toastList = toastElList.map(function (toastEl) { return new bootstrap.Toast(toastEl).show(); });`
+Bootstrap 4 JavaScript `$('.toast').toast('show');`
+
+### Stripe
+I took the Stripe set-up from the CI Boutique Ado project and modified the Webhooks Handler and JavaScript files to work with the objects needed for this site and the wedding gift donations. 
 
 ### Images
 The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". 
@@ -360,4 +365,4 @@ Scott and Jo @ CI Tutor support for helping me to load the users into django. I 
 
 Simen - my mentor @ CI for his ideas, inspiration and patience. 
 
-
+Jo, Igor, Alan & John @ CI Tutors for their support in getting Stripe working again. 

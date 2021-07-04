@@ -53,28 +53,27 @@
                             </div>
                         </div>
                     {% else %}
+                    <form id="select-form" class="col s12" method="POST" action="{% url 'gift_detail' gift.id %}">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-9 mb-2">
-                                <!-- <p class="pr-5">If you wish to buy this gift, please let us know by clicking the button. This will stop anyone else buying the same gift. </p> -->
-                                <label class="form-check-label" for="id-save-info">Select your intention to purchase this gift.</label>
-                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info"
-                                    checked>
+                                <label class="form-check-label" for="id-save-info">If you intend to buy this gift please click the checkbox. This will stop other guests buying the same gift.</label>
+                                <input class="form-check-input mx-auto" type="checkbox" id="selected" name="selected">
                             </div>
                         </div>
+                    </form>
                         <div class="row">
                             <div class="col-9 mb-2">
-                                <p class="pr-5">To buy this gift please go to the website by clicking this button.</p>
-                            </div>
-                            <div class="col-3 mb-2">
-                                <a class="btn buy-btn" href="{{ gift.supplier_url }}">Buy Here</a>
+                                <p class="pr-5">For your convenience we have provided a supplier of this gift <a class=" " href="{{ gift.supplier_url }}">here</a> but you do not have to buy it from this supplier.</p>
                             </div>
                         </div>
                     {% endif %}
+                        <p class="pr-5">The shown price is only a guide.</p> 
                         <p class="lead mb-0 text-left font-weight-bold">£{{ gift.price }}</p>
                     
                     {% if request.user.is_staff or request.user.is_superuser %}
                         {% if gift.selected %}
-                            <p class="lead mb-0 text-left font-weight-bold">Guest Name</p>
+                            <p class="lead mb-0 text-left font-weight-bold">{{ gift.group_id }}</p>
                         {% else %}
                             <p class="lead mb-0 text-left font-weight-bold">Available</p>
                         {% endif %}
@@ -97,6 +96,14 @@
     </div>
 </div>
 {% endblock %}
+
 {% block postloadjs %}
 {{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#selected').click(function(){
+        $('#select-form').submit();
+        });
+    });
+</script>
 {% endblock %}

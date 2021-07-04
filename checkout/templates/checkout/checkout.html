@@ -30,29 +30,18 @@
             <p class="text-muted">Please fill out the form below</p>
             <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="form md-2">
                 {% csrf_token %}
+                <!-- group_id and client_secret are hidden fields needed for the checkout process -->
                 <input type="hidden" id="group_id" name="group_id" value="{{ group_id }}">
                 <input type="hidden" id="client_secret" name="client_secret" value="{{ client_secret }}">
                 <fieldset class="rounded px-3 mb-3">
                     <legend class="fieldset-label small text-black px-2">Gift Amount</legend>
                     <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}"  type="text">
-                    <!-- <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}" pattern="^\d*(\.\d{0,2})?" type="text"> -->
                 </fieldset>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2">Billing Details</legend>
                     {% for field in form %}
                         {{ field | as_crispy_field }}
                     {% endfor %}
-
-                    <!-- <div class="form-check form-check-inline float-right mr-0">
-                        {% if user.is_authenticated %}
-                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-                        {% else %}
-                            <label class="form-check-label" for="id-save-info">
-                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                            </label>
-                        {% endif %}
-                    </div> -->
                 </fieldset>
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>

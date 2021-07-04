@@ -1,5 +1,6 @@
 from django import forms
 from .models import Gift
+from guests.models import Guest
 
 
 class GiftForm(forms.ModelForm):
@@ -14,4 +15,5 @@ class GiftForm(forms.ModelForm):
             'price',
             'image_url',
             'image',
+            'group_id',
         )

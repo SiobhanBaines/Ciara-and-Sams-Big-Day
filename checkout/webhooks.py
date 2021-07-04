@@ -1,3 +1,4 @@
+# Followed the CI stripe videos to create this file.
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
@@ -14,7 +15,7 @@ def webhook(request):
     """Listen for webhooks from Stripe """
     # Setup variables
     wh_secret = settings.STRIPE_WH_SECRET
-    stripe_api_key = settings.STRIPE_SECRET_KEY
+    # stripe_api_key = settings.STRIPE_SECRET_KEY
 
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
