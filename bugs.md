@@ -13,7 +13,7 @@ Although Stripe is now working, it is not clear exactly what the issue was. It a
 
 # Gift amount showing twice in checkout model
 Once all the stripe issues were fixed I decided to run some more tests to clean up the code which showed I was creating the wedding gift donation twice in the checkout model.
-[!image](images/bugs/gift_checkout_double.png)[first checkout object without pid](images/bugs/checkout_no_pid.png), [second checkout object with pid](images/bugs/checkout_with_pid.png)
+![image](images/bugs/gift_checkout_double.png)[first checkout object without pid](images/bugs/checkout_no_pid.png), [second checkout object with pid](images/bugs/checkout_with_pid.png)
 This has happened because the first time the object is created it is not creating a stripe pid in the object.
-After adding stripe_pid to `checkout = Checkout(group_id=group_id, gift_amount=gift_amount, stripe_pid=stripe_pid)` there is only one checkout object [!image](images/bugs/checkout_one_object.png), [detail of checkout object](images/bugs/checkout_one_object_with_pid.png)
+After adding stripe_pid to `checkout = Checkout(group_id=group_id, gift_amount=gift_amount, stripe_pid=stripe_pid)` there is only one checkout object ![image](images/bugs/checkout_one_object.png), [detail of checkout object](images/bugs/checkout_one_object_with_pid.png)
 
