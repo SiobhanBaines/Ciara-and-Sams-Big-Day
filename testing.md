@@ -6,6 +6,7 @@ Due to the image on the landing page the navigation bar was not easily visible o
 ## User Story Testing
 #### Bride or Groom:  
 **As a user I want to register an account with administration access.**
+When a user chooses to register on the site by clicking the 'bride and groom registration' link in the footer they are presented with the registration screen ![image](images/user-story-images/register.png). Once registered the user will need to log in. Behind the scenes the user is created with `is_staff` authority. [admin view of bride or groom user settings](images/user-story-images/siobhanbaines _ is_staff_user.pdf) 
 **As a user I want to be able to log into the website.**
 When a user clicks the login navigation option they are presented with the login screen. ![image](images/user-story-images/log-in.png) which takes them to the main menu for the bride and groom ![image](images/user-story-images/bride-groom-nav-dropdown.png)
 **As a user I want to be able to create a list of all the wedding guests.**
@@ -21,8 +22,8 @@ When a user clicks the login navigation option they are presented with the login
 **As a user I want to know who as given a donation so I can thank them after the event.**
 **As a user I want to have the ability to stop any Covid19 restrictions being displayed if the restrictions are lifted.**
 #### Wedding Guest
-**As a user I want to register an account.**
 **As a user I want to be able to log into the website.**
+When a user clicks the login navigation option they are presented with the login screen. ![image](images/user-story-images/log-in.png) which takes them to the rsvp menu for the guest ![image](***)
 **As a user I want to provide my name and contact details.**
 **As a user I want to accept the wedding invitation.**
 **As a user I want to decline the wedding invitation.**
