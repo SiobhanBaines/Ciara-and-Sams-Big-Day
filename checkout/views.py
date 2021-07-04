@@ -21,15 +21,12 @@ def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        print('gift_amount', json.dumps(request.session.get('gift_amount', {})))
         stripe.PaymentIntent.modify(pid, metadata={
             'gift_amount': json.dumps(request.session.get('gift_amount', {})),
-            # 'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
         return HttpResponse(status=200)
     except Exception as e:
-        print(e)
         messages.error(request, 'Sorry, you payment cannot be \
             processed at the moment. Please try later.')
         return HttpResponse(content=e, status=400)
@@ -44,7 +41,6 @@ def checkout(request):
     if request.method == 'POST':
         gift_amount = request.session.get('gift_amount', {})
         # save fields to be used outside checkout.html template
-        # gift_amount = request.session['gift_amount']
         group_id = request.POST['group_id']
         email = request.POST['email']
 
@@ -97,12 +93,9 @@ def checkout(request):
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
             )
-            # request.session['save_info'] = 'save-info' in request.POST
 
             # get most recent donation number
-            # donation_number = Checkout.objects.latest('group_id')
             donation_number = Checkout.objects.filter(group_id=group_id).last()
-            print('line 100 donation ', donation_number)
             return redirect(reverse(
                 'checkout_success',
                 args=[donation_number, email]))
@@ -122,7 +115,6 @@ def checkout(request):
                 guest = g
 
         form = CheckoutForm(instance=guest)           # contains guest details
-        # gift_amount = request.session['gift_amount']  # from session (contexts)
         amount = float(gift_amount)                   # convert string to decimal
         stripe_total = round(amount * 100)
         stripe.api_key = stripe_secret_key
@@ -130,8 +122,6 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-        print('line 131 intent', intent)
 
     if not stripe_public_key:
         messages.warning(

@@ -27,9 +27,7 @@ var style = {
         iconColor: '#dc3545'
     }
 };
-var card = elements.create('card', {
-    style: style
-});
+var card = elements.create('card', { style: style });
 card.mount('#card-element');
 
 // Handle realtime validation errors on the card element
@@ -105,7 +103,6 @@ form.addEventListener('submit', function (ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    print("result.paymentIntent.status === 'succeeded'")
                     form.submit();
                 }
             }
