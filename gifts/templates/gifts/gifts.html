@@ -83,14 +83,15 @@
                             </div>
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
-                                    <div class="col">     
-                                        <!--  Only allow superuser or staff to edit or delete -->
-                                        {% if request.user.is_staff or request.user.is_superuser %}
-                                            <small class="ml-3">
+                                    <div class="col"> 
+                                        <small class="ml-3">
+                                            <a class="text-success" href="{% url 'gift_detail' gift.id %}">View</a>     
+                                            <!--  Only allow superuser or staff to edit or delete -->
+                                            {% if request.user.is_staff or request.user.is_superuser %}| 
                                                 <a href="{% url 'edit_gift' gift.id %}">Edit</a> | 
                                                 <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
-                                            </small>
-                                        {% endif %}
+                                            {% endif %}
+                                        </small>
                                     </div>
                                 </div>
                             </div>
