@@ -5,28 +5,44 @@ from django.contrib.auth import login
 from django.contrib import messages
 from guests.models import Guest
 from django.contrib.auth.models import User, Group
-# from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     """ View to return the index page """
-    return render(request, 'home/index.html')
+
+    if not request.user.is_superuser or not request.user.is_staff:
+        guests = Guest.objects.filter(group_id=request.user)
+        guest_names = [guest.first_name for guest in guests]
+        guest_name = ", ".join(guest_names)
+    else:
+        guest_name = ''
+
+    template = 'home/index.html'
+    context = {
+        'guest_name': guest_name,
+    }
+
+    return render(request, template, context)
 
 
 def register_request(request):
     """ Set new user to staff on registration """
-    # Code originally created by Jaysha of Ordinary Coders with the addition of the 'is_staff' object.
+    # Code originally created by Jaysha of Ordinary Coders
+    # with the addition of the 'is_staff' object.
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             user.is_staff = True
             user.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(
+                request, user,
+                backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, "Registration successful.")
             return redirect("home")
 
-        messages.error(request, "Unsuccessful registration. Invalid information.")
+        messages.error(
+            request, "Unsuccessful registration. Invalid information.")
 
     form = NewUserForm
     template = 'home/register.html'
@@ -45,7 +61,8 @@ def rsvp(request):
     if request.method == 'POST':
         # convert form to dict
         form = dict(request.POST)
-        # loop through form to get details of each guest in the invitation group
+        # loop through form to get details of
+        # each guest in the invitation group
         for num in range(len(form['id'])):
 
             guest_id = form['id'][num]
@@ -53,7 +70,8 @@ def rsvp(request):
             guest.group_id = form['group_id'][num]
             guest.accepted = form['rsvp_response'][num]
             guest.save()
-            # If a guest accepts, this needs to be saved for adding the user group later
+            # If a guest accepts, this needs to be saved
+            # for adding the user group later
             if guest.accepted == 'Accept':
                 response = 'accepted'
             elif guest.accepted == 'Decline':

@@ -14,3 +14,7 @@ html, body {
   width: 100%;
   background-color: rgba(250, 250, 250, 0.5);
 }
+
+a:link {
+  text-decoration: none;
+}

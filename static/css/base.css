@@ -12,8 +12,8 @@ html, body {
     text-shadow: 1px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
 }
 .banner {
-    font-family: 'Lovers Quarrel', cursive;
-    font-size: calc(2rem + 8.3vw);
+    /* font-family: 'Lovers Quarrel', cursive;
+    font-size: calc(2rem + 8.3vw); */
 }
 
 .rsvp {
@@ -21,11 +21,14 @@ html, body {
     transform: rotate(6.5deg);
 }
 
-h2, h3, h4, h5 {
+h1, h2, h3, h4, h5 {
     font-family: 'Italianno', cursive;
 }
+h1 {
+    font-size: calc(3.5rem + 4.3vw);
+}
 h2 {
-    font-size: calc(2rem + 2.3vw);
+    font-size: calc(2.5rem + 1.8vw);
 }
 h3 {  
     font-size: calc(1.5rem + 1.3vw) !important;
