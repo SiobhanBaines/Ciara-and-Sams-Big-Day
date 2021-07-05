@@ -191,5 +191,6 @@ def delete_guest(request, guest_id):
 
     guest = get_object_or_404(Guest, pk=guest_id)
     guest.delete()
-    messages.success(request, 'Guest deleted')
+    messages.success(
+        request, 'Guest {guest.first_name} {guest.last_name} deleted')
     return redirect(reverse('guests'))
