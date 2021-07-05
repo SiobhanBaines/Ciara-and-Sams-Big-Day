@@ -196,6 +196,23 @@ footer li {
 .toast-capper {
     height: 2px;
 }
+/* Gift image  */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
 
 /* -------------------------------- Media Queries */
 
@@ -204,7 +221,6 @@ footer li {
     .container {
         max-width: 80%;
     }
-
     body {
         background-size: 100%;
     }
@@ -228,7 +244,12 @@ footer li {
         padding-top: 70px;
         padding-left: 70px;
     }
-
+    .image-container {
+        margin-left: 5rem;
+    }
+    .img-thumbnail {
+        max-width: 350px;
+    }
 }
 
 /* Small screens  */

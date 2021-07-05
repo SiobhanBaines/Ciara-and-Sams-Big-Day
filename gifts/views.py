@@ -1,18 +1,16 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-# from django.views import View
 from django.http import HttpResponse
-# from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Gift
-# from django.contrib.auth.models import User, Group
 from .forms import GiftForm
 
 from guests.models import Guest
 
 import io
 import csv
+import os
 
 
 @login_required
@@ -43,7 +41,6 @@ def gifts(request):
                 )
             try:
                 msg = Gift.objects.bulk_create(objs)
-                # returnmsg = {"status_code": 200}
                 messages.success(request, 'Imported successfully')
             except Exception as e:
                 messages.error(request, 'Error While Importing Data: ', e)
@@ -112,6 +109,7 @@ def gift_detail(request, gift_id):
 
     return redirect(reverse('gifts'))
 
+
 @login_required
 def add_gift(request):
     """ Add Gift to Gift list """
@@ -133,7 +131,9 @@ def add_gift(request):
             messages.success(request, 'Successfully added a new Gift')
             return redirect(reverse('gift_detail', args=[gift.id]))
         else:
-            messages.error(request, 'Failed to add gift. Please check the information is valid')
+            messages.error(
+                request, 'Failed to add gift. \
+                    Please check the information is valid')
     else:
         form = GiftForm()
 
@@ -163,7 +163,9 @@ def edit_gift(request, gift_id):
             messages.success(request, 'Successfully updated the Gift')
             return redirect(reverse('gift_detail', args=[gift.id]))
         else:
-            messages.error(request, 'Failed to add Gift. Please check the information is valid')
+            messages.error(
+                request, 'Failed to add Gift. \
+                    Please check the information is valid')
     else:
         form = GiftForm(instance=gift)
         messages.info(
@@ -187,8 +189,12 @@ def delete_gift(request, gift_id):
 
     gift = get_object_or_404(Gift, pk=gift_id)
 
-    Gift.delete()
-    messages.success(request, 'Gift deleted')
+    image_file = 'media/' + str(gift.image)
+    if os.path.exists(image_file):
+        os.remove(image_file)
+
+    gift.delete()
+    messages.success(request, f'Gift {gift.name} deleted')
     return redirect(reverse('gifts'))
 
 

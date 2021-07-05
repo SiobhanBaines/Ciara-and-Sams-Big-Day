@@ -30,11 +30,11 @@
                     <div class="image-container">
                         {% if gift.image %}
                         <a href="/media/{{ gift.image }}" target="_blank">
-                            <img class="card-img-top img-fluid" src="/media/{{ gift.image }}" alt="{{ gift.name }}">
+                            <img class="card-img-top img-fluid img-thumbnail " src="/media/{{ gift.image }}" alt="{{ gift.name }}">
                         </a>
                         {% else %}
                         <a href="">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
+                            <img class="card-img-top img-fluid img-thumbnail " src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
                         </a>
                         {% endif %}
                     </div>
