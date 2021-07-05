@@ -52,7 +52,9 @@ The Guest List maintenance screen shows whether or not the guest has made their 
 When a user clicks the login navigation option they are presented with the login screen. ![image](user_story_docs/log-in.png) which changes the menu adding the option to RSVP ![image](user_story_docs/rsvp_menu.png), which tkaes the user to the [rsvp menu](user_story_docs/rsvp_page.docx) so that they can accept or decline the invitation.
 16. **As a user I want to provide my name and contact details.**
 17. **As a user I want to accept the wedding invitation.**
+When a user has successfully logged in they can accept the invitation and leave a message to the bride and groom if they wish to. Once they have accepted they will be taken back to the home page and a new menu will appear.![image](user_story_docs/accepted_home.png)
 18. **As a user I want to decline the wedding invitation.**
+When a user has successfully logged in they can decline the invitation and leave a message to the bride and groom if they wish to. Once they have accepted they will be taken back to the home page and a new menu will appear.![image](user_story_docs/declined_home.png). Even though a guest has declined the invitation they may still wish to buy a gift for the bride and groom. 
 19. **As a user I want to provide details of all members of my party.**
 20. **As a user I want to menu selections for all members of my party.**
 21. **As a user I want to provide details of any specific dietry requirements.**

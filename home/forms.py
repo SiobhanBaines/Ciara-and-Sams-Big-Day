@@ -38,16 +38,3 @@ class RSVPForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-
-class HomeForm(forms.Form):
-    # RSVP form to allow guests to accept or decline the invitation
-
-    class Meta:
-        model = Guest
-        fields = (
-            "first_name",
-        )
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
