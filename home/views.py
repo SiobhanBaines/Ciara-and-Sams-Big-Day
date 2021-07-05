@@ -69,6 +69,8 @@ def rsvp(request):
             guest = get_object_or_404(Guest, id=guest_id)
             guest.group_id = form['group_id'][num]
             guest.accepted = form['rsvp_response'][num]
+            guest.message = form['message']
+            print(form['message'])
             guest.save()
             # If a guest accepts, this needs to be saved
             # for adding the user group later
@@ -85,6 +87,7 @@ def rsvp(request):
             user = get_object_or_404(User, username=guest.group_id)
             # Add the group to the user
             user.groups.add(group)
+
         return redirect("home")
 
     form = RSVPForm
