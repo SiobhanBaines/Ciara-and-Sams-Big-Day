@@ -227,7 +227,14 @@ p.venue-address {
     justify-content: center;
     margin-left: 0;
 }
-
+/* maps */
+/* Set the size of the div element that contains the map */
+/* div#map {min-height: 360px;} */
+#map {
+    z-index: 9999;
+    height: 400px;
+    width: 100%;
+  }
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
