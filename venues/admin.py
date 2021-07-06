@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Venue
 
 
-class VenuetAdmin(admin.ModelAdmin):
+class VenueAdmin(admin.ModelAdmin):
     list_display = (
         'type',
         'name',
