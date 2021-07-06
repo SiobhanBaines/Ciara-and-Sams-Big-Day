@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_extras %}
+
+{% block page-header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <small>
+                <h3 class="text-center cursive-text-color">Venue</h3>
+            </small>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <!-- <hr> -->
+            <small>
+                <h3 class="text-center cursive-text-color">When: 3 August 2023 at 14:00</h3>
+            </small>
+            <!-- <hr> -->
+        </div>
+    </div>
+    {% if request.user.is_staff or request.user.is_superuser %}
+    <!-- Add an individual venue record -->
+    <div class="row justify-content-center">
+        <div class="col-auto mx-2 pb-2">
+            <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_venue' %}"></i>Add A New
+                    venue</a></small>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <!-- List of venues -->
+        {% for venue in venues %}
+            <div class="col-sm-12 col-md-6">
+                <div class="card h-100 border-0">
+                    <p class="text-center cursive-text-color"> {{ venue.name }}</p>
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="col-sm-12 col-md-6 pl-3">
+                                {{ venue.address_line_1 }}
+                                {{ venue.address_line_2 }}
+                                {{ venue.city }}
+                                {{ venue.county }}
+                                {{ venue.postcode }}
+                                {{ venue.email }}
+                                {{ venue.phone_number }}
+                            </div>
+                            <div class="col-sm-12 col-md-6 pr-2">
+                                {% if gift.image %}
+                                <a href="{{ venue.venue_url }}">
+                                    <img class="card-img-right img-fluid img-thumbnail" src="/media/{{ venue.image }}"
+                                        alt="{{ venue.name }}">
+                                </a>
+                                {% else %}
+                                <a href="{{ venue.venue_url }}">
+                                    <img class="card-img-right img-fluid img-thumbnail" src="{{ MEDIA_URL }}noimage.png"
+                                        alt="{{ venue.name }}">
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm12">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}

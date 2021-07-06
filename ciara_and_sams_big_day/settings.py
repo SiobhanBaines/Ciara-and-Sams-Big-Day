@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'custom_user',
     'gifts',
     'checkout',
-    # 'gift_amount',
+    'venues',
 
     # other
     'crispy_forms',
