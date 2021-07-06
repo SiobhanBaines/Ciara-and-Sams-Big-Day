@@ -46,33 +46,35 @@
             <div class="col-sm-12 col-md-6">
                 <div class="card h-100 border-0">
                     <p class="text-center cursive-text-color"> {{ venue.name }}</p>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="card-body">
-                            <div class="col-sm-12 col-md-6 pl-3">
-                                {{ venue.address_line_1 }}
-                                {{ venue.address_line_2 }}
-                                {{ venue.city }}
-                                {{ venue.county }}
-                                {{ venue.postcode }}
-                                {{ venue.email }}
-                                {{ venue.phone_number }}
+                            <div class="col mb-2">
+                                <p class="venue-address">{{ venue.address_line_1 }}</p>
+                                <p class="venue-address">{{ venue.address_line_2 }}</p>
+                                <p class="venue-address">{{ venue.city }}</p>
+                                <p class="venue-address">{{ venue.county }}</p>
+                                <p class="venue-address">{{ venue.postcode }}</p>
+                                <p class="venue-address mt-2">{{ venue.email }}</p>
+                                <p class="venue-address">{{ venue.phone_number }}</p>
                             </div>
-                            <div class="col-sm-12 col-md-6 pr-2">
-                                {% if gift.image %}
+                            <div class="col">
+                                <div class="image-container venue">
+                                {% if venue.image %}
                                 <a href="{{ venue.venue_url }}">
-                                    <img class="card-img-right img-fluid img-thumbnail" src="/media/{{ venue.image }}"
+                                    <img class="card-img-bottom img-fluid img-thumbnail" src="/media/{{ venue.image }}"
                                         alt="{{ venue.name }}">
                                 </a>
                                 {% else %}
                                 <a href="{{ venue.venue_url }}">
-                                    <img class="card-img-right img-fluid img-thumbnail" src="{{ MEDIA_URL }}noimage.png"
+                                    <img class="card-img-bottom img-fluid img-thumbnail" src="{{ MEDIA_URL }}noimage.png"
                                         alt="{{ venue.name }}">
                                 </a>
                                 {% endif %}
+                                </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm12">
+                            <div class="col">
 
                             </div>
                         </div>

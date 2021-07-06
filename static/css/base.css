@@ -219,7 +219,14 @@ footer li {
     cursor: pointer;
 }
 
-
+p.venue-address {
+    margin-bottom: 0rem;
+    margin-left: 5rem;
+}
+.image-container.venue {
+    justify-content: center;
+    margin-left: 0;
+}
 
 /* -------------------------------- Media Queries */
 
