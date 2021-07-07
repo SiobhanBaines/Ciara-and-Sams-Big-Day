@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page-header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- Facility to upload a csv file containing the schedule of events -->
+            <div class="card upload mx-auto mb-2">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data" class="form-border">
+                        {% csrf_token %}
+                        <label for="schedule_list_csv" class="label-text">Upload Schedule List</label>
+                        <div class="input-group w-80">
+                            <input type="file" name="schedule_list_csv" id="schedule_list_csv" class="form-control " required />
+                            <div class="input-group-append">
+                                <button class="form-control btn accept-btn border rounded-0" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-upload left"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Search for schedules by first_name or last_name
+        <div class="row justify-content-evenly">
+            <div class="col-auto mx-2">
+                <form method="GET" action="{% url 'schedules' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control border rounded-0" type="text" name="q" placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="form-control btn accept-btn border rounded-0" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search ml-2"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div> -->
+            <!-- Add an individual schedule record -->
+            <div class="col-auto mx-2">
+                <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_schedule' %}"></i>Add
+                        A New Event</a></small>
+            </div>
+        </div>
+        <!-- Table containing a list of invited schedules -->
+        <div class="row">
+            <div class="col mx-2">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="schedule-table cursive-text-color" scope="col">Time</th>
+                                <th class="schedule-table cursive-text-color" scope="col">Event Details</th>
+                                <th class="schedule-table cursive-text-color" scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for schedule in schedules %}
+                                <tr>
+                                    <td>{{ schedule.time }}</td>
+                                    <td>{{ schedule.event }}</td>
+                                    <td><small class="ml-3"><a class="text-success"
+                                                href="{% url 'display_schedule' %}"></i>View</a> |
+                                            <a href="{% url 'edit_schedule' schedule.id %}">Edit</a> |
+                                            <a class="text-danger" href="{% url 'delete_schedule' schedule.id %}">Delete</a>
+                                        </small>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}
