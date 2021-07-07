@@ -18,14 +18,14 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3">
-                <form method="POST" action="{% url 'add_schedule' %}" class="form md-2">
+                <form method="POST" action="{% url 'add_schedule' %}" class="form md-2 my-1">
                     {% csrf_token %}
                     {% for field in form %}
                         {{ field | as_crispy_field }}
                     {% endfor %}
-                    <div class="text-right">
+                    <div class="text-right mt-3">
                         <a class="btn btn-secondary" href="{% url 'schedules' %}">Cancel</a>
-                        <button class="btn accept-btn" type="submit">Add Event</button>
+                        <button class="btn change-btn" type="submit">Add Event</button>
                     </div>
                 </form>
             </div>
