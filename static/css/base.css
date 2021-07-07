@@ -7,6 +7,7 @@ html, body {
     padding: 0;
     overflow-x: hidden;
 }
+
 .cursive-text-color {
     color: var(--primary-font);
     text-shadow: 1px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
@@ -235,6 +236,34 @@ p.venue-address {
     height: 400px;
     width: 100%;
   }
+
+/* Schedule */
+div.schedule-container.container.card {
+    background: url('../images/pexels-kuflu-cıkın-7765963.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgba(250, 250, 250, 0.1);
+    width: 80%;
+    position: relative;
+    z-index: 99;
+}
+.card-overlay { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(250, 250, 250, 0.9);
+  }
+p.schedule {
+    font-size: calc(0.5rem + 1.3vw);
+    color: var(--primary-font);
+    font-family: 'Italianno', cursive;
+    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+    /* z-index: 999; */
+}
+.text-callout {
+    z-index: 99999;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -290,5 +319,8 @@ p.venue-address {
     }
     p {
         margin-top: 0;
+    }
+    div.schedule-container.container.card {
+        width: 100%;
     }
 }

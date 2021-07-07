@@ -5,7 +5,7 @@ from .models import Schedule
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = (
         'time',
-        'activity',
+        'event',
     )
     ordering = ('time',)
 
