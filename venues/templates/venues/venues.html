@@ -56,8 +56,8 @@
                             <p class="venue-address">{{ venue.postcode }}</p>
                             <p class="venue-address mt-2">{{ venue.email }}</p>
                             <p class="venue-address">{{ venue.phone_number }}</p>
-                            <input type="hidden" id="lat" name="lat" value="{{ venue.lat }}">
-                            <input type="hidden" id="lng" name="lng" value="{{ venue.lng }}">
+                            <input type="hidden" id="lat-{{ forloop.counter }}" name="lat" value="{{ venue.lat }}">
+                            <input type="hidden" id="lng-{{ forloop.counter }}" name="lng" value="{{ venue.lng }}">
                         </div>
                         <div class="col">
                             <div class="image-container venue">
@@ -78,8 +78,7 @@
                     <div class="row">
                         <div class="col">                         
                             
-                            <div id="map"></div>
-                        </div>
+                            <div class="maps" id="map-{{ forloop.counter }}"></div>                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -114,23 +113,40 @@
 
 
     function initMap() {
-        var venue_lat = parseInt(document.getElementById("lat").value);
-        var venue_lng = parseInt(document.getElementById("lng").value);
-        console.log(venue_lat, venue_lat)
-        var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 13,
-            center: {
-                lat: venue_lat,
-                lng: venue_lng,
-            }
-        });
-        var marker = new google.maps.Marker({
-            position: {
-                lat: venue_lat,
-                lng: venue_lng,
-                map: map,
-            }
-        });
-    }
+  const churchLat = parseFloat(document.getElementById('lat-1').value);
+  const churchLng = parseFloat(document.getElementById('lng-1').value);
+  const venueLat = parseFloat(document.getElementById('lat-2').value);
+  const venueLng = parseFloat(document.getElementById('lng-2').value);
+  const options = [
+    {
+      zoom: 13,
+      icon: "https://i.imgur.com/J2L3NeD.png",
+      center: {
+        lat: churchLat,
+        lng: churchLng,
+      },
+    },
+    {
+      zoom: 13,
+      icon: "🏡",
+      center: {
+        lat: venueLat,
+        lng: venueLng,
+      },
+    },
+  ];
+  for (let i = 0; i < options.length; i++) {
+    const map = new google.maps.Map(document.getElementById(`map-${i + 1}`), options[i]);
+    const marker = new google.maps.Marker({
+      position: {
+        lat: options[i].center.lat,
+        lng: options[i].center.lng,
+        icon: options[i].icon,
+        map,
+      },
+    });
+    marker.setMap(map)
+  }
+}
 </script>
 {% endblock %}
