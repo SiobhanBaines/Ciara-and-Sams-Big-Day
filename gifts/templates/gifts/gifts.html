@@ -67,7 +67,7 @@
                         <div class="card h-100 border-0">
                             {% if gift.image %}
                             <a href="{% url 'gift_detail' gift.id %}">
-                                <img class="card-img-top img-fluid img-thumbnail" src="/media/ gift.image }}" alt="{{ gift.name }}">
+                                <img class="card-img-top img-fluid img-thumbnail" src="/media/{{ gift.image }}" alt="{{ gift.name }}">
                             </a>
                             {% else %}
                             <a href="{% url 'gift_detail' gift.id %}">
