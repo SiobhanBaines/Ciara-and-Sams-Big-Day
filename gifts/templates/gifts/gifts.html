@@ -46,8 +46,8 @@
                 <hr><h3 class="text-center cursive-text-color">Gift List</h3><hr>
             </div>
         </div>
-        <form class="col s12" method="POST" action="{% url 'gift_donation' gift_amount %}">
-            <div class="row">
+        <div class="row">
+            <form class="col s12" method="POST" action="{% url 'gift_donation' gift_amount %}">
                 <div class="col mb-5 text-center">
                 <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
                 {% csrf_token %}
@@ -56,8 +56,10 @@
                     <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button>
                 </div>
             </form>
+        </div>
         {% endif %}
         <!-- List of gifts -->
+        <div class="gift-container col-10 offset-1">
         <div class="row">
             {% for gift in gifts %}
                 {% if request.user.is_staff or request.user.is_superuser or not gift.selected %}
@@ -65,7 +67,7 @@
                         <div class="card h-100 border-0">
                             {% if gift.image %}
                             <a href="{% url 'gift_detail' gift.id %}">
-                                <img class="card-img-top img-fluid img-thumbnail" src="/media/{{ gift.image }}" alt="{{ gift.name }}">
+                                <img class="card-img-top img-fluid img-thumbnail" src="/media/ gift.image }}" alt="{{ gift.name }}">
                             </a>
                             {% else %}
                             <a href="{% url 'gift_detail' gift.id %}">
@@ -115,6 +117,7 @@
                     {% endif %}
                 {% endif %}
             {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

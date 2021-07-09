@@ -189,7 +189,7 @@ def delete_gift(request, gift_id):
 
     gift = get_object_or_404(Gift, pk=gift_id)
 
-    image_file = 'media/' + str(gift.image)
+    image_file = 'images/' + str(gift.image)
     if os.path.exists(image_file):
         os.remove(image_file)
 

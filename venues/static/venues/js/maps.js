@@ -1,29 +1,40 @@
-  
-function initMap() {
-    var map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 3,
-      center: {
-        lat: 46.619261,
-        lng: -33.134766,
-      },
-    });
-    var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  
-    var locations = [
-      { lat: 40.785091, lng: -73.968285 },
-      { lat: 41.084045, lng: -73.874245 },
-      { lat: 40.754932, lng: -73.984016 },
-    ];
-  
-    var markers = locations.map(function (location, i) {
-      return new google.maps.Marker({
-        position: location,
-        label: labels[i % labels.length],
-      });
-    });
-  
-    var markerCluster = new MarkerClusterer(map, markers, {
-      imagePath:
-        "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-    });
-  }
+    // Initialize and add the map
+
+    function initMap() {
+        // location of church
+        const churchLat = parseFloat(document.getElementById('lat-1').value);
+        const churchLng = parseFloat(document.getElementById('lng-1').value);
+        // location of reception
+        const receptionLat = parseFloat(document.getElementById('lat-2').value);
+        const receptionLng = parseFloat(document.getElementById('lng-2').value);
+        const options = [{
+            // church
+                zoom: 13,
+                center: {
+                    lat: churchLat,
+                    lng: churchLng,
+                },
+            },
+            {
+            // reception
+                zoom: 13,
+                center: {
+                    lat: receptionLat,
+                    lng: receptionLng,
+                },
+            },
+        ];
+        // Position marker
+        for (let i = 0; i < options.length; i++) {
+            const map = new google.maps.Map(document.getElementById(`map-${i + 1}`), options[i]);
+            const marker = new google.maps.Marker({
+                position: {
+                    lat: options[i].center.lat,
+                    lng: options[i].center.lng,
+                    icon: options[i].icon,
+                    map,
+                },
+            });
+            marker.setMap(map)
+        }
+    }

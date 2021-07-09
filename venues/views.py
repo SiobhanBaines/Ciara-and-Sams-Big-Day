@@ -105,10 +105,10 @@ def delete_venue(request, venue_id):
         return redirect(reverse('home'))
 
     venue = get_object_or_404(Venue, pk=venue_id)
-
-    image_file = 'media/' + str(venue.image)
-    if os.path.exists(image_file):
-        os.remove(image_file)
+    if venue.image:
+        image_file = 'images/' + str(venue.image)
+        if os.path.exists(image_file):
+            os.remove(image_file)
 
     venue.delete()
     messages.success(request, f'venue {venue.name} deleted')
