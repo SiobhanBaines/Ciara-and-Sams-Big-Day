@@ -83,7 +83,7 @@
                                 <div class="row">
                                     <div class="col"> 
                                         <small class="ml-3">
-                                            <a class="text-success" href="{% url 'gift_detail' gift.id %}git ">View</a>     
+                                            <a class="text-success" href="{% url 'gift_detail' gift.id %}">View</a>     
                                             <!--  Only allow superuser or staff to edit or delete -->
                                             {% if request.user.is_staff or request.user.is_superuser %}| 
                                                 <a href="{% url 'edit_gift' gift.id %}">Edit</a> | 

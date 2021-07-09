@@ -2,66 +2,79 @@
 {% load static %}
 
 {% block page-header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 {% block content %}
-    <!-- Invitation RSVP Page - -->
-    <div class="container-fluid mb-5 mt-md-5 px-5">
-        <h3 class="text-center cursive-text-color">Please Select Your Meal</h3>
-        <form method="POST" action="{% url 'menu_selection' %}" class="form md-2">
-            {% csrf_token %}
-            <div class="row">
-                <div class="col mx-5">
-                    <!-- Table containing details of all guests in the invitation group/username -->
-                    <div class="card r mx-auto">
-                        <div class="card-body">
-                            <table class="table table-striped table-hover table-sm">
-                                {{ form.as_table }}
-                                <thead>
+<!-- Invitation RSVP Page - -->
+<div class="container-fluid mb-5 mt-md-5 px-5">
+    <h3 class="text-center cursive-text-color">Please Select Your Meal</h3>
+    <form method="POST" action="{% url 'menu_selection' %}" class="form md-2">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col mx-5">
+                <!-- Table containing details of all guests in the invitation group/username -->
+                <div class="card r mx-auto">
+                    <div class="card-body">
+                        <table class="table table-striped table-hover table-sm">
+                            {{ form.as_table }}
+                            <thead>
+                                <tr>
+                                    <th></th>    
+                                    <th class="guest-table cursive-text-color" scope="col">Course</th>
+                                    <th class="guest-table cursive-text-color" scope="col">Menu Item</th>
+                                    {% for guest in guests %}
+                                        <th class="guest-table cursive-text-color" scope="col">
+                                            <input type="text" id="guest_id" name="guest_id" value="{{ guest.id }}">{{ guest.first_name }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for menu in menus %}
                                     <tr>
-                                        </th><input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
-                                        <th class="guest-table cursive-text-color" scope="col">Course</th>
-                                        <th class="guest-table cursive-text-color" scope="col">Menu Item</th>
-                                        {% for guest in guests %}
-                                            <th class="guest-table cursive-text-color" scope="col"><input type="hidden" id="id" name="id" value="{{ guest.id }}">{{ guest.first_name }}
-                                        {% endfor %}
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for menu in menus %}
-                                    <tr>
-                                        <input type="hidden" id="menu_id" name="menu_id" value="{{ menu.id }}">    
+                                        <td>
+                                            <input type="text" id="menu_id" name="menu_id" value="{{ menu.id }}">
+                                        </td>
                                         <td>{{ menu.course }}</td>
                                         <td>{{ menu.menu_item }}</td>
                                         {% for guest in guests %}
-                                        <td><input type="checkbox" name="choice"><input type="hidden" id="id" name="id" value="{{ guest.id }}"></td>
+                                            <td>
+                                                <input type="checkbox" name="meal_chosen">
+                                            </td>
                                         {% endfor %}
-                                        
                                     </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                            <div class="col-12 col-md-2 offset-md-10">
-                                <button class="form-control btn btn-sm accept-btn border rounded-0"
-                                    type="submit">Confirm</button>
-                            </div>
+                                {% endfor %}
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Special dietary requirements</td>
+                                        <td>
+                                            <input type="checkbox" name="special_diet">
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                        <div class="col-12 col-md-2 offset-md-10">
+                            <button class="form-control btn btn-sm accept-btn border rounded-0"
+                                type="submit">Confirm</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 justify-content-center">
-                <div class="col mx-5">
-                    <div class="card r form-floating mx-auto">
-                        <textarea class="rsvp-message form-control" placeholder="Please leave a message" id="message" name="message"></textarea>
-                        <label for="message">Please tell us about any special dietary requirements</label>
-                      </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+            <div class="col mx-5">
+                <div class="card r form-floating mx-auto">
+                    <textarea class="rsvp-message form-control" placeholder="Special diet" id="message"
+                        name="message"></textarea>
+                    <label for="message">Please tell us about any special dietary requirements. The venue have said they
+                        will do their best to accommodate.</label>
                 </div>
             </div>
-        </form> 
-    </div>
+        </div>
+    </form>
+</div>
 {% endblock %}

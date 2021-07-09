@@ -73,24 +73,6 @@ def menu_detail(request, menu_id):
 
 
 @login_required
-def menu_selection(request):
-    """ View of menu details """
-
-    guests = Guest.objects.filter(group_id=request.user)
-    menus = Menu.objects.all()
-    # guest_form = GuestForm()
-    # guest_form = GuestForm()
-    context = {
-        'menus': menus,
-        'guests': guests,
-        'menu_form': MenuForm(),
-        'guest_form': GuestForm(),
-    }
-
-    return render(request, 'menus/menu_selection.html', context)
-
-
-@login_required
 def add_menu(request):
     """ Add menu to menu list """
     if not request.user.is_superuser or not request.user.is_staff:
@@ -170,3 +152,29 @@ def delete_menu(request, menu_id):
     messages.success(
         request, 'Menu event deleted')
     return redirect(reverse('menus'))
+
+
+@login_required
+def menu_selection(request):
+    """ View of menu details """
+    if request.method == 'POST':
+        form = MenuForm(request.POST, request.FILES)
+        print('line 162 form', form)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated the menu')
+            return redirect(reverse('menus'))
+        else:
+            messages.error(request, 'Failed to update menu. \
+                           Please check the information is valid')
+           
+    guests = Guest.objects.filter(group_id=request.user)
+    menus = Menu.objects.all()
+    context = {
+        'menus': menus,
+        'guests': guests,
+        'menu_form': MenuForm(),
+        'guest_form': GuestForm(),
+    }
+
+    return render(request, 'menus/menu_selection.html', context)
