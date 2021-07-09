@@ -34,7 +34,8 @@ h2 {
 h3 {  
     font-size: calc(1.5rem + 1.3vw) !important;
 }
-th.guest-table {
+th.guest-table,
+th.menu-table {
     font-family: 'Italianno', cursive;
     font-size: calc(1rem + 0.9vw) !important;
     font-weight: 400;
@@ -240,6 +241,7 @@ p.venue-address {
   }
 
 /* Schedule */
+div.menu-container.container.card,
 div.schedule-container.container.card {
     background: url('../images/pexels-kuflu-cıkın-7765963.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -256,7 +258,8 @@ div.schedule-container.container.card {
     width: 100%;
     background-color: rgba(250, 250, 250, 0.9);
   }
-p.schedule {
+p.schedule,
+p.menu {
     font-size: calc(0.5rem + 1.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;

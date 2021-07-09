@@ -9,7 +9,7 @@
                 <a class="nav-link" href="{% url 'display_schedule' %}">Schedule</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Menu</a>
+                <a class="nav-link" href="{% url 'menu_selection' %}">Menu</a>
             </li>
         {% endif %}
         {% if request.user|has_group:'accepted' or request.user|has_group:'declined' %}

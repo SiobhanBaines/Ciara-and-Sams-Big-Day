@@ -12,7 +12,7 @@
     <!-- Invitation RSVP Page - -->
     <div class="container-fluid mb-5 mt-md-5 px-5">
         <h3 class="text-center cursive-text-color">Please Select Your Meal</h3>
-        <form method="POST" action="{% url 'rsvp' %}" class="form md-2">
+        <form method="POST" action="{% url 'menu_selection' %}" class="form md-2">
             {% csrf_token %}
             <div class="row">
                 <div class="col mx-5">
@@ -23,29 +23,25 @@
                                 {{ form.as_table }}
                                 <thead>
                                     <tr>
-                                        <th class="guest-table cursive-text-color" scope="col">First Name</th>
-                                        <th class="guest-table cursive-text-color" scope="col">Last Name</th>
-                                        <th class="guest-table cursive-text-color" scope="col">Accepted / Decline
-                                        </th>
+                                        </th><input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
+                                        <th class="guest-table cursive-text-color" scope="col">Course</th>
+                                        <th class="guest-table cursive-text-color" scope="col">Menu Item</th>
+                                        {% for guest in guests %}
+                                            <th class="guest-table cursive-text-color" scope="col"><input type="hidden" id="id" name="id" value="{{ guest.id }}">{{ guest.first_name }}
+                                        {% endfor %}
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for guest in guests %}
+                                    {% for menu in menus %}
                                     <tr>
-                                        <input type="hidden" id="id" name="id" value="{{ guest.id }}">
-                                        <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
-                                        <td class="hide">{{ guest.id }}</td>
-                                        <td class="hide">{{ guest.group_id }}</td>
-                                        <td >{{ guest.first_name }}</td>
-                                        <td >{{ guest.last_name }}</td>
-                                        <td><select class="form-select" name="rsvp_response"
-                                                aria-label="Default select example">
-                                                <option value='{{ guest.accepted }}' active selected>{{ guest.accepted }}
-                                                </option>
-                                                <option value="Accept">Accept</option>
-                                                <option value="Decline">Decline</option>
-                                            </select>
-                                        </td>
+                                        <input type="hidden" id="menu_id" name="menu_id" value="{{ menu.id }}">    
+                                        <td>{{ menu.course }}</td>
+                                        <td>{{ menu.menu_item }}</td>
+                                        {% for guest in guests %}
+                                        <td><input type="checkbox" name="choice"><input type="hidden" id="id" name="id" value="{{ guest.id }}"></td>
+                                        {% endfor %}
+                                        
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -62,7 +58,7 @@
                 <div class="col mx-5">
                     <div class="card r form-floating mx-auto">
                         <textarea class="rsvp-message form-control" placeholder="Please leave a message" id="message" name="message"></textarea>
-                        <label for="message">Please leave a message</label>
+                        <label for="message">Please tell us about any special dietary requirements</label>
                       </div>
                 </div>
             </div>

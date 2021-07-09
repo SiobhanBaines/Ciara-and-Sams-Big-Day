@@ -1,6 +1,5 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponse
-from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -19,19 +18,6 @@ def schedules(request):
         return redirect(reverse('home'))
 
     schedules = Schedule.objects.all()
-    query = None
-
-    # if request.GET:
-        # if 'q' in request.GET:
-        #     query = request.GET['q']
-        #     if not query:
-        #         messages.error(
-        #             request, "You didn't enter any search criteria.")
-        #         return redirect(reverse('schedules'))
-
-        #     queries = Q(
-        #         first_name__icontains=query) | Q(last_name__icontains=query)
-        #     schedules = schedules.filter(queries)
 
     if request.method == "POST":
         # Handle request CSV file
@@ -58,9 +44,10 @@ def schedules(request):
 
         return redirect('schedules')
 
+    form = MenuForm()
     context = {
         'schedules': schedules,
-        'search_term': query,
+        'form': form,
     }
 
     return render(request, 'schedules/schedules.html', context)
