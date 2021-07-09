@@ -14,4 +14,11 @@ class GuestForm(forms.ModelForm):
 
     class Meta:
         model = Guest
-        fields = 'first_name',
+        fields = (
+            'group_id',
+            'first_name',
+            'starter',
+            'main',
+            'dessert',
+        )
+

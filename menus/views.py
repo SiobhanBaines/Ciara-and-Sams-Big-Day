@@ -158,23 +158,83 @@ def delete_menu(request, menu_id):
 def menu_selection(request):
     """ View of menu details """
     if request.method == 'POST':
-        form = MenuForm(request.POST, request.FILES)
+        form = dict(request.POST)
         print('line 162 form', form)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully updated the menu')
-            return redirect(reverse('menus'))
-        else:
-            messages.error(request, 'Failed to update menu. \
-                           Please check the information is valid')
+        # loop through form to get details of
+        # each guest in the invitation group
+        # for num in range(len(form['menu_item'])):
+        for num in range(len(form['id'])):
+            print('num', num)
+            guest_id = form['id'][num]
+            guest = get_object_or_404(Guest, id=guest_id)
+            print('guest_id', guest_id)
+            guest.start = form['starter'][num]
+            guest.main = form['main'][num]
+            guest.dessert = form['dessert'][num]
+            print(guest.dessert)
+            special = form['special'][num]
+            print(special)
+            if guest.starter and guest.main and guest.dessert:
+                guest.meal_chosen = True
+            else:
+                if special:
+                    guest.special_diet = True
+                    messages.info(request, 'Please fill in the box below with \
+                        details of you special requirements. Thank you.')
+                else:
+                    messages.error(request, 'You have not chosen enough courses. \
+                        Please select a dish for each course')
+            
+            # guest_id = form[]
+            guest.save()
+            # If a guest accepts, this needs to be saved
+            # for adding the user group later
+
+        return redirect("menus")
            
     guests = Guest.objects.filter(group_id=request.user)
     menus = Menu.objects.all()
+    s = 0
+    m = 0
+    d = 0
+    for menu in menus:
+        print('menu.course ', menu.course)
+        print('menu_item ', menu.menu_item)
+        if menu.course == "starter":
+            s += 1
+            if s == 1:
+                starter_1 = str(menu.menu_item)
+            elif s == 2:
+                starter_2 = str(menu.menu_item)
+            else:
+                messages.error(request, 'Too many starters. Only 2 allowed')
+        elif menu.course == 'main':
+            m += 1
+            if m == 1:
+                main_1 = str(menu.menu_item)
+            elif m == 2:
+                main_2 = str(menu.menu_item)
+            else:
+                messages.error(request, 'Too many main coures. Only 2 allowed')
+        elif menu.course == 'dessert':
+            d += 1
+            if d == 1:
+                dessert_1 = str(menu.menu_item)
+            elif d == 2:
+                dessert_2 = str(menu.menu_item)
+            else:
+                messages.error(request, 'Too many desserts. Only 2 allowed')
+
     context = {
         'menus': menus,
         'guests': guests,
-        'menu_form': MenuForm(),
         'guest_form': GuestForm(),
+        'starter_1': starter_1,
+        'starter_2': starter_2,
+        'main_1': main_1,
+        'main_2': main_2,
+        'dessert_1': dessert_1,
+        'dessert_2': dessert_2
     }
 
     return render(request, 'menus/menu_selection.html', context)

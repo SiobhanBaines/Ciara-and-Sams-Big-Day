@@ -52,7 +52,7 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-9 mb-2">
-                                <label class="form-check-label" for="id-save-info">If you intend to buy this gift please click the checkbox. This will stop other guests buying the same gift.</label>
+                                <label class="form-check-label" for="selected">If you intend to buy this gift please click the checkbox. This will stop other guests buying the same gift.</label>
                                 <input class="form-check-input mx-auto" type="checkbox" id="selected" name="selected">
                             </div>
                         </div>
@@ -94,11 +94,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#selected').click(function(){
-        $('#select-form').submit();
-        });
-    });
-</script>
+<script src="{% static 'gifts/js/gift_selected.js' %}"></script>
 {% endblock %}
