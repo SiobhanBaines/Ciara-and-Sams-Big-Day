@@ -20,5 +20,6 @@ class GuestForm(forms.ModelForm):
             'starter',
             'main',
             'dessert',
+            'special_diet',
+            'requirements',
         )
-

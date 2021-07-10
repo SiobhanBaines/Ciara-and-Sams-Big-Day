@@ -19,6 +19,7 @@ class Guest(models.Model):
     message = models.TextField(max_length=300, null=True, blank=True)
     meal_chosen = models.BooleanField(default=False)
     special_diet = models.BooleanField(default=False)
+    requirements = models.CharField(max_length=254, null=True, blank=True)
     starter = models.CharField(max_length=80, null=True, blank=True)
     main = models.CharField(max_length=80, null=True, blank=True)
     dessert = models.CharField(max_length=80, null=True, blank=True)

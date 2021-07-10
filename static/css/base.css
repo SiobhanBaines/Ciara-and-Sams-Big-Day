@@ -35,7 +35,7 @@ h3 {
     font-size: calc(1.5rem + 1.3vw) !important;
 }
 th.guest-table,
-th.menu-table {
+.menu-table {
     font-family: 'Italianno', cursive;
     font-size: calc(1rem + 0.9vw) !important;
     font-weight: 400;
