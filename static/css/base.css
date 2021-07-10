@@ -240,27 +240,42 @@ p.venue-address {
     width: 100%;
   }
 
-/* Schedule */
-div.menu-container.container.card,
-div.schedule-container.container.card {
+/* Image Containers */
+/* div.menu-container.container.card,
+div.schedule-container.container.card  */
+.schedule-container.card{
     background: url('../images/pexels-kuflu-cıkın-7765963.jpg') no-repeat center center fixed;
+}
+.menu-container.card {
+    background: url('../images/wedding-table.jpg') no-repeat center center fixed; background-color: rgba(250, 250, 250, 50%);
+}
+.schedule-container.card,
+.menu-container.card {
     background-size: cover;
-    background-color: rgba(250, 250, 250, 0.1);
     width: 80%;
     position: relative;
     z-index: 99;
+    margin: 0;
 }
-.card-overlay { 
+.schedule-overlay { 
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(250, 250, 250, 0.9);
+    background-color: rgba(250, 250, 250, 0.85);
+  }
+  .menu-overlay { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(250, 250, 250, 0.7);
   }
 p.schedule,
 p.menu {
-    font-size: calc(0.5rem + 1.3vw);
+    font-size: calc(1.5rem + 0.8vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
     text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
@@ -324,5 +339,8 @@ p.menu {
     }
     div.schedule-container.container.card {
         width: 100%;
+    }
+    .menu-container.card {
+        width: 90%;
     }
 }

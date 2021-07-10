@@ -55,17 +55,17 @@ def menus(request):
 
 
 @login_required
-def menu_detail(request, menu_id):
+def display_menu(request):
     """ View of menu details """
 
-    menus = Menu.objects.all()
+    menus = Menu.objects.all().order_by('-course')
     form = MenuForm()
     context = {
         'menus': menus,
         'form': form,
     }
 
-    return render(request, 'menus/menu_detail.html', context)
+    return render(request, 'menus/display_menu.html', context)
 
 
 @login_required

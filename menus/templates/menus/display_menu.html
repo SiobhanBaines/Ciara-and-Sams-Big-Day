@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page-header %}
+<div class="container header-container">
+    <div class="row justify-content-center">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row ">
+        <div class="col-sm-12 col-md-9">
+            <h3 class="pl-5 text-center cursive-text-color">Menu</h3>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <a class="btn buy-btn border rounded-0" href="{% url 'menu_selection' %}">Menu Selection</a>
+        </div>
+    </div>
+    
+        
+    <div class="row justify-content-center ">
+        <div class="menu-container card border-0 py-2">
+            <div class="menu-overlay">&nbsp;</div>
+            <div class="row">
+                <!-- menu details -->
+                <div class="col-10 offset-1 ">
+                    {% for menu in menus %}
+                    <div class="row">
+                        <div class="col-4 text-callout">
+                            <p class="mb-0 mt-1 menu">{{ menu.course }}</p>
+                        </div>
+                        <div class="col-8 text-callout">
+                            <p class="mb-0 mt-1 menu">{{ menu.menu_item }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-4 text-callout">
+                            <p class="mb-0 mt-1 menu-description">{{ menu.description }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+{% endblock %}

@@ -44,7 +44,7 @@ def schedules(request):
 
         return redirect('schedules')
 
-    form = MenuForm()
+    form = ScheduleForm()
     context = {
         'schedules': schedules,
         'form': form,
