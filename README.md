@@ -320,7 +320,9 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 
 
 ## Testing
-Testing of this site can be found [here](testing.md) in a seperate file
+Testing of this site can be found [here](testing.md) in a seperate file.
+
+As part of my unit testing I created a [MoSCoW list of issues](MoSCoW _tasks_after_main_build.xlsx). This helps to give a clear indication of what `Must` be completed to make the site work correctly and what `Should` be done to give the site improved UI. The tasks desegnate as `Could` have that would improve UX but not essential to the site. Items that are designated `Would` like are items that would be great to have but only if everything else is completed and there is time before the project is submitted. My intention is to complete all the '`Must have` and `Should have` items before looking at the `Could have` and hopefully the `Would like` items.
 
 ## Bugs
 Bugs of this site can be found [here](bugs.md) in a seperate file

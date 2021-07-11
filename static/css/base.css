@@ -43,6 +43,9 @@ th.guest-table,
 label {
     color: var(--primary-font);
 }
+.guest-message {
+    padding-left: 2rem;
+}
 /*  Colours */
 :root {
     --primary-peach: #FFF9F7;
@@ -342,5 +345,8 @@ p.menu {
     }
     .menu-container.card {
         width: 90%;
+    }
+    .guest-message {
+        padding-left: 0;
     }
 }

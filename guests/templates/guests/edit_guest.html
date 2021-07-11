@@ -23,7 +23,7 @@
                     {% for field in form %}
                         {{ field | as_crispy_field }}
                     {% endfor %}
-                    <div class="text-right">
+                    <div class="text-right mt-3">
                         <a class="btn btn-secondary" href="{% url 'guests' %}">Cancel</a>
                         <button class="btn  accept-btn" type="submit">Update Guest</button>
                     </div>

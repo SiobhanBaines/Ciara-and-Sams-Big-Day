@@ -13,7 +13,9 @@
     <div class="container px-5">
         <div class="row">
             <div class="col">
-                <hr><h3 class="text-center cursive-text-color">Guest Details</h3><hr>
+                <hr>
+                <h3 class="text-center cursive-text-color">Guest Details</h3>
+                <hr>
             </div>
         </div>
         <div class="row">
@@ -44,7 +46,6 @@
                         <p class="mb-0 mt-1">{{ guest.postcode }}</p>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12 col-md-4 offset-md-3">
                         <h3 class="cursive-text-color fs-2">Email</h3>
@@ -53,7 +54,6 @@
                         <p class="mb-0 mt-1">{{ guest.email }}</p>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12 col-md-4 offset-md-3">
                         <h3 class="cursive-text-color fs-2">Telephone</h3>
@@ -71,59 +71,81 @@
                     </div>
                     <div class="col-12 col-md-4 ">
                         {% if guest.accepted %}
-                            <p class="mb-0 mt-1">{{ guest.accepted }}</p>
+                        <p class="mb-0 mt-1">{{ guest.accepted }}</p>
                         {% else %}
-                            <p class="mb-0 mt-1">No Reply</p>
+                        <p class="mb-0 mt-1">No Reply</p>
                         {% endif %}
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12 col-md-3">
                         <h3 class="cursive-text-color fs-2">Meal choice</h3>
                     </div>
                     <div class="col-12 col-md-6">
                         {% if guest.meal_chosen %}
-                            <small class="ml-3">
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row align-middle">Starter</th>
-                                            <td>{{ guest.starter }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row align-middle">Main</th>
-                                            <td>{{ guest.main }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row align-middle">Dessert</th>
-                                            <td>{{ guest.dessert }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </small>
+                        <small class="ml-3">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row align-middle">Starter</th>
+                                        <td>{{ guest.starter }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row align-middle">Main</th>
+                                        <td>{{ guest.main }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row align-middle">Dessert</th>
+                                        <td>{{ guest.dessert }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </small>
                         {% else %}
-                            <p class="mb-0 mt-1">No Meal Details Available</p>
+                        <p class="mb-0 mt-1">No Meal Details Available</p>
                         {% endif %}
                     </div>
                 </div>
+                {% if guest.meal_chosen and guest.special_diet %}
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <h3 class="cursive-text-color fs-4">Special requirements</h3>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="mb-0 mt-1">{{ guest.requirements }}</p>
+                    </div>
+                </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-12 col-md-3">
                         <h3 class="cursive-text-color fs-2">Gift Details</h3>
                     </div>
                     <div class="col-6 col-md-4">
                         {% if guest.gift_chosen %}
-                            <p class="mb-0 mt-1">{{ guest.gift_name }}</p>
-                            {% if guest.gift_value %}
-                                <p class="mb-0 mt-1">{{ guest.gift_value }}</p>
-                            {% endif %}
+                        <p class="mb-0 mt-1">{{ guest.gift_name }}</p>
+                        {% if guest.gift_value %}
+                        <p class="mb-0 mt-1">{{ guest.gift_value }}</p>
+                        {% endif %}
                         {% else %}
-                            <p class="mb-0 mt-1">No Gift Details Available</p>
+                        <p class="mb-0 mt-1">No Gift Details Available</p>
                         {% endif %}
                     </div>
                 </div>
             </div>
-            <div class="d-inline-flex justify-content-center  ">
+        </div>
+        <!-- Message from guests to bride and groom -->
+        <div class="row my-5">
+            <div class="col-12 offset-md-1">
+                <div class="row guest-message">
+                    <div class="col-12 col-md-2">
+                        <h3 class="cursive-text-color text-align-left fs-2">Message from guest</h3>
+                    </div>
+                    <div class="col-12 col-md-8 align-items-end">
+                        <p class="mb-0 mt-1 text-align-left">{{ guest.message }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-flex justify-content-center mt-3">
                 <small class="ml-3">
                     <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
                     <a class="text-danger" href="{% url 'delete_guest' guest.id %}">Delete</a>
