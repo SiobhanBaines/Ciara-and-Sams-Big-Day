@@ -141,7 +141,6 @@ footer li {
     align-items: center;
     z-index: 999;
 }
-
 .row.home-row {
     height: 50vh;
 }
@@ -252,8 +251,12 @@ div.schedule-container.container.card  */
 .menu-container.card {
     background: url('../images/wedding-table.jpg') no-repeat center center fixed; background-color: rgba(250, 250, 250, 50%);
 }
+.rsvp-container.card{
+    background: url('../images/small-flowers.jpg') no-repeat center center fixed;
+}
 .schedule-container.card,
-.menu-container.card {
+.menu-container.card,
+.rsvp-container.card {
     background-size: cover;
     width: 80%;
     position: relative;
@@ -268,7 +271,8 @@ div.schedule-container.container.card  */
     width: 100%;
     background-color: rgba(250, 250, 250, 0.85);
   }
-  .menu-overlay { 
+.menu-overlay,
+.rsvp-overlay { 
     position: absolute;
     top: 0;
     left: 0;

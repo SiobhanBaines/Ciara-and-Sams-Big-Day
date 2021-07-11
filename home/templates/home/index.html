@@ -29,12 +29,12 @@
         {% else %}
         <div class="col-12 name-callout">
             {% if request.user|has_group:'accepted' %}
-                <h3 class="cursive-text-color my-2 mx-5 px-5">Thank you {{ guest_name }} for accepting our invitation.
+                <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Thank you {{ guest_name }} for accepting our invitation.
                     <br>We are so excited you will be helping us  to celebrate our special day. You will find all the information you need in the above menus but if you do have any question, please do not hesitate to contact us on the link below.
                     <br>Love Ciara and Sam</h3>
             {% else %}
                 {% if request.user|has_group:'declined' %}
-                    <h3 class="cursive-text-color my-2 mx-5">Dear {{ guest_name }}, <br>Thank you for responding to our invitation.<br>We are sorry you are unable to join us for our celebration but look forward to seeing you soon.<br>Love Ciara and Sam</h3>
+                    <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Dear {{ guest_name }}, <br>Thank you for responding to our invitation.<br>We are sorry you are unable to join us for our celebration but look forward to seeing you soon.<br>Love Ciara and Sam</h3>
                 {% else %}
                     <h1 class="cursive-text-color mt-1 pt-1">Welcome {{ guest_name }}</h1>
                     <h2 class="cursive-text-color my-2">Please <a  class="cursive-text-color" href="{% url 'rsvp' %}">RSVP</a> </h2>

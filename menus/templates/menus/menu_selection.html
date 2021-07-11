@@ -10,7 +10,7 @@
 {% endblock %}
 {% block content %}
 <!-- Invitation RSVP Page - -->
-<div class="container-fluid mb-5 mt-md-5 px-5">
+<div class="container-fluid mb-5 mt-md-5">
     <h3 class="text-center cursive-text-color">Please Select Your Meal</h3>
     <form method="POST" action="{% url 'menu_selection' %}" class="form md-2">
         {% csrf_token %}
@@ -98,11 +98,11 @@
                             </tbody>
                         </table>
                         <div class="row">
-                            <div class="col-12 col-md-10">
+                            <div class="col-12 col-md-8">
                                 <p>If you have any special requirements, please let us know. <br>The venue has said they
                                     will do their best to accommodate all requirements.</p>
                             </div>
-                            <div class="col-12 col-md-2">
+                            <div class="col-12 col-md-4">
                                 <button class="form-control btn btn-sm accept-btn rounded-0"
                                     type="submit">Confirm</button>
                             </div>
