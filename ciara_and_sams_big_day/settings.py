@@ -216,7 +216,7 @@ GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY', '')
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'ciara-sam@example.com'
+    DEFAULT_FROM_EMAIL = 'csw.testing2023@gmail.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True

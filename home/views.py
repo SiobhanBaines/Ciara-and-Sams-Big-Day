@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
-# from django.views import View
-from .forms import NewUserForm, RSVPForm
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from .forms import NewUserForm, RSVPForm, ContactForm
 from django.contrib.auth import login
 from django.contrib import messages
 from guests.models import Guest
 from django.contrib.auth.models import User, Group
+# from django.core.
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
 
 
 def index(request):
@@ -101,8 +103,31 @@ def rsvp(request):
 
 
 def contact(request):
-    """ View to allow the guest to contact the bride and groom """
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            default_from_email = settings.DEFAULT_FROM_EMAIL
+            
+            try:
+                send_mail(
+                    subject,
+                    message,
+                    from_email,
+                    [default_from_email, from_email],
+                )
+                print(send_mail)
 
-    template = 'home/contact.html'
+            except Exception as e:
+                messages.error(request, 'Something went wrong. \
+                    Please try to send the email again.')
+                return HttpResponse(content=e, status=400)
 
-    return render(request, template)
+            messages.success(request, 'Thank you for your message.')
+            return redirect('home')
+
+    return render(request, "home/contact.html", {'form': form})
