@@ -9,7 +9,6 @@ class MenuForm(forms.ModelForm):
         model = Menu
         fields = '__all__'
 
-
 class GuestForm(forms.ModelForm):
 
     class Meta:
@@ -23,3 +22,10 @@ class GuestForm(forms.ModelForm):
             'special_diet',
             'requirements',
         )
+
+    def __init__(self, *args, **kwargs):
+
+        for field in self.fields:
+            placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'

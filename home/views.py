@@ -98,3 +98,11 @@ def rsvp(request):
     }
 
     return render(request, template, context)
+
+
+def contact(request):
+    """ View to allow the guest to contact the bride and groom """
+
+    template = 'home/contact.html'
+
+    return render(request, template)

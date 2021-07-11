@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page-header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<!-- Contact Page - -->
+<div class="container mt-5">
+    <h3 class="text-center cursive-text-color">Contact Us</h3>
+    <form method="POST" action="{% url 'contact' %}" class="form" onsubmit="return sendMail(this)">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-10 offset-1">
+                <label class="form-label" for="fullname">Name</label>
+                <input type="text" name="fullname" id="fullname" class="contact form-control" required />
+                <label class="form-label" for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" pattern="[0-9]" class="contact form-control" required />
+                <label class="form-label" for="emailaddress">Email</label>
+                <input type="email" name="emailaddress" id="emailaddress" class="contact form-control" required />
+                <label class="form-label" for="contact-reason">Description</label>
+                <textarea rows="6" name="contact-reason" id="contact-reason" class="contact form-control" required></textarea>
+                <div class="form-row text-center">
+                    <div class="col">
+                        <button type="submit" class="btn btn-secondary" onclick="mailto:baines.smb@gmail.com">Send
+                            Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+<!-- Email Script through EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+{% endblock %}
