@@ -346,15 +346,44 @@ N.B. Using the command `git status` will show the status of the changes waiting 
 
     
 ### To deploy your project on Heroku, use the following steps: 
-The following steps assume you already have an Heroku account set up reading to create the application and deploy it.
+The following steps assume you already have Heroku and AWS accounts set up reading to create the application and deploy it.
 
 #### Initial Deployment
+##### Heroku
 1. Log into Heroku
 2. From the dashboard click New on the top right and [Create New App](). Give it a name specific to the app (I called this app `ciara-and-sams-wedding`) and chose the nearest region. Currently either United States or Europe. 
-3. Open the [Resources]() tab provision a new `Postgres` database
+3. Open the [Resources]() tab and provision a new `Postgres` database
 4. Go back to Gitpod and install `dj_database_url` and `psycopg2-binary`.
 5. Freeze the requirements using the command `pip3 freeze . requirements.txt`.
 6. Go to `settings.py` in the `ciara_and_sams_big_day` app
+7. Add `import dj_database_url`
+8. In database setting temporarily replace the DATABASE settings to call `dj_database_url` with the value of the *DATABASE_URL* Config Variable in Heroku. 
+9. Once connected run migrations into the Postgres database.
+10. There is no need to perform the `python3 manage.py loaddata` command because all the data in the database will be loaded by the bride and groom, because it is specific to their wedding.
+11. Create a superuser using the command `python3 manage.py createsuperuser` in the production Django Admin.
+12. Remove the *DATABASE_URL* config variable value changing the code to get the value from the production environment and keep the sqlite3 database for the development environment as below.
+            ```if 'DATABASE_URL' in os.environ:
+                DATABASES = {
+                    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+                }
+            else:
+                DATABASES = {
+                    'default': {
+                        'ENGINE': 'django.db.backends.sqlite3',
+                        'NAME': BASE_DIR / 'db.sqlite3',
+                    }
+                }```
+13. Run the command `pip3 install gunicorn` and freeze it into the requirements file.
+14. Create the Procfile to tell Heroku to create a web dyno to run gunicorn and serve the Django app.
+15. Add the Heroku App to Allowed Hosts in settings.py from production and *localhost* for development `ALLOWED_HOSTS = ['ciara-and-sams-wedding.herokuapp.com', 'localhost']`.
+16. Set up Heroku to allow Git to deploy automatically by going to the [Deploy]() tab, scroll down to `Connect to GitHub` and search for the repository.![image]() and click `connect`. Next click the [Enable Automatic Deploys]()button.
+17. Create a new Django `SECRET_KEY` and add to Heroku and replace it in `settings.py` with a call to get the key from the environment.
+            ```SECRET_KEY = os.environ.get('SECRET_KEY', '')```
+
+##### AWS 
+13. 
+
+
 
 #### Subsequent Deployment
 
