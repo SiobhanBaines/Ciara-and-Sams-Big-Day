@@ -36,7 +36,6 @@ def schedules(request):
             )
         try:
             msg = Schedule.objects.bulk_create(objs)
-            # returnmsg = {"status_code": 200}
             messages.success(request, 'Imported successfully')
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)

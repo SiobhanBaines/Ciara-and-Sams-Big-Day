@@ -4,8 +4,7 @@ from django.contrib.auth import login
 from django.contrib import messages
 from guests.models import Guest
 from django.contrib.auth.models import User, Group
-# from django.core.
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail
 from django.conf import settings
 
 
@@ -112,7 +111,7 @@ def contact(request):
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             default_from_email = settings.DEFAULT_FROM_EMAIL
-            
+
             try:
                 send_mail(
                     subject,
@@ -120,7 +119,6 @@ def contact(request):
                     from_email,
                     [default_from_email, from_email],
                 )
-                print(send_mail)
 
             except Exception as e:
                 messages.error(request, 'Something went wrong. \

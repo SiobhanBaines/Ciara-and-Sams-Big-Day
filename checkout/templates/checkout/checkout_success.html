@@ -2,56 +2,51 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid mb-5 mt-md-5 px-5">
-    <div class="row">
-        <div class="col">
-            <h3 class="text-center cursive-text-color">Payment Confirmation</h3>
-            <p class="text-center">Thank you for your generous gift. A confirmation email will be sent to <strong>{{ email }}</strong></p>
+    <div class="container-fluid mb-5 mt-md-5 px-5">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center cursive-text-color">Payment Confirmation</h3>
+                <p class="text-center">Thank you for your generous gift. A confirmation email will be sent to <strong>{{ email }}</strong></p>
+            </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12 col-md-6 offset-md-3">
-            <div class="donation-confirmation-wrapper p2 px-5 border">
-                <div class="row justify-content-center">
-                    <div class="col ml-5">
-                        <small class="text-muted ml-5">Gift Information:</small>
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div class="donation-confirmation-wrapper p2 px-5 border">
+                    <div class="row justify-content-center">
+                        <div class="col ml-5">
+                            <small class="text-muted ml-5">Gift Information:</small>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-5">
+                            <p class="pl-5"> Gift Number:</p>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <p>{{ checkout.donation_number }}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-5">
+                            <p>Gift Amount:</p>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <p>£{{ checkout.gift_amount }}</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-5">
-                        <p class="pl-5"> Gift Number:</p>
-                    </div>
-                    <div class="col-12 col-md-7">
-                        <p>{{ checkout.donation_number }}</p>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-5">
-                        <p>Gift Amount:</p>
-                    </div>
-                    <div class="col-12 col-md-7">
-                        <p>£{{ checkout.gift_amount }}</p>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </div>
-
-</div>
-
 {% endblock %}

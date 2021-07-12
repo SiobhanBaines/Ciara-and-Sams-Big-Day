@@ -171,10 +171,12 @@ def menu_selection(request):
             guest.meal_chosen = True
             guest.save()
             guest_form = form
+            print(guest_form)
 
     else:
 
         guest_form = GuestForm()
+        print(guest_form)
 
     guests = Guest.objects.filter(group_id=request.user)
     menus = Menu.objects.all()

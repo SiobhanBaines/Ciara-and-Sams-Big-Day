@@ -192,7 +192,7 @@ def delete_guest(request, guest_id):
     guest = get_object_or_404(Guest, pk=guest_id)
     guest_name = str(guest.first_name) + ' ' + str(guest.last_name)
     guest.delete()
-    form = GuestForm(instance=guest)
+    # form = GuestForm(instance=guest)
     messages.success(
         request, f'Guest {guest_name} deleted')
     return redirect(reverse('guests'))

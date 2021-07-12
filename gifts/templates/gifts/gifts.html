@@ -41,22 +41,22 @@
                 </div>
             </div>
         {% else %}
-        <div class="row">
-            <div class="col">
-                <hr><h3 class="text-center cursive-text-color">Gift List</h3><hr>
-            </div>
-        </div>
-        <div class="row">
-            <form class="col s12" method="POST" action="{% url 'gift_donation' gift_amount %}">
-                <div class="col mb-5 text-center">
-                <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
-                {% csrf_token %}
-                    <input id="gift_amount" name="gift_amount" min="0" value="£0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
-                    <label for="gift_amount" class="gift_amount" ></label>
-                    <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button>
+            <div class="row">
+                <div class="col">
+                    <hr><h3 class="text-center cursive-text-color">Gift List</h3><hr>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="row">
+                <form class="col s12" method="POST" action="{% url 'gift_donation' gift_amount %}">
+                    <div class="col mb-5 text-center">
+                    <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
+                    {% csrf_token %}
+                        <input id="gift_amount" name="gift_amount" min="0" value="£0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
+                        <label for="gift_amount" class="gift_amount" ></label>
+                        <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button>
+                    </div>
+                </form>
+            </div>
         {% endif %}
         <!-- List of gifts -->
         <div class="gift-container col-10 offset-1">
