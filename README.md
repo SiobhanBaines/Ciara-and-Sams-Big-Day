@@ -317,8 +317,6 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 
 ## Development Issues
 
-
-
 ## Testing
 Testing of this site can be found [here](testing.md) in a seperate file.
 
@@ -328,15 +326,37 @@ As part of my unit testing I created a [MoSCoW list of issues](MoSCoW _tasks_aft
 Bugs of this site can be found [here](bugs.md) in a seperate file
 
 
+## **How to run the application from GitPod**
+Once the application has been opened in a GidPod workspace there are a couple of tasks that need to be performed to be able to run the application during development.
+
+1. The command `pip3 install -r requirements.txt` needs to be run to install all the external API's the application needs to be able to run.
+2. To run the application use the command `python3 manage.py runserver` and then click the Open Browser button on port 8000. The application will appear in a separate browser tab.
+    N.B. to test the [Stripe](https://stripe.com/en-gb) payment processes port 8000 needs to be `made Public`. This can be done either when the command `python3 manage.py runserver` is run for the first time or by clicking on the [ports link](images/deployment/ports.png) in the bottom right of the IDE or selecting the [ports icon](images/deployment/ports_icon.png) on in the left side navigation which will show a list of all the ports available to the workspace. Checking the [padlock](images/deployment/padlock.png) will toggle the port between private and public
+
 ## **Deployment**
 
-
 ### Local Deployment
+In the Gitpod workspace
+1. Make sure all changes have been saved.
+2. Navigate to a TERMINAL ensuring there is an open gitpod command string `gitpod /workspace/Ciara-and-Sams-Big-Day $` and type the command `git add .` to add all the saved changes to the next commit package.
+3. Next type `git commit -m` followed by a meaningful commit message inside quotation marks for the commit package such as *'Fix menu drop-down visibilty'*
+4. Finally type `git push` to deploy the application to Github 
 
-
+N.B. Using the command `git status` will show the status of the changes waiting to be pushed to Github.
 
     
 ### To deploy your project on Heroku, use the following steps: 
+The following steps assume you already have an Heroku account set up reading to create the application and deploy it.
+
+#### Initial Deployment
+1. Log into Heroku
+2. From the dashboard click New on the top right and [Create New App](). Give it a name specific to the app (I called this app `ciara-and-sams-wedding`) and chose the nearest region. Currently either United States or Europe. 
+3. Open the [Resources]() tab provision a new `Postgres` database
+4. Go back to Gitpod and install `dj_database_url` and `psycopg2-binary`.
+5. Freeze the requirements using the command `pip3 freeze . requirements.txt`.
+6. Go to `settings.py` in the `ciara_and_sams_big_day` app
+
+#### Subsequent Deployment
 
 [Back to Top](#table-of-contents)
 
