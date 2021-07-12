@@ -84,7 +84,7 @@
                             <div class="image-container venue">
                                 {% if venue.image %}
                                 <a href="{{ venue.venue_url }}">
-                                    <img class="card-img-bottom img-fluid img-thumbnail" src="/media/{{ venue.image }}"
+                                    <img class="card-img-bottom img-fluid img-thumbnail" src="{{ MEDIA_URL }}{{ venue.image }}"
                                         alt="{{ venue.name }}">
                                 </a>
                                 {% else %}

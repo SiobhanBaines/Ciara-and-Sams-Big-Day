@@ -542,6 +542,10 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 12. Create a User by going to the `Users` page and clicking `Add user` and giving it a name made up of the app name followed by 'staticfiles-user' and give the user 'Access Type' `Programmatic Access` and select `Next` through to the end and `create user`.
 13. Download and save the CSV containing the `users access key` and the `secret access key`. This can only be done at this time. If you lose these keys you will need to create some new ones and deactivate these.
 14. In Git install `boto3` and `django-storages`, and freeze to the requirements file.
+15. Add `storages` to INSTALLED_APPS in settings.py.
+16. In settings.py add [AWS details]() in the static files section 
+17. Add AWS config variables to Heroku
+
 
 
 

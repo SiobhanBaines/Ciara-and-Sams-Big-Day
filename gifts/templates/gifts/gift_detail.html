@@ -24,8 +24,8 @@
                 <div class="col-12 col-md-6 mb-2 ">
                     <div class="image-container">
                         {% if gift.image %}
-                        <a href="/media/{{ gift.image }}" target="_blank">
-                            <img class="card-img-top img-fluid img-thumbnail " src="/media/{{ gift.image }}" alt="{{ gift.name }}">
+                        <a href="{{MEDIA_URL }}{{ gift.image }}" target="_blank">
+                            <img class="card-img-top img-fluid img-thumbnail " src="{{ MEDIA_URL }}{{ gift.image }}" alt="{{ gift.name }}">
                         </a>
                         {% else %}
                         <a href="">
