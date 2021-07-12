@@ -31,8 +31,13 @@ class GuestForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'time': 'hh:mm',
-            'event': 'Event Details',
+            'group_id': 'group_id',
+            'first_name': 'first_name',
+            'starter': 'starter',
+            'main': 'main',
+            'dessert': 'dessert',
+            'special_diet': 'special_diet',
+            'requirements': 'requirements',
         }
 
         for field in self.fields:

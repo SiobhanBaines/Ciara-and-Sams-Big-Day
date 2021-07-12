@@ -171,12 +171,12 @@ def menu_selection(request):
             guest.meal_chosen = True
             guest.save()
             guest_form = form
-            print(guest_form)
-
+            messages.info(request, 'Thank you for selecting you \
+                meal preference.')
+            return redirect(reverse('display_menu'))
     else:
 
         guest_form = GuestForm()
-        print(guest_form)
 
     guests = Guest.objects.filter(group_id=request.user)
     menus = Menu.objects.all()
