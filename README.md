@@ -545,9 +545,11 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 15. Add `storages` to INSTALLED_APPS in settings.py.
 16. In settings.py add [AWS details]() in the static files section 
 17. Add AWS config variables to Heroku
-
-
-
+18. Add [AWS_S3_OBJECT_PARAMETERS]() to `settings.py` to tell the browser to cache static files and therefore improve performance.
+19. Add `media` files to s3 in /media/ folder 
+20. Add Stripe `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` to Heroku config variables.
+21. Create new webhook for production site using the Heroku site URL followed by `/checkout/wh/` and add `STRIPE_WH_SECRET` to Heroku config variables.
+22. Send a test webhook from Stripe to confirm the connection.
 
 
 <a></a>

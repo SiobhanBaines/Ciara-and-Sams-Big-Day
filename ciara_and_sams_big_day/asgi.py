@@ -11,6 +11,7 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ciara_and_sams_big_day.settings')
+os.environ.setdefault(
+    'DJANGO_SETTINGS_MODULE', 'ciara_and_sams_big_day.settings')
 
 application = get_asgi_application()

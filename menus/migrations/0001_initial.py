@@ -14,8 +14,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Menu',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('course', models.CharField(blank=True, max_length=8, null=True)),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID')),
+                ('course', models.CharField(blank=True, max_length=8)),
                 ('name', models.CharField(max_length=50)),
                 ('description', models.CharField(max_length=250)),
             ],

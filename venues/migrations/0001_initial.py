@@ -14,18 +14,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Venue',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID')),
                 ('venue_type', models.CharField(max_length=10)),
                 ('name', models.CharField(max_length=50)),
-                ('address_line_1', models.CharField(blank=True, max_length=80, null=True)),
-                ('address_line_2', models.CharField(blank=True, max_length=80, null=True)),
-                ('city', models.CharField(blank=True, max_length=40, null=True)),
-                ('county', models.CharField(blank=True, max_length=80, null=True)),
-                ('postcode', models.CharField(blank=True, max_length=20, null=True)),
-                ('email', models.EmailField(blank=True, max_length=254, null=True)),
-                ('phone_number', models.CharField(blank=True, max_length=20, null=True)),
-                ('venue_url', models.URLField(blank=True, max_length=1024, null=True)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='')),
+                ('address_line_1', models.CharField(
+                    blank=True, max_length=80)),
+                ('address_line_2', models.CharField(
+                    blank=True, max_length=80)),
+                ('city', models.CharField(blank=True, max_length=40)),
+                ('county', models.CharField(
+                    blank=True, max_length=80)),
+                ('postcode', models.CharField(
+                    blank=True, max_length=20)),
+                ('email', models.EmailField(
+                    blank=True, max_length=254)),
+                ('phone_number', models.CharField(
+                    blank=True, max_length=20)),
+                ('venue_url', models.URLField(
+                    blank=True, max_length=1024)),
+                ('image', models.ImageField(
+                    blank=True, null=True, upload_to='')),
             ],
         ),
     ]

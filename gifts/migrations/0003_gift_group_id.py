@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gift',
             name='group_id',
-            field=models.CharField(blank=True, max_length=6, null=True),
+            field=models.CharField(blank=True, max_length=6),
         ),
     ]

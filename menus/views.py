@@ -33,7 +33,7 @@ def menus(request):
                 Menu(
                     course=row['course'],
                     menu_item=row['menu_item'],
-                    description=row['description'],
+                    # description=row['description'],
                 )
             )
         try:

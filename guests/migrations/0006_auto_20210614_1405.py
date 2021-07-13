@@ -13,22 +13,22 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='guest',
             name='address_line_1',
-            field=models.CharField(blank=True, max_length=80, null=True),
+            field=models.CharField(blank=True, max_length=80),
         ),
         migrations.AlterField(
             model_name='guest',
             name='city',
-            field=models.CharField(blank=True, max_length=40, null=True),
+            field=models.CharField(blank=True, max_length=40),
         ),
         migrations.AlterField(
             model_name='guest',
             name='email',
-            field=models.EmailField(blank=True, max_length=254, null=True),
+            field=models.EmailField(blank=True, max_length=254),
         ),
         migrations.AlterField(
             model_name='guest',
             name='phone_number',
-            field=models.CharField(blank=True, max_length=20, null=True),
+            field=models.CharField(blank=True, max_length=20),
         ),
         migrations.AlterField(
             model_name='guest',

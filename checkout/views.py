@@ -74,7 +74,8 @@ def checkout(request):
             # pick up records from Guest model
             guests = Guest.objects.filter(group_id=request.user)
 
-            # check if payment is by a guest, update guest's email, add gift details
+            # check if payment is by a guest, update guest's email,
+            #   add gift details
             for guest in guests:
 
                 # is payment by a guest
