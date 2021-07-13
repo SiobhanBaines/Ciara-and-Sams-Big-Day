@@ -22,20 +22,22 @@
             <div class="row">
                 <!-- menu details -->
                 <div class="col-10 offset-1 ">
-                    {% for menu in menus %}
-                    <div class="row">
-                        <div class="col-4 text-callout">
-                            <p class="mb-0 mt-1 menu">{{ menu.course }}</p>
+                    {% for course in courses %}
+                        <div class="row">
+                            <div class="col text-callout text-center">
+                                <p class="mb-0 mt-1 menu">{{ course }}</p>
+                            </div>
                         </div>
-                        <div class="col-8 text-callout">
-                            <p class="mb-0 mt-1 menu">{{ menu.menu_item }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col offset-4 text-callout">
-                            <p class="mb-0 mt-1 menu-description">{{ menu.description }}</p>
-                        </div>
-                    </div>
+                        {% for menu in menus %}
+                            {% if menu.course == course %}
+                                <div class="row"> 
+                                    <div class="col text-callout text-center">
+                                        <h3 class="mb-0 mt-1 menu">{{ menu.menu_item }}</h3>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <hr>
                     {% endfor %}
                 </div>
             </div>

@@ -35,7 +35,7 @@ def schedules(request):
                 )
             )
         try:
-            msg = Schedule.objects.bulk_create(objs)
+            Schedule.objects.bulk_create(objs)
             messages.success(request, 'Imported successfully')
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)

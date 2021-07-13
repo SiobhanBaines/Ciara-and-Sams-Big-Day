@@ -33,11 +33,10 @@ def menus(request):
                 Menu(
                     course=row['course'],
                     menu_item=row['menu_item'],
-                    # description=row['description'],
                 )
             )
         try:
-            msg = Menu.objects.bulk_create(objs)
+            Menu.objects.bulk_create(objs)
             messages.success(request, 'Imported successfully')
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)
@@ -58,9 +57,17 @@ def menus(request):
 def display_menu(request):
     """ View of menu details """
 
+    courses = []
     menus = Menu.objects.all().order_by('-course')
+    for menu in menus:
+        if menu.course not in courses:
+            courses.append(menu.course)
+
+    print(courses)
+
     form = MenuForm()
     context = {
+        'courses': courses,
         'menus': menus,
         'form': form,
     }

@@ -264,14 +264,7 @@ p.venue-address {
     z-index: 99;
     margin: 0;
 }
-.schedule-overlay { 
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(250, 250, 250, 0.85);
-  }
+.schedule-overlay,
 .menu-overlay,
 .rsvp-overlay { 
     position: absolute;
@@ -279,15 +272,19 @@ p.venue-address {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(250, 250, 250, 0.7);
+    background-color: rgba(250, 250, 250, 0.85);
   }
+
 p.schedule,
 p.menu {
     font-size: calc(1.5rem + 0.8vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
     text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
-    /* z-index: 999; */
+}
+h3.menu {
+    color: var(--primary-font);
+    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
 }
 .text-callout {
     z-index: 99999;

@@ -40,7 +40,7 @@ def gifts(request):
                     )
                 )
             try:
-                msg = Gift.objects.bulk_create(objs)
+                Gift.objects.bulk_create(objs)
                 messages.success(request, 'Imported successfully')
             except Exception as e:
                 messages.error(request, 'Error While Importing Data: ', e)

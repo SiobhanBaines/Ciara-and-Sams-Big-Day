@@ -15,8 +15,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Guests',
             fields=[
-                ('id', models.BigAutoField(auto_created=True,
-                primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID')),
                 ('guest_id', models.CharField(blank=True, max_length=6)),
                 ('first_name', models.CharField(blank=False, max_length=50)),
                 ('last_name', models.CharField(blank=False, max_length=50)),

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Guest
+from guests.models import Guest
 
 
 class CheckoutForm(forms.ModelForm):

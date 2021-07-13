@@ -2,7 +2,7 @@
 
 ## **Project Outline** 
 
-This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guests party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally the bride and groom should be able to arrange the table seating based on the guests who have accepted.
+This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guest's party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally' the bride and groom should be able to arrange the table seating based on the guests who have accepted.
 
 ``` Mock up Image ```
 ![image](static/documentation_files/images/ami_responsivedesign.png)
@@ -17,12 +17,12 @@ You can find the original website here []().
     * [User Goals](#user-goals)
     * [User Stories](#user-stories)
 		* [Bride or Groom](#bride-or-groom)
-		* [Wedding Guestm](#wedding-guest)
+		* [Wedding Guest](#wedding-guest)
     * [User Requirements and Expectations](#user-requirements-and-expectations)
         * [Requirements](#requirements)
         * [Expectations](#expectations)
     * [Design Choices](#design-choices)
-        * [Colors](#colors)
+        * [Colours](#colors)
         * [Fonts](#fonts)
         * [Structure](#structure)
 			* [Landing / Home Page](#landing-/-home-page)
@@ -75,11 +75,11 @@ You can find the original website here []().
 ### User Goals
 
 * The landing page should have a romantic wedding feel for the couple and provide some details about the occaision to the guests who will be invited to create an account.
-* The website must 
+* The website must: 
   * be responsive on all types of devices including mobile phones, tables and desktops.
   * have the ability to maintain the guest list, menu, gift list and schedule for the day including venue details.
-  * have the ability to make financial transactions, i.e. allow the guests to give money as a wedding gift. 
-  * have details about the local area including alternative accommodation an public transport information.
+  * have the ability to make financial transactions, i.e., allow the guests to give money as a wedding gift. 
+  * have details about the local area including alternative accommodation a public transport information.
   * include any Covid19 requirements which can be switched of if no longer needed.
 * The website must be visually appealing to the bride and groom.
 
@@ -137,13 +137,12 @@ You can find the original website here []().
 * Romantic design in keeping with the bride and grooms chosen colour scheme.
 * Bride and Groom
    * Easy maintenance of the guest list, the wedding breakfast menu, the schedule, covid19 restrictions and the gift list.
-* Guests 
+* Guests:
    * need to be able to easily RSVP the invitation.
    * be able to give a wedding gift
    * update their contact details
-   * If the guests accept the invitation they will need to 
-      * be able to choose from the menu options for each member of their party. 
-* Provide location information of the ceremony and receiption
+   * If the guests accept the invitation they will need to be able to choose from the menu options for each member of their party. 
+* Provide location information of the ceremony and reception
 * Provide other local information
 
 <a></a>
@@ -152,8 +151,8 @@ You can find the original website here []().
 
 * When clicking on links to external pages, I expect them to open in a different window.
 * When the guests click the GUEST button I expect them to be taken to the RSVP page.
-* I expect an email to be sent to the bride and groom and specfic flags to be updated when
-   * the guest have RSVP'ed
+* I expect an email to be sent to the bride and groom and specfic flags to be updated when:
+   * the guest have RSVP'd
    * the guest have selected from the menu options
    * if the guest sends a monetory donation including the amount of that donation
    * if a guest selects to buy a gift
@@ -166,11 +165,11 @@ You can find the original website here []().
 
 ### Design Choices
 
-In designing this site I want to incorporate the bride and grooms colour scheme (mint green and peach) with the rustic but romantic feel of the venue with it's open beams and stunning views across the golf course. To make it special to Ciara and Sam a photograph of them will appear on the landing page.
+In designing this, site I want to incorporate the bride and grooms colour scheme (mint green and peach) with the rustic but romantic feel of the venue with it's open beams and stunning views across the golf course. To make it special to Ciara and Sam a photograph of them will appear on the landing page.
 
 <a></a>
 
-#### Colors
+#### Colours
 
 The colours of the site are taken from the colour scheme the bride and groom have decided on which is mint green and peach. I have chosen to make the main colour off-white to keep the site bright and airy without being stark that would come with bright white as the main colour.
 I initially used this ![image](documentation/images/colour_scheme.jpg) and [icolorpalette](https://icolorpalette.com/) to create a colour palette but the colours were muted in the palette so went back to the image and selected each of the block colours to find the closest match.
@@ -223,7 +222,7 @@ The current Covid19 restrictions will be shown here assuming they will still be 
 
 ##### Registration
 
-Only the bride and groom need to register because the guests login credentials will be created when the guest list is uploaded. This is why the link is very small and at the very bottom of the main page. When a user registers they will be given is_staff status. 
+Only the bride and groom need to register because the guest's login credentials will be created when the guest list is uploaded. This is why the link is very small and at the very bottom of the main page. When a user registers they will be given is_staff status. 
 
 <a></a>
 
@@ -241,7 +240,7 @@ The first time the guest logs in, they will be asked to accept or decline the in
 
 ##### Guests Menu Page
 
-The guests version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.  
+The guest's version of the menu page will have the menu options list and the names of all the guest in that party. There will also be a box under each name to give details of any allergies or special dietry requirements. Sandburn Hall have said they will do their best to accommodate all dietry requirements.  
 
 <a></a>
 
@@ -334,7 +333,7 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 
 ### Existing Features
 
-* There is sign-in functionality using allauth from Django. I have note created a registration function because I will create super_user accounts for the bride and groom and the Guest login will use a unique code generated by Django, which will be printed on their invitation, as their username and the postcode where the guests invitation was sent, which may be different to the guest's current residence.
+* There is sign-in functionality using allauth from Django. I have created a registration function which will give the user `is_staff` status rather than manually creating super_user accounts for the bride and groom. When the guests login their username will be a unique code generated by Django, which will be printed on their invitation and the postcode where the invitation was sent will act as a password, which may be different to the guest's current residence.
 * There will be a carousel of photographs of the bride and groom in the Our Story section of the home page.
 * Covid19 restrictions - there will be the ability to hide or show Covid19 restrictions.
 * The RSVP on the card on the first screen will act as a link to the Guest login page.
@@ -398,7 +397,6 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 * [Balsamic](https://balsamiq.com/wireframes/)
 * [W3C HTML Validation Service](https://validator.w3.org/)
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
-* [techsini](http://techsini.com/)
 * [jshint](https://jshint.com/)
 
 [Back to Top](#table-of-contents)
@@ -413,7 +411,7 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 
 Testing of this site can be found [here](testing.md) in a seperate file.
 
-As part of my unit testing I created a [MoSCoW list of issues](MoSCoW _tasks_after_main_build.xlsx). This helps to give a clear indication of what `Must` be completed to make the site work correctly and what `Should` be done to give the site improved UI. The tasks desegnate as `Could` have that would improve UX but not essential to the site. Items that are designated `Would` like are items that would be great to have but only if everything else is completed and there is time before the project is submitted. My intention is to complete all the '`Must have` and `Should have` items before looking at the `Could have` and hopefully the `Would like` items.
+As part of my unit testing, I created a [MoSCoW list of issues](MoSCoW _tasks_after_main_build.xlsx). This helps to give a clear indication of what `Must` be completed to make the site work correctly and what `Should` be done to give the site improved UI. The tasks desegnate as `Could` have that would improve UX but not essential to the site. Items that are designated `Would` like are items that would be great to have but only if everything else is completed and there is time before the project is submitted. My intention is to complete all the '`Must have` and `Should have` items before looking at the `Could have` and hopefully the `Would like` items.
 
 [Back to Top](#table-of-contents)
 
@@ -535,7 +533,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
         6.2.4. Change the ARN in the Bucket Policy Editor to have `/*` at the end and click `save`
     6.3. Go to the `Access control List` section and check `Objects` for `Everyone(public access) and `save`.
 7. Click the aws icon to go back to the AWS Management Console and select `IAM`.
-8. Select `User groups` and click `create group`. Give the group an name beginning 'manage-' followed by the heroky app name, in this case 'ciara-and'sams-wedding' and click `create group`.
+8. Select `User groups` and click `create group`. Give the group a name beginning 'manage-' followed by the heroky app name, in this case 'ciara-and'sams-wedding' and click `create group`.
 9. Select `Policies` and click `create policy`. On the [JSON]() tab select `import manage policy` and import the s3 full access policy form the pop-up window.
 10. Get the bucket ARN from the Bucket Policy page in s3 and paste in to the JSON.![image](). Click through and on the review policy page and give the policy and name and description.
 11. Attach the policy to the group by going to the `Permissions` tab on the `User group` and clicking `add permissions`, `attach policies` and selecting the appropriate policy.
@@ -555,6 +553,29 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 <a></a>
 
 #### Subsequent Production Deployment
+Assuming Heroku is setup to `Enable Automatic Deployments` code changes can be deployed to production by using the standard [Local Deployment](#local-deployment) to Github which will automatically push the deployment through to production. 
+
+However, if a change has been made to a model during a development, prior to adding and committing the changes in Gitpod it will be necessary to modify the `settings.py` file to connect to the postgres database in Heroku so that the migrations for those changes can be performed.
+1. Open settings.py and comment out the DATABASE settings and add a new DATABASE setting to contain the postgres `DATABASE_URL` as below  
+
+`DATABASES = {
+        'default': dj_database_url.parse('postgres://*****')
+    }
+    # if 'DATABASE_URL' in os.environ:
+        # DATABASES = {
+        #         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        #     }
+    # else:
+    #     DATABASES = {
+    #         'default': {
+    #             'ENGINE': 'django.db.backends.sqlite3',
+    #             'NAME': BASE_DIR / 'db.sqlite3',
+    #         }
+    #     }`
+
+2. Run the `python3 manage.py migrate --plan` command to check what is going to be migrated. 
+3. Assuming the results are as expected, run the `python3 manage.py migrate` command to perform the mgiration.
+4. Reverse out the changes to `settings.py` making sure to remove the postgres DATABASE_URL value.
 
 [Back to Top](#table-of-contents)
 
@@ -587,7 +608,7 @@ The below image was found on [shutterstock](https://www.shutterstock.com/image-p
 
 ### Setting up bride/groom as 'staff'
 
-The only individuals that need to register an account on this site are the bride and groom but reading the Django documentation I was still struggling to understand how I could make the registration set the user up as 'staff' in Django admin. In my hunt for a solution I came across [ordinarycoders](https://www.ordinarycoders.com/blog/article/django-user-register-login-logout) WRITTEN BY
+The only individuals that need to register an account on this site are the bride and groom but reading the Django documentation I was still struggling to understand how I could make the registration set the user up as 'staff' in Django admin. In my hunt for a solution, I came across [ordinarycoders](https://www.ordinarycoders.com/blog/article/django-user-register-login-logout) WRITTEN BY
 [JAYSHA](https://www.ordinarycoders.com/blog/Jaysha). The majority of the code is taken directly from here.
 
 <a></a>
@@ -596,7 +617,9 @@ The only individuals that need to register an account on this site are the bride
 
 As part of the RSVP process a guest will either accept or decline the invitation. I decided the easiest way to manage this was to set up 2 groups in Django admin; accepted and declined. [stackoverflow](https://stackoverflow.com/questions/34571880/how-to-check-in-template-if-user-belongs-to-a-group) by [fuser60596](https://stackoverflow.com/users/5016956/fuser60596) gave me solution I needed to check the group and therefore display the correct menu.
 
-https://pythoncircle.com/post/30/how-to-upload-and-process-the-csv-file-in-django/
+### CSV file upload
+
+Jo @ CI gave me this link [upload-csv](https://ramramesh1374.medium.com/upload-csv-using-django-bulk-create-c75b28fc19f0).
 
 <a></a>
 

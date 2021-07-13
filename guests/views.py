@@ -77,7 +77,7 @@ def guests(request):
                 )
             )
         try:
-            msg = Guest.objects.bulk_create(objs)
+            Guest.objects.bulk_create(objs)
             # returnmsg = {"status_code": 200}
             messages.success(request, 'Imported successfully')
         except Exception as e:
