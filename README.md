@@ -6,7 +6,7 @@ This site will provide the bride and groom with the ability to give their weddin
 
 ``` Mock up Image ```
 ![image](static/documentation_files/images/ami_responsivedesign.png)
-You can find the original website here []().
+You can find the original website here [ciara_and_sams_wedding](https://ciara-and-sams-wedding.herokuapp.com/).
 
 ---
 
@@ -469,8 +469,8 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 ##### Heroku
 
 1. Log into Heroku
-2. From the dashboard click New on the top right and [Create New App](). Give it a name specific to the app (I called this app `ciara-and-sams-wedding`) and chose the nearest region. Currently either United States or Europe. 
-3. Open the [Resources]() tab and provision a new `Postgres` database
+2. From the dashboard click New on the top right and [Create New App](images/deployment/heroku_new.PNG). Give it a name specific to the app (I called this app `ciara-and-sams-wedding`) and chose the nearest region. Currently either United States or Europe. 
+3. Open the [Resources](images/deployment/heroku_resources.png) tab and provision a new `Postgres` database
 4. Go back to Gitpod and install `dj_database_url` and `psycopg2-binary`.
 5. Freeze the requirements using the command `pip3 freeze . requirements.txt`.
 6. Go to `settings.py` in the `ciara_and_sams_big_day` app
@@ -494,7 +494,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 13. Run the command `pip3 install gunicorn` and freeze it into the requirements file.
 14. Create the Procfile to tell Heroku to create a web dyno to run gunicorn and serve the Django app.
 15. Add the Heroku App to Allowed Hosts in settings.py from production and *localhost* for development `ALLOWED_HOSTS = ['ciara-and-sams-wedding.herokuapp.com', 'localhost']`.
-16. Set up Heroku to allow Git to deploy automatically by going to the [Deploy]() tab, scroll down to `Connect to GitHub` and search for the repository.![image]() and click `connect`. Next click the [Enable Automatic Deploys]()button.
+16. Set up Heroku to allow Git to deploy automatically by going to the [Deploy](images/deployment/heroku_deploy.png) tab, scroll down to `Connect to GitHub` and search for the repository.![image](images/deployment/heroku_repository.png) and click `connect`. Next click the [Enable Automatic Deploys](images/deployment/auto_deploys.png)button.
 17. Create a new Django `SECRET_KEY` and add to Heroku and replace it in `settings.py` with a call to get the key from the environment.
             ```SECRET_KEY = os.environ.get('SECRET_KEY', '')```
 18. Set 'DEBUG' to True on if in Development.
@@ -504,11 +504,11 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 <a></a>
 
 ##### AWS
-1. Log into [AWS Management Console](). If `s3` is not on the console you can find it via the Services navigation at the top of the screen.
-2. Open `s3` and create a bucket with the same name as the app in Heroku, and select the nearest region. ![image]().
-3. Open the [bucket]() and select the `Permissions` tab.
+1. Log into [AWS Management Console](images/deployment/AWS_console.png). If `s3` is not on the console you can find it via the Services navigation at the top of the screen.
+2. Open `s3` and create a bucket with the same name as the app in Heroku, and select the nearest region. ![image](images/deployment/s3_bucket.png).
+3. Open the [bucket](images/deployment/s3_tabs.png) and select the `Permissions` tab.
 4. On `Block public access (bucket settings)` click `edit` and uncheck teh block all public access. 
-5. Open the `Properties` tab enable [static]() web hosting and give the index and error document default values for this site.
+5. Open the `Properties` tab enable [static](images/deployment/aws_static.png) web hosting and give the index and error document default values for this site.
 6. Back on the `Permissions` tab
     6.1. Create the CORS (Cross-origin resource sharing) configuration
          ```[
@@ -526,7 +526,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
                     "ExposeHeaders": []
                 }
             ]```
-    6.2. Generate Bucket Policy by going to Edit on the Bucket Policy and selecting the button [Policy Generator]()
+    6.2. Generate Bucket Policy by going to Edit on the Bucket Policy and selecting the button [Policy Generator](images/deployment/aws_generate_policy.png)
         6.2.1. Allow all principles and add the actiona `GetObject`, `PutObject` and `DeleteObject`.
         6.2.2. Get the ARN (Amazon Resource Name) from the `Properties` tab and paste into the ARN box at the bottom.
         6.2.3. After clicking generate policy, copy the policy into the Bucket Policy Editor.
@@ -534,16 +534,16 @@ The following steps assume you already have Heroku and AWS accounts set up readi
     6.3. Go to the `Access control List` section and check `Objects` for `Everyone(public access) and `save`.
 7. Click the aws icon to go back to the AWS Management Console and select `IAM`.
 8. Select `User groups` and click `create group`. Give the group a name beginning 'manage-' followed by the heroky app name, in this case 'ciara-and'sams-wedding' and click `create group`.
-9. Select `Policies` and click `create policy`. On the [JSON]() tab select `import manage policy` and import the s3 full access policy form the pop-up window.
-10. Get the bucket ARN from the Bucket Policy page in s3 and paste in to the JSON.![image](). Click through and on the review policy page and give the policy and name and description.
+9. Select `Policies` and click `create policy`. On the [JSON](images/deployment/aws_iam_policy.png) tab select `import manage policy` and import the s3 full access policy form the pop-up window.
+10. Get the bucket ARN from the Bucket Policy page in s3 and paste in to the JSON.![image](images/deployment/iam_json.png). Click through and on the review policy page and give the policy and name and description.
 11. Attach the policy to the group by going to the `Permissions` tab on the `User group` and clicking `add permissions`, `attach policies` and selecting the appropriate policy.
 12. Create a User by going to the `Users` page and clicking `Add user` and giving it a name made up of the app name followed by 'staticfiles-user' and give the user 'Access Type' `Programmatic Access` and select `Next` through to the end and `create user`.
 13. Download and save the CSV containing the `users access key` and the `secret access key`. This can only be done at this time. If you lose these keys you will need to create some new ones and deactivate these.
 14. In Git install `boto3` and `django-storages`, and freeze to the requirements file.
 15. Add `storages` to INSTALLED_APPS in settings.py.
-16. In settings.py add [AWS details]() in the static files section 
+16. In settings.py add [AWS details](images/deployment/settings_aws.png) in the static files section 
 17. Add AWS config variables to Heroku
-18. Add [AWS_S3_OBJECT_PARAMETERS]() to `settings.py` to tell the browser to cache static files and therefore improve performance.
+18. Add [AWS_S3_OBJECT_PARAMETERS](images/deployment/aws_s3_object_parm.png) to `settings.py` to tell the browser to cache static files and therefore improve performance.
 19. Add `media` files to s3 in /media/ folder 
 20. Add Stripe `STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY` to Heroku config variables.
 21. Create new webhook for production site using the Heroku site URL followed by `/checkout/wh/` and add `STRIPE_WH_SECRET` to Heroku config variables.
