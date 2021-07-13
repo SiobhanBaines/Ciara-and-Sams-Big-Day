@@ -18,7 +18,7 @@ This has happened because the first time the object is created it is not creatin
 After adding stripe_pid to `checkout = Checkout(group_id=group_id, gift_amount=gift_amount, stripe_pid=stripe_pid)` there is only one checkout object ![image](images/bugs/checkout_one_object.png), [detail of checkout object](images/bugs/checkout_one_object_with_pid.png)
 
 ### Flake 8 remaining issues
-The issues below related to the upload code from [upload-csv](https://ramramesh1374.medium.com/upload-csv-using-django-bulk-create-c75b28fc19f0). In the code to 'execute the generate objects in bulk_create' it states `msg = Menu.objects.bulk_create(objs)` in menus/views.py. I beleive 
+The issues below related to the upload code from [upload-csv](https://ramramesh1374.medium.com/upload-csv-using-django-bulk-create-c75b28fc19f0). In the code to 'execute the generate objects in bulk_create' it states `msg = Menu.objects.bulk_create(objs)` in menus/views.py. I beleive there 
 
 
 `./menus/views.py:40:13: F841 local variable 'msg' is assigned to but never used`
