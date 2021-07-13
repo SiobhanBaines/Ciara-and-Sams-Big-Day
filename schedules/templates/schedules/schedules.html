@@ -55,6 +55,7 @@
                                     <td>{{ schedule.time }}</td>
                                     <td>{{ schedule.event }}</td>
                                     <td><small class="ml-3"><a class="text-success"
+                                        <a class="text-success" href="{% url 'display_schedule' %}"></i>View</a> |
                                             <a href="{% url 'edit_schedule' schedule.id %}">Edit</a> |
                                             <a class="text-danger" href="{% url 'delete_schedule' schedule.id %}">Delete</a>
                                         </small>

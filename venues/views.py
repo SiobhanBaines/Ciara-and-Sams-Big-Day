@@ -10,7 +10,6 @@ import os
 
 @login_required
 def venues(request):
-    # google_maps_key = settings.GOOGLE_MAPS_KEY
     """ View a list of all venues """
     venues = Venue.objects.all()
 

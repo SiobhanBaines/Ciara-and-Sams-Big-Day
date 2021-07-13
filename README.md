@@ -2,10 +2,10 @@
 
 ## **Project Outline** 
 
-This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guest's party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally' the bride and groom should be able to arrange the table seating based on the guests who have accepted.
+This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guest's party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally, the bride and groom should be able to arrange the table seating based on the guests who have accepted.
 
 ``` Mock up Image ```
-![image](static/documentation_files/images/ami_responsivedesign.png)
+![image](images/ami_responsivedesign.png)
 You can find the original website here [ciara_and_sams_wedding](https://ciara-and-sams-wedding.herokuapp.com/).
 
 ---
@@ -22,10 +22,10 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
         * [Requirements](#requirements)
         * [Expectations](#expectations)
     * [Design Choices](#design-choices)
-        * [Colours](#colors)
+        * [Colours](#colours)
         * [Fonts](#fonts)
         * [Structure](#structure)
-			* [Landing / Home Page](#landing-/-home-page)
+			* [Landing/Home Page](#landing/home-page)
 			* [Registration](#registration)
 			* [Login](#login)
 			* [RSVP Page](#rsvp-page)
@@ -172,7 +172,7 @@ In designing this, site I want to incorporate the bride and grooms colour scheme
 #### Colours
 
 The colours of the site are taken from the colour scheme the bride and groom have decided on which is mint green and peach. I have chosen to make the main colour off-white to keep the site bright and airy without being stark that would come with bright white as the main colour.
-I initially used this ![image](documentation/images/colour_scheme.jpg) and [icolorpalette](https://icolorpalette.com/) to create a colour palette but the colours were muted in the palette so went back to the image and selected each of the block colours to find the closest match.
+I initially used this ![image](images/colour_scheme.jpg) and [icolorpalette](https://icolorpalette.com/) to create a colour palette but the colours were muted in the palette so went back to the image and selected each of the block colours to find the closest match.
 
 The main background colour will be #FCFCF4 which is almost white and will create a bright and airy feel to the site
 
@@ -205,7 +205,7 @@ and for the main text I will use [Nunito](https://fonts.google.com/specimen/Nuni
 
 <a></a>
 
-##### Landing / Home Page
+##### Landing/Home Page
 
 The landing page is designed to welcome the visitors and encouraging them to engage with the site. There will be an image of the bride and groom and some images and highlevel details of the ceremony and reception venues. There will be a `Guests` button which will take the guests to the RSVP page.
 
@@ -268,26 +268,47 @@ Full details of the expected schedule of the day will be details here. * time th
 
 ##### Guest List Page
 
-The guest list page will consist of 3 pages.
+The guest list page will consist of 4 pages.
 * the main page will allow the bride and groom to view
+    * upload a full list of guests from a CSV file
+    * the guest group identification
     * the guests names
-    * the number of confirmed guests in that party
-    * whether they have accepted or declined the invitation
+    * whether the invitation has been accepted or not
     * if they selected their menu choices
-* Page 2 will give the bride and groom the ability to add, change and delete guests
-* Page 3 will allow the bride and groom to see the menu choices and what gifts have been selected
+    * have the ability to add, change or delete guests
+* An add guest page
+* An edit guest page 
+* A view of the guest details
 
 <a></a>
 
 ##### Menu Maintenance Page
 
-The bride and groom will be able to add details about the starters, main course and deserts they have chosen for the wedding breakfast.
+The menu maintenance page will consist of 5 pages.
+* the main page will allow the bride and groom to view
+    * upload the menu from a CSV file
+    * the type of course
+    * the title of the dish
+    * have the ability to add, change or delete menu items
+* An add menu item page
+* An edit menu item page 
+* A view of the full menu looking like a menu card
+* A page to enable the guests to select from the menu and provide any special dietary requirements.
 
 <a></a>
 
 ##### Gift Maintenance Page
 
-The bride and groom will have the ability to add, change and delete gifts.
+The gift maintenance page will consist of 4 pages.
+* the main page will allow the bride and groom to view
+    * upload a list of desired gifts from a CSV file
+    * an image of the gift
+    * the name of the gift
+    * the value of the gift
+    * have the ability to add, change or delete gifts
+* An add gift page
+* An edit  gift page 
+* A page to view the full details of the gift include a description,  a link to a supplier of the gift and who, if anyone has chosen to buy the gift
 
 [Back to Top](#table-of-contents)
 
@@ -333,7 +354,7 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 
 ### Existing Features
 
-* There is sign-in functionality using allauth from Django. I have created a registration function which will give the user `is_staff` status rather than manually creating super_user accounts for the bride and groom. When the guests login their username will be a unique code generated by Django, which will be printed on their invitation and the postcode where the invitation was sent will act as a password, which may be different to the guest's current residence.
+* There is sign-in functionality using allauth from Django. I have created a registration function which will give the user `is_staff` status rather than manually creating super_user accounts for the bride and groom. When a guest logs in their username will be a unique code generated by Django, which will be printed on their invitation and the postcode where the invitation was sent will act as a password, which may be different to the guest's current residence.
 * There will be a carousel of photographs of the bride and groom in the Our Story section of the home page.
 * Covid19 restrictions - there will be the ability to hide or show Covid19 restrictions.
 * The RSVP on the card on the first screen will act as a link to the Guest login page.
@@ -352,7 +373,9 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 ### Features to be implemented
 
 * The ability for the bride and groom to add, change or delete covid19 restrictions
-* The ability for the bridge and groom to add, change or delete the alternative accommodation and local transport information.
+* The ability for the bride and groom to add, change or delete the alternative accommodation and local transport information.
+* The ability for the bride and groom to create a table plan for the reception. 
+* The ability to download the guests and their meal choices for the reception venue.
 
 [Back to Top](#table-of-contents)
 

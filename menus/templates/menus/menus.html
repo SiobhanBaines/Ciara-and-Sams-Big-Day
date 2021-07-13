@@ -56,8 +56,8 @@
                                 <tr>
                                     <td>{{ menu.course}}</td>
                                     <td>{{ menu.menu_item }}</td>
-                                    <td><small class="ml-3"><a class="text-success"
-                                                href="{% url 'display_menu' %}"></i>View</a> |
+                                    <td><small class="ml-3">
+                                        <a class="text-success" href="{% url 'display_menu' %}"></i>View</a> |
                                             <a href="{% url 'edit_menu' menu.id %}">Edit</a> |
                                             <a class="text-danger" href="{% url 'delete_menu' menu.id %}">Delete</a>
                                         </small>

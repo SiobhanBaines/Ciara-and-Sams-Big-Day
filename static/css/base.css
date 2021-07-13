@@ -7,21 +7,14 @@ html, body {
     padding: 0;
     overflow-x: hidden;
 }
-
 .cursive-text-color {
     color: var(--primary-font);
     text-shadow: 1px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
 }
-/* .banner {
-    /* font-family: 'Lovers Quarrel', cursive;
-    font-size: calc(2rem + 8.3vw); */
-/* }  */
-
 .rsvp {
     font-size: calc(2rem + .3vw);
     transform: rotate(6.5deg);
 }
-
 h1, h2, h3, h4, h5 {
     font-family: 'Italianno', cursive;
 }
@@ -58,7 +51,6 @@ label {
     --secondary-font-shadow: #947a27;
     --primary-font-shadow: #e6d090;
 }
-
 /* from Bulma */
 .icon {
     align-items: center;
@@ -89,7 +81,6 @@ button {
 .buy-btn {
     background-color: var(--secondary-peach);
 }
-
 /* Nav Bar  */
 .navbar-inner {
     background: transparent;
@@ -100,7 +91,6 @@ button {
     font-family: 'Italianno', cursive;
     text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
 }
-
 .navbar-toggler-icon {
     background-color: transparent;
 }
@@ -109,7 +99,6 @@ button {
     padding: 0;
     background-color: rgba(255, 254, 242, 50%);
 }
-
 .dropdown_item {
     font-size: calc(1rem + 1.3vw);
 }
@@ -120,9 +109,7 @@ footer li {
     list-style-type: none;
     display: flex;
 }
- 
 /* forms */
-
 .container {
     padding-top: calc(3rem + 2.3vw);
 }
@@ -134,8 +121,7 @@ footer li {
     flex-direction: column;
     text-align: center;
     justify-content: space-around;    
-  }
-
+}
 .name-callout {
     position: absolute;
     align-items: center;
@@ -144,34 +130,28 @@ footer li {
 .row.home-row {
     height: 50vh;
 }
-
 #our-story,
 #covid-restrictions {
     background-color: var(--primary-peach);
     width: 100vw;
     opacity: 0.9;
 }
-
 #location {
     background-color: var(--primary-mint);
     width: 100vw;
     opacity: 0.9;
 }
-
 .carousel {
     width: 24%;
     height: auto;
     margin-left: 38%;
 }
-
 /* buttons */
-
 .rsvp-button {
     border: none;
     height: 300px;
     width: 300px;
 }
-
 #hint_id_username, 
 #hint_id_password1, 
 #hint_id_password2 {
@@ -230,21 +210,16 @@ p.text-center.cursive-text-color {
 }
 p.venue-address {
     margin-bottom: 0rem;
-    /* margin-left: 5rem; */
 }
 .image-container.venue {
     justify-content: center;
     margin-left: 0;
 }
-/* maps */
-/* Set the size of the div element that contains the map */
-/* div#map {min-height: 360px;} */
 .maps {
     z-index: 9999;
     height: 400px;
     width: 100%;
-  }
-
+}
 /* Image Containers */
 .schedule-container.card{
     background: url('../images/pexels-kuflu-cıkın-7765963.jpg') no-repeat center center fixed;
@@ -273,8 +248,7 @@ p.venue-address {
     height: 100%;
     width: 100%;
     background-color: rgba(250, 250, 250, 0.85);
-  }
-
+}
 p.schedule,
 p.menu {
     font-size: calc(1.5rem + 0.8vw);
@@ -319,9 +293,7 @@ a.guest-sort {
         left: 0;
         z-index: 1030;
     }
-
     .header-container {
-        /* padding-top: 164px; */
         padding-top: 70px;
         padding-left: 70px;
     }
@@ -335,7 +307,6 @@ a.guest-sort {
     .row.home-row {
         height: 75vh;
     }
-
     .carousel {
         width: 80%;
         height: auto;
