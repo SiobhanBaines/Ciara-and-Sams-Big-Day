@@ -61,11 +61,17 @@
                     <table class="table table-striped table-hover table-sm">
                         <thead>
                             <tr>
-                                <th class="guest-table cursive-text-color" scope="col">Group Id</th>
-                                <th class="guest-table cursive-text-color" scope="col">First Name</th>
-                                <th class="guest-table cursive-text-color" scope="col">Last Name</th>
-                                <th class="guest-table cursive-text-color" scope="col">Accepted</th>
-                                <th class="guest-table cursive-text-color" scope="col">Meal Chosen</th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=group_id&direction=asc">Group Id</a></th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=first_name&direction=asc">First Name</a></th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=last_name&direction=asc">Last Name</a></th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=accepted&direction=desc">
+                                    Accepted</a></th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=meal_chosen&direction=desc">Meal Chosen</a></th>
                                 <th class="guest-table cursive-text-color" scope="col">Action</th>
                             </tr>
                         </thead>

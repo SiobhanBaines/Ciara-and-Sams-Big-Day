@@ -292,6 +292,9 @@ h3.menu {
 .schedule {
     padding-right: 0 !important;
 }
+a.guest-sort {
+    color: var(--primary-font);
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

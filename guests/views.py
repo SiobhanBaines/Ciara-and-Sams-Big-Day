@@ -1,5 +1,5 @@
-﻿from django.shortcuts import render, reverse, redirect, get_object_or_404
-# from django.views import View
+﻿from django.shortcuts import (
+    render, reverse, redirect, get_object_or_404)
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib import messages
@@ -23,8 +23,30 @@ def guests(request):
 
     guests = Guest.objects.all()
     query = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'group_id':
+                sortkey = 'group_id'
+            if sortkey == 'first_name':
+                sortkey = 'first_name'
+            if sortkey == 'last_name':
+                sortkey = 'last_name'
+            if sortkey == 'accepted':
+                sortkey = 'accepted'
+            if sortkey == 'meal_chosen':
+                sortkey = 'meal_chosen'
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            guests = guests.order_by(sortkey)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -86,9 +108,12 @@ def guests(request):
 
         return redirect('guests')
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'guests': guests,
         'search_term': query,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'guests/guests.html', context)
