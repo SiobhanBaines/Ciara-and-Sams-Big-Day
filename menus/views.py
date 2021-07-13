@@ -14,7 +14,7 @@ import csv
 @login_required
 def menus(request):
     """ View a list of all menus """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -78,7 +78,7 @@ def display_menu(request):
 @login_required
 def add_menu(request):
     """ Add menu to menu list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -113,7 +113,7 @@ def add_menu(request):
 @login_required
 def edit_menu(request, menu_id):
     """ Edit an Event """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -145,7 +145,7 @@ def edit_menu(request, menu_id):
 @login_required
 def delete_menu(request, menu_id):
     """ Delete a menu """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 

@@ -11,7 +11,7 @@ from django.conf import settings
 def index(request):
     """ View to return the index page """
 
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         guests = Guest.objects.filter(group_id=request.user)
         guest_names = [guest.first_name for guest in guests]
         guest_name = ", ".join(guest_names)

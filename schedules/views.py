@@ -13,7 +13,7 @@ import csv
 @login_required
 def schedules(request):
     """ View a list of all schedules """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -69,7 +69,7 @@ def display_schedule(request):
 @login_required
 def add_schedule(request):
     """ Add schedule to schedule list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -104,7 +104,7 @@ def add_schedule(request):
 @login_required
 def edit_schedule(request, schedule_id):
     """ Edit an Event """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -136,7 +136,7 @@ def edit_schedule(request, schedule_id):
 @login_required
 def delete_schedule(request, schedule_id):
     """ Delete a schedule """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 

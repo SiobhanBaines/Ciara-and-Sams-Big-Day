@@ -17,7 +17,7 @@ import uuid
 @login_required
 def guests(request):
     """ View a list of all guests """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -134,7 +134,7 @@ def guest_detail(request, guest_id):
 @login_required
 def add_guest(request):
     """ Add guest to guest list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -178,7 +178,7 @@ def add_guest(request):
 @login_required
 def edit_guest(request, guest_id):
     """ Edit a guest """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -210,7 +210,7 @@ def edit_guest(request, guest_id):
 @login_required
 def delete_guest(request, guest_id):
     """ Delete a guest """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
