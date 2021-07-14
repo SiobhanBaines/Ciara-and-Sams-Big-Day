@@ -6,7 +6,7 @@ class GuestForm(forms.ModelForm):
 
     class Meta:
         model = Guest
-        fields = (
+        fields = [
             'first_name',
             'last_name',
             'plus_one',
@@ -18,4 +18,4 @@ class GuestForm(forms.ModelForm):
             'postcode',
             'email',
             'phone_number',
-        )
+        ]

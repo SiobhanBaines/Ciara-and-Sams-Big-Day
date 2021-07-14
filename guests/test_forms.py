@@ -26,28 +26,8 @@ class TestCheckoutForm(TestCase):
 
     def test_fields_are_explicit_in_form_metaclass(self):
         form = GuestForm()
-        self.assertEqual(form.Meta.fields, [
-                # 'group_id',
-                'first_name',
-                'last_name',
-                'plus_one',
-                'address_line_1',
-                'address_line_2',
-                'city',
-                'county',
-                'country',
-                'postcode',
-                'email',
-                'phone_number',
-                # 'accepted',
-                # 'message',
-                # 'meal_chosen',
-                # 'special_diet',
-                # 'requirements',
-                # 'starter',
-                # 'main',
-                # 'dessert',
-                # 'gift_chosen',
-                # 'gift_name',
-                # 'gift_value',
-                ])
+        self.assertEqual(
+            form.Meta.fields, ['first_name', 'last_name', 'plus_one',
+                               'address_line_1', 'address_line_2', 'city',
+                               'county', 'country', 'postcode', 'email',
+                               'phone_number'])
