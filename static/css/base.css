@@ -158,7 +158,7 @@ footer li {
     display: none;
 }
 .form-control {
-    width: 75%;
+    width: 100%;
 }
 .rsvp-message.form-control {
     width: 100%;
@@ -168,7 +168,7 @@ footer li {
     width: 100%;
 }
 .card.upload {
-    width: 70%;
+    width: 80%;
 }
 .upload {
     background: url('/static/images/juliet_rose.jpg') center center fixed;
@@ -270,6 +270,9 @@ a.guest-sort {
     color: var(--primary-font);
     text-decoration: none;
 }
+.action {
+    min-width: 150px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -301,6 +304,9 @@ a.guest-sort {
     .image-container {
         margin-left: 5rem;
     }
+    .add-record {
+        text-align: left!important;
+    }
 }
 
 /* Small screens  */
@@ -328,5 +334,11 @@ a.guest-sort {
     }
     .guest-message {
         padding-left: 0;
+    }
+    .add-record {
+        text-align: center!important;
+      }
+      .action {
+        min-width: 50px;
     }
 }

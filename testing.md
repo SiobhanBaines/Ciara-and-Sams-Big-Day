@@ -106,3 +106,14 @@ When a user submits their menu selection they receive an email if they have an e
 26. **As a user I want confirmation of my donation.**
 When a the payment of the gift donation is confirmed and the success page appears an email is sent to the user.
 [email](user_story_docs/confirmation_of_gift_payment_reciept.msg)
+
+## Lighthouse Testing
+### Contact Us
+Before ![image](images/lighthouse/contact_before.png)
+Adding meta description to Base.html `<meta name="description" content="Siobhan Baines | Software Developer | Leeds, UK">` will affect all Lighthouse readings.
+After ![image](images/lighthouse/contact_after.png)
+
+### Guest Gift List
+Before ![image](images/lighthouse/guest_gift_list_before.png)
+Reduced image sizes by using [tinypng](https://tinypng.com/)
+After ![image](images/lighthouse/guest_gift_list_before.png)

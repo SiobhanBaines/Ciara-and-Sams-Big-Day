@@ -11,32 +11,25 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
-            <!-- Facility to upload a csv file containing the wedding menus -->
-            <div class="card upload mx-auto mb-2">
-                <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data" class="form-border">
-                        {% csrf_token %}
-                        <label for="menu_list_csv" class="label-text">Upload Wedding Breakfast Menu</label>
-                        <div class="input-group w-80">
-                            <input type="file" name="menu_csv" id="menu_csv" class="form-control " required />
-                            <div class="input-group-append">
-                                <button class="form-control btn accept-btn border rounded-0" type="submit">
-                                    <span class="icon">
-                                        <i class="fas fa-upload left"></i>
-                                    </span>
-                                </button>
-                            </div>
+        <div class="row justify-content-xl-evenly justify-content-sm-center">
+            <!-- Facility to upload a csv file -->
+            <div class="col-sm-12 col-md-8 col-xl-auto mx-2 my-3">
+                <form method="POST" enctype="multipart/form-data" class="form-border">
+                    {% csrf_token %}
+                    <div class="input-group w-80">
+                        <input type="file" name="guest_list_csv" id="guest_list_csv" class="form-control "
+                            placeholder="Upload Guest List" required />
+                        <div class="input-group-append">
+                            <button class="form-control btn accept-btn border rounded-0" type="submit">Upload</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="row justify-content-evenly">
-            <!-- Add an individual menu record -->
-            <div class="col-auto mx-2">
-                <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_menu' %}"></i>Add
-                        A Menu Item</a></small>
+            <!-- Add a record -->
+            <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3 add-record">
+                <small class="ml-3">
+                    <a class="btn accept-btn border" href="{% url 'add_guest' %}"></i>Add A New Menu Item</a>
+                </small>
             </div>
         </div>
         <!-- Table containing a list of invited menus -->
@@ -56,7 +49,7 @@
                                 <tr>
                                     <td>{{ menu.course}}</td>
                                     <td>{{ menu.menu_item }}</td>
-                                    <td><small class="ml-3">
+                                    <td class="action"><small class="ml-3">
                                         <a class="text-success" href="{% url 'display_menu' %}"></i>View</a> |
                                             <a href="{% url 'edit_menu' menu.id %}">Edit</a> |
                                             <a class="text-danger" href="{% url 'delete_menu' menu.id %}">Delete</a>
