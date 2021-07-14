@@ -1,4 +1,5 @@
-# Followed the CI stripe videos to create this file and modified to work with this site
+# Followed the CI stripe videos to create this file
+#       and modified to work with this site
 from django.http import HttpResponse
 from .models import Checkout
 from guests.models import Guest
@@ -60,7 +61,8 @@ class StripeWH_Handler:
                 checkout.save()
                 # pick up records from Guest model
                 guests = Guest.objects.filter(group_id=group_id)
-                # check if payment is by a guest, update guest's email, add gift details
+                # check if payment is by a guest, update
+                #       guest's email, add gift details
                 for guest in guests:
 
                     # update all guests in group

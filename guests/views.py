@@ -1,5 +1,5 @@
-﻿from django.shortcuts import render, reverse, redirect, get_object_or_404
-# from django.views import View
+﻿from django.shortcuts import (
+    render, reverse, redirect, get_object_or_404)
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib import messages
@@ -17,14 +17,36 @@ import uuid
 @login_required
 def guests(request):
     """ View a list of all guests """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     guests = Guest.objects.all()
     query = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'group_id':
+                sortkey = 'group_id'
+            if sortkey == 'first_name':
+                sortkey = 'first_name'
+            if sortkey == 'last_name':
+                sortkey = 'last_name'
+            if sortkey == 'accepted':
+                sortkey = 'accepted'
+            if sortkey == 'meal_chosen':
+                sortkey = 'meal_chosen'
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            guests = guests.order_by(sortkey)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -77,7 +99,7 @@ def guests(request):
                 )
             )
         try:
-            msg = Guest.objects.bulk_create(objs)
+            Guest.objects.bulk_create(objs)
             # returnmsg = {"status_code": 200}
             messages.success(request, 'Imported successfully')
         except Exception as e:
@@ -86,9 +108,12 @@ def guests(request):
 
         return redirect('guests')
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'guests': guests,
         'search_term': query,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'guests/guests.html', context)
@@ -109,7 +134,7 @@ def guest_detail(request, guest_id):
 @login_required
 def add_guest(request):
     """ Add guest to guest list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -153,7 +178,7 @@ def add_guest(request):
 @login_required
 def edit_guest(request, guest_id):
     """ Edit a guest """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -185,14 +210,14 @@ def edit_guest(request, guest_id):
 @login_required
 def delete_guest(request, guest_id):
     """ Delete a guest """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
     guest = get_object_or_404(Guest, pk=guest_id)
     guest_name = str(guest.first_name) + ' ' + str(guest.last_name)
     guest.delete()
-    form = GuestForm(instance=guest)
+    # form = GuestForm(instance=guest)
     messages.success(
         request, f'Guest {guest_name} deleted')
     return redirect(reverse('guests'))

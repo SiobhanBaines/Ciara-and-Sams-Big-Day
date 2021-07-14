@@ -32,7 +32,6 @@
                         <p class="mb-0 mt-1">{{ guest.last_name }}</p>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12 col-md-4 offset-md-3">
                         <h3 class="cursive-text-color fs-2">Contact Details</h3>
@@ -71,9 +70,9 @@
                     </div>
                     <div class="col-12 col-md-4 ">
                         {% if guest.accepted %}
-                        <p class="mb-0 mt-1">{{ guest.accepted }}</p>
+                            <p class="mb-0 mt-1">{{ guest.accepted }}</p>
                         {% else %}
-                        <p class="mb-0 mt-1">No Reply</p>
+                            <p class="mb-0 mt-1">No Reply</p>
                         {% endif %}
                     </div>
                 </div>
@@ -83,38 +82,38 @@
                     </div>
                     <div class="col-12 col-md-6">
                         {% if guest.meal_chosen %}
-                        <small class="ml-3">
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row align-middle">Starter</th>
-                                        <td>{{ guest.starter }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row align-middle">Main</th>
-                                        <td>{{ guest.main }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row align-middle">Dessert</th>
-                                        <td>{{ guest.dessert }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </small>
+                            <small class="ml-3">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row align-middle">Starter</th>
+                                            <td>{{ guest.starter }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row align-middle">Main</th>
+                                            <td>{{ guest.main }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row align-middle">Dessert</th>
+                                            <td>{{ guest.dessert }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </small>
                         {% else %}
-                        <p class="mb-0 mt-1">No Meal Details Available</p>
+                            <p class="mb-0 mt-1">No Meal Details Available</p>
                         {% endif %}
                     </div>
                 </div>
                 {% if guest.meal_chosen and guest.special_diet %}
-                <div class="row">
-                    <div class="col-12 col-md-3">
-                        <h3 class="cursive-text-color fs-4">Special requirements</h3>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <h3 class="cursive-text-color fs-4">Special requirements</h3>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <p class="mb-0 mt-1">{{ guest.requirements }}</p>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <p class="mb-0 mt-1">{{ guest.requirements }}</p>
-                    </div>
-                </div>
                 {% endif %}
                 <div class="row">
                     <div class="col-12 col-md-3">
@@ -122,12 +121,12 @@
                     </div>
                     <div class="col-6 col-md-4">
                         {% if guest.gift_chosen %}
-                        <p class="mb-0 mt-1">{{ guest.gift_name }}</p>
+                            <p class="mb-0 mt-1">{{ guest.gift_name }}</p>
                         {% if guest.gift_value %}
-                        <p class="mb-0 mt-1">{{ guest.gift_value }}</p>
+                            <p class="mb-0 mt-1">{{ guest.gift_value }}</p>
                         {% endif %}
                         {% else %}
-                        <p class="mb-0 mt-1">No Gift Details Available</p>
+                            <p class="mb-0 mt-1">No Gift Details Available</p>
                         {% endif %}
                     </div>
                 </div>
@@ -154,6 +153,7 @@
         </div>
     </div>
 {% endblock %}
+
 {% block postloadjs %}
 {{ block.super }}
 {% endblock %}

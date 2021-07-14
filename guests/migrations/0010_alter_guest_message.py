@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='guest',
             name='message',
-            field=models.TextField(blank=True, max_length=300, null=True),
+            field=models.TextField(blank=True, max_length=300),
         ),
     ]

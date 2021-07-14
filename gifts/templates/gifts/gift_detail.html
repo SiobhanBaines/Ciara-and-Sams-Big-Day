@@ -3,96 +3,95 @@
 {% load user_extras %}
 
 {% block page-header %}
-<div class="container header-container">
-    <div class="row justify-content-center">
-        <div class="col"></div>
+    <div class="container header-container">
+        <div class="row justify-content-center">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<div class="container px-5">
-    <div class="row">
-        <div class="col">
-            <h3 class="text-center cursive-text-color">{{ gift.name }}</h3>
+    <div class="container px-5">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center cursive-text-color">{{ gift.name }}</h3>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <!-- Gift contact detail -->
-        <div class="col">
-            <div class="row my-2">
-                <div class="col-12 col-md-6 mb-2 ">
-                    <div class="image-container">
-                        {% if gift.image %}
-                        <a href="/media/{{ gift.image }}" target="_blank">
-                            <img class="card-img-top img-fluid img-thumbnail " src="/media/{{ gift.image }}" alt="{{ gift.name }}">
-                        </a>
+        <div class="row">
+            <!-- Gift contact detail -->
+            <div class="col">
+                <div class="row my-2">
+                    <div class="col-12 col-md-6 mb-2 ">
+                        <div class="image-container">
+                            {% if gift.image %}
+                                <a href="{{MEDIA_URL }}{{ gift.image }}" target="_blank">
+                                    <img class="card-img-top img-fluid img-thumbnail " src="{{ MEDIA_URL }}{{ gift.image }}" alt="{{ gift.name }}">
+                                </a>
+                            {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid img-thumbnail " src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="lead mb-2 text-left ">{{ gift.description }}</p>
+                        {% if request.user.is_staff or request.user.is_superuser %}
+                            <div class="row">
+                                <div class="col mb-2">
+                                    <a class="lead text-left font-weight-bold text-success" href="{{ gift.supplier_url }}">Supplier Link</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-2">
+                                    <a class="lead text-left font-weight-bold" href="{{ gift.image_url }}">Image Link</a>
+                                </div>
+                            </div>
                         {% else %}
-                        <a href="">
-                            <img class="card-img-top img-fluid img-thumbnail " src="{{ MEDIA_URL }}noimage.png" alt="{{ gift.name }}">
-                        </a>
+                            <form id="select-form" class="col s12" method="POST" action="{% url 'gift_detail' gift.id %}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-9 mb-2">
+                                        <label class="form-check-label" for="selected">If you intend to buy this gift please click the checkbox. This will stop other guests buying the same gift.</label>
+                                        <input class="form-check-input mx-auto" type="checkbox" id="selected" name="selected">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-9 mb-2">
+                                    <p class="pr-5">For your convenience we have provided a supplier of this gift <a class=" " href="{{ gift.supplier_url }}">here</a> but you do not have to buy it from this supplier.</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <p class="pr-5">The shown price is only a guide.</p> 
+                        <p class="lead mb-0 text-left font-weight-bold">£{{ gift.price }}</p> 
+                        {% if request.user.is_staff or request.user.is_superuser %}
+                            {% if gift.selected %}
+                                <p class="lead mb-0 text-left font-weight-bold">{{ gift.group_id }}</p>
+                            {% else %}
+                                <p class="lead mb-0 text-left font-weight-bold">Available</p>
+                            {% endif %}
                         {% endif %}
                     </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <p class="lead mb-2 text-left ">{{ gift.description }}</p>
-                    {% if request.user.is_staff or request.user.is_superuser %}
-                        <div class="row">
-                            <div class="col mb-2">
-                                <a class="lead text-left font-weight-bold text-success" href="{{ gift.supplier_url }}">Supplier Link</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col mb-2">
-                                <a class="lead text-left font-weight-bold" href="{{ gift.image_url }}">Image Link</a>
-                            </div>
-                        </div>
-                    {% else %}
-                    <form id="select-form" class="col s12" method="POST" action="{% url 'gift_detail' gift.id %}">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-9 mb-2">
-                                <label class="form-check-label" for="selected">If you intend to buy this gift please click the checkbox. This will stop other guests buying the same gift.</label>
-                                <input class="form-check-input mx-auto" type="checkbox" id="selected" name="selected">
-                            </div>
-                        </div>
-                    </form>
-                        <div class="row">
-                            <div class="col-9 mb-2">
-                                <p class="pr-5">For your convenience we have provided a supplier of this gift <a class=" " href="{{ gift.supplier_url }}">here</a> but you do not have to buy it from this supplier.</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                        <p class="pr-5">The shown price is only a guide.</p> 
-                        <p class="lead mb-0 text-left font-weight-bold">£{{ gift.price }}</p>
-                    
-                    {% if request.user.is_staff or request.user.is_superuser %}
-                        {% if gift.selected %}
-                            <p class="lead mb-0 text-left font-weight-bold">{{ gift.group_id }}</p>
-                        {% else %}
-                            <p class="lead mb-0 text-left font-weight-bold">Available</p>
-                        {% endif %}
-                    {% endif %}
-                </div>
-            </div>  
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% if request.user.is_staff or request.user.is_superuser %}
+                    <div class="d-flex justify-content-center">
+                        <small class="ml-3">
+                            <a class="translate-middle" href="{% url 'edit_gift' gift.id %}">Edit</a> |
+                            <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                        </small>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            {% if request.user.is_staff or request.user.is_superuser %}
-                <div class="d-flex justify-content-center">
-                    <small class="ml-3">
-                        <a class="translate-middle" href="{% url 'edit_gift' gift.id %}">Edit</a> |
-                        <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
-                    </small>
-                </div>
-            {% endif %}
-        </div>
-    </div>
-</div>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
-<script src="{% static 'gifts/js/gift_selected.js' %}"></script>
+    <script src="{% static 'gifts/js/gift_selected.js' %}"></script>
 {% endblock %}

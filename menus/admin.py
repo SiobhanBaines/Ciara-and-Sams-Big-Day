@@ -6,7 +6,6 @@ class MenuAdmin(admin.ModelAdmin):
     list_display = (
             'course',
             'menu_item',
-            'description'
         )
     ordering = ('course', 'menu_item')
 

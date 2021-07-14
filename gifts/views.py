@@ -40,7 +40,7 @@ def gifts(request):
                     )
                 )
             try:
-                msg = Gift.objects.bulk_create(objs)
+                Gift.objects.bulk_create(objs)
                 messages.success(request, 'Imported successfully')
             except Exception as e:
                 messages.error(request, 'Error While Importing Data: ', e)
@@ -113,7 +113,7 @@ def gift_detail(request, gift_id):
 @login_required
 def add_gift(request):
     """ Add Gift to Gift list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -150,7 +150,7 @@ def add_gift(request):
 @login_required
 def edit_gift(request, gift_id):
     """ Edit a Gift """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -183,7 +183,7 @@ def edit_gift(request, gift_id):
 @login_required
 def delete_gift(request, gift_id):
     """ Delete a Gift """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Guest
+from guests.models import Guest
 
 
 class CheckoutForm(forms.ModelForm):
@@ -16,7 +16,6 @@ class CheckoutForm(forms.ModelForm):
             'county',
             'postcode',
             'country',
-            'email',
         )
 
     def __init__(self, *args, **kwargs):
@@ -29,8 +28,8 @@ class CheckoutForm(forms.ModelForm):
             'group_id': 'Guest Group',
             'first_name': 'First Name',
             'last_name': 'Last Name',
-            'address_line_1': 'Address Line',
-            'address_line_2': 'Address Line',
+            'address_line_1': 'Address Line 1',
+            'address_line_2': 'Address Line 2',
             'city': 'City',
             'county': 'County',
             'postcode': 'Post Code',

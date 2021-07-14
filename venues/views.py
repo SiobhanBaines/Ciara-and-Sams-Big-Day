@@ -1,7 +1,5 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-# from django.http import HttpResponse
 from django.contrib import messages
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 from .models import Venue
@@ -12,7 +10,6 @@ import os
 
 @login_required
 def venues(request):
-    google_maps_key = settings.GOOGLE_MAPS_KEY
     """ View a list of all venues """
     venues = Venue.objects.all()
 
@@ -30,7 +27,7 @@ def venues(request):
 @login_required
 def add_venue(request):
     """ Add venue to venue list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -67,7 +64,7 @@ def add_venue(request):
 @login_required
 def edit_venue(request, venue_id):
     """ Edit a venue """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -100,7 +97,7 @@ def edit_venue(request, venue_id):
 @login_required
 def delete_venue(request, venue_id):
     """ Delete a venue """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 

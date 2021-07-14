@@ -35,8 +35,7 @@
         <div class="row justify-content-evenly">
             <!-- Add an individual schedule record -->
             <div class="col-auto mx-2">
-                <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_schedule' %}"></i>Add
-                        A New Event</a></small>
+                <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_schedule' %}"></i>Add A New Event</a></small>
             </div>
         <!-- Table containing a list of invited schedules -->
         <div class="row">
@@ -56,6 +55,7 @@
                                     <td>{{ schedule.time }}</td>
                                     <td>{{ schedule.event }}</td>
                                     <td><small class="ml-3"><a class="text-success"
+                                        <a class="text-success" href="{% url 'display_schedule' %}"></i>View</a> |
                                             <a href="{% url 'edit_schedule' schedule.id %}">Edit</a> |
                                             <a class="text-danger" href="{% url 'delete_schedule' schedule.id %}">Delete</a>
                                         </small>
@@ -69,6 +69,7 @@
         </div>
     </div>
 {% endblock %}
+
 {% block postloadjs %}
 {{ block.super }}
 {% endblock %}

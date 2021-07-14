@@ -2,76 +2,74 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid mb-5 mt-md-5 px-5">
-    <div class="row">
-        <div class="col">
-            <h3 class="text-center cursive-text-color">Gift Donation</h3>
+    <div class="container-fluid mb-5 mt-md-5 px-5">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-center cursive-text-color">Gift Donation</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <p class="text-muted">Please fill out the form below</p>
+                <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="form md-2">
+                    {% csrf_token %}
+                    <!-- group_id and client_secret are hidden fields needed for the checkout process -->
+                    <input type="hidden" id="group_id" name="group_id" value="{{ group_id }}">
+                    <input type="hidden" id="client_secret" name="client_secret" value="{{ client_secret }}">
+                    <fieldset class="rounded px-3 mb-3">
+                        <legend class="fieldset-label small text-black px-2">Gift Amount</legend>
+                        <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}" type="text">
+                    </fieldset>
+                    <fieldset class="rounded px-3 mb-5">
+                        <legend class="fieldset-label small text-black px-2">Billing Details</legend>
+                        {% for field in form %}
+                            {{ field | as_crispy_field }}
+                        {% endfor %}
+                    </fieldset>
+                    <fieldset class="px-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3 form-control" id="card-element"></div>
+                        <!-- Used to display form errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    </fieldset>
+                    <div class="submit-button text-right mt-5 mb-2">
+                        <a class="btn btn-secondary" href="{% url 'gifts' %}">Cancel</a>
+                        <button id="submit_button" class="btn accept-btn" type="submit">
+                            <span class="font-weight-bold">Complete Payment</span>
+                            <span class="icon"><i class="fas fa-lock"></i></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="loading-overlay">
+            <h1 class="text-light logo-font loading-spinner">
+                <span class="icon">
+                    <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                </span>
+            </h1>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-12 col-md-6 offset-md-3">
-            <p class="text-muted">Please fill out the form below</p>
-            <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="form md-2">
-                {% csrf_token %}
-                <!-- group_id and client_secret are hidden fields needed for the checkout process -->
-                <input type="hidden" id="group_id" name="group_id" value="{{ group_id }}">
-                <input type="hidden" id="client_secret" name="client_secret" value="{{ client_secret }}">
-                <fieldset class="rounded px-3 mb-3">
-                    <legend class="fieldset-label small text-black px-2">Gift Amount</legend>
-                    <input id="gift_amount" name="gift_amount" value="£{{ gift_amount }}"  type="text">
-                </fieldset>
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2">Billing Details</legend>
-                    {% for field in form %}
-                        {{ field | as_crispy_field }}
-                    {% endfor %}
-                </fieldset>
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3 form-control" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-                <div class="submit-button text-right mt-5 mb-2">
-                    <a class="btn btn-secondary" href="{% url 'gifts' %}">Cancel</a>
-                    <button id="submit_button" class="btn accept-btn" type="submit">
-                        <span class="font-weight-bold">Complete Payment</span>
-                        <span class="icon"><i class="fas fa-lock"></i></span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div id="loading-overlay">
-        <h1 class="text-light logo-font loading-spinner">
-            <span class="icon">
-                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-            </span>
-        </h1>
-    </div>
-</div>
-
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

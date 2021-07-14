@@ -14,7 +14,7 @@ import csv
 @login_required
 def menus(request):
     """ View a list of all menus """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -33,11 +33,10 @@ def menus(request):
                 Menu(
                     course=row['course'],
                     menu_item=row['menu_item'],
-                    description=row['description'],
                 )
             )
         try:
-            msg = Menu.objects.bulk_create(objs)
+            Menu.objects.bulk_create(objs)
             messages.success(request, 'Imported successfully')
         except Exception as e:
             messages.error(request, 'Error While Importing Data: ', e)
@@ -58,9 +57,17 @@ def menus(request):
 def display_menu(request):
     """ View of menu details """
 
+    courses = []
     menus = Menu.objects.all().order_by('-course')
+    for menu in menus:
+        if menu.course not in courses:
+            courses.append(menu.course)
+
+    print(courses)
+
     form = MenuForm()
     context = {
+        'courses': courses,
         'menus': menus,
         'form': form,
     }
@@ -71,7 +78,7 @@ def display_menu(request):
 @login_required
 def add_menu(request):
     """ Add menu to menu list """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -106,7 +113,7 @@ def add_menu(request):
 @login_required
 def edit_menu(request, menu_id):
     """ Edit an Event """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -138,7 +145,7 @@ def edit_menu(request, menu_id):
 @login_required
 def delete_menu(request, menu_id):
     """ Delete a menu """
-    if not request.user.is_superuser or not request.user.is_staff:
+    if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
 
@@ -171,7 +178,9 @@ def menu_selection(request):
             guest.meal_chosen = True
             guest.save()
             guest_form = form
-
+            messages.info(request, 'Thank you for selecting you \
+                meal preference.')
+            return redirect(reverse('display_menu'))
     else:
 
         guest_form = GuestForm()
