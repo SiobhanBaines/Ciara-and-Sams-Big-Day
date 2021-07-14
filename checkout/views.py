@@ -3,6 +3,8 @@ from django.shortcuts import (
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import get_template
 
 from .models import Checkout
 from guests.models import Guest
@@ -42,6 +44,7 @@ def checkout(request):
         # save fields to be used outside checkout.html template
         group_id = request.POST['group_id']
         email = request.POST['email']
+        first_name = request.POST['first_name']
 
         # Get the billing details from the template
         guest_data = {
@@ -74,7 +77,8 @@ def checkout(request):
             # pick up records from Guest model
             guests = Guest.objects.filter(group_id=request.user)
 
-            # check if payment is by a guest, update guest's email, add gift details
+            # check if payment is by a guest, update guest's email,
+            #   add gift details
             for guest in guests:
 
                 # is payment by a guest
@@ -99,6 +103,9 @@ def checkout(request):
 
             # get most recent donation number
             donation_number = Checkout.objects.filter(group_id=group_id).last()
+
+            checkout_email(donation_number, email, first_name)
+
             return redirect(reverse(
                 'checkout_success',
                 args=[donation_number, email]))
@@ -161,3 +168,25 @@ def checkout_success(request, donation_number, email):
     }
 
     return render(request, template, context)
+
+
+def checkout_email(donation_number, email, first_name):
+
+    checkout = get_object_or_404(Checkout, donation_number=donation_number)
+    # to_email = email.value()
+    print('line 177 email', email)
+
+    context = {
+        'first_name': first_name,
+        'checkout': checkout,
+    }
+
+    subject = 'Confirmation of gift Payment Reciept'
+    with open('checkout/templates/checkout/email.txt') as f:
+        checkout_message = f.read()
+    message = EmailMultiAlternatives(
+        subject=subject, body=checkout_message,
+        from_email=settings.DEFAULT_FROM_EMAIL, to=[email,])
+    template = get_template('checkout/email.html').render(context)
+    message.attach_alternative(template, 'text/html')
+    message.send()
