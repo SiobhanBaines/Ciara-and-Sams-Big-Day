@@ -2,6 +2,8 @@ import uuid
 
 from django.db import models
 
+from guests.models import Guest
+
 
 class Checkout(models.Model):
     donation_number = models.CharField(
