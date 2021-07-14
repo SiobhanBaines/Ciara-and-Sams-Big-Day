@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Selection for Ciara and Sam's Wedding</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col">
+            <p>Thank you for choose which dishes you want to eat. The details are below</p>
+        </div>
+    </div>
+    {% for guest in guests %}
+        {% if guest.accepted == 'Accepted' %}
+            <div class="row">
+                <div class="col">
+                    <h4>{{ guest.fist_name }} {{ guest.last_name }}</h4>
+                </div>
+            </div>        
+            {% if guest.special_diet %}
+                <div class="row">
+                    <div class="col">
+                        <p>You have told us you have some special dietary requirements which are {{ guest.requirements }}. We will speak to the venue and make arrangements to help with these.</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col">
+                        <p>Starter: {{ guest.starter }}</p> 
+                        <p>Main: {{ guest.main }}</p>
+                        <p>Dessert: {{ guest.dessert }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    <div class="row">
+        <div class="col">
+            <p class="text-center">love</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col cursive-text-color">
+            <h3 class="text-center">Ciara and Sam</h3>
+        </div>
+    </div>
+</body>
+</html>

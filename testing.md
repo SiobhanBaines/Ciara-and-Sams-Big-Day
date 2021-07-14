@@ -79,6 +79,7 @@ This user story has not been implemented at this time and will developed in a fu
 15. **As a user I want to be able to log into the website.**
 When a user clicks the login navigation option they are presented with the login screen. ![image](user_story_docs/log-in.png) which changes the menu adding the option to RSVP ![image](user_story_docs/rsvp_menu.png), which tkaes the user to the [rsvp menu](user_story_docs/rsvp_page.docx) so that they can accept or decline the invitation.
 16. **As a user I want to provide my name and contact details.**
+This user story has not been implemented at this time and will developed in a future release.
 17. **As a user I want to accept the wedding invitation.**
 When a user has successfully logged in they can accept the invitation and leave a message to the bride and groom if they wish to. Once they have accepted they will be taken back to the home page and a new menu will appear.![image](user_story_docs/accepted_home.png)
 18. **As a user I want to decline the wedding invitation.**
@@ -98,8 +99,10 @@ A user can either click on the image of the gift or on the `view` button at the 
 23. **As a user I want to give a donation as a wedding present.**
 On the main gifts page there is a box to enter the amount a user wishes to donate and a button to take them to a [checkout page](user_story_docs/checkout.png) where the user can use a payment card of their choice to send the money. Once the payment has completed a [confirmation page](user_story_docs/payment_confirmation.png) appears.
 24. **As a user I want confirmation of my invitation acceptance or decline.**
-This user story has not been implemented at this time and will developed in a future release.
+When a user RSVP's the invitation and if there is an email address they will receive either a confirmation email either for an [acceptance](user_story_docs/wedding_acceptance.msg) or [declination](user_story_docs/wedding_decline.msg)
 25. **As a user I want confirmation of my menu choices.**
-This user story has not been implemented at this time and will developed in a future release.
+When a user submits their menu selection they receive an email if they have an email address on file.
+[email](user_story_docs/confirmation_of_meal_selection.msg)
 26. **As a user I want confirmation of my donation.**
-This user story has not been implemented at this time and will developed in a future release.
+When a the payment of the gift donation is confirmed and the success page appears an email is sent to the user.
+[email](user_story_docs/confirmation_of_gift_payment_reciept.msg)

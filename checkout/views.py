@@ -3,7 +3,7 @@ from django.shortcuts import (
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 
 from .models import Checkout
@@ -173,20 +173,20 @@ def checkout_success(request, donation_number, email):
 def checkout_email(donation_number, email, first_name):
 
     checkout = get_object_or_404(Checkout, donation_number=donation_number)
-    # to_email = email.value()
-    print('line 177 email', email)
 
     context = {
         'first_name': first_name,
         'checkout': checkout,
     }
 
+    # The below process for loading the email was taken from
+    #   MasterCodeOnline and modifiied for the specific emails
     subject = 'Confirmation of gift Payment Reciept'
     with open('checkout/templates/checkout/email.txt') as f:
         checkout_message = f.read()
     message = EmailMultiAlternatives(
         subject=subject, body=checkout_message,
-        from_email=settings.DEFAULT_FROM_EMAIL, to=[email,])
+        from_email=settings.DEFAULT_FROM_EMAIL, to=[email, ])
     template = get_template('checkout/email.html').render(context)
     message.attach_alternative(template, 'text/html')
     message.send()

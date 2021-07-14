@@ -2,6 +2,9 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+from django.conf import settings
 
 from .models import Menu
 from guests.models import Guest
@@ -63,7 +66,6 @@ def display_menu(request):
         if menu.course not in courses:
             courses.append(menu.course)
 
-    print(courses)
 
     form = MenuForm()
     context = {
@@ -151,7 +153,7 @@ def delete_menu(request, menu_id):
 
     menu = get_object_or_404(Menu, pk=menu_id)
     menu.delete()
-    # form = MenuForm(instance=menu)
+
     messages.success(
         request, 'Menu event deleted')
     return redirect(reverse('menus'))
@@ -162,6 +164,7 @@ def menu_selection(request):
     """ View of menu details """
 
     if request.method == 'POST':
+        
         form = dict(request.POST)
         # loop through form to get details of each guest in the family group
         for num in range(len(form['id'])):
@@ -178,6 +181,8 @@ def menu_selection(request):
             guest.meal_chosen = True
             guest.save()
             guest_form = form
+
+            menu_email(request)
             messages.info(request, 'Thank you for selecting you \
                 meal preference.')
             return redirect(reverse('display_menu'))
@@ -223,3 +228,29 @@ def menu_selection(request):
     }
 
     return render(request, 'menus/menu_selection.html', context)
+
+
+def menu_email(request):
+    guests = Guest.objects.filter(group_id=request.user)
+    email = ''
+    print(guests)
+    for guest in guests:
+        print(email, guest.email)
+        if guest.email and not email:
+            email = guest.email
+
+    context = {
+        'guests': guests,
+    }
+
+    # The below process for loading the email was taken from
+    #   MasterCodeOnline and modifiied for the specific emails
+    subject = 'Confirmation of meal selection'
+    with open('menus/templates/menus/menu_selection_email.txt') as f:
+        menu_message = f.read()
+    message = EmailMultiAlternatives(
+        subject=subject, body=menu_message,
+        from_email=settings.DEFAULT_FROM_EMAIL, to=[email, ])
+    template = get_template('menus/menu_selection_email.html').render(context)
+    message.attach_alternative(template, 'text/html')
+    message.send()

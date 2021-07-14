@@ -62,6 +62,7 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
 	* [Toast](#toasts)
 	* [Stripe](#stripe)
 	* [Images](#images)
+    * [Emails](#emails)
 	* [Setting up bride/groom as 'staff's](#setting-up-bride/groom-as-'staff')
     * [Checking if user 'has_group'](#checking-if-user-'has_group')
     * [Assistance](#assistance)
@@ -629,6 +630,10 @@ The below image was found on [shutterstock](https://www.shutterstock.com/image-p
 
 <a></a>
 
+### Images
+
+I was not confident is setting up email templates and sending them so I spent some time investigating and found this youtube video that helped tremendously.[Django Tutorial - Send Emails From Templates](https://www.youtube.com/watch?v=A-7vGF_pEss) by [Master Code Online](https://www.youtube.com/c/LearnpythontutorialFree/featured)
+<a></a>
 ### Setting up bride/groom as 'staff'
 
 The only individuals that need to register an account on this site are the bride and groom but reading the Django documentation I was still struggling to understand how I could make the registration set the user up as 'staff' in Django admin. In my hunt for a solution, I came across [ordinarycoders](https://www.ordinarycoders.com/blog/article/django-user-register-login-logout) WRITTEN BY
