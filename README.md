@@ -475,8 +475,23 @@ Once the application has been opened in a GitPod workspace there are a couple of
 
 To deploy the site on a local machine there are multiple steps.
 1. Download and install [VSCode](https://code.visualstudio.com/)
-2. Clone my repository by clicking on `Install the GitHub Pull Requests and Issues extention` for [VSCode](https://code.visualstudio.com/docs/editor/github) ![image](images/deployment/vscode-github.png) This will open in VSCode, click install.
-        *N.B. if you cannot click install you will need to create a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) which is free.
+2. `Install the GitHub Pull Requests and Issues extention` for [VSCode](https://code.visualstudio.com/docs/editor/github) ![image](images/deployment/vscode-github.png) This will open in VSCode, click install.
+    * N.B. if you cannot click install you will need to create a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) which is free.
+3. Clone my [repository](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day) by pressing `Ctrl+Shift+P` to display all the commands and then use Git: Clone. You may be asked to sign-in. Select ![image](images/deployment/clone-repo.png) and a location on your computer. Once loaded you can open the repository and your screen should look like this ![image](images/deployment/repo.png)
+4. Click the Terminal tab at the top of the screen and create a new terminal.
+5. Install [Python extension for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+6. Install [Python interpreter](https://www.python.org/downloads/)
+7. Install [pylint](images/deployment/pylint.png) by opening one of the folders and opening a file ending in `.py`
+8. Download [Python 3.9 Developer tools](images/deployment/python-developer.png) by typing `python` in terminal.
+9. On the left side near the bottom is a file called `requirements.txt`. This contains all the packages that are needed to run this application. Run command `pip3 install -r requirements.txt` to install them. This will take a couple of minutes.
+10. There are some envrionment variables you will need to set up which sit in the env.py file and are used in the `settings.py` file in the main app folder. I have set this up as a template for you to fill in.  **DO NOT PUSH TO GIT HUB**
+    *The Secret Key* "SECRET_KEY". To find a secret key search Google for `django secret key generator`. Copy and paste the generated key into the 2nd quotation marks.
+    *Stripe Public Key* "STRIPE_PUBLIC_KEY"
+    *Stripe Secret Key "STRIPE_SECRET_KEY"
+    *Stripe WH Secret* "STRIPE_WH_SECRET"
+10. Run the command `python3 manage.py runserver`. 
+11. To view the site, left click on the ports in the bottom right. When they appear on the left, hover over 8000  and click on the world icon that appears.
+12. T 
 
 
     2.1. Open the IDE and click on `File` in the tope left and clicking on`Clone Repository` in the dropdown menu.
