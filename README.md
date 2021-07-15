@@ -489,6 +489,9 @@ To deploy the site on a local machine there are multiple steps.
     *Stripe Public Key* "STRIPE_PUBLIC_KEY"
     *Stripe Secret Key "STRIPE_SECRET_KEY"
     *Stripe WH Secret* "STRIPE_WH_SECRET"
+11. Type the command `python3 manage.py makemigrations`, this will set up the sqlite database in your local environment.
+12. Type the command ` python3 manage.py migrate`, this will migrate the models into the database.
+
 10. Run the command `python3 manage.py runserver`. 
 11. To view the site, left click on the ports in the bottom right. When they appear on the left, hover over 8000  and click on the world icon that appears.
 12. T 
@@ -508,6 +511,69 @@ In the Gitpod workspace
 4. Finally type `git push` to deploy the application to Github 
 
 N.B. Using the command `git status` will show the status of the changes waiting to be pushed to Github.
+
+From AnoukSmet
+I have created the project using Github, from there I used [Gitpod](https://gitpod.io/) to write my code. 
+Then I used commits to git followed by "git push" to my GitHub repository. 
+I've deployed this project to Heroku and used "git push heroku master" to make sure my pushes to GitHub were also made to Heroku. 
+
+For this project you need to create an account on Stripe for the reservation module as well as an account on AWS in order to store your static and media files.
+
+This project can be ran locally by following the following steps: 
+I used Gitpod for development, so the following steps will be specific to Gitpod. 
+You will need to adjust them depending on your IDE. You can find more information about installing packages using pip and virtual environments [here](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+
+To clone the project: 
+
+1. From the application's repository, click the "code" button and download the zip of the repository.
+    Alternatively, you can clone the repository using the following line in your terminal:
+
+    ``` 
+    git clone https://github.com/AnoukSmet/Casa-Pedra-Nobre.git
+    ``` 
+
+1. Access the folder in your terminal window and install the application's [link to required modules](https://github.com/AnoukSmet/Casa-Pedra-Nobre/blob/master/requirements.txt) using the following command:
+
+    ```
+    pip3 install -r requirements.txt
+    ```
+
+1. In your IDE, create a file containing your environmental variables called env.py at the root level of the application. 
+    It will need to contain the following lines and variables:
+    ```
+    import os
+
+    os.environ["SECRET_KEY"] = "YOUR_SECRET_KEY"
+    os.environ["DEVELOPMENT"] = "True"
+
+    os.environ["DEFAULT_FROM_EMAIL"] = 'DEFAULT_FROM_EMAIL'
+
+    os.environ["STRIPE_PUBLIC_KEY"] = "STRIPE_PUBLIC_KEY"
+    os.environ["STRIPE_SECRET_KEY"] = "STRIPE_SECRET_KEY"
+    os.environ["STRIPE_WH_SECRET"] = "STRIPE_WH_SECRET"
+    os.environ["STRIPE_CURRENCY"] = "EUR"
+
+    ```
+    
+    If you're not sure how to get the above Stripe variables, please visit the [Stripe Documentation](https://stripe.com/docs)
+
+    If you plan on pushing this application to a public repository, ensure that env.py is added to your .gitignore file.
+
+1. Migrate the database models with the following command
+    ```
+    python3 manage.py migrate
+    ```
+1. Create a superuser and set up the credentials with the following command
+    ```
+    python3 manage.py createsuperuser
+    ```
+1. Run the app with the following command
+    ```
+    python manage.py runserver
+    ```
+    The address to access the website is displayed in the terminal  
+    Add /admin to the end to access the admin panel with your superuser credentials
+
 
 [Back to Top](#table-of-contents)
 
@@ -683,7 +749,7 @@ Jo @ CI gave me this link [upload-csv](https://ramramesh1374.medium.com/upload-c
 
 Scott and Jo @ CI Tutor support for helping me to load the users into django. I had made the whole process much more complex than necessary. 
 
-Simen - my mentor @ CI for his ideas, inspiration and patience. 
+[Simen Daehlin](https://github.com/eventyret) my mentor @ CI for his ideas, inspiration and patience. 
 
 Jo, Igor, Alan & John @ CI Tutors for their support in getting Stripe working again. 
 
