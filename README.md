@@ -455,7 +455,7 @@ Bugs of this site can be found [here](bugs.md) in a seperate file
 
 ## **Run Application in Gitpod**
 
-Once the application has been opened in a GidPod workspace there are a couple of tasks that need to be performed to be able to run the application during development.
+Once the application has been opened in a GitPod workspace there are a couple of tasks that need to be performed to be able to run the application during development.
 
 1. The command `pip3 install -r requirements.txt` needs to be run to install all the external API's the application needs to be able to run.
 2. To run the application use the command `python3 manage.py runserver` and then click the Open Browser button on port 8000. The application will appear in a separate browser tab.
@@ -472,6 +472,19 @@ Once the application has been opened in a GidPod workspace there are a couple of
 ## **Deployment**
 
 ### Local Deployment
+
+To deploy the site on a local machine there are multiple steps.
+1. Download and install [VSCode](https://code.visualstudio.com/)
+2. Clone my repository by clicking on `Install the GitHub Pull Requests and Issues extention` for [VSCode](https://code.visualstudio.com/docs/editor/github) ![image](images/deployment/vscode-github.png) This will open in VSCode, click install.
+        *N.B. if you cannot click install you will need to create a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) which is free.
+
+
+    2.1. Open the IDE and click on `File` in the tope left and clicking on`Clone Repository` in the dropdown menu.
+    2.2. Enter this [repository](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day) in the `Repository location` field and create a folder on your computer to hold the clonded repository in the `Path` field.
+3. Download and install [Python]https://www.python.org/downloads/) for your machine.
+
+
+
 
 In the Gitpod workspace
 1. Make sure all changes have been saved.
