@@ -473,37 +473,42 @@ Once the application has been opened in a GitPod workspace there are a couple of
 
 ### Local Deployment
 
-To deploy the site on a local machine there are multiple steps.
-1. Download and install [VSCode](https://code.visualstudio.com/)
-2. `Install the GitHub Pull Requests and Issues extention` for [VSCode](https://code.visualstudio.com/docs/editor/github) ![image](images/deployment/vscode-github.png) This will open in VSCode, click install.
-    * N.B. if you cannot click install you will need to create a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account) which is free.
-3. Clone my [repository](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day) by pressing `Ctrl+Shift+P` to display all the commands and then use Git: Clone. You may be asked to sign-in. Select ![image](images/deployment/clone-repo.png) and a location on your computer. Once loaded you can open the repository and your screen should look like this ![image](images/deployment/repo.png)
-4. Click the Terminal tab at the top of the screen and create a new terminal.
-5. Install [Python extension for VSCode](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-6. Install [Python interpreter](https://www.python.org/downloads/)
-7. Install [pylint](images/deployment/pylint.png) by opening one of the folders and opening a file ending in `.py`
-8. Download [Python 3.9 Developer tools](images/deployment/python-developer.png) by typing `python` in terminal.
-9. On the left side near the bottom is a file called `requirements.txt`. This contains all the packages that are needed to run this application. Run command `pip3 install -r requirements.txt` to install them. This will take a couple of minutes.
-10. There are some envrionment variables you will need to set up which sit in the env.py file and are used in the `settings.py` file in the main app folder. I have set this up as a template for you to fill in.  **DO NOT PUSH TO GIT HUB**
-    *The Secret Key* "SECRET_KEY". To find a secret key search Google for `django secret key generator`. Copy and paste the generated key into the 2nd quotation marks.
-    *Stripe Public Key* "STRIPE_PUBLIC_KEY"
-    *Stripe Secret Key "STRIPE_SECRET_KEY"
-    *Stripe WH Secret* "STRIPE_WH_SECRET"
-11. Type the command `python3 manage.py makemigrations`, this will set up the sqlite database in your local environment.
-12. Type the command ` python3 manage.py migrate`, this will migrate the models into the database.
+These istructions are for GitHub Desktop on Windows. Other operating systems will have differences so please check.
 
-10. Run the command `python3 manage.py runserver`. 
-11. To view the site, left click on the ports in the bottom right. When they appear on the left, hover over 8000  and click on the world icon that appears.
-12. T 
+1. Download and install [GitHub Desktop](https://desktop.github.com/)
+2. Clone the [repository](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day) by clicking the ![image](images/deployment/clone-repo.png) and select `SiobhanBaines/Ciara-and-Sams-Big-Day`
+3. Open the repository in an exxternal editor ![image](images/deployment/external-editor.png)
+4. Once is VSCode, click the Terminal button at the top of the screen which should open a terminal that looks like this ![image](images/deployment/terminal.png) at the bottom of the screen.
+5. Run the command `pip3 install -r requirements.txt` ito insall all the API's and packages this applicaton uses. This will take a couple of minutes.
+6. Create an `env.py` file by hovering the mouse in the `EXPLORER` box over the repository name ![image](images/deployment/new-file.png)and clicking on the file symbol
+**Before pushing to GitHub** make sure `env.py` is in the `gitignore` file so that the secret keys remain secret and do not end up in the repository.
+When everything is set up is should look like this but with your own codes.
+`import os
+
+os.environ.setdefault("SECRET_KEY", "******")
+os.environ.setdefault("STRIPE_PUBLIC_KEY", "*****")
+os.environ.setdefault("STRIPE_SECRET_KEY", "*****")
+os.environ.setdefault("STRIPE_WH_SECRET", "*****")
+os.environ.setdefault("STRIPE_CURRENCY", "gbp")`
+
+7. To run the application you need the `SECRET KEY`
+*The Secret Key* "SECRET_KEY". To find a secret key search Google for `django secret key generator`. Copy and paste the generated key into the 2nd quotation marks.
+8. Run command `python3 manage.py makemigrations`
+9. Run command `python3 manage.py migrate`
+10. Run command `python3 managa.py runserver`
+
+To get the next 3 keys you will need to create a [stripe](https://stripe.com/gb) account.
+Once you have you account go to `Dashboard>Developers>API Keys` 
+    *Stripe Public Key* "STRIPE_PUBLIC_KEY" is `Publishable Key`
+    *Stripe Secret Key "STRIPE_SECRET_KEY" is `Secret Key`
+Next click on `Webhooks` on the left hand side, just under `API Keys` and click `Add endpoint`. In here enter the URL of your site followed by `checkout/wh/`
+    *Stripe WH Secret* "STRIPE_WH_SECRET" is `Signing secret`
+
+    *Stripe Currency* "STRIPE_CURRENCY" can be set to whatever currency you want. Stripe uses the standard [iso currency codes](https://www.iban.com/currency-codes)
 
 
-    2.1. Open the IDE and click on `File` in the tope left and clicking on`Clone Repository` in the dropdown menu.
-    2.2. Enter this [repository](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day) in the `Repository location` field and create a folder on your computer to hold the clonded repository in the `Path` field.
-3. Download and install [Python]https://www.python.org/downloads/) for your machine.
-
-
-
-
+### Pushing to GitHub
+  
 In the Gitpod workspace
 1. Make sure all changes have been saved.
 2. Navigate to a TERMINAL ensuring there is an open gitpod command string `gitpod /workspace/Ciara-and-Sams-Big-Day $` and type the command `git add .` to add all the saved changes to the next commit package.
@@ -511,69 +516,6 @@ In the Gitpod workspace
 4. Finally type `git push` to deploy the application to Github 
 
 N.B. Using the command `git status` will show the status of the changes waiting to be pushed to Github.
-
-From AnoukSmet
-I have created the project using Github, from there I used [Gitpod](https://gitpod.io/) to write my code. 
-Then I used commits to git followed by "git push" to my GitHub repository. 
-I've deployed this project to Heroku and used "git push heroku master" to make sure my pushes to GitHub were also made to Heroku. 
-
-For this project you need to create an account on Stripe for the reservation module as well as an account on AWS in order to store your static and media files.
-
-This project can be ran locally by following the following steps: 
-I used Gitpod for development, so the following steps will be specific to Gitpod. 
-You will need to adjust them depending on your IDE. You can find more information about installing packages using pip and virtual environments [here](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-
-To clone the project: 
-
-1. From the application's repository, click the "code" button and download the zip of the repository.
-    Alternatively, you can clone the repository using the following line in your terminal:
-
-    ``` 
-    git clone https://github.com/AnoukSmet/Casa-Pedra-Nobre.git
-    ``` 
-
-1. Access the folder in your terminal window and install the application's [link to required modules](https://github.com/AnoukSmet/Casa-Pedra-Nobre/blob/master/requirements.txt) using the following command:
-
-    ```
-    pip3 install -r requirements.txt
-    ```
-
-1. In your IDE, create a file containing your environmental variables called env.py at the root level of the application. 
-    It will need to contain the following lines and variables:
-    ```
-    import os
-
-    os.environ["SECRET_KEY"] = "YOUR_SECRET_KEY"
-    os.environ["DEVELOPMENT"] = "True"
-
-    os.environ["DEFAULT_FROM_EMAIL"] = 'DEFAULT_FROM_EMAIL'
-
-    os.environ["STRIPE_PUBLIC_KEY"] = "STRIPE_PUBLIC_KEY"
-    os.environ["STRIPE_SECRET_KEY"] = "STRIPE_SECRET_KEY"
-    os.environ["STRIPE_WH_SECRET"] = "STRIPE_WH_SECRET"
-    os.environ["STRIPE_CURRENCY"] = "EUR"
-
-    ```
-    
-    If you're not sure how to get the above Stripe variables, please visit the [Stripe Documentation](https://stripe.com/docs)
-
-    If you plan on pushing this application to a public repository, ensure that env.py is added to your .gitignore file.
-
-1. Migrate the database models with the following command
-    ```
-    python3 manage.py migrate
-    ```
-1. Create a superuser and set up the credentials with the following command
-    ```
-    python3 manage.py createsuperuser
-    ```
-1. Run the app with the following command
-    ```
-    python manage.py runserver
-    ```
-    The address to access the website is displayed in the terminal  
-    Add /admin to the end to access the admin panel with your superuser credentials
-
 
 [Back to Top](#table-of-contents)
 
@@ -617,7 +559,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
             ```SECRET_KEY = os.environ.get('SECRET_KEY', '')```
 18. Set 'DEBUG' to True on if in Development.
             ```DEBUG = 'DEVELOPMENT' in os.environ```
-19. Using the process described in [Local Deployment](#local-deployment), deploy to Heroku where you should see it being built. There is sometimes a small delay.
+19. Using the process described in [Pushing to GitHub](#pushing-to-github), deploy to Heroku where you should see it being built. There is sometimes a small delay.
 
 <a></a>
 
@@ -671,7 +613,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 <a></a>
 
 #### Subsequent Production Deployment
-Assuming Heroku is setup to `Enable Automatic Deployments` code changes can be deployed to production by using the standard [Local Deployment](#local-deployment) to Github which will automatically push the deployment through to production. 
+Assuming Heroku is setup to `Enable Automatic Deployments` code changes can be deployed to production by using the standard [Pushing to GitHub](#pushing-to-github) which will automatically push the deployment through to production. 
 
 However, if a change has been made to a model during a development, prior to adding and committing the changes in Gitpod it will be necessary to modify the `settings.py` file to connect to the postgres database in Heroku so that the migrations for those changes can be performed.
 1. Open `settings.py` and comment out the DATABASE settings and add a new DATABASE setting to contain the postgres `DATABASE_URL` as below  

@@ -212,7 +212,7 @@ if 'USE_AWS' in os.environ:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_CURRENCY = 'gbp'
+STRIPE_CURRENCY = os.gentenv('STRIPE_CURRENCY')
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
@@ -221,7 +221,7 @@ GOOGLE_MAPS_KEY = os.getenv('GOOGLE_MAPS_KEY', '')
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'csw.testing2023@gmail.com'
+    DEFAULT_FROM_EMAIL = 'csw@testemail.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True

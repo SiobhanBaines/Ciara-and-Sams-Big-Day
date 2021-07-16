@@ -23,7 +23,7 @@
             <h3 class="pl-5 text-center cursive-text-color">Menu</h3>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <div class="menu-container card border-0 py-2">
             <div class="menu-overlay">&nbsp;</div>
             <div class="row">
@@ -44,7 +44,11 @@
                                 </div>
                             {% endif %}
                         {% endfor %}
-                        <hr>
+                        {% if forloop.counter != courses|length %}
+                            <hr>
+                        {% else %}
+                            <br>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
