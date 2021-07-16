@@ -6,7 +6,7 @@ Due to the image on the landing page the navigation bar was not easily visible o
 ## User Story Testing
 #### Bride or Groom:  
 1.  **As a user I want to register an account with administration access.**
-When a user chooses to register on the site by clicking the 'bride and groom registration' link in the footer they are presented with the registration screen ![image](images/user-stories/register.png). Once registered the user will need to log in. Behind the scenes the user is created with `is_staff` authority. [admin view of bride or groom user settings](images/user-stories/non-image-documents/siobhanbaines-is-staff-user.pdf) 
+Only the bride and/or groom need to register for login credentials but, because this type of account has `is_staff` authority, I decided to remove the link in the footer and give the bride and groom work instructions to include `register/` at the end of the home page url `https://ciara-and-sams-wedding.herokuapp.com/register`. This action will help to prevent unauthorised account creation. An improvement could be to have a code the bride or groom has to enter before creating the account that is specific to them. The registration screen ![image](images/user-stories/register.png). Once registered the user will need to log in. [admin view of bride or groom user settings](images/user-stories/non-image-documents/siobhanbaines-is-staff-user.pdf) 
 2.  **As a user I want to be able to log into the website.**
 When a user clicks the login navigation option they are presented with the login screen. ![image](images/user-stories/log-in.png) which takes them to the main menu for the bride and groom ![image](images/user-stories/bride-groom-nav-dropdown.png)
 3.  **As a user I want to be able to create a list of all the wedding guests.**

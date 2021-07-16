@@ -167,13 +167,6 @@ footer li {
 .contact.form-control {
     width: 100%;
 }
-.card.upload {
-    width: 80%;
-}
-.upload {
-    background: url('/static/images/juliet_rose.jpg') center center fixed;
-    background-size: cover;
-}
 .hide {
     display: none;
 }
