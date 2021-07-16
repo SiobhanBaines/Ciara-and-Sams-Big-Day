@@ -74,11 +74,16 @@ button {
     border-width: 1px;
 }
 .accept-btn,
-.select-btn {
+.select-btn,
+.edit-btn {
     background-color: var(--secondary-mint); 
 }
-.change-btn,
-.buy-btn {
+.view-btn {
+    background-color: var(--primary-mint); 
+}
+/* .delete-btn,
+.buy-btn { */
+.delete-btn {
     background-color: var(--secondary-peach);
 }
 /* Nav Bar  */
@@ -264,8 +269,9 @@ a.guest-sort {
     text-decoration: none;
 }
 .action {
-    min-width: 150px;
+    min-width: 180px;
 }
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -278,6 +284,9 @@ a.guest-sort {
     }
     .label-text {
         text-align: left;
+    }
+    .action {
+        min-width: 180px;
     }
 }
 
@@ -331,7 +340,7 @@ a.guest-sort {
     .add-record {
         text-align: center!important;
       }
-      .action {
+    .action {
         min-width: 50px;
     }
 }

@@ -11,6 +11,13 @@
 
 {% block content %}
 <div class="container justify-content-center">
+    {% if not request.user.is_staff and not request.user.is_superuser %}
+    <div class="clearfix">
+        <div class="col-md-3 float-md-end ms-md-3">
+            <a class="btn select-btn border" href="{% url 'menu_selection' %}">Menu Selection</a>
+        </div>
+    </div>
+    {% endif %}
     <div class="row ">
         <div class="col-sm-12 col-md-10 offset-md-1">
             <h3 class="pl-5 text-center cursive-text-color">Menu</h3>
@@ -24,13 +31,13 @@
                 <div class="col-10 offset-1 ">
                     {% for course in courses %}
                         <div class="row">
-                            <div class="col text-callout text-center">
+                            <div class="col text-callout text-center text-uppercase">
                                 <p class="mb-0 mt-1 menu">{{ course }}</p>
                             </div>
                         </div>
                         {% for menu in menus %}
                             {% if menu.course == course %}
-                                <div class="row"> 
+                                <div class="row py-2"> 
                                     <div class="col text-callout text-center">
                                         <h3 class="mb-0 mt-1 menu">{{ menu.menu_item }}</h3>
                                     </div>
@@ -41,11 +48,6 @@
                     {% endfor %}
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row  justify-content-center my-3">
-        <div class="col-6 offset-3 pt-2">
-            <a class="btn buy-btn border rounded-0" href="{% url 'menu_selection' %}">Menu Selection</a>
         </div>
     </div>
 </div>

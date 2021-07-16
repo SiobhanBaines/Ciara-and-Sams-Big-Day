@@ -146,8 +146,9 @@
             </div>
             <div class="d-inline-flex justify-content-center mt-3">
                 <small class="ml-3">
-                    <a href="{% url 'edit_guest' guest.id %}">Edit</a> |
-                    <a class="text-danger" href="{% url 'delete_guest' guest.id %}">Delete</a>
+                    <a class="btn view-btn border btn-sm" href="{% url 'guests' %}"></i>Back</a> 
+                    <a class="btn edit-btn border btn-sm" href="{% url 'edit_guest' guest.id %}">Edit</a>
+                    <a class="btn delete-btn border btn-sm" href="{% url 'delete_guest' guest.id %}">Delete</a>
                 </small>
             </div>
         </div>

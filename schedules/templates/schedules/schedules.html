@@ -28,7 +28,7 @@
             <!-- Add a record -->
             <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3 add-record">
                 <small class="ml-3">
-                    <a class="btn accept-btn border" href="{% url 'add_guest' %}"></i>Add A New Event</a>
+                    <a class="btn accept-btn border" href="{% url 'add_schedule' %}"></i>Add A New Event</a>
                 </small>
             </div>
         </div>
@@ -41,7 +41,7 @@
                             <tr>
                                 <th class="schedule-table cursive-text-color" scope="col">Time</th>
                                 <th class="schedule-table cursive-text-color" scope="col">Event Details</th>
-                                <th class="schedule-table cursive-text-color" scope="col">Action</th>
+                                <th class="schedule-table cursive-text-color text-center" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,10 +49,11 @@
                                 <tr>
                                     <td>{{ schedule.time }}</td>
                                     <td>{{ schedule.event }}</td>
-                                    <td><small class="ml-3"><a class="text-success"
-                                        <a class="text-success" href="{% url 'display_schedule' %}"></i>View</a> |
-                                            <a href="{% url 'edit_schedule' schedule.id %}">Edit</a> |
-                                            <a class="text-danger" href="{% url 'delete_schedule' schedule.id %}">Delete</a>
+                                    <td class="text-center">
+                                        <small class="ml-3">
+                                            <a class="btn view-btn border btn-sm" href="{% url 'display_schedule' %}"></i>View</a>
+                                            <a class="btn edit-btn border btn-sm" href="{% url 'edit_schedule' schedule.id %}">Edit</a>
+                                            <a class="btn delete-btn border btn-sm" href="{% url 'delete_schedule' schedule.id %}">Delete</a>                                        
                                         </small>
                                     </td>
                                 </tr>

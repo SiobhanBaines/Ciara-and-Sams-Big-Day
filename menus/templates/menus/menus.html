@@ -17,7 +17,7 @@
                 <form method="POST" enctype="multipart/form-data" class="form-border">
                     {% csrf_token %}
                     <div class="input-group w-80">
-                        <input type="file" name="guest_list_csv" id="guest_list_csv" class="form-control "
+                        <input type="file" name="menu_csv" id="menu_csv" class="form-control "
                             placeholder="Upload Guest List" required />
                         <div class="input-group-append">
                             <button class="form-control btn accept-btn border rounded-0" type="submit">Upload</button>
@@ -28,7 +28,7 @@
             <!-- Add a record -->
             <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3 add-record">
                 <small class="ml-3">
-                    <a class="btn accept-btn border" href="{% url 'add_guest' %}"></i>Add A New Menu Item</a>
+                    <a class="btn accept-btn border" href="{% url 'add_menu' %}"></i>Add A New Menu Item</a>
                 </small>
             </div>
         </div>
@@ -41,18 +41,18 @@
                             <tr>
                                 <th class="menu-table cursive-text-color" scope="col">Course</th>
                                 <th class="menu-table cursive-text-color" scope="col">Title</th>
-                                <th class="menu-table cursive-text-color" scope="col">Action</th>
+                                <th class="menu-table cursive-text-color text-center" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for menu in menus %}
                                 <tr>
-                                    <td>{{ menu.course}}</td>
+                                    <td class="text-uppercase">{{ menu.course}}</td>
                                     <td>{{ menu.menu_item }}</td>
-                                    <td class="action"><small class="ml-3">
-                                        <a class="text-success" href="{% url 'display_menu' %}"></i>View</a> |
-                                            <a href="{% url 'edit_menu' menu.id %}">Edit</a> |
-                                            <a class="text-danger" href="{% url 'delete_menu' menu.id %}">Delete</a>
+                                    <td class="action text-center">
+                                    <a class="btn view-btn border btn-sm" href="{% url 'display_menu' %}"></i>View</a>
+                                    <a class="btn edit-btn border btn-sm" href="{% url 'edit_menu' menu.id %}">Edit</a>
+                                    <a class="btn delete-btn border btn-sm" href="{% url 'delete_menu' menu.id %}">Delete</a>
                                         </small>
                                     </td>
                                 </tr>

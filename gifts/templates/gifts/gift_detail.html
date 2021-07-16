@@ -78,14 +78,17 @@
         </div>
         <div class="row">
             <div class="col">
-                {% if request.user.is_staff or request.user.is_superuser %}
+                 
+                
                     <div class="d-flex justify-content-center">
                         <small class="ml-3">
-                            <a class="translate-middle" href="{% url 'edit_gift' gift.id %}">Edit</a> |
-                            <a class="text-danger" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                            <a class="btn view-btn border btn-sm" href="{% url 'gifts' %}"></i>Back</a>
+                            {% if request.user.is_staff or request.user.is_superuser %}
+                            <a class="btn edit-btn border btn-sm" href="{% url 'edit_gift' gift.id %}">Edit</a>
+                            <a class="btn delete-btn border btn-sm" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                            {% endif %}
                         </small>
                     </div>
-                {% endif %}
             </div>
         </div>
     </div>

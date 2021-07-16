@@ -1,4 +1,4 @@
-var toastElList = [].slice.call(document.querySelectorAll('.toast'));   
-var toastList = toastElList.map(function (toastEl) {
+let toastMessage = [].slice.call(document.querySelectorAll('.toast'));   
+let message = toastMessage.map(function (toastEl) {
     return new bootstrap.Toast(toastEl).show();
 });

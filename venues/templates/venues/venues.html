@@ -97,10 +97,10 @@
                             <div class="row text-center my-2">
                                 <div class="col">
                                     {% if request.user.is_staff or request.user.is_superuser %}
-                                    <small class="ml-3">
-                                            <a class="translate-middle" href="{% url 'edit_venue' venue.id %}">Edit</a> |
-                                            <a class="text-danger" href="{% url 'delete_venue' venue.id %}">Delete</a>
-                                        </small>
+                                        <small class="ml-3">
+                                            <a class="btn edit-btn border btn-sm" href="{% url 'edit_venue' venue.id %}">Edit</a>
+                                            <a class="btn delete-btn border btn-sm" href="{% url 'delete_venue' venue.id %}">Delete</a>
+                                            </small>
                                     {% endif %}
                                 </div>
                             </div>

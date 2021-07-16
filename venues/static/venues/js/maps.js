@@ -1,4 +1,5 @@
     // Initialize and add the map
+    // Credit to Simen Daehlin for his help in getting this working
 
     function initMap() {
         // location of church
