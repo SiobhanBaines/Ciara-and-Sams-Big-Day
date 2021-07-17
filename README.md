@@ -473,11 +473,11 @@ Once the application has been opened in a GitPod workspace there are a couple of
 
 ### Local Deployment
 
-These istructions are for GitHub Desktop on Windows. Other operating systems will have differences so please check.
+These instructions are for GitHub Desktop on Windows. Other operating systems will have differences so please check.
 
 1. Download and install [GitHub Desktop](https://desktop.github.com/)
 2. Clone the [repository](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day) by clicking the ![image](images/deployment/clone-repo.png) and select `SiobhanBaines/Ciara-and-Sams-Big-Day`
-3. Open the repository in an exxternal editor ![image](images/deployment/external-editor.png)
+3. Open the repository in an external editor ![image](images/deployment/external-editor.png)
 4. Once is VSCode, click the Terminal button at the top of the screen which should open a terminal that looks like this ![image](images/deployment/terminal.png) at the bottom of the screen.
 5. Run the command `pip3 install -r requirements.txt` ito insall all the API's and packages this applicaton uses. This will take a couple of minutes.
 6. Create an `env.py` file by hovering the mouse in the `EXPLORER` box over the repository name ![image](images/deployment/new-file.png)and clicking on the file symbol
@@ -495,7 +495,7 @@ os.environ.setdefault("STRIPE_CURRENCY", "gbp")`
 *The Secret Key* "SECRET_KEY". To find a secret key search Google for `django secret key generator`. Copy and paste the generated key into the 2nd quotation marks.
 8. Run command `python3 manage.py makemigrations`
 9. Run command `python3 manage.py migrate`
-10. Run command `python3 managa.py runserver`
+10. Run command `python3 manage.py runserver`
 
 To get the next 3 keys you will need to create a [stripe](https://stripe.com/gb) account.
 Once you have you account go to `Dashboard>Developers>API Keys` 
