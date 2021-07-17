@@ -80,7 +80,7 @@
             <div class="col">
                 <div class="d-flex justify-content-center">
                     <small class="ml-3">
-                        <a class="btn view-btn border btn-sm" href="{% url 'gifts' %}"></i>Back</a>
+                        <a class="btn view-btn border btn-sm" href="{% url 'gifts' %}">Back</a>
                         {% if request.user.is_staff or request.user.is_superuser %}
                         <a class="btn edit-btn border btn-sm" href="{% url 'edit_gift' gift.id %}">Edit</a>
                         <a class="btn delete-btn border btn-sm" href="{% url 'delete_gift' gift.id %}">Delete</a>

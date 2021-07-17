@@ -11,99 +11,94 @@
 
 {% block content %}
 <main>
-<div class="container">
-    <div class="row justify-content-xl-evenly justify-content-sm-center">
-        <!-- Facility to upload a csv file -->
-        <div class="col-sm-12 col-md-8 col-xl-auto mx-2 my-3">
-            <form method="POST" enctype="multipart/form-data" class="form-border">
-                {% csrf_token %}
-                <div class="input-group w-80">
-                    <input type="file" name="guest_list_csv" id="guest_list_csv" class="form-control "
-                        placeholder="Upload Guest List" required />
-                    <div class="input-group-append">
-                        <button class="form-control btn accept-btn border rounded-0" type="submit">Upload</button>
+    <div class="container">
+        <div class="row justify-content-xl-evenly justify-content-sm-center">
+            <!-- Facility to upload a csv file -->
+            <div class="col-sm-12 col-md-8 col-xl-auto mx-2 my-3">
+                <form method="POST" enctype="multipart/form-data" class="form-border">
+                    {% csrf_token %}
+                    <div class="input-group w-80">
+                        <input type="file" name="guest_list_csv" id="guest_list_csv" class="form-control" required />
+                        <div class="input-group-append">
+                            <button class="form-control btn accept-btn border rounded-0" type="submit">Upload</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
-        <!-- Add a record -->
-        <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3 add-record">
-            <small class="ml-3">
-                <a class="btn accept-btn border" href="{% url 'add_guest' %}"></i>Add A New Guest</a>
-            </small>
-        </div>
-        <!-- Search for guests by first_name or last_name -->
-        <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3">
-            <form method="GET" action="{% url 'guests' %}">
-                <div class="input-group w-100">
-                    <input class="form-control border rounded-0" type="text" name="q" placeholder="Search our site">
-                    <div class="input-group-append">
-                        <button class="form-control btn accept-btn border rounded-0" type="submit"><span>Search</span></button>
+                </form>
+            </div>
+            <!-- Add a record -->
+            <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3 add-record">
+                <small class="ml-3">
+                    <a class="btn accept-btn border" href="{% url 'add_guest' %}">Add A New Guest</a>
+                </small>
+            </div>
+            <!-- Search for guests by first_name or last_name -->
+            <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3">
+                <form method="GET" action="{% url 'guests' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control border rounded-0" type="text" name="q" placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="form-control btn accept-btn border rounded-0" type="submit"><span>Search</span></button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- Table containing a list of invited guests -->
-    <div class="row">
-        <div class="col mx-2">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th class="guest-table cursive-text-color" scope="col">
-                                <a class="guest-sort" href="{% url 'guests' %}?sort=group_id&direction=asc">Group Id</a>
-                            </th>
-                            <th class="guest-table cursive-text-color" scope="col">
-                                <a class="guest-sort" href="{% url 'guests' %}?sort=first_name&direction=asc">First
-                                    Name</a>
-                            </th>
-                            <th class="guest-table cursive-text-color" scope="col">
-                                <a class="guest-sort" href="{% url 'guests' %}?sort=last_name&direction=asc">Last
-                                    Name</a>
-                            </th>
-                            <th class="guest-table cursive-text-color" scope="col">
-                                <a class="guest-sort" href="{% url 'guests' %}?sort=accepted&direction=desc">
-                                    Accepted</a>
-                            </th>
-                            <th class="guest-table cursive-text-color" scope="col">
-                                <a class="guest-sort" href="{% url 'guests' %}?sort=meal_chosen&direction=desc">Meal
-                                    Chosen</a>
-                            </th>
-                            <th class="guest-table cursive-text-color text-center" scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for guest in guests %}
-                        <tr>
-                            <td>{{ guest.group_id }}</td>
-                            <td>{{ guest.first_name }}</td>
-                            <td>{{ guest.last_name }}</td>
-                            {% if guest.accepted %}
-                            <td>{{ guest.accepted }}</td>
-                            {% else %}
-                            <td>No Reply</td>
-                            {% endif %}
-                            {% if guest.meal_chosen %}
-                            <td class="text-center">Yes</td>
-                            {% else %}
-                            <td class="text-center">No</td>
-                            {% endif %}
-                            <td class="text-center">
-                                <small class="ml-3">
-                                    <a class="btn view-btn border btn-sm" href="{% url 'guest_detail' guest.id %}"></i>View</a>
-                                    <a class="btn edit-btn border btn-sm" href="{% url 'edit_guest' guest.id %}">Edit</a>
-                                    <a class="btn delete-btn border btn-sm" href="{% url 'delete_guest' guest.id %}">Delete</a>
-                                </small>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        <!-- Table containing a list of invited guests -->
+        <div class="row">
+            <div class="col mx-2">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=group_id&direction=asc">Group Id</a>
+                                </th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=first_name&direction=asc">First Name</a>
+                                </th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=last_name&direction=asc">Last Name</a>
+                                </th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=accepted&direction=desc">Accepted</a>
+                                </th>
+                                <th class="guest-table cursive-text-color" scope="col">
+                                    <a class="guest-sort" href="{% url 'guests' %}?sort=meal_chosen&direction=desc">Meal Chosen</a>
+                                </th>
+                                <th class="guest-table cursive-text-color text-center" scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for guest in guests %}
+                                <tr>
+                                    <td>{{ guest.group_id }}</td>
+                                    <td>{{ guest.first_name }}</td>
+                                    <td>{{ guest.last_name }}</td>
+                                    {% if guest.accepted %}
+                                        <td>{{ guest.accepted }}</td>
+                                    {% else %}
+                                        <td>No Reply</td>
+                                    {% endif %}
+                                    {% if guest.meal_chosen %}
+                                        <td class="text-center">Yes</td>
+                                    {% else %}
+                                        <td class="text-center">No</td>
+                                    {% endif %}
+                                    <td class="text-center">
+                                        <small class="ml-3">
+                                            <a class="btn view-btn border btn-sm" href="{% url 'guest_detail' guest.id %}">View</a>
+                                            <a class="btn edit-btn border btn-sm" href="{% url 'edit_guest' guest.id %}">Edit</a>
+                                            <a class="btn delete-btn border btn-sm" href="{% url 'delete_guest' guest.id %}">Delete</a>
+                                        </small>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </main>
 {% endblock %}
 

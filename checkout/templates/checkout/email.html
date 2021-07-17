@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Received Confirmation Email</title>
-</head>
-<body>
-    
-
-    <div class="row">
-        <div class="col">
-            <p>Dear {{ first_name }}</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Payment Received Confirmation Email</title>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col">
+                <p>Dear {{ first_name }}</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p>Reference: {{ checkout.donation_number }} for the amount £{{ checkout.gift_amount }} has been recieved.</p>
+        <div class="row">
+            <div class="col">
+                <p>Reference: {{ checkout.donation_number }} for the amount £{{ checkout.gift_amount }} has been recieved.</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p class="text-center">Thank you for your generous gift and we look forward to seeing you soon.</p>
+        <div class="row">
+            <div class="col">
+                <p class="text-center">Thank you for your generous gift and we look forward to seeing you soon.</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p class="text-center">love</p>
+        <div class="row">
+            <div class="col">
+                <p class="text-center">love</p>
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col cursive-text-color">
-            <h3 class="text-center">Ciara and Sam</h3>
+        <div class="row justify-content-center">
+            <div class="col cursive-text-color">
+                <h3 class="text-center">Ciara and Sam</h3>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

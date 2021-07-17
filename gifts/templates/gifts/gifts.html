@@ -19,8 +19,7 @@
                 <form method="POST" enctype="multipart/form-data" class="form-border">
                     {% csrf_token %}
                     <div class="input-group w-80">
-                        <input type="file" name="gift_list_csv" id="gift_list_csv" class="form-control "
-                            placeholder="Upload gift List" required />
+                        <input type="file" name="gift_list_csv" id="gift_list_csv" class="form-control" required />
                         <div class="input-group-append">
                             <button class="form-control btn accept-btn border rounded-0" type="submit">Upload</button>
                         </div>
@@ -30,7 +29,7 @@
             <!-- Add an individual gift record -->
             <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3 add-record">
                 <small class="ml-3">
-                    <a class="btn accept-btn border" href="{% url 'add_gift' %}"></i>Add A New Gift</a>
+                    <a class="btn accept-btn border" href="{% url 'add_gift' %}">Add A New Gift</a>
                 </small>
             </div>
         </div>
@@ -45,7 +44,7 @@
                     <div class="col mb-5 text-center">
                     <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
                     {% csrf_token %}
-                        <input id="gift_amount" name="gift_amount" min="0" value="£0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
+                        <input id="gift_amount" name="gift_amount" value="£0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
                         <label for="gift_amount" class="gift_amount" ></label>
                         <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button>
                     </div>
@@ -77,7 +76,7 @@
                                 <div class="row">
                                     <div class="col"> 
                                         <small class="ml-3">
-                                            <a class="btn view-btn border btn-sm" href="{% url 'gift_detail' gift.id %}"></i>View</a>    
+                                            <a class="btn view-btn border btn-sm" href="{% url 'gift_detail' gift.id %}">View</a>    
                                             <!--  Only allow superuser or staff to edit or delete -->
                                             {% if request.user.is_staff or request.user.is_superuser %}
                                             <a class="btn edit-btn border btn-sm" href="{% url 'edit_gift' gift.id %}">Edit</a>

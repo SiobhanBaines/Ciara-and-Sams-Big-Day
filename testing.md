@@ -260,3 +260,12 @@ Before ![image](images/lighthouse/before/guest-venue-before.png)
 Assume improvement is due to meta description.
 After ![image](images/lighthouse/after/guest-venue-after.png)
 
+
+
+## code Validation
+### W3C HTML Validation Service
+I checked each HTML and fixed any errors I could. The majority of errors are jinja related and have therefore remained.
+
+### W3C CSS Validation Service
+My base.css file has failed because I want to keep the linear-gradient.![image](images/bugs/linear-gradient.png)
+It also did not like my colours![image](images/bugs/colours.png)

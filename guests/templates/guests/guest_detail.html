@@ -82,24 +82,22 @@
                     </div>
                     <div class="col-12 col-md-6">
                         {% if guest.meal_chosen %}
-                            <small class="ml-3">
                                 <table class="table table-bordered">
                                     <tbody>
                                         <tr>
-                                            <th scope="row align-middle">Starter</th>
+                                            <th>Starter</th>
                                             <td>{{ guest.starter }}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row align-middle">Main</th>
+                                            <th>Main</th>
                                             <td>{{ guest.main }}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row align-middle">Dessert</th>
+                                            <th>Dessert</th>
                                             <td>{{ guest.dessert }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </small>
                         {% else %}
                             <p class="mb-0 mt-1">No Meal Details Available</p>
                         {% endif %}
@@ -146,7 +144,7 @@
             </div>
             <div class="d-inline-flex justify-content-center mt-3">
                 <small class="ml-3">
-                    <a class="btn view-btn border btn-sm" href="{% url 'guests' %}"></i>Back</a> 
+                    <a class="btn view-btn border btn-sm" href="{% url 'guests' %}">Back</a> 
                     <a class="btn edit-btn border btn-sm" href="{% url 'edit_guest' guest.id %}">Edit</a>
                     <a class="btn delete-btn border btn-sm" href="{% url 'delete_guest' guest.id %}">Delete</a>
                 </small>

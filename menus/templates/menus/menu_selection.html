@@ -2,119 +2,112 @@
 {% load static %}
 
 {% block page-header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 {% block content %}
-<!-- Invitation RSVP Page - -->
-<div class="container-fluid mb-5 mt-md-5">
-    <h3 class="text-center cursive-text-color">Please Select Your Meal</h3>
-    <form method="POST" action="{% url 'menu_selection' %}" class="form md-2">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col mx-5">
-                <!-- Table containing details of all guests in the invitation group/username -->
-                <div class="menu-container card r mx-auto">
-                    <div class="menu-overlay">&nbsp;</div>
-                    <div class="card-body text-callout">
-                        <table class="table table-striped table-hover table-sm">
-                            <thead>
-                                <tr>
-                                    <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
-                                    <th class="menu-table cursive-text-color" scope="col"></th>
-                                    {% for guest in guests %}
-                                    <input type="hidden" id="id" name="id" value="{{ guest.id }}">
-                                    <th class="menu-table cursive-text-color" scope="col">{{ guest.first_name }}</th>
-                                    {% endfor %}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="menu-table cursive-text-color">Starter</td>
+    <!-- Invitation RSVP Page - -->
+    <div class="container-fluid mb-5 mt-md-5">
+        <h3 class="text-center cursive-text-color">Please Select Your Meal</h3>
+        <form method="POST" action="{% url 'menu_selection' %}" class="form md-2">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col mx-5">
+                    <!-- Table containing details of all guests in the invitation group/username -->
+                    <div class="menu-container card r mx-auto">
+                        <div class="menu-overlay">&nbsp;</div>
+                        <div class="card-body text-callout">
+                            <table class="table table-striped table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="menu-table cursive-text-color" scope="col"></th>
+                                        {% for guest in guests %}
+                                            <input type="hidden" id="id" name="id" value="{{ guest.id }}">
+                                            <th class="menu-table cursive-text-color" scope="col">{{ guest.first_name }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="menu-table cursive-text-color">Starter</td>
+                                        {% for guest in guests %}
+                                            <td>
+                                                <select class="form-select" name="starter" id="starter-{{ forloop.counter }}" aria-label="Starter">
+                                                    {% if guest.starter %}
+                                                    <option value='{{ guest.starter }}'>{{ guest.starter }}
+                                                    </option>
+                                                    {% else %}
+                                                    <option value="{{ starter_1 }}"selected>{{ starter_1 }}</option>
+                                                    {% endif %}
+                                                    <option value="{{ starter_1 }}">{{ starter_1 }}</option>
+                                                    <option value="{{ starter_2 }}">{{ starter_2 }}</option>
+                                                    <option value="None">None</option>
+                                                </select>
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                    <td class="menu-table cursive-text-color">Main</td>
                                     {% for guest in guests %}
                                     <td>
-                                        <select class="form-select" name="starter" id="starter-{{ forloop.counter }}" aria-label="Starter">
-                                            {% if guest.starter %}
-                                            <option value='{{ guest.starter }}' active selected>{{ guest.starter }}
-                                            </option>
+                                        <select class="form-select" name="main" id="main-{{ forloop.counter }}" aria-label="Default select example">
+                                            {% if guest.main %}
+                                            <option value='{{ guest.main }}'>{{ guest.main }}</option>
                                             {% else %}
-                                            <option value="{{ starter_1 }}" active selected>{{ starter_1 }}</option>
+                                            <option value="{{ main_1 }}" selected>{{ main_1 }}</option>
                                             {% endif %}
-                                            <option value="{{ starter_1 }}">{{ starter_1 }}</option>
-                                            <option value="{{ starter_2 }}">{{ starter_2 }}</option>
-                                            <option value="Other">Other</option>
+                                            <option value="{{ main_1 }}">{{ main_1 }}</option>
+                                            <option value="{{ main_2 }}">{{ main_2 }}</option>
+                                            <option value="None">None</option>
                                         </select>
                                     </td>
                                     {% endfor %}
-                                </tr>
-                                <td class="menu-table cursive-text-color">Main</td>
-                                {% for guest in guests %}
-                                <td>
-                                    <select class="form-select" name="main" id="main-{{ forloop.counter }}"
-                                        aria-label="Default select example">
-                                        {% if guest.main %}
-                                        <option value='{{ guest.main }}' active selected>{{ guest.main }}</option>
-                                        {% else %}
-                                        <option value="{{ main_1 }}" active selected>{{ main_1 }}</option>
-                                        {% endif %}
-                                        <option value="{{ main_1 }}">{{ main_1 }}</option>
-                                        <option value="{{ main_2 }}">{{ main_2 }}</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </td>
-                                {% endfor %}
-                                </tr>
-                                <td class="menu-table cursive-text-color">Dessert</td>
-                                {% for guest in guests %}
-                                <td>
-                                    <select class="form-select" name="dessert" id="dessert-{{ forloop.counter }}"
-                                        aria-label="Default select example">
-                                        {% if guest.dessert %}
-                                        <option value='{{ guest.dessert }}' active selected>{{ guest.dessert }}
-                                        </option>
-                                        {% else %}
-                                        <option value="{{ dessert_1 }}" active selected>{{ dessert_1 }}</option>
-                                        {% endif %}
-                                        <option value="{{ dessert_1 }}">{{ dessert_1 }}</option>
-                                        <option value="{{ dessert_2 }}">{{ dessert_2 }}</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </td>
-                                {% endfor %}
-                                <tr>
-                                    <td class="menu-table cursive-text-color">
-                                        <label for="requirments-{{ forloop.counter }}">Special</label>
-                                    </td>
+                                    </tr>
+                                    <td class="menu-table cursive-text-color">Dessert</td>
                                     {% for guest in guests %}
                                     <td>
-                                        <textarea class="form-control"  id="requirements-{{ forloop.counter }}" name="requirements" placeholder="Special Dietary Requirements" value='{{ guest.requirements }}'></textarea>
-                                        <!-- <input type="text-area" class="form-select" id="requirements-{{ forloop.counter }}" name="requirements" placeholder="Special Dietary Requirements" value='{{ guest.requirements }}'> -->
-                                        <!-- <label for="requirments-{{ forloop.counter }}"></label> -->
+                                        <select class="form-select" name="dessert" id="dessert-{{ forloop.counter }}" aria-label="Default select example">
+                                            {% if guest.dessert %}
+                                            <option value='{{ guest.dessert }}'>{{ guest.dessert }}
+                                            </option>
+                                            {% else %}
+                                            <option value="{{ dessert_1 }}" selected>{{ dessert_1 }}</option>
+                                            {% endif %}
+                                            <option value="{{ dessert_1 }}">{{ dessert_1 }}</option>
+                                            <option value="{{ dessert_2 }}">{{ dessert_2 }}</option>
+                                            <option value="None">None</option>
+                                        </select>
                                     </td>
                                     {% endfor %}
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row my-5">
-                            <div class="col-12 col-md-8">
-                                <p>If you have any special requirements, please let us know. <br>The venue has said they
-                                    will do their best to accommodate all requirements.</p>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <button class="form-control btn btn-sm accept-btn rounded-0"
-                                    type="submit">Confirm</button>
+                                    <tr>
+                                        <td class="menu-table cursive-text-color">
+                                            <label for="requirments-{{ forloop.counter }}">Special</label>
+                                        </td>
+                                        {% for guest in guests %}
+                                        <td>
+                                            <textarea class="form-control"  id="requirements-{{ forloop.counter }}" name="requirements" placeholder="Special Dietary Requirements" value='{{ guest.requirements }}'></textarea>
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="row my-5">
+                                <div class="col-12 col-md-8">
+                                    <p>If you have any special requirements, please let us know. <br>The venue has said they will do their best to accommodate all requirements.</p>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <button class="form-control btn btn-sm accept-btn rounded-0" type="submit">Confirm</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 {% endblock %}
 
 {% block postloadjs %}

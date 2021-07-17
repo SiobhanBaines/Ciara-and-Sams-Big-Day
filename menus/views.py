@@ -66,7 +66,6 @@ def display_menu(request):
         if menu.course not in courses:
             courses.append(menu.course)
 
-
     form = MenuForm()
     context = {
         'courses': courses,
@@ -164,7 +163,7 @@ def menu_selection(request):
     """ View of menu details """
 
     if request.method == 'POST':
-        
+
         form = dict(request.POST)
         # loop through form to get details of each guest in the family group
         for num in range(len(form['id'])):

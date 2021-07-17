@@ -130,7 +130,6 @@ def checkout(request):
         amount = float(gift_amount)               # convert string to decimal
         stripe_total = round(amount * 100)
         stripe.api_key = stripe_secret_key
-        print 
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,

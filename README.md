@@ -421,6 +421,7 @@ Some of the flow of the site was a little complex so I created a flowchart to he
 * [Balsamic](https://balsamiq.com/wireframes/)
 * [W3C HTML Validation Service](https://validator.w3.org/)
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+* [Autoprefixer](https://autoprefixer.github.io/)
 * [jshint](https://jshint.com/)
 
 [Back to Top](#table-of-contents)

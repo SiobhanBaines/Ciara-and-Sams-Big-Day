@@ -22,7 +22,8 @@ class TestCheckoutForm(TestCase):
     #     form = GuestForm({'postcode': ''})
     #     self.assertFalse(form.is_valid())
     #     self.assertIn('postcode', form.errors.keys())
-    #     self.assertEqual(form.errors['postcode'][0], 'This field is required.')
+    #     self.assertEqual(
+    #       form.errors['postcode'][0], 'This field is required.')
 
     def test_fields_are_explicit_in_form_metaclass(self):
         form = MenuForm()

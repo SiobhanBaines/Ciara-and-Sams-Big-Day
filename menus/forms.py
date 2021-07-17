@@ -7,7 +7,7 @@ class MenuForm(forms.ModelForm):
 
     class Meta:
         model = Menu
-        fields = ['course', 'menu_item',]
+        fields = ['course', 'menu_item', ]
         # fields = '__all__'
 
 
