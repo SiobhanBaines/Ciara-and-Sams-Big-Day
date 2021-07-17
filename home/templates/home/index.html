@@ -33,7 +33,7 @@
                         <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Dear {{ guest_name }}, <br>Thank you for responding to our invitation.<br>We are sorry you are unable to join us for our celebration but look forward to seeing you soon.<br>Love Ciara and Sam</h3>
                     {% else %}
                         <h1 class="cursive-text-color mt-1 pt-1">Welcome {{ guest_name }}</h1>
-                        <h2 class="cursive-text-color my-2">Please <a class="cursive-text-color" href="{% url 'rsvp' %}">RSVP</a></h2>
+                        <h2 class="cursive-text-color my-2">Please <a class="cursive-text-color" href="{% url 'rsvp' %}" aria-label="rsvp">RSVP</a></h2>
                     {% endif %}
                 {% endif %}
             {% endif %}

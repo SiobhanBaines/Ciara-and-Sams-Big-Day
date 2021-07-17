@@ -36,7 +36,7 @@
                                     <td class="menu-table cursive-text-color">Starter</td>
                                     {% for guest in guests %}
                                     <td>
-                                        <select class="form-select" name="starter" id="starter" aria-label="Starter">
+                                        <select class="form-select" name="starter" id="starter-{{ forloop.counter }}" aria-label="Starter">
                                             {% if guest.starter %}
                                             <option value='{{ guest.starter }}' active selected>{{ guest.starter }}
                                             </option>
@@ -53,7 +53,7 @@
                                 <td class="menu-table cursive-text-color">Main</td>
                                 {% for guest in guests %}
                                 <td>
-                                    <select class="form-select" name="main" id="main"
+                                    <select class="form-select" name="main" id="main-{{ forloop.counter }}"
                                         aria-label="Default select example">
                                         {% if guest.main %}
                                         <option value='{{ guest.main }}' active selected>{{ guest.main }}</option>
@@ -70,7 +70,7 @@
                                 <td class="menu-table cursive-text-color">Dessert</td>
                                 {% for guest in guests %}
                                 <td>
-                                    <select class="form-select" name="dessert" id="dessert"
+                                    <select class="form-select" name="dessert" id="dessert-{{ forloop.counter }}"
                                         aria-label="Default select example">
                                         {% if guest.dessert %}
                                         <option value='{{ guest.dessert }}' active selected>{{ guest.dessert }}
@@ -85,13 +85,14 @@
                                 </td>
                                 {% endfor %}
                                 <tr>
-                                    <td class="menu-table cursive-text-color"><label for="requirments">Special</label>
+                                    <td class="menu-table cursive-text-color">
+                                        <label for="requirments-{{ forloop.counter }}">Special</label>
                                     </td>
                                     {% for guest in guests %}
                                     <td>
-                                        <input type="text" class="form-select" id="requirements" name="requirements"
-                                            placeholder="Special Dietary Requirements" value='{{ guest.requirements }}'>
-                                        <label for="requirments"></label>
+                                        <textarea class="form-control"  id="requirements-{{ forloop.counter }}" name="requirements" placeholder="Special Dietary Requirements" value='{{ guest.requirements }}'></textarea>
+                                        <!-- <input type="text-area" class="form-select" id="requirements-{{ forloop.counter }}" name="requirements" placeholder="Special Dietary Requirements" value='{{ guest.requirements }}'> -->
+                                        <!-- <label for="requirments-{{ forloop.counter }}"></label> -->
                                     </td>
                                     {% endfor %}
                                 </tr>

@@ -33,6 +33,7 @@ def cache_checkout_data(request):
             processed at the moment. Please try later.')
         return HttpResponse(content=e, status=400)
 
+
 @login_required
 def checkout(request):
     """ Process a gift donation payment """
@@ -97,9 +98,6 @@ def checkout(request):
             amount = float(gift_amount)         # convert string to decimal
             stripe_total = round(amount * 100)
             stripe.api_key = stripe_secret_key
-            print('stripe_secret_key', stripe_secret_key)
-            print('stripe_total', stripe_total)
-            print('settings.STRIPE_CURRENCY', settings.STRIPE_CURRENCY)
             intent = stripe.PaymentIntent.create(
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
@@ -152,6 +150,7 @@ def checkout(request):
         'client_secret': intent.client_secret,
     }
     return render(request, template, context)
+
 
 @login_required
 def checkout_success(request, donation_number, email):

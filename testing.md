@@ -127,12 +127,136 @@ When a the payment of the gift donation is confirmed and the success page appear
 [email](/workspace/Ciara-and-Sams-Big-Day/images/user-stories/non-image-documents/confirmatiom-of-gift-payment-reciept.msg)
 
 ## Lighthouse Testing
-### Contact Us
+### Home
+#### Contact Us
 Before ![image](images/lighthouse/before/contact-before.png)
 Adding meta description to Base.html `<meta name="description" content="Siobhan Baines | Software Developer | Leeds, UK">` will affect all Lighthouse readings.
 After ![image](images/lighthouse/after/contact-after.png)
+#### Index
+Before ![image](images/lighthouse/before/index-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/index-after.png)
+#### RSVP
+Before ![image](images/lighthouse/after/rsvp-after.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/before/rsvp-before.png)
 
-### Guest Gift List
+### Guest
+#### Guest List
+Before ![image](images/lighthouse/before/main-guest-before.png)
+Assume improvement is due to meta description and added `<main>` element to guests.html
+After ![image](images/lighthouse/after/main-guest-after.png)
+#### Guest View
+Before ![image](images/lighthouse/before/view-guest-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/view-guest-after.png)
+#### Guest Add
+Before ![image](images/lighthouse/before/add-guest-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/add-guest-after.png)
+#### Guest Edit
+Before ![image](images/lighthouse/before/edit-guest-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/edit-guest-after.png)
+
+
+#### Gift
+#### Gift List
+Before ![image](images/lighthouse/before/main-gifts-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/main-gifts-after.png)
+#### Gift View
+Before ![image](images/lighthouse/before/view-gift-before.png)
+Assume improvement is due to meta description and corrected file structure for `gift-selected.js` to `static/gifts/js/`.
+After ![image](images/lighthouse/after/main-gifts-after.png)
+#### Gift Add
+Before ![image](images/lighthouse/before/add-gift-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/add-gift-after.png)
+The main element causing the issue comes from the Django custom_clearable_file_input.html and more specifically this line `<input type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>`. The name `#id_image` comes from `django/forms/widgets/attrs.html` which is out of my control.
+![image](images/lighthouse/after/id_image.png)
+#### Gift Edit
+Before ![image](images/lighthouse/before/edit-gift-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/edit-gift-after.png)
+After review the issues, they are mostly related to the issue above, `django/forms/widgets/attrs.html` and out of my control.
+#### Guest Gift List
 Before ![image](images/lighthouse/before/guest-gift-list-before.png)
 Reduced image sizes by using [tinypng](https://tinypng.com/)
 After ![image](images/lighthouse/after/guest-gift-list-after.png)
+#### Guest View Gift
+Before ![image](images/lighthouse/before/guest-view-gift-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/guest-view-gift-after.png)
+#### Guest Checkout
+Before ![image](images/lighthouse/before/checkout-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/checkout-after.png)
+The only way to improve the `Accessibility` score further is to change the replace the `<legend>` element with a `<label>` element whcih changes the format of the page giving pure UX.
+#### Guest Payment Confirmation
+Before ![image](images/lighthouse/before/payment-confirmation-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/payment-confirmation-after.png)
+
+### Menu
+#### Menu List
+Before ![image](images/lighthouse/before/main-menu-before.png)
+Assume improvement is due to meta description and added `<main>` element to menus.html
+After ![image](images/lighthouse/after/main_menus_after.png)
+#### Menu View
+Before ![image](images/lighthouse/before/view-menu-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/view-menu-after.png)
+There is no change if I use `aria-labelledby` and if I change the id for the included menus, the menus perform in a strange way. 
+#### Menu Add
+Before ![image](images/lighthouse/before/add-menu-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/add-menu-after.png)
+#### Menu Edit
+Before ![image](images/lighthouse/before/edit-menu-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/edit-menu-after.png)
+#### Guest Menu Selection
+Before ![image](images/lighthouse/before/menu-selection-before.png)
+Assume improvement is due to meta description.
+Changed `id` elements to have `-{{ forloop.counter }}` and changed special requirements to be a `<textarea>`
+After ![image](images/lighthouse/after/menu-selection-after.png)
+
+### Schedule
+#### Schedule List
+Before ![image](images/lighthouse/before/main-schedule-before.png)
+Assume improvement is due to meta description and added `<main>` element to scheduless.html
+After ![image](images/lighthouse/after/main-schedule-after.png)
+#### Schedule View
+Before ![image](images/lighthouse/before/view-schedule-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/view-schedule-after.png)
+#### Schedule Add
+Before ![image](images/lighthouse/before/add-schedule-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/add-schedule-after.png)
+#### Schedule Edit
+Before ![image](images/lighthouse/before/edit-schedule-before.png)
+Assume improvement is due to meta description.
+After ![image]((images/lighthouse/after/edit-schedule-after.png))
+
+### Venue
+#### Venue List
+Before ![image](images/lighthouse/before/main-venue-before.png)
+No changes needed because all lights are green.
+#### Venue Add
+Before ![image](images/lighthouse/before/add-venue-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/add-venue-after.png)
+After review the issues, they are mostly related to the issue above, `django/forms/widgets/attrs.html` and out of my control.
+#### Venue Edit
+Before ![image](images/lighthouse/before/edit-venue.png)
+Assume improvement is due to meta description.
+After ![image]((images/lighthouse/after/edit-venue-after.png))
+After review the issues, they are mostly related to the issue above, `django/forms/widgets/attrs.html` and out of my control.
+
+#### Venue Guest View
+Before ![image](images/lighthouse/before/guest-venue-before.png)
+Assume improvement is due to meta description.
+After ![image](images/lighthouse/after/guest-venue-after.png)
+

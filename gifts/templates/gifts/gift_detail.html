@@ -78,17 +78,15 @@
         </div>
         <div class="row">
             <div class="col">
-                 
-                
-                    <div class="d-flex justify-content-center">
-                        <small class="ml-3">
-                            <a class="btn view-btn border btn-sm" href="{% url 'gifts' %}"></i>Back</a>
-                            {% if request.user.is_staff or request.user.is_superuser %}
-                            <a class="btn edit-btn border btn-sm" href="{% url 'edit_gift' gift.id %}">Edit</a>
-                            <a class="btn delete-btn border btn-sm" href="{% url 'delete_gift' gift.id %}">Delete</a>
-                            {% endif %}
-                        </small>
-                    </div>
+                <div class="d-flex justify-content-center">
+                    <small class="ml-3">
+                        <a class="btn view-btn border btn-sm" href="{% url 'gifts' %}"></i>Back</a>
+                        {% if request.user.is_staff or request.user.is_superuser %}
+                        <a class="btn edit-btn border btn-sm" href="{% url 'edit_gift' gift.id %}">Edit</a>
+                        <a class="btn delete-btn border btn-sm" href="{% url 'delete_gift' gift.id %}">Delete</a>
+                        {% endif %}
+                    </small>
+                </div>
             </div>
         </div>
     </div>
@@ -96,5 +94,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-    <script src="{% static 'gifts/js/gift_selected.js' %}"></script>
+    <script src="{% static 'gifts/js/gift-selected.js' %}"></script>
 {% endblock %}

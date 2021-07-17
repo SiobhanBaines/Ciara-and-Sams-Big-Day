@@ -7,6 +7,7 @@ from django.contrib.auth.models import User, Group
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -55,6 +56,7 @@ def register_request(request):
     return render(request, template, context)
 
 
+@login_required
 def rsvp(request):
     """ View to return the RSVP page,
     add group accepted or declined to User
@@ -107,6 +109,7 @@ def rsvp(request):
     return render(request, template, context)
 
 
+@login_required
 def contact(request):
     if request.method == 'GET':
         form = ContactForm()

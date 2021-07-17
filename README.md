@@ -4,7 +4,7 @@
 
 This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guest's party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally, the bride and groom should be able to arrange the table seating based on the guests who have accepted.
 
-``` Mock up Image ```
+` Mock up Image `
 ![image](images/ami-responsivedesign.png)
 You can find the original website here [ciara_and_sams_wedding](https://ciara-and-sams-wedding.herokuapp.com/).
 
@@ -52,7 +52,7 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
 	* [Bugs](#bugs)
 * [Run Application in Gitpod](#run-application-in-gitpod)
 * [Deployment](#deployment)
-    * [Local Deployment](#local-deployment)
+    * [Local Development](#local-development)
     * [Heroku Deployment](#heroku-deployment)
     	* [Initial Production Deployment](#initial-production-deployment)
 	    * [Heroku](#heroku)
@@ -196,9 +196,9 @@ For the initials of the bride and groom I will use the cursive font [Lovers Quar
 and for the main text I will use [Nunito](https://fonts.google.com/specimen/Nunito?preview.text=GUEST%20Login&preview.text_type=custom&stylecount=11)
 `<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Lovers+Quarrel&family=Nunito:wght@200&display=swap" rel="stylesheet">`
-            ```font-family: 'Italianno', cursive;
-                font-family: 'Lovers Quarrel', cursive;
-                font-family: 'Nunito', sans-serif;```
+            `font-family: 'Italianno', cursive;
+             font-family: 'Lovers Quarrel', cursive;
+             font-family: 'Nunito', sans-serif;`
 
 <a></a>
 
@@ -332,7 +332,7 @@ For each page I created 3 wireframes: desktop, tablet and mobile.
 ### Flowcharts
 
 Some of the flow of the site was a little complex so I created a flowchart to help clarify
-[Flowchart](fwireframes/flowchart.docx)
+[Flowchart](wireframes/flowchart.docx)
 
 [Back to Top](#table-of-contents)
 
@@ -471,7 +471,7 @@ Once the application has been opened in a GitPod workspace there are a couple of
 
 ## **Deployment**
 
-### Local Deployment
+### Local Development
 
 These instructions are for GitHub Desktop on Windows. Other operating systems will have differences so please check.
 
@@ -489,7 +489,8 @@ os.environ.setdefault("SECRET_KEY", "******")
 os.environ.setdefault("STRIPE_PUBLIC_KEY", "*****")
 os.environ.setdefault("STRIPE_SECRET_KEY", "*****")
 os.environ.setdefault("STRIPE_WH_SECRET", "*****")
-os.environ.setdefault("STRIPE_CURRENCY", "gbp")`
+os.environ.setdefault("STRIPE_CURRENCY", "gbp")
+os.environ.setdefault("DEVELOPMENT", "1")`
 
 7. To run the application you need the `SECRET KEY`
 *The Secret Key* "SECRET_KEY". To find a secret key search Google for `django secret key generator`. Copy and paste the generated key into the 2nd quotation marks.
@@ -499,13 +500,24 @@ os.environ.setdefault("STRIPE_CURRENCY", "gbp")`
 
 To get the next 3 keys you will need to create a [stripe](https://stripe.com/gb) account.
 Once you have you account go to `Dashboard>Developers>API Keys` 
-    *Stripe Public Key* "STRIPE_PUBLIC_KEY" is `Publishable Key`
-    *Stripe Secret Key "STRIPE_SECRET_KEY" is `Secret Key`
-Next click on `Webhooks` on the left hand side, just under `API Keys` and click `Add endpoint`. In here enter the URL of your site followed by `checkout/wh/`
-    *Stripe WH Secret* "STRIPE_WH_SECRET" is `Signing secret`
 
-    *Stripe Currency* "STRIPE_CURRENCY" can be set to whatever currency you want. Stripe uses the standard [iso currency codes](https://www.iban.com/currency-codes)
+*Stripe Public Key* "STRIPE_PUBLIC_KEY" is `Publishable Key`
 
+*Stripe Secret Key "STRIPE_SECRET_KEY" is `Secret Key`
+Next click on `Webhooks` on the left side, just under `API Keys` and click `Add endpoint`. In here enter the URL of your site followed by `checkout/wh/`
+
+*Stripe WH Secret* "STRIPE_WH_SECRET" is `Signing secret`
+
+*Stripe Currency* "STRIPE_CURRENCY" can be set to whatever currency you want. Stripe uses the standard [iso currency codes](https://www.iban.com/currency-codes)
+
+*Development* "DEVELOPMENT" setting this to 1 allows the static files to be picked up
+
+11. Create a Django admin superuser `python3 manage.py createsuperuser`.
+12. If the application is not currently running, run command `python3 manage.py runserver`
+13. Add `/admin/`to the end of the [url](images/deployment/url.png)
+14. Login with the superuser account you have just created.
+15. Add two new groupds called `accepted`  and `declined` in Groups in Authenticaion and Authroization. They do not need any special permissions but are needed for the wedding guests to log in.
+16. Now the site is up and running. A final point to note is when the guest list is uploaded it will automatically create user accounts (aka Group Id) and the password will be whatever value is in the postcode field of the guest object.
 
 ### Pushing to GitHub
   
@@ -540,7 +552,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 10. There is no need to perform the `python3 manage.py loaddata` command because all the data in the database will be loaded by the bride and groom, because it is specific to their wedding.
 11. Create a superuser using the command `python3 manage.py createsuperuser` in the production Django Admin.
 12. Remove the *DATABASE_URL* config variable value changing the code to get the value from the production environment and keep the sqlite3 database for the development environment as below.
-            ```if 'DATABASE_URL' in os.environ:
+            `if 'DATABASE_URL' in os.environ:
                 DATABASES = {
                     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
                 }
@@ -550,15 +562,15 @@ The following steps assume you already have Heroku and AWS accounts set up readi
                         'ENGINE': 'django.db.backends.sqlite3',
                         'NAME': BASE_DIR / 'db.sqlite3',
                     }
-                }```
+                }`
 13. Run the command `pip3 install gunicorn` and freeze it into the requirements file.
 14. Create the Procfile to tell Heroku to create a web dyno to run gunicorn and serve the Django app.
 15. Add the Heroku App to Allowed Hosts in `settings.py` from production and *localhost* for development `ALLOWED_HOSTS = ['ciara-and-sams-wedding.herokuapp.com', 'localhost']`.
 16. Set up Heroku to allow Git to deploy automatically by going to the [Deploy](images/deployment/heroku-deploy.png) tab, scroll down to `Connect to GitHub` and search for the repository.![image](images/deployment/heroku-repository.png) and click `connect`. Next click the [Enable Automatic Deploys](images/deployment/auto-deploys.png)button.
 17. Create a new Django `SECRET_KEY` and add to Heroku and replace it in `settings.py` with a call to get the key from the environment.
-            ```SECRET_KEY = os.environ.get('SECRET_KEY', '')```
+            `SECRET_KEY = os.environ.get('SECRET_KEY', '')`
 18. Set 'DEBUG' to True on if in Development.
-            ```DEBUG = 'DEVELOPMENT' in os.environ```
+            `DEBUG = 'DEVELOPMENT' in os.environ`
 19. Using the process described in [Pushing to GitHub](#pushing-to-github), deploy to Heroku where you should see it being built. There is sometimes a small delay.
 
 <a></a>
@@ -571,7 +583,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
 5. Open the `Properties` tab enable [static](images/deployment/aws-static.png) web hosting and give the index and error document default values for this site.
 6. Back on the `Permissions` tab
     6.1. Create the CORS (Cross-origin resource sharing) configuration
-         ```[
+         `[
                 {
                     "AllowedHeaders": [
                         "Authorization"
@@ -585,7 +597,7 @@ The following steps assume you already have Heroku and AWS accounts set up readi
                     ],
                     "ExposeHeaders": []
                 }
-            ]```
+            ]`
     6.2. Generate Bucket Policy by going to Edit on the Bucket Policy and selecting the button `Policy Generator` ![image](images/deployment/aws-generate-policy.png)
         6.2.1. Allow all principles and add the actiona `GetObject`, `PutObject` and `DeleteObject`.
         6.2.2. Get the ARN (Amazon Resource Name) from the `Properties` tab and paste into the ARN box at the bottom.
