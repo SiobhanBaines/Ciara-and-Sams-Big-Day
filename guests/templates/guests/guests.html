@@ -35,10 +35,13 @@
             <div class="col-sm-12 col-md-4 col-xl-auto mx-2 my-3">
                 <form method="GET" action="{% url 'guests' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border rounded-0" type="text" name="q" placeholder="Search our site">
+                        <input class="form-control border" type="text" name="q" placeholder="Search guests">
                         <div class="input-group-append">
-                            <button class="form-control btn accept-btn border rounded-0" type="submit"><span>Search</span></button>
+                            <button class="form-control btn accept-btn border" type="submit"><span>Search</span></button>
+                            
+                            <!-- <button class="form-control btn border rounded-0" type="submit"><span>Reset</span></button> -->
                         </div>
+                        <a class="btn reset-btn border" href="{% url 'guests' %}">Reset</a>
                     </div>
                 </form>
             </div>

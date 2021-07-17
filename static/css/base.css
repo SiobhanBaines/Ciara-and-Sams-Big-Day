@@ -98,14 +98,16 @@ button {
 .view-btn {
     background-color: var(--primary-mint); 
 }
-/* .delete-btn,
-.buy-btn { */
 .delete-btn {
     background-color: var(--secondary-peach);
+}
+.reset-btn {
+    background-color: var(--primary-grey);
 }
 /* Nav Bar  */
 .navbar-inner {
     background: transparent;
+    color: var(--primary-font);
 }
 .nav-item {
     font-size: calc(0.5rem + 1.3vw);
