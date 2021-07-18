@@ -20,9 +20,9 @@ class Guest(models.Model):
     meal_chosen = models.BooleanField(default=False)
     special_diet = models.BooleanField(default=False)
     requirements = models.CharField(max_length=254, blank=True)
-    starter = models.CharField(max_length=80, blank=True)
-    main = models.CharField(max_length=80, blank=True)
-    dessert = models.CharField(max_length=80,  blank=True)
+    starter = models.CharField(max_length=250, blank=True)
+    main = models.CharField(max_length=250, blank=True)
+    dessert = models.CharField(max_length=250,  blank=True)
     gift_chosen = models.BooleanField(default=False)
     gift_name = models.CharField(max_length=254, blank=True)
     gift_value = models.DecimalField(max_digits=10, decimal_places=2,

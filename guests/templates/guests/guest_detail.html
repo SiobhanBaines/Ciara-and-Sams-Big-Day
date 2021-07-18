@@ -26,10 +26,12 @@
                         <h3 class="cursive-text-color text-align-left fs-2">Guest Name</h3>
                     </div>
                     <div class="col-12 col-md-2 align-items-end">
-                        <p class="mb-0 mt-1">{{ guest.first_name }}</p>
+                        <p class="mb-0 mt-1">{{ guest.first_name }} {{ guest.last_name }}</p>
                     </div>
                     <div class="col-12 col-md-2">
-                        <p class="mb-0 mt-1">{{ guest.last_name }}</p>
+                        {% if guest.plus_one %}
+                        <p class="mb-0 mt-1">plus one</p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="row">

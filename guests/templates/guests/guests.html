@@ -2,9 +2,11 @@
 {% load static %}
 
 {% block page-header %}
+
 <div class="container header-container">
     <div class="row">
-        <div class="col"></div>
+        <div class="col-6">
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -12,6 +14,13 @@
 {% block content %}
 <main>
     <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-xl-6 text-center">
+                <button type="button" class="btn btn-sm-light border-0" data-bs-toggle="modal" data-bs-target="#csv-help">
+                    Upload Help
+                </button>
+            </div>
+        </div>
         <div class="row justify-content-xl-evenly justify-content-sm-center">
             <!-- Facility to upload a csv file -->
             <div class="col-sm-12 col-md-8 col-xl-auto mx-2 my-3">
@@ -102,9 +111,14 @@
             </div>
         </div>
     </div>
+    <!-- guests/templates/guests/includes/guest-help.html -->
+{% include 'guests/includes/guest-help.html' %}
 </main>
 {% endblock %}
 
+{% block modal %}
+
+{% endblock %}
 {% block postloadjs %}
 {{ block.super }}
 {% endblock %}

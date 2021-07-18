@@ -74,12 +74,19 @@ def guests(request):
                 unique_group_id = uuid.uuid4().hex[:6].upper()
                 User.objects.create_user(
                     username=unique_group_id, password=row['postcode'])
+
+            print(row['plus_one'])
+            if row['plus_one'] == "TRUE":
+                row_plus_one = True
+            else:
+                row_plus_one = False
+
             objs.append(
                 Guest(
                     group_id=unique_group_id,
                     first_name=row['first_name'],
                     last_name=row['last_name'],
-                    plus_one=row['plus_one'],
+                    plus_one=row_plus_one,
                     address_line_1=row['address_line_1'],
                     address_line_2=row['address_line_2'],
                     city=row['city'],

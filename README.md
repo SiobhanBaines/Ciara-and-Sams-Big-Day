@@ -696,6 +696,12 @@ As part of the RSVP process a guest will either accept or decline the invitation
 
 ### CSV file upload
 
+I found a method of downloading a csv file for the users to load the various file details on [codepen](https://codepen.io/puritanner/pen/JevowR) by [Tanner](https://codepen.io/puritanner/pens/public?cursor=ZD0xJm89MCZwPTEmdj0zMjEzNDYwMA==)
+
+<a></a>
+
+### CSV file template download
+
 Jo @ CI gave me this link [upload-csv](https://ramramesh1374.medium.com/upload-csv-using-django-bulk-create-c75b28fc19f0).
 
 <a></a>
