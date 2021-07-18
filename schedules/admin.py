@@ -7,7 +7,7 @@ class ScheduleAdmin(admin.ModelAdmin):
         'time',
         'event',
     )
-    ordering = ('time',)
+    ordering = ('time', 'event')
 
 
-admin.site.register(Schedule)
+admin.site.register(Schedule, ScheduleAdmin)

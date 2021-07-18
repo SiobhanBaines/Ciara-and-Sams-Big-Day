@@ -6,10 +6,7 @@ class ScheduleForm(forms.ModelForm):
 
     class Meta:
         model = Schedule
-        fields = (
-            'time',
-            'event',
-        )
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         """

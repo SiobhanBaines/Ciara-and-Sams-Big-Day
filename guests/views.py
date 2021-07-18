@@ -74,8 +74,8 @@ def guests(request):
                 unique_group_id = uuid.uuid4().hex[:6].upper()
                 User.objects.create_user(
                     username=unique_group_id, password=row['postcode'])
-
-            print(row['plus_one'])
+            # Most people will use Excel to create the CSV file which puts True 
+            #   in Capitals which is not the same as a boolean True
             if row['plus_one'] == "TRUE":
                 row_plus_one = True
             else:

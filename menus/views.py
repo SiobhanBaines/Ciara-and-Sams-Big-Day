@@ -113,7 +113,7 @@ def add_menu(request):
 
 @login_required
 def edit_menu(request, menu_id):
-    """ Edit an Event """
+    """ Edit an item """
     if not request.user.is_superuser and not request.user.is_staff:
         messages.error(request, 'Sorry, only the bride and groom can do that.')
         return redirect(reverse('home'))
@@ -132,7 +132,7 @@ def edit_menu(request, menu_id):
     else:
         form = MenuForm(instance=menu)
         messages.info(
-            request, 'You are editing an event')
+            request, 'You are editing an item')
 
     template = 'menus/edit_menu.html'
     context = {
@@ -154,7 +154,7 @@ def delete_menu(request, menu_id):
     menu.delete()
 
     messages.success(
-        request, 'Menu event deleted')
+        request, 'Menu item deleted')
     return redirect(reverse('menus'))
 
 
