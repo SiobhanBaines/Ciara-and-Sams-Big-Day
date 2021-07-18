@@ -6,8 +6,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     list_display = (
         'time',
         'event',
-    )
-    ordering = ('time', 'event')
+        )
 
 
 admin.site.register(Schedule, ScheduleAdmin)

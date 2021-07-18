@@ -674,8 +674,21 @@ I took the Stripe set-up from the CI Boutique Ado project and modified the Webho
 
 ### Images
 
-The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". 
+The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". I asked my brother if he could change the "for you" to "RSVP". ![image](static/images/homepage-background-image.png)
 ********************insert here
+[](static/images/juliet-rose.jpg)
+[](static/images/pexels-kuflu-cıkın-7765963.jpg)
+[](static/images/shambles-york.jpg)
+[](static/images/small-flowers.jpg)
+[](static/images/wedding-table.jpg)
+[](static/images/york-minster.PNG)
+[](media/4-bowls.png)
+[](media/4-dinner-plates.png)
+[](media/4-side-plates.png)
+[](media/12-piece-set.png)
+[](media/noimage.png)
+[](media/sandburn-hall.png)
+[](media/st-margaret-clitherow.jpg)
 
 <a></a>
 

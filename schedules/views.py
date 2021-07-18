@@ -21,10 +21,7 @@ def schedules(request):
 
     if request.method == "POST":
         # Handle request CSV file
-        print(request.method)
-        print(io.TextIOWrapper(request.FILES['schedule_csv'].file))
         paramFile = io.TextIOWrapper(request.FILES['schedule_csv'].file)
-        print(paramFile)
         # Read te POST request file and convert into DICT
         portfolio1 = csv.DictReader(paramFile)
         print(portfolio1)
