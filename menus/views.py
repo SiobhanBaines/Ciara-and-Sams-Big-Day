@@ -230,6 +230,7 @@ def menu_selection(request):
 
 
 def menu_email(request):
+    """ Send menu selection email """
     guests = Guest.objects.filter(group_id=request.user)
     email = ''
     print(guests)

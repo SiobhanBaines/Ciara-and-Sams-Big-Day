@@ -142,6 +142,7 @@ def contact(request):
 
 
 def rsvp_email(group_id):
+    """ Send RSVP confirmation email """
 
     guests = Guest.objects.filter(group_id=group_id)
 

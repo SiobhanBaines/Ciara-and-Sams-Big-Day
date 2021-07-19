@@ -486,7 +486,7 @@ These instructions are for GitHub Desktop on Windows. Other operating systems wi
 When everything is set up is should look like this but with your own codes.
 `import os
 
-os.environ.setdefault("SECRET_KEY", "******")
+os.environ.setdefault("SECRET_KEY", "*****")
 os.environ.setdefault("STRIPE_PUBLIC_KEY", "*****")
 os.environ.setdefault("STRIPE_SECRET_KEY", "*****")
 os.environ.setdefault("STRIPE_WH_SECRET", "*****")
@@ -675,18 +675,15 @@ I took the Stripe set-up from the CI Boutique Ado project and modified the Webho
 ### Images
 
 The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". I asked my brother if he could change the "for you" to "RSVP". ![image](static/images/homepage-background-image.png)
-********************insert here
-[](static/images/juliet-rose.jpg)
-[](static/images/pexels-kuflu-cıkın-7765963.jpg)
-[](static/images/shambles-york.jpg)
-[](static/images/small-flowers.jpg)
-[](static/images/wedding-table.jpg)
-[](static/images/york-minster.PNG)
-[](media/4-bowls.png)
-[](media/4-dinner-plates.png)
-[](media/4-side-plates.png)
-[](media/12-piece-set.png)
-[](media/noimage.png)
+The background schedule [image](static/images/pexels-kuflu-cıkın-7765963.jpg) was found on [pexels.com](https://www.pexels.com/photo/white-and-pink-floral-ceramic-teacup-on-white-and-pink-floral-table-cloth-7765963/) and is by [Küflü Çıkın](https://www.pexels.com/@kuflu-cikin-53441892)
+The image of the [Shambles](static/images/shambles-york.jpg) was found on and owned by [Yorkshire's best Guests](http://yorkshiresbestguides.co.uk/the-shambles-in-york-diagon-alley/)
+The background[image](static/images/wedding-table.jpg) for the menu page was found on [Bridebox](http://www.bridebox.com/blog/wp-content/uploads/2014/07/mint-peach-gold-wedding-table-setting.jpg)
+[York Minster](static/images/york-minster.PNG) was found on [16 Top Rated Tourist Attractions ](https://www.planetware.com/tourist-attractions-/york-eng-ny-yo.htm)
+[Bowls image](media/4-bowls.png) was downloaded directly from [Royal Worcester Site](https://www.royalworcester.co.uk/royal-worcester-wrendale-designs-bowls-set-of-4-duck-hare-squirrel-and-mouse?recommend=product-customers-also-viewed)
+[Dinner plates image](media/4-dinner-plates.png) was downloaded directly from [Royal Worcester Site](https://www.royalworcester.co.uk/royal-worcester-wrendale-designs-10-5-inch-coupe-plates-set-of-4-hare-squirel-mouse-duck?recommend=product-customers-also-viewed)
+[Side plates image](media/4-side-plates.png) was downloaded directly from [Royal Worcester Site](https://www.royalworcester.co.uk/royal-worcester-wrendale-designs-6-5-inch-coupe-plates-set-of-4-donkey-duckling-cow-sheep?recommend=product-customers-also-viewed)
+The [set image](media/12-piece-set.png) was downloaded directly from [Royal Worcester Site](https://www.royalworcester.co.uk/royal-worcester-wrendale-designs-12-piece-set?recommend=category-most-popular&fbclid=IwAR1GDIITiVv6z24VOxlKAymR8x9xaW78nTqqOXnNtSbdttupb6Kq-nal9vY)
+I got the [noimage](media/noimage.png) from the Boutique Ado project by Code Institute
 [](media/sandburn-hall.png)
 [](media/st-margaret-clitherow.jpg)
 

@@ -174,6 +174,7 @@ def checkout_success(request, donation_number, email):
 
 
 def checkout_email(donation_number, email, first_name):
+    """ Send checkout email """
 
     checkout = get_object_or_404(Checkout, donation_number=donation_number)
 
