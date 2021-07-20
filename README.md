@@ -165,14 +165,18 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
 
 ### How to Use
 
-When this website is being used the data it will contain will be personal information and as such comes under [GDPR](https://gdpr-info.eu/). To help protect this data only the bride, groom and wedding guests will have access to the websites main functionality. 
+When this website is being used the data it will contain will be personal information and as such comes under [GDPR](https://gdpr-info.eu/). To help protect this data, only the bride, groom and wedding guests will have access to the website's main functionality. 
 
 Standard websites have a `register` page which can be accessed via a navigation item but to help protect the data this site does not have that navigation item.
 
 #### Bride and Groom
 ##### Registration
-When the bride and groom register they will need the ability to create, read, update and delete the data in the various models. To give the bride and groom the necessary access, the standard Django registration html has been 
-The bride and groom need to register an account to be able to maintain the data in the various models. Normally there would be a registration navigation link but to help secure their data this link is not visible. The bride and groom will need to add `/register/` to the end of the website url. This will bring up the registration page. Once they register, the page will 
+The bride and groom need to register an account to be able to maintain the data in the various models. Normally there would be a registration navigation link but to help secure their data this link is not visible. The bride and groom will need to add `/register/` to the end of the website url. This will bring up the registration page where tey will be asked to enter the `STAFF_SECRET` code. Once they are registered the site will grant them `is_staff` authority and they will be able to log-in and create their data.
+##### File Uploads
+There is a modal pop-up for each of the file upload tools (Guests, Schedule, Menu, Gifts) with instructions related to the specific upload which can be view by clicking on `Upload Help`.
+
+#### Guest
+When a guest receives their invitation, it will contain the guest `Group Id` that was created when the guest list was uploaded. The password is the known postcode for the guest at the time of uploading the guest list.
 
 <a></a>
 [Back to Top](#table-of-contents)

@@ -24,7 +24,6 @@ def schedules(request):
         paramFile = io.TextIOWrapper(request.FILES['schedule_csv'].file)
         # Read te POST request file and convert into DICT
         portfolio1 = csv.DictReader(paramFile)
-        print(portfolio1)
         list_of_dict = list(portfolio1)
 
         objs = []

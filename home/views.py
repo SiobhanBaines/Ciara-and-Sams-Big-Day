@@ -33,14 +33,12 @@ def register_request(request):
     # staff_secret = settings.STAFF_SECRET
     # Code originally created by Jaysha of Ordinary Coders
     #   with the addition of the 'is_staff' object.
-    
+
     staff_secret = settings.STAFF_SECRET
-    print(staff_secret)
 
     if request.method == "POST":
-        
+
         code = request.POST['code']
-        print(code)
         form = NewUserForm(request.POST)
         if form.is_valid():
             if code == staff_secret:

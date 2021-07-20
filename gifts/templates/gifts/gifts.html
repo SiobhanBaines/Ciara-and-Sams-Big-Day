@@ -47,14 +47,15 @@
                 </div>
             </div>
             <div class="row">
-                <form class="col" method="POST" action="{% url 'gift_donation' gift_amount %}"></form>
+                    <!-- Display gift details for guest -->
                     {% if gift_selected or gift_value %}
                     <div class="row">
                         <div class="col-6">
                         {% for gs in gift_selected %}
-                        <form id="select-form" class="col s12" method="POST" action="{% url 'gifts' %}">
+                        <form id="select-form" class="col s12" method="POST" action="{% url 'deselect_gift' %}">
                             {% csrf_token %}
-                            <p>You have selected: {{ gs.name }}.
+                            <input type="hidden" id="guest_gift_name" name="guest_gift_name" value="{{ gs }}">
+                            <p>You have selected: <span class="fw-bold">{{ gs }}</span>.
                             <label class="form-check-label" for="selected">If you wish to change your mind, please check this box.</label>
                             <input class="form-check-input mx-auto" type="checkbox" id="selected" name="selected"></p>
                         </form>
@@ -67,11 +68,13 @@
                         {% endif %}  
                     </div>
                     {% endif %}
+                <!-- Monetary Gift -->
+                <form class="col" method="POST" action="{% url 'gift_donation' gift_amount %}">
                     <div class="col mb-5 text-center">
                     <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
                     {% csrf_token %}
-                        <input id="gift_amount" name="gift_amount" value="£0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
-                        <label for="gift_amount" class="gift_amount" ></label>
+                        <label for="gift_amount" class="gift_amount" >£</label>
+                        <input id="gift_amount" name="gift_amount" value="0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
                         <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button>
                     </div>
                 </form>

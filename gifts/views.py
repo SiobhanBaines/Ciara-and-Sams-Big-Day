@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Gift
 from .forms import GiftForm
-
 from guests.models import Guest
 
 import io
@@ -46,39 +45,12 @@ def gifts(request):
                 messages.error(request, 'Error While Importing Data: ', e)
                 return HttpResponse(content=e, status=400)
 
-        # Get status of selected checkbox
-        selected = request.POST.get('selected')
-        print('line 51 ', selected)
-        if selected == 'on':
-            user = request.user
-            print(user)
-            # If selected update gift and guest models to be selected
-            # user = request.user
-            name = request.POST.get('gs.name')
-            print(name)
-            gift = get_object_or_404(Gift, name=name)
-            print('line 56 ', gift)
-            gift.selected = False
-            gift.group_id = " "
-            gift.save()
-
-            guests = Guest.objects.filter(group_id=user)
-            for guest in guests:
-                # update all guests in group
-                guest.gift_chosen = True
-                if guest.gift_name != gift.name or guest.gift_name != 'Money':
-                    guest.gift_name = " "
-                # guest.gift_value = gift.price
-                guest.save()
-
-            return redirect('gifts')
     # Display gifts already selected by guest
     user = request.user
     guests = Guest.objects.filter(group_id=user)
     gift_value = 0
     gift_selected = ""
     for guest in guests:
-        print(guest, guests)
         if guest.gift_chosen:
             if guest.gift_value > 0:
                 gift_value = guest.gift_value
@@ -86,7 +58,6 @@ def gifts(request):
                 gift_selected = Gift.objects.filter(group_id=user)
 
     gift_amount = 0
-
     context = {
         'gifts': gifts,
         'gift_amount': gift_amount,
@@ -118,7 +89,6 @@ def gift_detail(request, gift_id):
                 # update all guests in group
                 guest.gift_chosen = True
                 guest.gift_name = gift.name
-                # guest.gift_value = gift.price
                 guest.save()
 
         else:
@@ -245,3 +215,28 @@ def gift_donation(request, gift_amount):
 
     request.session['gift_amount'] = gift_amount
     return redirect(reverse('checkout'))
+
+
+def deselect_gift(request):
+    """ Deselect gift by guest """
+# Get status of selected checkbox
+    if request.method == 'POST':
+        selected = request.POST.get('selected')
+        if selected == 'on':
+            user = str(request.user)
+            gifts = Gift.objects.filter(name=name)
+            for gift in gifts:
+                if user == gift.group_id:
+                    gift.selected = False
+                    gift.group_id = " "
+                    gift.save()
+
+            guests = Guest.objects.filter(group_id=user)
+            for guest in guests:
+                # update all guests in group
+                guest.gift_chosen = True
+                if guest.gift_name != gift.name or guest.gift_name != 'Money':
+                    guest.gift_name = " "
+                guest.save()
+
+    return redirect(reverse('gifts'))

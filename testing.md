@@ -164,7 +164,7 @@ When a user submits their menu selection they receive an email if they have an e
 [email](images/user-stories/non-image-documents/confirmation-of-meal-selection.msg)
 
 [#28](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/28) **As a user I want confirmation of my donation.**
-When a the payment of the gift donation is confirmed and the success page appears an email is sent to the user.
+When the payment of the gift donation is confirmed and the success page appears an email is sent to the user.
 [email](/workspace/Ciara-and-Sams-Big-Day/images/user-stories/non-image-documents/confirmatiom-of-gift-payment-reciept.msg)
 
 ## Lighthouse Testing
