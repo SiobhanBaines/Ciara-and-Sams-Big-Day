@@ -693,7 +693,7 @@ I took the Stripe set-up from the CI Boutique Ado project and modified the Webho
 
 ### Images
 
-The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". I asked my brother if he could change the "for you" to "RSVP". ![image](static/images/homepage-background-image.png)
+The below image was found on [shutterstock](https://www.shutterstock.com/image-photo/fresh-bouquet-roses-greeting-card-410660725) The artist [Aquatti](https://www.shutterstock.com/g/aquatti) has named it "Fresh bouquet of roses and greeting card". I asked my brother {Simon Baines](https://www.linkedin.com/in/simon-baines-84494416/)if he could change the "for you" to "RSVP". ![image](static/images/homepage-background-image.png)
 The background schedule [image](static/images/pexels-kuflu-cıkın-7765963.jpg) was found on [pexels.com](https://www.pexels.com/photo/white-and-pink-floral-ceramic-teacup-on-white-and-pink-floral-table-cloth-7765963/) and is by [Küflü Çıkın](https://www.pexels.com/@kuflu-cikin-53441892)
 The image of the [Shambles](static/images/shambles-york.jpg) was found on and owned by [Yorkshire's best Guests](http://yorkshiresbestguides.co.uk/the-shambles-in-york-diagon-alley/)
 The background[image](static/images/wedding-table.jpg) for the menu page was found on [Bridebox](http://www.bridebox.com/blog/wp-content/uploads/2014/07/mint-peach-gold-wedding-table-setting.jpg)
