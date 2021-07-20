@@ -30,27 +30,41 @@ def index(request):
 
 def register_request(request):
     """ Set new user to staff on registration """
+    # staff_secret = settings.STAFF_SECRET
     # Code originally created by Jaysha of Ordinary Coders
     #   with the addition of the 'is_staff' object.
+    
+    staff_secret = settings.STAFF_SECRET
+    print(staff_secret)
+
     if request.method == "POST":
+        
+        code = request.POST['code']
+        print(code)
         form = NewUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            user.is_staff = True
-            user.save()
-            login(
-                request, user,
-                backend='django.contrib.auth.backends.ModelBackend')
-            messages.success(request, "Registration successful.")
-            return redirect("home")
+            if code == staff_secret:
+                user = form.save()
+                user.is_staff = True
+                user.save()
+                login(
+                    request, user,
+                    backend='django.contrib.auth.backends.ModelBackend')
+                messages.success(request, "Registration successful.")
+                return redirect("home")
+            else:
+                messages.error(
+                    request, "The code you entered is incorrect.")
 
         messages.error(
             request, "Unsuccessful registration. Invalid information.")
 
     form = NewUserForm
+    code = ""
     template = 'home/register.html'
     context = {
         'form': form,
+        'code': code,
     }
 
     return render(request, template, context)

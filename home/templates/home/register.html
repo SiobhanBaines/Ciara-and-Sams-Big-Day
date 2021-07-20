@@ -11,6 +11,12 @@
     <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
     <form class="signup" id="signup_form" method="post" action="{% url 'register_request' %}">
         {% csrf_token %}
+        <!-- <fieldset class="rounded px-3 mb-3"> -->
+            <legend class="fieldset-label small text-black px-2" for="code" name="code">Secret Code</legend>
+            <input id="code" name="code"  type="text">
+            <!-- <input id="gift_amount" name="gift_amount" value="£0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
+                        <label for="gift_amount" class="gift_amount" ></label> -->
+        <!-- </fieldset> -->
         {{ form|crispy }}
         {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

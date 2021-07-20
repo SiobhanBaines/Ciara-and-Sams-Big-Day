@@ -2,6 +2,8 @@
 
 ## **Project Outline** 
 
+This site is closed to the general public and as such there are instructions on [How to Use](#how-to-use)
+
 This site will provide the bride and groom with the ability to give their wedding guests all the information they need for the day and a way to accept or decline the invitation, decide which menu choices each member in the guest's party want and chose a wedding gift or gift some money. The bride and groom will have control over the guest details, the menu choices, the days' schedule and the gift list. The site will also give the bride and groom the ability to check the status of the invitations and the menu choices the guests have made which will allow the bride and groom to chase only those who have not replied or have provided details of food requirements. Finally, the bride and groom should be able to arrange the table seating based on the guests who have accepted.
 
 ` Mock up Image `
@@ -20,7 +22,8 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
 		* [Wedding Guest](#wedding-guest)
     * [User Requirements and Expectations](#user-requirements-and-expectations)
         * [Requirements](#requirements)
-        * [Expectations](#expectations)
+        * [Expectations](#expectations)        
+        * [How to Use](#how-to-use)
     * [Design Choices](#design-choices)
         * [Colours](#colours)
         * [Fonts](#fonts)
@@ -51,8 +54,9 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
 	* [Testing](#testing)
 	* [Bugs](#bugs)
 * [Run Application in Gitpod](#run-application-in-gitpod)
+* [Local Development](#local-development)
 * [Deployment](#deployment)
-    * [Local Development](#local-development)
+    * [Local Deployment](#local-deployment)
     * [Heroku Deployment](#heroku-deployment)
     	* [Initial Production Deployment](#initial-production-deployment)
 	    * [Heroku](#heroku)
@@ -95,7 +99,7 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
 * [#2](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/2)  - As a user I want to be able to log into the website.
 * [#3](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/3)  - As a user I want to be able to create a list of all the wedding guests.
 * [#4](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/4)  - As a user I want to maintain the menu options for the day.
-* [#5](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/5)  - As a user I want to mainttain a wedding gift list.
+* [#5](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/5)  - As a user I want to maintain a wedding gift list.
 * [#6](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/6)  - As a user I want to use the list of guests who have accept to create the seating plan for the wedding breakfast.
 * [#7](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/7)  - As a user I want to keep track of which guests have and have not RSVP'ed.
 * [#8](https://github.com/SiobhanBaines/Ciara-and-Sams-Big-Day/issues/8)  - As a user I want to keep track of which guests have or have not supplied their menu choices.
@@ -159,7 +163,18 @@ You can find the original website here [ciara_and_sams_wedding](https://ciara-an
    * if a guest selects to buy a gift
 * I expect the bride and groom to be able to search on the guest list by the various flags to check the status
 
+### How to Use
 
+When this website is being used the data it will contain will be personal information and as such comes under [GDPR](https://gdpr-info.eu/). To help protect this data only the bride, groom and wedding guests will have access to the websites main functionality. 
+
+Standard websites have a `register` page which can be accessed via a navigation item but to help protect the data this site does not have that navigation item.
+
+#### Bride and Groom
+##### Registration
+When the bride and groom register they will need the ability to create, read, update and delete the data in the various models. To give the bride and groom the necessary access, the standard Django registration html has been 
+The bride and groom need to register an account to be able to maintain the data in the various models. Normally there would be a registration navigation link but to help secure their data this link is not visible. The bride and groom will need to add `/register/` to the end of the website url. This will bring up the registration page. Once they register, the page will 
+
+<a></a>
 [Back to Top](#table-of-contents)
 
 <a></a>

@@ -233,9 +233,7 @@ def menu_email(request):
     """ Send menu selection email """
     guests = Guest.objects.filter(group_id=request.user)
     email = ''
-    print(guests)
     for guest in guests:
-        print(email, guest.email)
         if guest.email and not email:
             email = guest.email
 
