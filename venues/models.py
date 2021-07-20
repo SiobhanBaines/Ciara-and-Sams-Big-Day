@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Venue(models.Model):
-    venue_type = models.CharField(max_length=10, null=False, blank=False)
+    venue_type = models.CharField(max_length=20, null=False, blank=False)
     name = models.CharField(max_length=50, null=False, blank=False)
     address_line_1 = models.CharField(max_length=80, blank=True)
     address_line_2 = models.CharField(max_length=80, blank=True)

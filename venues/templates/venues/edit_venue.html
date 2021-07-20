@@ -21,21 +21,10 @@
                 <form method="POST" action="{% url 'edit_venue' venue.id %}" class="form md-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
-                        {% if field.name == 'venue_type' %}
-                            <select class="form-select" name="starter" id="starter-{{ forloop.counter }}" aria-label="Starter">
-                                {% if venue.venue_type %}
-                                    <option value='{{ venue.venue_type }}'>{{ venue.venue_type }}
-                                    </option>
-                                {% endif %}
-                                <option value="ceremony">ceremony</option>
-                                <option value="reception">reception</option>
-                            </select>
+                        {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
                         {% else %}
-                            {% if field.name != 'image' %}
-                                {{ field | as_crispy_field }}
-                            {% else %}
-                                {{ field }}
-                            {% endif %}
+                            {{ field }}
                         {% endif %}
                     {% endfor %}
                     <div class="text-right mt-3">
