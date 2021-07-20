@@ -741,4 +741,8 @@ Jo, Igor, Alan & John @ CI Tutors for their support in getting Stripe working ag
 
 <a></a>
 
+### Testing
+
+Thank you to [Alison Lambie](https://www.linkedin.com/in/alison-lambie-98a9525/) for performing some UAT on my site.  
+
 [Back to Top](#table-of-contents)

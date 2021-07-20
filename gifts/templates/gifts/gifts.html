@@ -12,6 +12,7 @@
 
 {% block content %}
     <div class="container">
+        {% if request.user.is_staff or request.user.is_superuser %}
         <div class="row">
             <div class="col-sm-12 col-md-8 text-center">
                 <button type="button" class="btn btn-sm-light border-0" data-bs-toggle="modal" data-bs-target="#csv-help">
@@ -19,7 +20,6 @@
                 </button>
             </div>
         </div>
-        {% if request.user.is_staff or request.user.is_superuser %}
         <div class="row justify-content-xl-evenly justify-content-sm-center">
             <!-- Facility to upload a csv file containing the wedding gifts -->
             <div class="col-sm-12 col-md-8 col-xl-auto mx-2 my-3">
@@ -47,7 +47,26 @@
                 </div>
             </div>
             <div class="row">
-                <form class="col s12" method="POST" action="{% url 'gift_donation' gift_amount %}">
+                <form class="col" method="POST" action="{% url 'gift_donation' gift_amount %}"></form>
+                    {% if gift_selected or gift_value %}
+                    <div class="row">
+                        <div class="col-6">
+                        {% for gs in gift_selected %}
+                        <form id="select-form" class="col s12" method="POST" action="{% url 'gifts' %}">
+                            {% csrf_token %}
+                            <p>You have selected: {{ gs.name }}.
+                            <label class="form-check-label" for="selected">If you wish to change your mind, please check this box.</label>
+                            <input class="form-check-input mx-auto" type="checkbox" id="selected" name="selected"></p>
+                        </form>
+                        {% endfor %}
+                        </div>
+                        {% if gift_value > 0 %}
+                            <div class="col-6">
+                                <p>You have already gifted £{{ gift_value }}</p>
+                            </div>
+                        {% endif %}  
+                    </div>
+                    {% endif %}
                     <div class="col mb-5 text-center">
                     <p class="lead text-left font-weight-bold">Please either select a gift from the list below or enter the amount you would like to gift.</p>
                     {% csrf_token %}
@@ -125,4 +144,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
+    <script src="{% static 'gifts/js/gift-deselect.js' %}"></script>
 {% endblock %}
