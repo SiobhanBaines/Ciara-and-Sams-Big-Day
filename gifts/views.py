@@ -224,6 +224,7 @@ def deselect_gift(request):
         selected = request.POST.get('selected')
         if selected == 'on':
             user = str(request.user)
+            name = request.POST.get('guest_gift_name')
             gifts = Gift.objects.filter(name=name)
             for gift in gifts:
                 if user == gift.group_id:
