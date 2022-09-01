@@ -10,6 +10,7 @@ body {
     background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-black)), to(var(--primary-red)));
     background-image: -o-linear-gradient(left, var(--primary-black), var(--primary-red));
     background-image: linear-gradient(to right, var(--primary-black), var(--primary-red));
+    /* opacity: 0.5; */
     height: 100%;
     color: var(--primary-font);
     font-family: 'Nunito', sans-serif;
@@ -72,7 +73,7 @@ label {
     --primary-mint: #E9F7F2;
     --secondary-mint: #b8e0d3;
     --primary-grey: #C7C8CA;
-    --primary-font: #48494a;
+    --primary-font: #f1f2e2;
     /* --primary-font: #FFF9F7; */
     --secondary-font: #554e37fc;
     --primary-background: #fffef2;
@@ -80,7 +81,7 @@ label {
     /* --primary-font-shadow: #65645efc; */
     --primary-font-shadow: #fffef2;
     --secondary-font-shadow: #030303;
-    --primary-black: #030303e7;
+    --primary-black: #101010;
     --primary-red: #700404f5;
 }
 
@@ -223,13 +224,13 @@ footer li {
 
 #our-story {
     /* #covid-restrictions { */
-    background-color: var(--primary-red);
+    background-color: var(--primary-black);
     width: 100vw;
     opacity: 0.5;
 }
 
 #location {
-    background-color: var(--primary-black);
+    background-color: var(--primary-red);
     width: 100vw;
     opacity: 0.7;
 }
@@ -239,6 +240,19 @@ footer li {
     height: auto;
     margin-left: 38%;
 }
+
+.carousel-item .carousel-size .active {
+    opacity: 1;
+}
+
+/* #carouselCS {
+    z-index: 9999;
+    opacity: 1;
+} */
+/* .carousel-item {
+    opacity: 1;
+    z-index: 9999;
+} */
 
 /* buttons */
 .rsvp-button {
