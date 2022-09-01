@@ -18,10 +18,11 @@
 <!-- Landing Page - -->
 <section class="container-fluid home-container no-gutters">
     <div class="opaque-overlay">&nbsp;</div>
-    <div class="row">
+    <div class="header__text-box">
+        <!-- <div class="row"> -->
         {% if not request.user.is_authenticated or request.user.is_staff or request.user.is_superuser %}
         <div class="col-12 name-callout">
-            <h1 class="banner cursive-text-color mt-5 pt-5">Ciara and Sam</h1>
+            <h1 class="banner cursive-text-color">Ciara and Sam</h1>
             <h2 class="cursive-text-color my-2">Are Getting Married</h2>
         </div>
         {% else %}
@@ -37,13 +38,14 @@
             {% endif %}
             {% endif %}
             {% endif %}
+            <!-- </div> -->
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6"></div>
             <div class="col-6">
                 <a href="{% url 'rsvp' %}" class="rsvp-button btn btn-lg rsvp end-0 d-flex" aria-label="rsvp-2"></a>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 

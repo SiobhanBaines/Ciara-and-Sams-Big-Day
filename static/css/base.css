@@ -7,9 +7,9 @@
 
 html,
 body {
-    background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-mint)), to(var(--primary-peach)));
-    background-image: -o-linear-gradient(left, var(--primary-mint), var(--primary-peach));
-    background-image: linear-gradient(to right, var(--primary-mint), var(--primary-peach));
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-black)), to(var(--primary-red)));
+    background-image: -o-linear-gradient(left, var(--primary-black), var(--primary-red));
+    background-image: linear-gradient(to right, var(--primary-black), var(--primary-red));
     height: 100%;
     color: var(--primary-font);
     font-family: 'Nunito', sans-serif;
@@ -20,7 +20,7 @@ body {
 
 .cursive-text-color {
     color: var(--primary-font);
-    text-shadow: 1px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
+    text-shadow: -0.5px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
 }
 
 .rsvp {
@@ -39,11 +39,11 @@ h5 {
 }
 
 h1 {
-    font-size: calc(3.5rem + 4.3vw);
+    font-size: calc(4.3rem + 5.3vw);
 }
 
 h2 {
-    font-size: calc(2.5rem + 1.8vw);
+    font-size: calc(3rem + 2.3vw);
 }
 
 h3 {
@@ -73,9 +73,15 @@ label {
     --secondary-mint: #b8e0d3;
     --primary-grey: #C7C8CA;
     --primary-font: #48494a;
+    /* --primary-font: #FFF9F7; */
+    --secondary-font: #554e37fc;
     --primary-background: #fffef2;
-    --secondary-font-shadow: #947a27;
-    --primary-font-shadow: #e6d090;
+    /* --secondary-font-shadow: #e6d398; */
+    /* --primary-font-shadow: #65645efc; */
+    --primary-font-shadow: #fffef2;
+    --secondary-font-shadow: #030303;
+    --primary-black: #030303e7;
+    --primary-red: #700404f5;
 }
 
 /* from Bulma */
@@ -100,12 +106,12 @@ label {
 
 /* buttons */
 button {
-    color: -internal-light-dark(var(--primary-font, white));
+    color: -internal-light-dark(var(--secondary-font, white));
 }
 
 .btn,
 button {
-    border: 1px solid var(--primary-font);
+    border: 1px solid var(--secondary-font);
     border-radius: 0.25rem;
     border-width: 1px;
 }
@@ -131,14 +137,19 @@ button {
 /* Nav Bar  */
 .navbar-inner {
     background: transparent;
-    color: var(--primary-font);
+    color: var(--secondary-font);
 }
 
 .nav-item {
-    font-size: calc(0.5rem + 1.3vw);
+    font-size: calc(1.5rem + 1.3vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+    text-shadow: -0.5px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
 }
 
 .navbar-toggler-icon {
@@ -157,9 +168,9 @@ button {
 }
 
 footer {
-    background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-mint)), to(var(--primary-peach)));
-    background-image: -o-linear-gradient(left, var(--primary-mint), var(--primary-peach));
-    background-image: linear-gradient(to right, var(--primary-mint), var(--primary-peach));
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-black)), to(var(--primary-red)));
+    background-image: -o-linear-gradient(left, var(--primary-black), var(--primary-red));
+    background-image: linear-gradient(to right, var(--primary-black), var(--primary-red));
 }
 
 footer li {
@@ -190,8 +201,16 @@ footer li {
     justify-content: space-around;
 }
 
-.name-callout {
+.header__text-box {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+.name-callout {
+    position: relative;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -204,15 +223,15 @@ footer li {
 
 #our-story {
     /* #covid-restrictions { */
-    background-color: var(--primary-peach);
+    background-color: var(--primary-red);
     width: 100vw;
-    opacity: 0.9;
+    opacity: 0.5;
 }
 
 #location {
-    background-color: var(--primary-mint);
+    background-color: var(--primary-black);
     width: 100vw;
-    opacity: 0.9;
+    opacity: 0.7;
 }
 
 .carousel {
@@ -344,12 +363,12 @@ p.menu {
     font-size: calc(1.5rem + 0.8vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+    text-shadow: -0.5px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
 }
 
 h3.menu {
     color: var(--primary-font);
-    text-shadow: -0.5px 0 #000, 0 1px var(--primary-font-shadow);
+    text-shadow: -0.5px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
 }
 
 .text-callout {
