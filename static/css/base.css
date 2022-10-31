@@ -21,15 +21,15 @@ body {
 
 .cursive-text-color {
     color: var(--primary-font);
-    text-shadow: -0.5px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
+    text-shadow: 1px 0 var(--secondary-font-shadow), 0 2px var(--primary-font-shadow);
 }
 
-.rsvp {
+/* .rsvp {
     font-size: calc(2rem + .3vw);
     -webkit-transform: rotate(6.5deg);
     -ms-transform: rotate(6.5deg);
     transform: rotate(6.5deg);
-}
+} */
 
 h1,
 h2,
@@ -40,7 +40,7 @@ h5 {
 }
 
 h1 {
-    font-size: calc(4.3rem + 5.3vw);
+    font-size: calc(6.3rem + 5.3vw);
 }
 
 h2 {
@@ -73,9 +73,9 @@ label {
     --primary-mint: #E9F7F2;
     --secondary-mint: #b8e0d3;
     --primary-grey: #C7C8CA;
-    --primary-font: #f1f2e2;
+    --primary-font: rbga(29, 22, 1);
     /* --primary-font: #FFF9F7; */
-    --secondary-font: #554e37fc;
+    --secondary-font: #f8d870fc;
     --primary-background: #fffef2;
     /* --secondary-font-shadow: #e6d398; */
     /* --primary-font-shadow: #65645efc; */
@@ -142,10 +142,10 @@ button {
 }
 
 .nav-item {
-    font-size: calc(1.5rem + 1.3vw);
+    font-size: calc(1.9rem + 1.5vw);
     color: var(--primary-font);
     font-family: 'Italianno', cursive;
-    text-shadow: -0.5px 0 var(--secondary-font-shadow), 0 1px var(--primary-font-shadow);
+    text-shadow: 1px 0 var(--secondary-font-shadow), 0 2px var(--primary-font-shadow);
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -187,6 +187,10 @@ footer li {
 }
 
 .home-container {
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-black)), to(var(--primary-red)));
+    background-image: -o-linear-gradient(left, var(--primary-black), var(--primary-red));
+    background-image: linear-gradient(to right, var(--primary-black), var(--primary-red));
+    opacity: .85;
     height: 100%;
     width: 100%;
     display: -webkit-box;
@@ -200,6 +204,8 @@ footer li {
     text-align: center;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+
+
 }
 
 .header__text-box {
@@ -223,6 +229,7 @@ footer li {
 }
 
 #our-story {
+
     /* #covid-restrictions { */
     background-color: var(--primary-black);
     width: 100vw;
@@ -230,7 +237,10 @@ footer li {
 }
 
 #location {
-    background-color: var(--primary-red);
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--primary-black)), to(var(--primary-red)));
+    background-image: -o-linear-gradient(left, var(--primary-black), var(--primary-red));
+    background-image: linear-gradient(to right, var(--primary-black), var(--primary-red));
+    /* background-color: var(--primary-red); */
     width: 100vw;
     opacity: 0.7;
 }
