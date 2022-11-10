@@ -14,9 +14,9 @@
         <div class="container justify-content-center">
             {% if not request.user.is_staff and not request.user.is_superuser %}
             <div class="clearfix">
-                <div class="col-md-3 float-md-end ms-md-3">
+                <!-- <div class="col-md-3 float-md-end ms-md-3">
                     <a class="btn select-btn border" href="{% url 'menu_selection' %}">Menu Selection</a>
-                </div>
+                </div> -->
             </div>
             {% endif %}
             <div class="row ">
@@ -53,6 +53,12 @@
                             {% endfor %}
                         </div>
                     </div>
+                  
+                </div>
+                <div class="row py-2">
+                    <div class="col text-callout text-center">
+                    <p>If you have any dietary requirements, please contact us using the contact link about. The venue has assured us they will endeavour to meet all dietary requirements.</p>
+                </div>
                 </div>
             </div>
         </div>
