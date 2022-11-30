@@ -5,20 +5,20 @@
             <a class="nav-link" href="{% url 'rsvp' %}">RSVP</a>
         </li>
         {% if request.user|has_group:'accepted' %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'venues' %}">Venue</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'display_schedule' %}">Schedule</a>
-            </li>
-            <li class="nav-item">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'venues' %}">Venue</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'display_schedule' %}">Schedule</a>
+        </li>
+        <!-- <li class="nav-item">
                 <a class="nav-link" href="{% url 'display_menu' %}">Menu</a>
-            </li>
+            </li> -->
         {% endif %}
         {% if request.user|has_group:'accepted' or request.user|has_group:'declined' %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'gifts' %}">Gift List</a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'gifts' %}">Gift List</a>
+        </li>
         {% endif %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>

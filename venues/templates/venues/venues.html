@@ -3,124 +3,128 @@
 {% load user_extras %}
 
 {% block page-header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                {% if request.user.is_staff or request.user.is_superuser %}
-                    <hr><h3 class="text-center cursive-text-color">Venue</h3><hr>
-                {% else %}
-                    <h3 class="text-center cursive-text-color">Venue</h3>
-                {% endif %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h3 class="text-center cursive-text-color">When: 3 August 2023 at 14:00</h3>
-            </div>
-        </div>
-        {% if request.user.is_staff or request.user.is_superuser %}
-            <!-- Add an individual venue record -->
-            {% if venues|length < 2 %}
-            <div class="row justify-content-center">
-                <div class="col-auto mx-2 pb-2">
-                    <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_venue' %}">Add A New
-                            venue</a></small>
-                </div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if request.user.is_staff or request.user.is_superuser %}
+            <hr>
+            <h3 class="text-center cursive-text-color">Venue</h3>
+            <hr>
+            {% else %}
+            <h3 class="text-center cursive-text-color">Venue</h3>
             {% endif %}
-        {% endif %}
-        <div class="row  justify-content-center">
-            <!-- List of venues -->
-            {% for venue in venues %}
-                <div class="col-sm-12 col-md-6 mb-5">
-                    <div class="card h-100 border-0 justify-content-center">
-                        <p class="text-center cursive-text-color"> {{ venue.name }}</p>
-                        <div class="card-body ">
-                            <!-- Venue address and contact information -->
-                            <div class="row text-center">
-                                <div class="col mb-2">
-                                    {% if venue.address_line_1 %}
-                                        <p class="venue-address">{{ venue.address_line_1 }}</p>
-                                    {% endif %}
-                                    {% if venue.address_line_2 %}
-                                        <p class="venue-address">{{ venue.address_line_2 }}</p>
-                                    {% endif %}
-                                    {% if venue.city %}
-                                        <p class="venue-address">{{ venue.city }}</p>
-                                    {% endif %}
-                                    {% if venue.county %}
-                                        <p class="venue-address">{{ venue.county }}</p>
-                                    {% endif %}
-                                    {% if venue.postcode %}
-                                        <p class="venue-address">{{ venue.postcode }}</p>
-                                    {% endif %}
-                                    {% if venue.email %}
-                                        <p class="venue-address mt-2">{{ venue.email }}</p>
-                                    {% endif %}
-                                    {% if venue.phone_number %}
-                                        <p class="venue-address">{{ venue.phone_number }}</p>
-                                    {% endif %}
-                                    <input type="hidden" id="lat-{{ forloop.counter }}" name="lat" value="{{ venue.lat }}">
-                                    <input type="hidden" id="lng-{{ forloop.counter }}" name="lng" value="{{ venue.lng }}">
-                                </div>
-                            </div>
-                            <!-- Image of venue -->
-                            <div class="row text-center">
-                                <div class="col">
-                                    <div class="image-container venue">
-                                        {% if venue.image %}
-                                        <a href="{{ venue.venue_url }}">
-                                            <img class="card-img-bottom img-fluid img-thumbnail" src="{{ MEDIA_URL }}{{ venue.image }}" alt="{{ venue.name }}">
-                                        </a>
-                                        {% else %}
-                                        <a href="{{ venue.venue_url }}">
-                                            <img class="card-img-bottom img-fluid img-thumbnail" src="{{ MEDIA_URL }}noimage.png" alt="{{ venue.name }}">
-                                        </a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% if venue.lat != 0 and venue.lng != 0 %}
-                            <!-- Map showing venue location -->
-                            <div class="row text-center">
-                                <div class="col">
-                                    <div class="maps" id="map-{{ forloop.counter }}"></div>
-                                </div>
-                            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- <div class="col">
+                <h3 class="text-center cursive-text-color">When: 3 August 2023 at 14:00</h3>
+            </div> -->
+    </div>
+    {% if request.user.is_staff or request.user.is_superuser %}
+    <!-- Add an individual venue record -->
+    {% if venues|length < 2 %}
+    <div class="row justify-content-center">
+        <div class="col-auto mx-2 pb-2">
+            <small class="ml-3"><a class="btn accept-btn border" href="{% url 'add_venue' %}">Add A New
+                    venue</a></small>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+    <div class="row  justify-content-center">
+        <!-- List of venues -->
+        {% for venue in venues %}
+        <div class="col-sm-12 col-md-6 mb-5">
+            <div class="card h-100 border-0 justify-content-center">
+                <p class="text-center cursive-text-color"> {{ venue.name }}</p>
+                <div class="card-body ">
+                    <!-- Venue address and contact information -->
+                    <div class="row text-center">
+                        <div class="col mb-2">
+                            {% if venue.address_line_1 %}
+                            <p class="venue-address">{{ venue.address_line_1 }}</p>
                             {% endif %}
-                            <div class="row text-center my-2">
-                                <div class="col">
-                                    {% if request.user.is_staff or request.user.is_superuser %}
-                                        <small class="ml-3">
-                                            <a class="btn edit-btn border btn-sm" href="{% url 'edit_venue' venue.id %}">Edit</a>
-                                            <a class="btn delete-btn border btn-sm" href="{% url 'delete_venue' venue.id %}">Delete</a>
-                                            </small>
-                                    {% endif %}
-                                </div>
+                            {% if venue.address_line_2 %}
+                            <p class="venue-address">{{ venue.address_line_2 }}</p>
+                            {% endif %}
+                            {% if venue.city %}
+                            <p class="venue-address">{{ venue.city }}</p>
+                            {% endif %}
+                            {% if venue.county %}
+                            <p class="venue-address">{{ venue.county }}</p>
+                            {% endif %}
+                            {% if venue.postcode %}
+                            <p class="venue-address">{{ venue.postcode }}</p>
+                            {% endif %}
+                            {% if venue.email %}
+                            <p class="venue-address mt-2">{{ venue.email }}</p>
+                            {% endif %}
+                            {% if venue.phone_number %}
+                            <p class="venue-address">{{ venue.phone_number }}</p>
+                            {% endif %}
+                            <input type="hidden" id="lat-{{ forloop.counter }}" name="lat" value="{{ venue.lat }}">
+                            <input type="hidden" id="lng-{{ forloop.counter }}" name="lng" value="{{ venue.lng }}">
+                        </div>
+                    </div>
+                    <!-- Image of venue -->
+                    <div class="row text-center">
+                        <div class="col">
+                            <div class="image-container venue">
+                                {% if venue.image %}
+                                <a href="{{ venue.venue_url }}">
+                                    <img class="card-img-bottom img-fluid img-thumbnail" src="{{ MEDIA_URL }}{{ venue.image }}" alt="{{ venue.name }}">
+                                </a>
+                                {% else %}
+                                <a href="{{ venue.venue_url }}">
+                                    <img class="card-img-bottom img-fluid img-thumbnail" src="{{ MEDIA_URL }}noimage.png" alt="{{ venue.name }}">
+                                </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
+                    {% if venue.lat != 0 and venue.lng != 0 %}
+                    <!-- Map showing venue location -->
+                    <div class="row text-center">
+                        <div class="col">
+                            <div class="maps" id="map-{{ forloop.counter }}"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row text-center my-2">
+                        <div class="col">
+                            {% if request.user.is_staff or request.user.is_superuser %}
+                            <small class="ml-3">
+                                <a class="btn edit-btn border btn-sm" href="{% url 'edit_venue' venue.id %}">Edit</a>
+                                <a class="btn delete-btn border btn-sm" href="{% url 'delete_venue' venue.id %}">Delete</a>
+                            </small>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 d-sm-none mb-5">
-                    <hr>
-                </div>
-            {% endfor %}
+            </div>
         </div>
+        <div class="col-12 d-sm-none mb-5">
+            <hr>
+        </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
-    <script> var APIKey = 'AIzaSyBvOji9Tszt3e2Oh_f18jb4YPe2fO-_fhY'</script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvOji9Tszt3e2Oh_f18jb4YPe2fO-_fhY&callback=initMap"></script>
-    <script src="{% static 'venues/js/maps.js' %}"></script>
+<script>
+    var APIKey = 'AIzaSyBvOji9Tszt3e2Oh_f18jb4YPe2fO-_fhY'
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvOji9Tszt3e2Oh_f18jb4YPe2fO-_fhY&callback=initMap"></script>
+<script src="{% static 'venues/js/maps.js' %}"></script>
 {% endblock %}

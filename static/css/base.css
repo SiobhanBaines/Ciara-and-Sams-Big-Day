@@ -368,6 +368,13 @@ a.guest-sort {
     min-width: 180px;
 }
 
+.gift-message {
+    margin-right: 10rem;
+    margin-left: 5rem;
+    font-family: 'Italianno', cursive;
+    font-size: calc(1rem + 1.3vw) !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
