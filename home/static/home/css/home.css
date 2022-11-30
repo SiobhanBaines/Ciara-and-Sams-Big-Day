@@ -1,24 +1,25 @@
-html, body {
-  background: url('/static/images/homepage-background-image.png') no-repeat center center fixed;
-  background-size: cover;
-  background-color: rgba(250, 250, 250, 0.5);
-  height: 100vh;
-  position: relative;
+html,
+body {
+    background: url('/static/images/homepage-background-image.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgba(250, 250, 250, 0.5);
+    height: 100vh;
+    position: relative;
 }
 
-.opaque-overlay { 
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(250, 250, 250, 0.5);
+.opaque-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(250, 250, 250, 0.7);
 }
 
 a:link {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .form-control {
-  width: 100%;
+    width: 100%;
 }

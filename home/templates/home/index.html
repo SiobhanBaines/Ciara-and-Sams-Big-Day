@@ -3,124 +3,124 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
 
 {% block page-header %}
-    <div class="container header-container opaque-overlay">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container opaque-overlay">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <!-- Landing Page - -->
-    <section class="container-fluid home-container no-gutters">
-        <div class="opaque-overlay">&nbsp;</div>
-        <div class="row">
-            {% if not request.user.is_authenticated or request.user.is_staff or request.user.is_superuser %}
-            <div class="col-12 name-callout">
-                <h1 class="banner cursive-text-color mt-5 pt-5">Ciara and Sam</h1>
-                <h2 class="cursive-text-color my-2">Are Getting Married</h2>
-            </div>
+<!-- Landing Page - -->
+<section class="container-fluid home-container no-gutters">
+    <div class="opaque-overlay">&nbsp;</div>
+    <div class="row">
+        {% if not request.user.is_authenticated or request.user.is_staff or request.user.is_superuser %}
+        <div class="col-12 name-callout">
+            <h1 class="banner cursive-text-color mt-5 pt-5">Ciara and Sam</h1>
+            <h2 class="cursive-text-color my-2">Are Getting Married</h2>
+        </div>
+        {% else %}
+        <div class="col-12 name-callout">
+            {% if request.user|has_group:'accepted' %}
+            <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Thank you {{ guest_name }} for accepting our invitation.<br>We are so excited you will be helping us to celebrate our special day. You will find all the information you need in the above menus but if you do have any questions, please do not hesitate to contact us on the link above.<br>Love Ciara and Sam</h3>
             {% else %}
-            <div class="col-12 name-callout">
-                {% if request.user|has_group:'accepted' %}
-                    <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Thank you {{ guest_name }} for accepting our invitation.<br>We are so excited you will be helping us to celebrate our special day. You will find all the information you need in the above menus but if you do have any questions, please do not hesitate to contact us on the link above.<br>Love Ciara and Sam</h3>
-                {% else %}
-                    {% if request.user|has_group:'declined' %}
-                        <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Dear {{ guest_name }}, <br>Thank you for responding to our invitation.<br>We are sorry you are unable to join us for our celebration but look forward to seeing you soon.<br>Love Ciara and Sam</h3>
-                    {% else %}
-                        <h1 class="cursive-text-color mt-1 pt-1">Welcome {{ guest_name }}</h1>
-                        <h2 class="cursive-text-color my-2">Please <a class="cursive-text-color" href="{% url 'rsvp' %}" aria-label="rsvp">RSVP</a></h2>
-                    {% endif %}
-                {% endif %}
+            {% if request.user|has_group:'declined' %}
+            <h3 class="cursive-text-color reply-to-guest my-2 mx-5">Dear {{ guest_name }}, <br>Thank you for responding to our invitation.<br>We are sorry you are unable to join us for our celebration but look forward to seeing you soon.<br>Love Ciara and Sam</h3>
+            {% else %}
+            <h1 class="cursive-text-color mt-1 pt-1">Welcome {{ guest_name }}</h1>
+            <h2 class="cursive-text-color my-2">Please <a class="cursive-text-color" href="{% url 'rsvp' %}" aria-label="rsvp">RSVP</a></h2>
             {% endif %}
-            </div>
-            <div class="row">
-                <div class="col-6"></div>
-                <div class="col-6">
-                    <a href="{% url 'rsvp' %}" class="rsvp-button btn btn-lg rsvp end-0 d-flex" aria-label="rsvp-2"></a>
-                </div>
+            {% endif %}
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <a href="{% url 'rsvp' %}" class="rsvp-button btn btn-lg rsvp end-0 d-flex" aria-label="rsvp-2"></a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Landing Page - Our Story -->
-    <section id="our-story">
-        <div class="row mx-1">
-            <div class="col-12">
-                <h2 class="cursive-text-color text-center mt-5 pt-5">Our Story</h2>
+<!-- Landing Page - Our Story -->
+<section id="our-story">
+    <div class="row mx-1">
+        <div class="col-12">
+            <h2 class="cursive-text-color text-center mt-5 pt-5">Our Story</h2>
+        </div>
+    </div>
+    <p class="fs-5 mx-5">Whilst how we met is not the most romantic story, since we fell in love, everyone close to us noticed something special. Only 6 weeks after we met was our first test when Sam returned to work, at sea, for 3 months while Ciara started a masters degree in Colchester.</p>
+    <p class="fs-5 mx-5">Since then, we've been on plenty of adventures together but the biggest was moving to Estonia in 2019 where Ciara is studying for a PhD in marine biology.</p>
+    <p class="fs-5 mx-5">Sam proposed in 2020 in Pärnu, Estonia. We walked to the end of the jetty and Sam proposed when we got there. According to legend, lovers who get to the end and kiss can expect good fortune and a lifetime of happiness.</p>
+    <h3 class="cursive-text-color text-center">We can’t wait to share our special day with you ❤ </h3>
+    <div id="carouselCS" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item carousel-size active" data-bs-interval="3000">
+                <img src="{% static 'images/ciara-sam-1.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static 'images/ciara-sam-2.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static 'images/ciara-sam-3.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static 'images/ciara-sam-4.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="{% static 'images/ciara-sam-5.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
             </div>
         </div>
-        <p class="fs-5 mx-5">Whilst how we met is not the most romantic story, since we fell in love, everyone close to us noticed something special. Only 6 weeks after we met was our first test when Sam returned to work, at sea, for 3 months while Ciara started a masters degree in Colchester.</p>
-        <p class="fs-5 mx-5">Since then, we've been on plenty of adventures together but the biggest was moving to Estonia in 2019 where Ciara is studying for a PhD in marine biology.</p>
-        <p class="fs-5 mx-5">Sam proposed in 2020 in Pärnu, Estonia. We walked to the end of the jetty and Sam proposed when we got there. According to legend, lovers who get to the end and kiss can expect good fortune and a lifetime of happiness.</p>
-        <h3 class="cursive-text-color text-center">We can’t wait to share our special day with you ❤ </h3>
-        <div id="carouselCS" class="carousel slide " data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item carousel-size active" data-bs-interval="3000">
-                    <img src="{% static 'images/ciara-sam-1.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{% static 'images/ciara-sam-2.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{% static 'images/ciara-sam-3.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{% static 'images/ciara-sam-4.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                    <img src="{% static 'images/ciara-sam-5.jpg' %}" class="d-block w-100" alt="ciara-sam-image">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCS" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselCS" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselCS" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselCS" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
 
-    <!-- Landing Page - Location -->
-    <section id="location">
-        <div class="row mx-1">
-            <div class="col-12">
-                <h2 class="cursive-text-color text-center mt-5 pt-5">York</h2>
-                <!-- The information below was obtained on the website "https://www.citi-wise.com/york/landmarks-and-history/brief-history-of-york/" -->
-                <p class="fs-5 mx-5">The beautiful city of York is steeped in history and started life as a small roman military fort. The ancient Roman roads of Via Praetoria and Via Prinicipalis ran under todays streets,Stongaete and Petergate.</p>
-                <p class="fs-5 mx-5">During the reign of the Northubrian kings, York boomed and became a centre of trade with the rest of Europe. In the 7th century Paulinius of York erected a small wooden church which later became the iconic cathedral. Over the years York has been invaded by Danes, Viking and Norman forces.The vikings gave York it's viking name of Jorvik.</p>
-                <p class="fs-5 mx-5">It took over 250 years to build York Minster between the years of 1220 and 1475. The city if full of ginnels and snickets, cobbled alleyways and stone streets including the infamous Shambles.</p>
-                <p class="fs-5 mx-5">York if full of places to visit including York Minster, Clifford Tower, York Castle Museum, Jorvik Viking Centre, The Shambles, National Railway Museum or walk the Medieval City Walls.  </p>
+<!-- Landing Page - Location -->
+<section id="location">
+    <div class="row mx-1">
+        <div class="col-12">
+            <h2 class="cursive-text-color text-center mt-5 pt-5">York</h2>
+            <!-- The information below was obtained on the website "https://www.citi-wise.com/york/landmarks-and-history/brief-history-of-york/" -->
+            <p class="fs-5 mx-5">The beautiful city of York is steeped in history and started life as a small roman military fort. The ancient Roman roads of Via Praetoria and Via Prinicipalis ran under todays streets,Stongaete and Petergate.</p>
+            <p class="fs-5 mx-5">During the reign of the Northubrian kings, York boomed and became a centre of trade with the rest of Europe. In the 7th century Paulinius of York erected a small wooden church which later became the iconic cathedral. Over the years York has been invaded by Danes, Viking and Norman forces.The vikings gave York it's viking name of Jorvik.</p>
+            <p class="fs-5 mx-5">It took over 250 years to build York Minster between the years of 1220 and 1475. The city if full of ginnels and snickets, cobbled alleyways and stone streets including the infamous Shambles.</p>
+            <p class="fs-5 mx-5">York if full of places to visit including York Minster, Clifford Tower, York Castle Museum, Jorvik Viking Centre, The Shambles, National Railway Museum or walk the Medieval City Walls. </p>
+        </div>
+    </div>
+    <div class="row mx-1">
+        <div class="col-sm-12 col-md-6">
+            <div class="text-center">
+                <figure class="figure">
+                    <img src="{% static 'images/shambles-york.jpg' %}" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption text-center">The Shambles</figcaption>
+                </figure>
             </div>
         </div>
-        <div class="row mx-1">
-            <div class="col-sm-12 col-md-6">
-                <div class="text-center">
-                    <figure class="figure">
-                        <img src="{% static 'images/shambles-york.jpg' %}" class="figure-img img-fluid rounded" alt="...">
-                        <figcaption class="figure-caption text-center">The Shambles</figcaption>
-                    </figure>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="text-center">
-                    <figure class="figure">
-                        <img src="{% static 'images/york-minster.PNG' %}" class=" figure-img img-fluid rounded" alt="...">
-                        <figcaption class="figure-caption text-center">York Minster</figcaption>
-                    </figure>
-                </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="text-center">
+                <figure class="figure">
+                    <img src="{% static 'images/york-minster.PNG' %}" class=" figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption text-center">York Minster</figcaption>
+                </figure>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Covid19 Restrictions -->
-    <section id="covid-restrictions">
+<!-- Covid19 Restrictions -->
+<!-- <section id="covid-restrictions">
         <div class="row mx-1">
             <div class="col-12">
                 <h2 class="cursive-text-color text-center mt-5 pt-5">Covid19 Restrictions</h2>
@@ -132,18 +132,18 @@
                 <p class="fs-5 mx-5">A broader range of venues will be able to be open at this step, as set out in the roadmap. Any venue which is not required in law to remain closed will be able to host events and allow viewings with appropriate COVID-19 mitigation measures in place. This includes, for example, any restaurant or indoor visitor attraction.</p>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- footer-->
-    <footer>
-        <div class="row ">
-            <div class="col-12 col-md-6 my-2">
-                <div class="footer-copyright">
-                    <div id="copy" class="container-footer" >
-                        © 2021 Copyright Siobhán M Baines
-                    </div>
+<!-- footer-->
+<footer>
+    <div class="row ">
+        <div class="col-12 col-md-6 my-2">
+            <div class="footer-copyright">
+                <div id="copy" class="container-footer">
+                    © 2021 Copyright Siobhán M Baines
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 {% endblock %}
