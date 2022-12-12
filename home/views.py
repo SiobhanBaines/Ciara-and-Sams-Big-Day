@@ -17,6 +17,8 @@ def index(request):
         guests = Guest.objects.filter(group_id=request.user)
         guest_names = [guest.first_name for guest in guests]
         guest_name = ", ".join(guest_names)
+        accepteds = [guest.accepted for guest in guests]
+        accepted = ", ".join(accepteds)
     else:
         guest_name = ''
 
@@ -123,6 +125,8 @@ def rsvp(request):
 
 @login_required
 def contact(request):
+    """ Contact Form """
+
     if request.method == 'GET':
         form = ContactForm()
     else:
