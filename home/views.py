@@ -159,9 +159,8 @@ def rsvp_email(group_id):
     guests = Guest.objects.filter(group_id=group_id)
 
     for guest in guests:
-        if guest.email:
+        if guest.first_name:
             first_name = guest.first_name
-
         context = {
             'first_name': first_name,
         }
