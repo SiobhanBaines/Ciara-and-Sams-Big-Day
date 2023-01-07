@@ -34,6 +34,9 @@ class RSVPForm(forms.Form):
             "first_name",
             "last_name",
             "accepted",
+            "plus_one",
+            "plus_one_first_name",
+            "plus_one_last_name",
         )
 
     def __init__(self, *args, **kwargs):

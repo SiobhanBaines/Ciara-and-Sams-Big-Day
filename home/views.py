@@ -19,6 +19,15 @@ def index(request):
         guest_name = ", ".join(guest_names)
         accepteds = [guest.accepted for guest in guests]
         accepted = ", ".join(accepteds)
+        print("line 22", accepted, accepteds, guest.plus_one)
+        # plus_ones = [guest.plus_one for guest in guests]
+        # plus_one = ",".join(plus_ones)
+
+        if guest.plus_one is True:
+            max_id = Guest.objects.values('id').order_by('-id').first()
+            print("line 27", max_id)
+            #    max_id = Guest.objects.last() 
+
     else:
         guest_name = ''
 
@@ -82,13 +91,56 @@ def rsvp(request):
         form = dict(request.POST)
         # loop through form to get details of
         #   each guest in the invitation group
+        
         for num in range(len(form['id'])):
 
             guest_id = form['id'][num]
             guest = get_object_or_404(Guest, id=guest_id)
+
             guest.group_id = form['group_id'][num]
             guest.accepted = form['rsvp_response'][num]
             guest.message = form['message']
+            
+            print("line 95", num, guest.id, guest.group_id, guest.first_name, guest.last_name, guest.plus_one, guest.accepted)
+            # print("line 98", num, guest.id, guest.group_id, plus_one_first_name, plus_one_last_name, guest.plus_one, guest.accepted)
+            if guest.plus_one is True:
+                # if num == 0:
+                guest.plus_one=False
+                plus_one=True
+                print("line 98", num, plus_one, guest.id, guest.group_id, guest.first_name, guest.last_name, guest.plus_one, guest.accepted)
+
+            if plus_one is True:
+                # else:
+                max_id = Guest.object.last()
+                print("line 106", max_id)
+                guest.first_name = form['plus_one_first_name'][num]
+                guest.last_name = form['plus_one_last_name'][num]
+
+                print("line 110", num, guest.id, guest.group_id, guest.first_name, guest.last_name, guest.plus_one, guest.accepted)
+                guest.id=max_id+1, 
+                guest.group_id,
+                guest.first_name,
+                guest.last_name,
+                # guest.plus_one=False,
+                # address_line_1=' ',
+                # address_line_2=' ',
+                # city=' ',
+                # county=' ',
+                # country=' ',
+                # postcode=' ',
+                # email=' ',
+                # phone_number=' ',
+                guest.accepted,
+                # meal_chosen=False,
+                # starter='',
+                # main='',
+                # dessert='',
+                # gift_chosen=False,
+                # gift_name='',
+                # gift_value=0,
+                guest=guest.save()
+                print("line 133", num, guest.id, guest.group_id, guest.first_name, guest.last_name, guest.plus_one, guest.accepted)
+            print("line 134", num, plus_one, guest.id, guest.group_id, guest.first_name, guest.last_name, guest.plus_one, guest.accepted)
             guest.save()
             # If a guest accepts, this needs to be saved
             #   for adding the user group later
