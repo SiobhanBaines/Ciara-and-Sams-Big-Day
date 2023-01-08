@@ -6,7 +6,6 @@ class Guest(models.Model):
     group_id = models.CharField(max_length=6, blank=True)
     first_name = models.CharField(max_length=50, null=False, blank=False)
     last_name = models.CharField(max_length=50, null=False, blank=False)
-    plus_one = models.BooleanField(default=False)
     address_line_1 = models.CharField(max_length=80, blank=True)
     address_line_2 = models.CharField(max_length=80, blank=True)
     city = models.CharField(max_length=40, blank=True)
@@ -27,6 +26,9 @@ class Guest(models.Model):
     gift_name = models.CharField(max_length=254, blank=True)
     gift_value = models.DecimalField(max_digits=10, decimal_places=2,
                                      null=True, default=0)
+    plus_one = models.BooleanField(default=False)
+    plus_one_first_name = models.CharField(max_length=50, null=True, blank=True)
+    plus_one_last_name = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.group_id

@@ -103,6 +103,8 @@ def guests(request):
                     gift_chosen=False,
                     gift_name='',
                     gift_value=0,
+                    plus_one_first_name=' ',
+                    plus_one_last_name=' ',
                 )
             )
         try:

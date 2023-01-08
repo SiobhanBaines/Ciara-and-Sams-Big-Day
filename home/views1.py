@@ -86,16 +86,9 @@ def rsvp(request):
 
             guest_id = form['id'][num]
             guest = get_object_or_404(Guest, id=guest_id)
-            print(guest.plus_one_first_name, guest.first_name)
             guest.group_id = form['group_id'][num]
             guest.accepted = form['rsvp_response'][num]
-            guest.plus_one = form['plus_one'][num]
             guest.message = form['message']
-
-            if guest.plus_one:
-                if num == 1:
-                    guest.save()
-
             guest.save()
             # If a guest accepts, this needs to be saved
             #   for adding the user group later
@@ -134,6 +127,7 @@ def rsvp(request):
 def contact(request):
     """ Contact Form """
 
+    print("line 164 - contact(request)")
     if request.method == 'GET':
         form = ContactForm()
     else:
@@ -167,6 +161,7 @@ def contact(request):
 def rsvp_email(group_id):
     """ Send RSVP confirmation email """
 
+    print("line 198 - rsvp_email(request)")
     guests = Guest.objects.filter(group_id=group_id)
 
     for guest in guests:
@@ -198,11 +193,3 @@ def rsvp_email(group_id):
             message.attach_alternative(template, 'text/html')
 
         message.send()
-
-
-    def get_next_id(curr_id):
-        try:
-            ret = Image.objects.filter(id__gt=curr_id).order_by("id")[0:1].get().id
-        except Image.DoesNotExist:
-            ret = Image.objects.aggregate(Maz("id"))['id__max']
-        return ret

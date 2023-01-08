@@ -35,8 +35,10 @@
                                 <tr>
                                     <input type="hidden" id="id" name="id" value="{{ guest.id }}">
                                     <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
+                                    <input type="hidden" id="plus_one" name="plus_one" value="{{ guest.plus_one }}">
                                     <td class="hide">{{ guest.id }}</td>
                                     <td class="hide">{{ guest.group_id }}</td>
+                                    <td class="hide">{{ guest.plus_one }}</td>
                                     <td>{{ guest.first_name }}</td>
                                     <td>{{ guest.last_name }}</td>
                                     <td><select class="form-select" name="rsvp_response" aria-label="Default select example">
@@ -59,12 +61,15 @@
                                 <tr>
                                     <input type="hidden" id="id" name="id" value="{{ guest.id }}">
                                     <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
+                                    <input type="hidden" id="plus_one" name="plus_one" value="{{ guest.plus_one }}">
                                     <td class="hide">{{ guest.id }}</td>
                                     <td class="hide">{{ guest.group_id }}</td>
-                                    <td><textarea class="rsvp-plus_one-first form-control" placeholder="Plus one firstname" id="plus_one_first_name" name="plus_one_first_name"></textarea>
+                                    <td class="hide">{{ guest.plus_one }}</td>
+                                    <td>
+                                        <textarea class="rsvp-plus_one-first form-control" placeholder="Plus one firstname" id="plus_one_first_name" name="plus_one_first_name">{{ guest.plus_one_first_name }}</textarea>
                                         <label for="plus_one_first_name"></label>
                                     </td>
-                                    <td><textarea class="rsvp-plus_one-last form-control" placeholder="Plus one firstname" id="plus_one_last_name" name="plus_one_last_name"></textarea>
+                                    <td><textarea class="rsvp-plus_one-last form-control" placeholder="Plus one firstname" id="plus_one_last_name" name="plus_one_last_name">{{ guest.plus_one_last_name }}</textarea>
                                         <label for="plus_one_last_name"></label>
                                     </td>
                                     <td><select class="form-select" name="rsvp_response" aria-label="Default select example">

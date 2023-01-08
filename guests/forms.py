@@ -18,4 +18,6 @@ class GuestForm(forms.ModelForm):
             'postcode',
             'email',
             'phone_number',
+            'plus_one_first_name',
+            'plus_one_last_name',
         ]
