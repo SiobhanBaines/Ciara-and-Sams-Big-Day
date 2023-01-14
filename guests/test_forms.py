@@ -30,4 +30,5 @@ class TestCheckoutForm(TestCase):
             form.Meta.fields, ['first_name', 'last_name', 'plus_one',
                                'address_line_1', 'address_line_2', 'city',
                                'county', 'country', 'postcode', 'email',
-                               'phone_number'])
+                               'phone_number', 'plus_one_first_name',
+                                'plus_one_last_name',])

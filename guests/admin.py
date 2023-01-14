@@ -24,6 +24,8 @@ class GuestAdmin(admin.ModelAdmin):
         'gift_chosen',
         'gift_name',
         'gift_value',
+        'plus_one_first_name',
+        'plus_one_last_name',
     )
 
     ordering = ('group_id', 'first_name')
