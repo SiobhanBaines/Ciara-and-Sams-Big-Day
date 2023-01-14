@@ -136,6 +136,8 @@ def guest_detail(request, guest_id):
         'guest': guest,
     }
 
+    print("line 137", guest.plus_one_first_name)
+    
     return render(request, 'guests/guest_detail.html', context)
 
 

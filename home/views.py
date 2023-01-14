@@ -90,12 +90,9 @@ def rsvp(request):
             guest.group_id = form['group_id'][num]
             guest.accepted = form['rsvp_response'][num]
             guest.plus_one = form['plus_one'][num]
+            guest.plus_one_first_name = form['plus_one_first_name']
+            guest.plus_one_last_name = form['plus_one_last_name']
             guest.message = form['message']
-
-            if guest.plus_one:
-                if num == 1:
-                    guest.save()
-
             guest.save()
             # If a guest accepts, this needs to be saved
             #   for adding the user group later
