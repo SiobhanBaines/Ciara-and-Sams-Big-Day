@@ -134,14 +134,19 @@ def contact(request):
     if request.method == 'GET':
         form = ContactForm()
     else:
+        
+        to_email = settings.DEFAULT_FROM_EMAIL
+        send_to_email = to_email.strip("'()")
+        print("line 135 ", to_email )
+
         form = ContactForm(request.POST)
         if form.is_valid():
-            to_email = [settings.DEFAULT_FROM_EMAIL, ]
+            to_email = [send_to_email]
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = form.cleaned_data['from_email']
-            print("line 43, ", from_email, to_email, settings.DEFAULT_FROM_EMAIL)
-
+            print("line 145 ", to_email, settings.DEFAULT_FROM_EMAIL)
+            
             try:
                 send_mail(
                     subject,
@@ -149,6 +154,8 @@ def contact(request):
                     from_email,
                     to_email,
                     fail_silently=False,
+                    auth_user=settings.EMAIL_HOST_USER,
+                    auth_password=settings.EMAIL_HOST_PASSWORD,
                     )
 
             except Exception as e:
