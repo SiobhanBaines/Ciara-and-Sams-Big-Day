@@ -12,8 +12,7 @@
 <!-- Contact Page - -->
 <div class="container mt-5">
     <h3 class="text-center cursive-text-color">Contact Us</h3>
-    <!-- <div class="col-12"> -->
-    <div class="row mt-5">
+    <!-- <div class="row mt-5">
         <div class="col-12 col-md-2 offset-md-3">
             <h3 class="cursive-text-color text-align-left fs-2">Email:</h3>
         </div>
@@ -37,15 +36,14 @@
         <div class="col-12 col-md-4 align-items-start ">
             <p class="mb-0 mt-1">07766 109953</p>
         </div>
-        <!-- </div> -->
-    </div>
-    <!-- <form method="POST" action="{% url 'contact' %}" class="form">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <div class=" form-actions text-center mt-2">
-                <button class="select-btn" type="submit">Send</button>
-            </div>
-        </form> -->
+    </div> -->
+    <form method="POST" action="{% url 'contact' %}" class="form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class=" form-actions text-center mt-2">
+            <button class="select-btn" type="submit">Send</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
 
