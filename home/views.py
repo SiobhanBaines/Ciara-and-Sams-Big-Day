@@ -140,6 +140,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = form.cleaned_data['from_email']
+            print("line 43, ", from_email, to_email, settings.DEFAULT_FROM_EMAIL)
 
             try:
                 send_mail(
