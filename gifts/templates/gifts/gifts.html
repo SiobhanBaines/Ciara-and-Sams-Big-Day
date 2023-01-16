@@ -48,6 +48,7 @@
             <hr>
         </div>
     </div>
+
     <div class="row">
         <!-- Display gift details for guest -->
         {% if gift_selected or gift_value %}
@@ -71,19 +72,19 @@
         </div>
         {% endif %}
         <!-- Monetary Gift -->
-        <form class="col" method="POST" action="{% url 'gift_donation' gift_amount %}">
+        <!-- <form class="col" method="POST" action="{% url 'gift_donation' gift_amount %}"> -->
 
-            <div class="col mb-5 text-center">
-                <div class="row gift-message ">
-                    <p class="lead text-left font-weight-bold gift-message pl-1 pr-1">All we really want for our wedding day is for you to be there to celebrate with us but if you would like to get us a gift, we have some ideas below or you can gift money to help us start our new life.</p>
-                </div>
-                {% csrf_token %}
+        <div class="col mb-5 text-center">
+            <div class="row gift-message ">
+                <p class="lead text-left font-weight-bold gift-message pl-1 pr-1">All we really want for our wedding day is for you to be there to celebrate with us but if you would like to get us a gift, we have some ideas below.</p>
+            </div>
+            <!-- {% csrf_token %}
                 <label for="gift_amount" class="gift_amount">£</label>
                 <input id="gift_amount" name="gift_amount" value="0.00" pattern="^\d*(\.\d{0,2})?" type="text" placeholder="Gift Amount">
-                <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button>
-            </div>
+                <button class="btn accept-btn btn-sm" type="submit">Click here to proceed to payment</button> -->
+        </div>
 
-        </form>
+        <!-- </form> -->
     </div>
     {% endif %}
     <!-- List of gifts -->
