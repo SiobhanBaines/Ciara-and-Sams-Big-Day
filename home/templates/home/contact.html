@@ -12,38 +12,38 @@
 <!-- Contact Page - -->
 <div class="container mt-5">
     <h3 class="text-center cursive-text-color">Contact Us</h3>
-    <!-- <div class="row mt-5">
+    <div class="row mt-5">
         <div class="col-12 col-md-2 offset-md-3">
-            <h3 class="cursive-text-color text-align-left fs-2">Email:</h3>
+            <h3 class="cursive-text-color text-align-left fs-1">Email:</h3>
         </div>
-        <div class="col-12 col-md-4 align-items-start">
+        <div class="col-12 col-md-4 align-items-start fs-3">
             <p class="mb-0 mt-1">ciara.sam.wedding@gmail.com</p>
         </div>
     </div>
     <div class="row">
         <div class="col-6 col-md-2 offset-md-3">
-            <h3 class="cursive-text-color text-align-left fs-2">Sam mobile:</h3>
+            <h3 class="cursive-text-color text-align-left fs-1">Sam mobile:</h3>
         </div>
         <div class="col-12 col-md-4 align-items-start">
-            <p class="mb-0 mt-1">07947 305312</p>
+            <p class="mb-0 mt-1 fs-3">07947 305312</p>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-2 offset-md-3">
-            <h3 class="cursive-text-color fs-2">
+            <h3 class="cursive-text-color fs-1">
                 Ciara mobile:</h3>
         </div>
         <div class="col-12 col-md-4 align-items-start ">
-            <p class="mb-0 mt-1">07766 109953</p>
+            <p class="mb-0 mt-1 fs-3">07766 109953</p>
         </div>
-    </div> -->
-    <form method="POST" action="{% url 'contact' %}" class="form">
+    </div>
+    <!-- <form method="POST" action="{% url 'contact' %}" class="form">
         {% csrf_token %}
         {{ form|crispy }}
         <div class=" form-actions text-center mt-2">
             <button class="select-btn" type="submit">Send</button>
         </div>
-    </form>
+    </form> -->
 </div>
 {% endblock %}
 
