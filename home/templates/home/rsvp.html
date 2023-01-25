@@ -23,6 +23,11 @@
                         <table class="table table-striped table-hover table-sm">
                             {{ form.as_table }}
                             <thead>
+                                <!-- {% if guest.plus_one %}
+                                <tr>
+                                    <td>If you intend to bring a guest, please give their details below. If you do not know, you can always add their name later.</td>
+                                </tr>
+                                {% endif %} -->
                                 <tr>
                                     <th class="guest-table cursive-text-color" scope="col">First Name</th>
                                     <th class="guest-table cursive-text-color" scope="col">Last Name</th>
@@ -32,6 +37,11 @@
                             </thead>
                             <tbody>
                                 {% for guest in guests %}
+                                <!-- {% if guest.plus_one %}
+                                <tr>
+                                    <td>If you intend to bring a guest, please give their details below. If you do not know, you can always add their name later.</td>
+                                </tr>
+                                {% endif %} -->
                                 <tr>
                                     <input type="hidden" id="id" name="id" value="{{ guest.id }}">
                                     <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
@@ -39,6 +49,8 @@
                                     <td class="hide">{{ guest.id }}</td>
                                     <td class="hide">{{ guest.group_id }}</td>
                                     <td class="hide">{{ guest.plus_one }}</td>
+                                    <td class="hide">{{ guest.plus_one_first_nam }}</td>
+                                    <td class="hide">{{ guest.plus_one_last_name }}</td>
                                     <td>{{ guest.first_name }}</td>
                                     <td>{{ guest.last_name }}</td>
                                     <td><select class="form-select" name="rsvp_response" aria-label="Default select example">
@@ -54,24 +66,17 @@
                                         </select>
                                     </td>
                                 </tr>
-                                {% if guest.plus_one %}
+                                <!-- {% if guest.plus_one %}
                                 <tr>
-                                    <td>If you intend to bring a guest, please give their details below.</td>
-                                </tr>
-                                <tr>
+                                    <td>If you intend to bring a guest, please give their details below. If you do not know, you can always add their name later.</td>
+                                </tr> -->
+                                <!-- <tr>
                                     <input type="hidden" id="id" name="id" value="{{ guest.id }}">
                                     <input type="hidden" id="group_id" name="group_id" value="{{ guest.group_id }}">
                                     <input type="hidden" id="plus_one" name="plus_one" value="{{ guest.plus_one }}">
                                     <td class="hide">{{ guest.id }}</td>
                                     <td class="hide">{{ guest.group_id }}</td>
                                     <td class="hide">{{ guest.plus_one }}</td>
-                                    <td>
-                                        <textarea class="rsvp-plus_one-first form-control" placeholder="Plus one firstname" id="plus_one_first_name" name="plus_one_first_name">{{ guest.plus_one_first_name }}</textarea>
-                                        <label for="plus_one_first_name"></label>
-                                    </td>
-                                    <td><textarea class="rsvp-plus_one-last form-control" placeholder="Plus one firstname" id="plus_one_last_name" name="plus_one_last_name">{{ guest.plus_one_last_name }}</textarea>
-                                        <label for="plus_one_last_name"></label>
-                                    </td>
                                     <td><select class="form-select" name="rsvp_response" aria-label="Default select example">
                                             {% if not guest.accepted %}
                                             <option value='Accept' active selected>Accept
@@ -84,7 +89,29 @@
                                             <option value="Decline">Decline</option>
                                         </select>
                                     </td>
-                                </tr>
+                                    <td>
+                                        <textarea class="rsvp-plus_one-first form-control" placeholder="Plus one firstname" id="plus_one_first_name" name="plus_one_first_name">{{ guest.plus_one_first_name }}</textarea>
+                                        <label for="plus_one_first_name"></label>
+                                    </td>
+                                    <td><textarea class="rsvp-plus_one-last form-control" placeholder="Plus one firstname" id="plus_one_last_name" name="plus_one_last_name">{{ guest.plus_one_last_name }}</textarea>
+                                        <label for="plus_one_last_name"></label>
+                                    </td>
+                                    <td class="hide"><select class="form-select" name="rsvp_response" aria-label="Default select example">
+                                            {% if not guest.accepted %}
+                                            <option value='Accept' active selected>Accept
+                                            </option>
+                                            {% else %}
+                                            <option value='{{ guest.accepted }}' active selected>{{ guest.accepted }}
+                                            </option>
+                                            {% endif %}
+                                            <option value="Accept">Accept</option>
+                                            <option value="Decline">Decline</option>
+                                        </select>
+                                    </td>
+                                </tr> -->
+                                <!-- {% endif %} -->
+                                {% if guest.plus_one %}
+                                <p>If you intend to bring a guest, please give their details below in the box below along with any dietary requirements.</p>
                                 {% endif %}
                                 {% endfor %}
                             </tbody>
@@ -96,8 +123,11 @@
                         </div>
                     </div>
                     <div class="card-footer text-callout">
+
+
                         <textarea class="rsvp-message form-control" placeholder="If you have any dietary requirements please let us know here" id="message" name="message">{{ guest.message }}</textarea>
                         <label for="message"></label>
+
                     </div>
                 </div>
             </div>
