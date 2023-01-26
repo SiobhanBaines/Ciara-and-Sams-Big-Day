@@ -222,9 +222,12 @@ def deselect_gift(request):
 # Get status of selected checkbox
     if request.method == 'POST':
         selected = request.POST.get('selected')
+        name = request.POST.get('guest_gift_name')
         if selected == 'on':
             user = str(request.user)
+            print(user, name, selected)
             gifts = Gift.objects.filter(name=name)
+            # gifts = Gift.objects.filter(gs=gs)
             for gift in gifts:
                 if user == gift.group_id:
                     gift.selected = False
